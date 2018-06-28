@@ -1,0 +1,50 @@
+<div class="animate-login animated fadeInDownBig">
+  <h1>WELCOME TO</h1>
+  <span>GLOBSTAGE</span>
+  <div class="buttons">
+      <button (click)="openLogin()" type="button" class="btn">Login</button>
+      <button (click)="openRegister()" type="button" class="btn-default">Register</button>
+  </div>
+</div>
+<ng-template [ngIf]= "loginPanel">
+<div class="login-panel">
+  <div class="login-form animated fadeInDownBig">
+      <span (click)="closeLogin()" class="icon-close">x</span>
+    <h3>Welcome
+      <span class="solid"></span>
+    </h3>
+    <form [formGroup]="formgroupLog" (ngSubmit)="signIn(formgroupLog)" action="" method="post">
+      <div class="forms">
+        <span class="input-span">E-MAIL:</span>
+        <input class="input-text" type="email" name="email" formControlName="email"><br>
+        <span class="input-span">PASSWORD</span>
+        <input class="input-text margin" type="password" name="password" formControlName="password">
+        <p *ngIf="formgroupLog.invalid" class="form-error">* All fields are required.</p>
+      </div>
+      <input class="check-box" type="checkbox" name="remember">
+      <label class="remember-me" for="remember_me">Remember me</label>
+      <a href="#">Forgot your password?</a>
+      <button type="submit" [disabled]="!formgroupLog.valid" class="login btn btn-success">Login</button>
+    </form>
+  </div>
+</div>
+</ng-template>
+<ng-template [ngIf]= "registerPanel">
+<div class="register-panel">
+  <div class="register-form animated fadeInDownBig">
+      <span (click)="closeRegister()" class="icon-close">x</span>
+      <h3>Register
+        <span class="solid"></span>
+      </h3>
+      <form [formGroup]="formgroupReg" (ngSubmit)="onSignUp(formgroupReg)" action="" method="post">
+        <input type="text" formControlName="name" name="name" placeholder="Your name*"><br>
+        <input type="text" formControlName="lastname" name="lastname" placeholder="Your last name*"><br>
+        <input type="email" formControlName="email" name="email" placeholder="E-mail address*"><br>
+        <input type="password" formControlName="password_first" name="password_first" placeholder="Password*"><br>
+        <input class="margin" type="password" formControlName="password_second" name="password_second" placeholder="Password again*"><br>
+        <p *ngIf="formgroupReg.invalid" class="form-error">* All fields are required.</p>
+        <button type="submit" [disabled]="!formgroupReg.valid" class="register btn btn-success">Register</button>
+      </form>
+  </div>
+</div>
+</ng-template>

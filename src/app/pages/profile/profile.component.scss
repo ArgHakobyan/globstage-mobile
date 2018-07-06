@@ -6,6 +6,45 @@ ul{
 li{
     list-style: none;
 }
+::ng-deep .mat-menu-panel{
+    background: #161C25;
+}
+.user-avatar-menu{
+    .user-img{
+        width: 110px;
+        margin: auto;
+        padding-top: 20px;
+        img{
+            width: 110px;
+            height: 110px;
+            border-radius: 100%;
+            border: 2px solid #03AAAC;
+        }
+    }
+    a{
+        font-size: 20px;
+        text-align: center;
+        color: #fff;
+        transition: 0.3s;
+        display: block;
+    }
+    a:hover{
+        text-decoration: none;
+        transition: 0.3s;
+        color: $color-blue;
+    }
+    .exit{
+        display: block;
+        margin: auto;
+        width: 100px;
+        border: 2px solid #FFFFFF;
+        text-align: center;
+        padding: 5px;
+        border-radius: 3px;
+        color: #FFFFFF;
+        background: none;
+    }
+}
 .user-avatar{
     position: relative;
     top: 30px;
@@ -131,6 +170,82 @@ li{
             margin: auto;
             height: 40px;
             width: 38px;
+        }
+    }
+    .user-friend{
+        .user-quantity{
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px;
+            .friends{
+                display: inline-block;
+                p{
+                    color: #fff;
+                    margin-bottom: 0;
+                }
+            }
+            .see-all{
+                display: block;
+                float: right;
+                a{
+                    text-decoration: none;
+                    color: #fff;
+                }
+            }
+        }
+        .friend-img{
+            background: rgba(3, 170, 173, 0.2);
+            padding: 8px;
+            position: relative;
+            .friend-ava{
+                border-radius: 4px;
+                margin: 4px 3px;
+                cursor: pointer;
+            }
+            .friends-item:hover{
+                .hover-popup, .to-bottom{
+                    display: block;
+                }
+            }
+            .friends-item{
+                display: inline-block;
+            }
+            .hover-popup{
+                position: absolute;
+                background: #fff;
+                padding: 4px;
+                bottom: 80px;
+                left: 0;
+                display: none;
+                .popup-img{
+                    width: 100px;
+                    border-radius: 4px;
+                }
+                .center-text{
+                    text-align: center;
+                }
+                h5{
+                    color: #828995;
+                    font-size: 12px;
+                    margin-bottom: 2px;
+                }
+                h4{
+                    color: #4A5F46;
+                    font-size: 12px;
+                    margin-bottom: 0;
+                }
+                .age{
+                    font-size: 12px;
+                }
+            }
+            .to-bottom{
+                background: url(../../../assets/imgs/bottoms.png) no-repeat;
+                position: absolute;
+                top: -6px;
+                left: 10px;
+                width: 24px;
+                height: 10px;
+                display: none;
+            }
         }
     }
 }

@@ -56,7 +56,7 @@ export class GlobTabsComponent implements OnInit {
   }
   openDialogAudio() {
     const dialogRef = this.dialog.open(NewAudioModalComponent, {
-      height: 'auto'
+      height: '350px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -22,7 +22,9 @@ import { GlobTabsComponent } from './components/glob-tabs/glob-tabs.component';
 import { WallComponent } from './components/wall/wall.component';
 import { PostComponent } from './components/post/post.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+
 
 import {MatInputModule} from '@angular/material/input';
 import {
@@ -110,6 +112,7 @@ const appRoutes: Routes = [
     MatTabsModule,
     MatTooltipModule,
     MatStepperModule,
+    MatIconModule,
   ],
   providers: [
     AuthService,

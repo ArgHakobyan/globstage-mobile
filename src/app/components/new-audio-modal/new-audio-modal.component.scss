@@ -7,6 +7,9 @@
         font-weight: bold;
         text-align: center;
     }
+    ::ng-deep .mat-tab-label-content{
+        color: $color-blue;
+    }
     .example-full-width {
         width: 100%;
       }
@@ -41,6 +44,45 @@
             font-size: 12px;
             span{
                 font-weight: bold;
+            }
+        }
+    }
+    .from-comp{
+        padding-top: 15px;
+        .limit{
+            color: $color-blue;
+            font-size: 13px;
+        }
+        ul{
+            padding-left: 16px;
+            margin-bottom: 0;
+            li{
+                font-size: 12px;
+            }
+        }
+        .upload-file{
+            text-align: center;
+            padding: 10px 0;
+            .select-file{
+                background: linear-gradient(#FFFFFF, #F5F5F5) repeat scroll 0 0 #FCFCFC;
+                border: 1px solid #E0E0E0;
+                border-radius: 3px;
+                color: #3F4752;
+                font-size: 11px;
+                padding: 4px 15px;
+            }
+            .select-file:hover{
+                background: $color-green;
+            }
+        }
+        p{
+            font-size: 12px;
+            a{
+                color: $color-green;
+                text-decoration: none;
+            }
+            a:hover{
+                color: #000;
             }
         }
     }

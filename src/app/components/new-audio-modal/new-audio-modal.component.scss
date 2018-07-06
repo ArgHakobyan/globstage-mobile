@@ -1,0 +1,76 @@
+@import '../../../variable';
+.create-audio{
+    width: 350px;
+    .center-p{
+        color: $color-blue;
+        font-size: 13px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .example-full-width {
+        width: 100%;
+      }
+      ::ng-deep .mat-form-field-label{
+        color: $color-blue;
+        font-size: 14px;
+    }
+    .song-load{
+        text-align: left;
+        padding-top: 15px;
+        .the-link{
+            background: $color-blue;
+            color: #FFFFFF;
+            padding: 4px 6px;
+            font-size: 13px;
+        }
+        .the-link:hover{
+            color: #000;
+        }
+        .from-comp{
+            border: 0 none;
+            padding: 4px 6px;
+            color: #95c800;
+            font-size: 13px;
+            margin-left: 10px;
+        }
+        .from-comp:hover{
+            background: $color-blue;
+            color: #000;
+        }
+        p{
+            font-size: 12px;
+            span{
+                font-weight: bold;
+            }
+        }
+    }
+    .create-btn{
+        text-align: right;
+        padding-top: 10px;
+        .done{
+            background: linear-gradient(#FFFFFF, #F5F5F5) repeat scroll 0 0 #FCFCFC;
+            border: 1px solid #E0E0E0;
+            border-radius: 3px;
+            color: #3F4752;
+            font-size: 11px;
+            padding: 4px 15px;
+        }
+        .done:hover{
+            background: $color-green;
+        }
+        .cancel{
+            background: linear-gradient(#FFFFFF, #F5F5F5) repeat scroll 0 0 #FCFCFC;
+            border: 1px solid #E0E0E0;
+            border-radius: 3px;
+            color: #3F4752;
+            font-size: 11px;
+            padding: 4px 15px;
+        }
+        .cancel:hover{
+            background: linear-gradient(#FFFFFF, #E9E9E9);
+        }
+        .mat-dialog-container{
+            height: auto;
+        }
+    }
+}

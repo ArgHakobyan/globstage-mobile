@@ -1,0 +1,31 @@
+<div class="menu-block row">
+    <div class="logo col-md-4">
+      <a href=""><img src="../../../assets/imgs/GlobFull_logo1.png" alt="GlobFull_logo1"></a>
+    </div>
+    <div class="menu col-md-8">
+      <ul>
+        <li><a href=""><i class="fa fa-envelope"></i></a></li>
+        <li><a href=""><i class="fa fa-users"></i></a></li>
+        <li><a href=""><i class="fa fa-music"></i></a></li>
+        <li><a href=""><i class="fa fa-search"></i></a></li>
+        <li><a href=""><i class="fa fa-newspaper-o"></i></a></li>
+        <li><a href=""><i class="fa fa-cog"></i></a></li>
+        <li><a href=""><i class="fa fa-sign-out"></i></a></li>
+        <li>
+          <mat-form-field>
+            <mat-select [(value)]="selected" [ngClass]="selected">
+              <mat-option value="option1">
+                <img width="40" class="lang-gb" src="../../../assets/imgs/gb.svg" alt="GlobFull_logo1">
+                English
+              </mat-option>
+              <mat-option value="option2">
+                <img width="40" class="lang-gb" src="../../../assets/imgs/ru.svg" alt="GlobFull_logo1">
+                Russian
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </div>

@@ -1,3 +1,47 @@
-<p>
-  profile works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    <div class="user-avatar">
+      <div class="user-img">
+      <div class="img">
+        <img src="../assets/imgs/no_avatar.png" alt="no_avatar.png">
+      </div>
+      <ul class="animated fadeInUp">
+        <li><a href=""><i class="fa fa-upload"></i>Upload a new photo</a></li>
+        <li><a href=""><i class="fa fa-arrows-v"></i>Change thumbnail</a></li>
+        <li><a href=""><i class="fa fa-times"></i>Delete</a></li>
+      </ul>
+      <span class="hover-display">Argam Hakobyan</span>
+      </div>
+      <div class="profile-status">
+          <div class="status-text">
+              Enter the text of your status
+          </div>
+          <div class="new-status">
+            <textarea class="form-control" placeholder="Enter the text of your status" rows="2"></textarea>
+            <button type="button" class="btn btn-success save">Save</button>
+          </div>
+      </div>
+      <div class="box-group center">
+          <div class="img-subscribe"></div>
+        Subscribe to you interesting group and read their updates in the newsfeed.
+      </div>
+      <div class="box-notes center">
+          <div class="img-notes"></div>
+          With the help of notes, you can share the events of 
+          life with friends, as well as to be aware of whats new with them.
+      </div>
+      <div class="box-video center">
+          <div class="img-video"></div>
+          Can store an unlimited number of video files.<br>To add your first video, click here.
+      </div>
+    </div>
+    </div>
+    <div class="col-md-9">
+      <app-header></app-header>
+      <app-glob-tabs></app-glob-tabs>
+      <app-wall></app-wall>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>

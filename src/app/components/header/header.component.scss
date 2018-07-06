@@ -1,0 +1,58 @@
+@import '../../../variable';
+.menu-block{
+    padding-top: 44px;
+    padding-left: 30px;
+    padding-right: 30px;
+    .menu{
+        text-align: right;
+        padding-top: 4px;
+        ul{
+            padding: 0;
+            li{
+                display: inline-block;
+                a{
+                 background: $color-green;
+                 padding: 6px 11px;
+                 border-radius: 4px;
+                 font-size: 14px;
+                 color: #fff;
+                 transition: 0.4s;dius: 4px;
+                 font-size: 14px;
+                 color: #fff;
+                 transition: 0.4s;
+                }
+                a:hover{
+                    background: #353535;
+                    transition: 0.4s;
+                }
+                mat-form-field{
+                    ::ng-deep .mat-select-value{
+                        display: none;
+                    }
+                    ::ng-deep .mat-select-arrow-wrapper{
+                        display: none;
+                    }
+                }
+                
+            }
+        }
+        .option1{
+            background: url("../../../assets/imgs/gb.svg") no-repeat;
+            width: 40px;
+            max-width: 100%;
+            background-size: 100%;
+        }
+        .option2{
+            background: url('../../../assets/imgs/ru.svg') no-repeat;
+            width: 40px;
+            height: 30px;
+            max-width: 100%;
+            background-size: 100%;
+        }
+        .mat-form-field{
+            text-align: right;
+            width: 50px;
+            left: 20px;
+        }
+     }
+ }

@@ -10,7 +10,7 @@ export class UserService {
   }
 
   get userAsync() {
-    const a = localStorage.getItem('b2bUser') ? JSON.parse(localStorage.getItem('b2bUser')) : this.user.getValue();
+    const a = localStorage.getItem('globUser') ? JSON.parse(localStorage.getItem('globUser')) : this.user.getValue();
 
     this.setUser(a);
 
@@ -25,9 +25,9 @@ export class UserService {
 
   setUser(a) {
     this.user.next(a);
-    localStorage.removeItem('b2bUser');
+    localStorage.removeItem('globUser');
     if (!!JSON.stringify(this.user.getValue())) {
-      localStorage.setItem('b2bUser', JSON.stringify(this.user.getValue()));
+      localStorage.setItem('globUser', JSON.stringify(this.user.getValue()));
     }
   }
 }

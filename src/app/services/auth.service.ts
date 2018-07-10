@@ -47,7 +47,7 @@ export class AuthService extends SafeSubscribe {
   }
 
   signUpUser(user): Observable<any> {
-    return this.httpService.post('/user-register', user);
+    return this.httpService.post('/users', user);
   }
 
   addData(url: string, body): Observable<any> {

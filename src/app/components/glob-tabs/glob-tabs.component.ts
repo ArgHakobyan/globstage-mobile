@@ -5,6 +5,8 @@ import { MatDialog } from '@angular/material';
 import { NewAlbumModalComponent } from '../new-album-modal/new-album-modal.component';
 import { NewAudioModalComponent } from '../new-audio-modal/new-audio-modal.component';
 import { NewVideoModalComponent } from '../new-video-modal/new-video-modal.component';
+import { NewsComponent } from '../news/news.component';
+
 
 
 
@@ -14,11 +16,10 @@ declare var google: any;
   selector: 'app-glob-tabs',
   templateUrl: './glob-tabs.component.html',
   styleUrls: ['./glob-tabs.component.scss'],
-  entryComponents: [NewAlbumModalComponent,NewAudioModalComponent,NewVideoModalComponent],
+  entryComponents: [NewAlbumModalComponent,NewAudioModalComponent,NewVideoModalComponent,NewsComponent],
 })
 export class GlobTabsComponent implements OnInit {
 
-  public detailsToggle:boolean = false;
 
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
@@ -34,9 +35,6 @@ export class GlobTabsComponent implements OnInit {
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
   }
 
-  show1Toggle() {
-	  this.detailsToggle = (this.detailsToggle === true)? false : true;
-  }
 
   openDialogAlbum() {
     const dialogRef = this.dialog.open(NewAlbumModalComponent, {

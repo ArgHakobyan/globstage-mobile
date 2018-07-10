@@ -1,0 +1,68 @@
+<div class="col-md-12 padding">
+  <div class="home-tab tabs-a">
+      <div class="row">
+      <div class="col-md-6 t-info">
+        <div class="information col-md-12">
+          <a href=""><p class="title">Information</p></a>
+          <div class="row">
+              <div class="col-md-6">
+                  <p>Country:</p>
+                  <p>City:</p>
+                  <p>Date of birth:</p>
+                  <p>Rating:</p>
+              </div>
+              <div class="col-md-6 user-info">
+                  <div class="user-country">
+                    <span>Armenia</span>
+                  </div>
+                  <div class="user-city">
+                    <span>Spitak</span>
+                  </div>
+                  <div class="user-birthday">
+                    <span>16 April 1992 г.</span>
+                  </div>
+                  <div class="user-info-rat">
+                    <span class="rating">10</span>
+                  </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      <div class="col-md-6 gift">
+        <p class="g-info">Gifts</p>
+        <div class="gift-info">
+          <p class="user-n">Argam There are no gifts You can be the first to give a gift</p>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-md-12">
+        <div class="row">
+              <div (click)="show1Toggle()" class="show-details">
+                <span *ngIf= "!detailsToggle">Show Details</span>
+                <span *ngIf= "detailsToggle">Close Details</span>
+              </div>
+              <ng-template [ngIf]= "detailsToggle">
+              <div class="hidden-block">
+                <div class="content-details borders">
+                  <a href=""><p class="contact edits">Contact</p></a>
+                </div>
+                <div class="personal borders">
+                  <a href=""><p class="personal-info edits">Personal Info</p></a>
+                  <p>Activities:<span>Activities</span></p>
+                  <p>Interests:<span>Interests</span></p>
+                  <p>Favorite Munshids:<span>Favorite Sports</span></p>
+                  <p>Favorite Preachers:<span>Interests</span></p>
+                  <p>Favorite Books:<span>Activities</span></p>
+                  <p>Favorite Sports:<span>Interests</span></p>
+                  <p>Favorite Quotes:<span>Activities</span></p>
+                  <p>About Me:<span>Interests</span></p>
+                </div>
+              </div>
+              </ng-template>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+</div>
+</div>
+</div>

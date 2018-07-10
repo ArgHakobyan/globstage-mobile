@@ -53,6 +53,8 @@ import {
 import { NewAlbumModalComponent } from './components/new-album-modal/new-album-modal.component';
 import { NewAudioModalComponent } from './components/new-audio-modal/new-audio-modal.component';
 import { NewVideoModalComponent } from './components/new-video-modal/new-video-modal.component';
+import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
+import { NewsComponent } from './components/news/news.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -71,7 +73,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     NewAlbumModalComponent,
     NewAudioModalComponent,
-    NewVideoModalComponent
+    NewVideoModalComponent,
+    ProfileInfoComponent,
+    NewsComponent
   ],
   imports: [
     CommonModule,

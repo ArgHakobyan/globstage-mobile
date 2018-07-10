@@ -7,10 +7,6 @@ import { NewAudioModalComponent } from '../new-audio-modal/new-audio-modal.compo
 import { NewVideoModalComponent } from '../new-video-modal/new-video-modal.component';
 import { ProfileInformationComponent } from '../profile-information/profile-information.component';
 
-
-
-
-
 declare var google: any;
 
 @Component({

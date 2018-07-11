@@ -1,10 +1,10 @@
 @import '../../../variable';
-.wall-user{
+.post-article{
+    background: #fff;
+.news-user{
     background: rgba(3, 170, 173, 0.8);
-    padding-bottom: 20px;
-    padding: 5px;
-    padding-left: 16px;
-    .wall-name{
+    padding: 8px 16px;
+    .news-name{
         color: #FFFFFF;
         font-size: 12px;
         font-weight: bolder;
@@ -14,16 +14,16 @@
         color: #fff;
     }
 }
-.wall-content{
+.news-content{
     padding-top: 20px;
     padding-left: 66px;
-    .wall-atach-photo{
+    .news-atach-photo{
         h6{
             font-size: 11px;
         }
     }
 }
-.wall-atach-photo{
+.news-atach-photo{
     padding-bottom: 20px;
     img{
         width: 400px;
@@ -129,4 +129,5 @@
             display: block;
         }            
     }
+}
 }

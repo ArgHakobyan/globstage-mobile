@@ -24,6 +24,8 @@ import { PostComponent } from './components/post/post.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 
 import {MatInputModule} from '@angular/material/input';
@@ -55,6 +57,7 @@ import { NewAudioModalComponent } from './components/new-audio-modal/new-audio-m
 import { NewVideoModalComponent } from './components/new-video-modal/new-video-modal.component';
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 import { NewsComponent } from './components/news/news.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -75,7 +78,8 @@ const appRoutes: Routes = [
     NewAudioModalComponent,
     NewVideoModalComponent,
     ProfileInfoComponent,
-    NewsComponent
+    NewsComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,
@@ -117,6 +121,7 @@ const appRoutes: Routes = [
     MatTooltipModule,
     MatStepperModule,
     MatIconModule,
+    MatDatepickerModule,
   ],
   providers: [
     AuthService,

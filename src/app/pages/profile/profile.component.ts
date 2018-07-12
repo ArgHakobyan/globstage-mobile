@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {GlobTabsComponent} from '../../components/glob-tabs/glob-tabs.component';
 import { WallComponent } from '../../components/wall/wall.component';
-
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -11,16 +12,16 @@ import { WallComponent } from '../../components/wall/wall.component';
   entryComponents: [GlobTabsComponent, WallComponent],
 })
 export class ProfileComponent implements OnInit {
-  
 
-  
-  constructor() { }
-
-
-
+  constructor(
+    public authService: AuthService,
+    public router: Router
+  ) { }
 
   ngOnInit() {
-
+    if (!this.authService.isLogged()) {
+      this.router.navigate(['/']);
+    }
   }
 
 }

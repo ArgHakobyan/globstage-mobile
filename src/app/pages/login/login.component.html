@@ -16,9 +16,9 @@
     <form [formGroup]="formgroupLog" (ngSubmit)="signIn(formgroupLog)" action="" method="post">
       <div class="forms">
         <span class="input-span">E-MAIL:</span>
-        <input class="input-text" type="email" name="email" formControlName="email"><br>
+        <input class="input-text" type="email" formControlName="user_name"><br>
         <span class="input-span">PASSWORD</span>
-        <input class="input-text margin" type="password" name="password" formControlName="password">
+        <input class="input-text margin" type="password" formControlName="user_password">
         <p *ngIf="formgroupLog.invalid" class="form-error">* All fields are required.</p>
       </div>
       <input class="check-box" type="checkbox" name="remember">
@@ -37,11 +37,11 @@
         <span class="solid"></span>
       </h3>
       <form [formGroup]="formgroupReg" (ngSubmit)="onSignUp(formgroupReg)" action="" method="post">
-        <input type="text" formControlName="name" name="name" placeholder="Your name*"><br>
-        <input type="text" formControlName="lastname" name="lastname" placeholder="Your last name*"><br>
-        <input type="email" formControlName="email" name="email" placeholder="E-mail address*"><br>
-        <input type="password" formControlName="password_first" name="password_first" placeholder="Password*"><br>
-        <input class="margin" type="password" formControlName="password_second" name="password_second" placeholder="Password again*"><br>
+        <input type="text" formControlName="user_first_name" placeholder="Your name*"><br>
+        <input type="text" formControlName="user_last_name" placeholder="Your last name*"><br>
+        <input type="email" formControlName="user_email" placeholder="E-mail address*"><br>
+        <input type="password" formControlName="user_password" placeholder="Password*"><br>
+        <input class="margin" type="password" formControlName="password_second" placeholder="Password again*"><br>
         <p *ngIf="formgroupReg.invalid" class="form-error">* All fields are required.</p>
         <button type="submit" [disabled]="!formgroupReg.valid" class="register btn btn-success">Register</button>
       </form>

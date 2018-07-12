@@ -4,11 +4,11 @@
     </div>
     <div class="menu col-md-8">
       <ul>
-        <li><a href=""><i class="fa fa-envelope"></i></a></li>
-        <li><a href=""><i class="fa fa-users"></i></a></li>
-        <li><a href=""><i class="fa fa-search"></i></a></li>
-        <li><a href=""><i class="fa fa-cog"></i></a></li>
-        <li><a href=""><i class="fa fa-sign-out"></i></a></li>
+        <li><button href=""><i class="fa fa-envelope"></i></button></li>
+        <li><button href=""><i class="fa fa-users"></i></button></li>
+        <li><button href=""><i class="fa fa-search"></i></button></li>
+        <li><button href=""><i class="fa fa-cog"></i></button></li>
+        <li><button (click)="logOut()" href=""><i class="fa fa-sign-out"></i></button></li>
         <li>
           <mat-form-field>
             <mat-select [(value)]="selected" [ngClass]="selected">

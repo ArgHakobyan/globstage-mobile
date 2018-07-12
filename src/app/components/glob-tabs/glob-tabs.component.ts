@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
-import { } from '@types/googlemaps';
+import { } from 'googlemaps';
 import { MatDialog } from '@angular/material';
 import { NewAlbumModalComponent } from '../new-album-modal/new-album-modal.component';
 import { NewAudioModalComponent } from '../new-audio-modal/new-audio-modal.component';
@@ -8,15 +8,15 @@ import { NewVideoModalComponent } from '../new-video-modal/new-video-modal.compo
 import { NewsComponent } from '../news/news.component';
 
 
-
-
-declare var google: any;
-
 @Component({
   selector: 'app-glob-tabs',
   templateUrl: './glob-tabs.component.html',
   styleUrls: ['./glob-tabs.component.scss'],
-  entryComponents: [NewAlbumModalComponent,NewAudioModalComponent,NewVideoModalComponent,NewsComponent],
+  entryComponents: [
+    NewAlbumModalComponent,
+    NewAudioModalComponent,
+    NewVideoModalComponent,
+    NewsComponent],
 })
 export class GlobTabsComponent implements OnInit {
 
@@ -27,7 +27,7 @@ export class GlobTabsComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-    var mapProp = {
+    const mapProp = {
       center: new google.maps.LatLng(40.089099, 44.538189),
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -61,6 +61,4 @@ export class GlobTabsComponent implements OnInit {
     });
   }
 
-
-  
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -15,8 +15,8 @@ import {UserService} from '../../services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  public loginPanel:boolean = false;
-  public registerPanel:boolean = false;
+  public loginPanel = false;
+  public registerPanel = false;
   public email;
   public password;
   public password_first;
@@ -33,18 +33,27 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private userService: UserService,
-  ) { 
-    this.formgroupReg = formbuilder.group({
-      name:['',Validators.required],
-      lastname:['',Validators.required],
-      email:['',Validators.required],
-      password_first:['',Validators.required],
-      password_second:['',Validators.required],
+  ) {
+
+  }
+
+  ngOnInit() {
+
+    if (this.authService.isLogged()) {
+      this.router.navigate(['/profile']);
+    }
+
+    this.formgroupReg = this.formbuilder.group({
+      user_first_name: ['', Validators.required],
+      user_last_name: ['', Validators.required],
+      user_email: ['', Validators.required],
+      user_password: ['', Validators.required],
+      password_second: ['', Validators.required],
     });
 
-    this.formgroupLog = formbuilder.group({
-      email:['',Validators.required],
-      password:['',Validators.required],
+    this.formgroupLog = this.formbuilder.group({
+      user_name: ['', Validators.required],
+      user_password: ['', Validators.required],
     });
 
     this.name = this.formgroupReg.controls['name'];
@@ -54,35 +63,31 @@ export class LoginComponent implements OnInit {
     this.password_second = this.formgroupReg.controls['password_second'];
     this.email = this.formgroupLog.controls['email'];
     this.password = this.formgroupLog.controls['password'];
-    
-  }
 
-  ngOnInit() {
   }
-  openLogin(){
+  openLogin() {
     this.loginPanel = true;
   }
-  closeLogin(){
+  closeLogin() {
     this.loginPanel = false;
   }
 
-  openRegister(){
+  openRegister() {
     this.registerPanel = true;
   }
-  closeRegister(){
+  closeRegister() {
     this.registerPanel = false;
   }
 
   signIn(form: NgForm) {
     this.loading = true;
-    this.authService.signInUser(form.controls['email'].value, form.controls['password'].value)
+    this.authService.signInUser(form.controls['user_name'].value, form.controls['user_password'].value)
       .subscribe(
         res => {
-          localStorage.setItem('auth', JSON.stringify(res));
-
-          this.authService.getUser(form.controls['email'].value).safeSubscribe(this, () => {
-            this.router.navigate(['/personal']);
-          });
+          console.log(res);
+          localStorage.setItem('auth', JSON.stringify(res.auth));
+          this.userService.setUser(res.user);
+          this.router.navigate(['/profile']);
         },
         error => {
           this.showError(error.error.detail);
@@ -102,19 +107,19 @@ export class LoginComponent implements OnInit {
 
   onSignUp() {
     this.loading = true;
-    let sendData = new User();
-    
-    sendData.name = this.formgroupReg.get('name').value;
-    sendData.lastname = this.formgroupReg.get('lastname').value;
-    sendData.email = this.formgroupReg.get('email').value;
-    sendData.password_second = this.formgroupReg.get('password_second').value;    
+    const sendData = new User();
+    sendData.user_name = this.formgroupReg.get('user_first_name').value;
+    sendData.user_first_name = this.formgroupReg.get('user_first_name').value;
+    sendData.user_last_name = this.formgroupReg.get('user_last_name').value;
+    sendData.user_email = this.formgroupReg.get('user_email').value;
+    sendData.user_password = this.formgroupReg.get('password_second').value;
 
     this.authService.signUpUser(sendData)
       .subscribe(response => {
         console.log(response, 'response');
         localStorage.setItem('auth', JSON.stringify(response.body.user.auth));
         this.userService.setUser(response.body.user);
-       this.router.navigate(['/personal']);
+        this.router.navigate(['/profile']);
       }, error => {
         this.loading = false;
         this.formError = 'true';

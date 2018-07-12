@@ -58,6 +58,7 @@ import { NewVideoModalComponent } from './components/new-video-modal/new-video-m
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 import { NewsComponent } from './components/news/news.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { AgmCoreModule } from '@agm/core';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -90,7 +91,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes
     ),
-    BrowserModule, 
+    BrowserModule,
     MatSelectModule,
     BrowserAnimationsModule,
     AngularFontAwesomeModule,
@@ -122,6 +123,10 @@ const appRoutes: Routes = [
     MatStepperModule,
     MatIconModule,
     MatDatepickerModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCZ-8jW9x7sh66bIizdlYbWSa5AHZ3Bi2E',
+      libraries: ['places']
+})
   ],
   providers: [
     AuthService,

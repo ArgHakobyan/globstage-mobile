@@ -13,7 +13,7 @@
               </div>
               <div class="col-md-6 user-info">
                   <div class="user-country">
-                    <span>Armenia</span>
+                    <span>{{ user.user_country }}</span>
                   </div>
                   <div class="user-city">
                     <span>Spitak</span>
@@ -35,42 +35,42 @@
               <ng-template [ngIf]= "editInfo">
               <div class="edit-info col-md-8">
                 <h5>Information</h5>
-                <form class="form-info">
+                <form [formGroup]="information" (ngSubmit)="saveInfo(information)" class="form-info">
                   <mat-form-field class="example-full-width">
-                    <mat-select  placeholder="Gender">
-                      <mat-option value="noSelected">No selected</mat-option>
-                      <mat-option value="male">Male</mat-option>
-                      <mat-option value="female">Female</mat-option>
+                    <mat-select formControlName="user_gender" placeholder="Gender">
+                      <mat-option value="">No selected</mat-option>
+                      <mat-option  value="male">Male</mat-option>
+                      <mat-option  value="female">Female</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field class="example-full-width">
-                    <mat-select placeholder="Marital Status">
-                      <mat-option value="noSelected2">No selected</mat-option>
-                      <mat-option value="single">Single</mat-option>
-                      <mat-option value="engaged">Engaged</mat-option>
-                      <mat-option value="pomovlen">Pomovlen</mat-option>
-                      <mat-option value="married">Married</mat-option>
-                      <mat-option value="inLove">In Love</mat-option>
-                      <mat-option value="complicated">Its complicated</mat-option>
-                      <mat-option value="activeSearch">In active search</mat-option>
+                    <mat-select formControlName="marital_status" placeholder="Marital Status">
+                      <mat-option value="">No selected</mat-option>
+                      <mat-option  value="single">Single</mat-option>
+                      <mat-option  value="engaged">Engaged</mat-option>
+                      <mat-option  value="pomovlen">Pomovlen</mat-option>
+                      <mat-option  value="married">Married</mat-option>
+                      <mat-option  value="inLove">In Love</mat-option>
+                      <mat-option  value="complicated">Its complicated</mat-option>
+                      <mat-option  value="activeSearch">In active search</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field>
-                    <input matInput [matDatepicker]="picker" placeholder="Date of birth">
+                    <input formControlName="user_date_of_birth" matInput [matDatepicker]="picker" placeholder="Date of birth">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Country">
+                    <input formControlName="user_country" matInput placeholder="Country" #country>
                   </mat-form-field>
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="City">
+                    <input formControlName="user_city" matInput placeholder="City">
                   </mat-form-field>
-                </form>
-                <div class="save-info">
-                    <button type="button" class="save btn btn-default">Save</button>
+                  <div class="save-info">
+                    <button type="submit" class="save btn btn-default">Save</button>
                     <button (click)="cancelEditInfo()" type="button" class="cancel btn btn-default">Cancel</button>
                 </div>
+                </form>
               </div>
             </ng-template>
             </div>
@@ -89,11 +89,44 @@
               <span *ngIf= "detailsToggle">Close Details</span>
             </div>
             <ng-template [ngIf]= "detailsToggle">
-              <div class="hidden-block">
+              <div class="hidden-block col-md-8">
                   <div class="content-details borders">
-                    <p (click)="editUserContact()" class="contact edits">Contact</p>
+                      <p (click)="editUserContact()" class="contact edits">Contact</p>
+                    <ul class="contact-details" *ngIf="!contactEditing">
+                      <!-- <li *ngIf="contact.mobile">Mobile: {{ contact.mobile}} </li>
+                      <li *ngIf="contact.twitter">Twitter: {{ contact.twitter}} </li>
+                      <li *ngIf="contact.facebook">Facebook: {{ contact.facebook}} </li>
+                      <li *ngIf="contact.skype">Skype: {{ contact.skype}} </li>
+                      <li *ngIf="contact.website">Website: {{ contact.website}} </li> -->
+                    </ul>
+                    <ng-template [ngIf]= "editContact">
+                      <div class="edit-contact">
+                        <h5>Contact</h5>
+                        <form [formGroup]="contact" class="form-contact">
+                        <mat-form-field class="example-full-width">
+                            <input formControlName="mobile" matInput placeholder="Mobile">
+                          </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <input formControlName="twitter" matInput placeholder="Twitter">
+                          </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <input formControlName="facebook" matInput placeholder="Facebook">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <input formControlName="skype" matInput placeholder="Skype">
+                        </mat-form-field>
+                          <mat-form-field class="example-full-width">
+                            <input formControlName="website" matInput placeholder="Website">
+                          </mat-form-field>
+                        </form>
+                        <div class="save-contact">
+                          <button type="button" class="save btn btn-default">Save</button>
+                          <button (click)="cancelEditContact()" type="button" class="cancel btn btn-default">Cancel</button>
+                        </div>
+                      </div>
+                      </ng-template>
                   </div>
-                  <div class="personal borders">
+                  <div *ngIf="!personalEditing" class="personal borders">
                       <p (click)="editUserPersonal()" class="personal-info edits">Personal Info</p>
                       <p>Activities:<span>Activities</span></p>
                       <p>Interests:<span>Interests</span></p>
@@ -104,75 +137,51 @@
                       <p>Favorite Quotes:<span>Activities</span></p>
                       <p>About Me:<span>Interests</span></p>
                   </div>
+                  <ng-template [ngIf]= "showPersonal">
+                    <div class="edit-personal">
+                      <h5>Personal</h5>
+                      <form [formGroup]="personal" class="form-contact">
+                        <mat-form-field class="example-full-width">
+                            <textarea formControlName="activities" matInput placeholder="Activities"></textarea>
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width">
+                              <textarea formControlName="interests" matInput placeholder="Interests"></textarea>
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                                <textarea formControlName="munshids" matInput placeholder="Favorite Munshids"></textarea>
+                              </mat-form-field>
+                              <mat-form-field class="example-full-width">
+                                  <textarea formControlName="preachers" matInput placeholder="Favorite Preachers"></textarea>
+                                </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                          <textarea formControlName="books" matInput placeholder="Favorite Books"></textarea>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <textarea formControlName="sports" matInput placeholder="Favorite Sports"></textarea>
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width">
+                              <textarea formControlName="quotes" matInput placeholder="Favorite Quotes:"></textarea>
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                                <textarea formControlName="aboutMe" matInput placeholder="About Me"></textarea>
+                              </mat-form-field>
+                            </form>
+                            <div class="save-personal">
+                              <button type="button" class="save btn btn-default">Save</button>
+                              <button (click)="cancelEditPersonal()" type="button" class="cancel btn btn-default">Cancel</button>
+                            </div>
+                    </div>
+                  </ng-template>
               </div>
-              <div class="col-md-12">
+              <!-- <div class="col-md-12">
                 <div class="row">
                     <div class="contact-personal col-md-8">
-                        <ng-template [ngIf]= "showContact">
-                        <div class="edit-contact">
-                          <h5>Contact</h5>
-                          <form class="form-contact">
-                          <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Mobile">
-                            </mat-form-field>
-                          <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Twitter">
-                            </mat-form-field>
-                          <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Facebook">
-                          </mat-form-field>
-                          <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Skype">
-                          </mat-form-field>
-                            <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Website">
-                            </mat-form-field>
-                          </form>
-                          <div class="save-contact">
-                            <button type="button" class="save btn btn-default">Save</button>
-                            <button (click)="cancelEditContact()" type="button" class="cancel btn btn-default">Cancel</button>
-                          </div>
-                        </div>
-                        </ng-template>
-                        <ng-template [ngIf]= "showPersonal">
-                        <div class="edit-personal">
-                          <h5>Personal</h5>
-                          <form class="form-contact">
-                            <mat-form-field class="example-full-width">
-                                <textarea matInput placeholder="Activities"></textarea>
-                              </mat-form-field>
-                              <mat-form-field class="example-full-width">
-                                  <textarea matInput placeholder="Interests"></textarea>
-                                </mat-form-field>
-                                <mat-form-field class="example-full-width">
-                                    <textarea matInput placeholder="Favorite Munshids"></textarea>
-                                  </mat-form-field>
-                                  <mat-form-field class="example-full-width">
-                                      <textarea matInput placeholder="Favorite Preachers"></textarea>
-                                    </mat-form-field>
-                          <mat-form-field class="example-full-width">
-                              <textarea matInput placeholder="Favorite Books"></textarea>
-                            </mat-form-field>
-                            <mat-form-field class="example-full-width">
-                                <textarea matInput placeholder="Favorite Sports"></textarea>
-                              </mat-form-field>
-                              <mat-form-field class="example-full-width">
-                                  <textarea matInput placeholder="Favorite Quotes:"></textarea>
-                                </mat-form-field>
-                                <mat-form-field class="example-full-width">
-                                    <textarea matInput placeholder="About Me"></textarea>
-                                  </mat-form-field>
-                                </form>
-                                <div class="save-personal">
-                                  <button type="button" class="save btn btn-default">Save</button>
-                                  <button (click)="cancelEditPersonal()" type="button" class="cancel btn btn-default">Cancel</button>
-                                </div>
-                        </div>
-                      </ng-template>
+                        
+                        
                       </div>
                     <div class="clearfix"></div>
                 </div>
-              </div>
+              </div> -->
             </ng-template>
         </div>
       </div>

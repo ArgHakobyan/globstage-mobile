@@ -35,8 +35,15 @@ export class UserService {
   getUser(id) {
     return  this.httpService.get(`/users/${id}`);
   }
-
-  updateUser(info) {
+  updateUserInfo(info) {
     return  this.httpService.put('/users', info);
   }
+  updateUserContact(contact) {
+    return  this.httpService.put('/users/updatecontact', contact);
+  }
+  updateUserPersonal(personal) {
+    return  this.httpService.put('/users/updatepersonalinfo', personal);
+  }
+
+
 }

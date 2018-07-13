@@ -19,6 +19,7 @@ export class ProfileInfoComponent implements OnInit {
   public editInfo = false;
   public showPersonal = false;
   public editContact = false;
+  public showContact = true;
   public information: FormGroup = new FormGroup({});
   public contact: FormGroup = new FormGroup({});
   public personal: FormGroup = new FormGroup({});
@@ -36,7 +37,7 @@ export class ProfileInfoComponent implements OnInit {
     this.information = new FormGroup({
       user_gender: new FormControl(),
       user_date_of_birth: new FormControl(),
-      marital_status: new FormControl(),
+      user_marital_status: new FormControl(),
       user_country: new FormControl(),
       user_city: new FormControl(),
     });
@@ -46,55 +47,54 @@ export class ProfileInfoComponent implements OnInit {
     this.information = new FormGroup({
       user_gender: new FormControl(user.user_gender),
       user_date_of_birth: new FormControl(user.user_date_of_birth),
-      marital_status: new FormControl(user.marital_status),
+      user_marital_status: new FormControl(user.user_marital_status),
       user_country: new FormControl(user.user_country),
       user_city: new FormControl(user.user_city),
     });
-    console.log(this.user);
   });
 
   this.contact = new FormGroup({
-    mobile: new FormControl(),
-    twitter: new FormControl(),
-    facebook: new FormControl(),
-    skype: new FormControl(),
-    website: new FormControl(),
+    user_mobile: new FormControl(),
+    user_twitter: new FormControl(),
+    user_facebook: new FormControl(),
+    user_skype: new FormControl(),
+    user_website: new FormControl(),
   });
 this.userService.getUser(JSON.parse(localStorage.getItem('globUser')).id).subscribe((user: any) => {
   this.user = user.body;
   user = user.body;
   this.contact = new FormGroup({
-    mobile: new FormControl(user.mobile),
-    twitter: new FormControl(user.twitter),
-    facebook: new FormControl(user.facebook),
-    skype: new FormControl(user.skype),
-    website: new FormControl(user.website),
+    user_mobile: new FormControl(user.user_contact.user_mobile),
+    user_twitter: new FormControl(user.user_contact.user_twitter),
+    user_facebook: new FormControl(user.user_contact.user_facebook),
+    user_skype: new FormControl(user.user_contact.user_skype),
+    user_website: new FormControl(user.user_contact.user_website),
   });
-  console.log(this.user);
+
 });
 
 this.personal = new FormGroup({
-  Activities: new FormControl(),
-  Interests: new FormControl(),
-  Sports: new FormControl(),
-  Interests1: new FormControl(),
-  Activities1: new FormControl(),
-  Interests2: new FormControl(),
-  Interests3: new FormControl(),
-  Interests4: new FormControl(),
+  activities: new FormControl(),
+  interests: new FormControl(),
+  favorite_books: new FormControl(),
+  favorite_quotes: new FormControl(),
+  favorite_sports: new FormControl(),
+  favorite_munshids: new FormControl(),
+  favorite_preachers: new FormControl(),
+  about_me: new FormControl(),
 });
 this.userService.getUser(JSON.parse(localStorage.getItem('globUser')).id).subscribe((user: any) => {
 this.user = user.body;
 user = user.body;
 this.personal = new FormGroup({
-  Activities: new FormControl(user.mobile),
-  Interests: new FormControl(user.twitter),
-  Sports: new FormControl(user.facebook),
-  Interests1: new FormControl(user.skype),
-  Activities1: new FormControl(user.website),
-  Interests2: new FormControl(user.facebook),
-  Interests3: new FormControl(user.skype),
-  Interests4: new FormControl(user.website),
+  activities: new FormControl(user.user_interests.activities),
+  interests: new FormControl(user.user_interests.interests),
+  favorite_books: new FormControl(user.user_interests.favorite_books),
+  favorite_quotes: new FormControl(user.user_interests.favorite_quotes),
+  favorite_sports: new FormControl(user.user_interests.favorite_sports),
+  favorite_munshids: new FormControl(user.user_interests.favorite_munshids),
+  favorite_preachers: new FormControl(user.user_interests.favorite_preachers),
+  about_me: new FormControl(user.user_interests.about_me),
 });
 console.log(this.user);
 });
@@ -136,9 +136,11 @@ console.log(this.user);
   }
   editUserContact() {
     this.editContact = true;
+    this.showContact = false;
   }
   cancelEditContact() {
     this.editContact = false;
+    this.showContact = true;
   }
   editUserPersonal() {
     this.showPersonal = true;
@@ -148,12 +150,21 @@ console.log(this.user);
   }
 
   saveInfo(information) {
-    this.userService.updateUser(information.value).subscribe( data => {
+    this.userService.updateUserInfo(information.value).subscribe( data => {
       console.log(data);
     });
-
-
   }
+  saveContact(contact) {
+    this.userService.updateUserContact(contact.value).subscribe( data => {
+      console.log(data);
+    });
+  }
+  savePersonal(personal) {
+    this.userService.updateUserPersonal(personal.value).subscribe( data => {
+      console.log(data);
+    });
+  }
+
 
 
 }

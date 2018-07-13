@@ -12,14 +12,14 @@
                 display: inline-block;
                 button{
                  background: $color-green;
-                 padding: 6px 11px;
+                 padding: 6px 0;
                  border-radius: 4px;
+                 border: none;
                  font-size: 14px;
-                 color: #fff;
-                 transition: 0.4s;dius: 4px;
-                 font-size: 14px;
+                 width: 40px;
                  color: #fff;
                  transition: 0.4s;
+                 cursor: pointer;
                 }
                 button:hover{
                     background: #353535;

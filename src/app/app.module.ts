@@ -25,6 +25,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NgChatModule } from 'ng-chat';
 
 
 
@@ -59,10 +60,12 @@ import { ProfileInfoComponent } from './components/profile-info/profile-info.com
 import { NewsComponent } from './components/news/news.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AgmCoreModule } from '@agm/core';
+import { GroupComponent } from './pages/group/group.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
   { path: 'profile',  component: ProfileComponent },
+  { path: 'group',  component: GroupComponent },
  ];
 
 
@@ -80,7 +83,8 @@ const appRoutes: Routes = [
     NewVideoModalComponent,
     ProfileInfoComponent,
     NewsComponent,
-    ContactComponent
+    ContactComponent,
+    GroupComponent
   ],
   imports: [
     CommonModule,
@@ -123,6 +127,7 @@ const appRoutes: Routes = [
     MatStepperModule,
     MatIconModule,
     MatDatepickerModule,
+    NgChatModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCZ-8jW9x7sh66bIizdlYbWSa5AHZ3Bi2E',
       libraries: ['places']

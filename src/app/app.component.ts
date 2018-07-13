@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ChatAdapter } from 'ng-chat';
+import { GlobeAdapter } from './services/chatAdapter';
+
 
 
 @Component({
@@ -8,4 +11,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  userId = 999;
+
+
+  public adapter: ChatAdapter = new GlobeAdapter();
 }

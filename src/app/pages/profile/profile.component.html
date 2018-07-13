@@ -6,7 +6,7 @@
         <div class="user-img">
             <img src="../assets/imgs/no_avatar.png" alt="no_avatar.png">
         </div>
-        <a class="user-name" href="">Argam Hakobyan</a>
+        <a class="user-name" href="">{{ user.user_name + " " + user.user_last_name }}</a>
         <button type="button" class="exit btn btn-default">Exit</button>
     </div>
     <button mat-menu-item>
@@ -55,7 +55,7 @@
         <li><a href=""><i class="fa fa-arrows-v"></i>Change thumbnail</a></li>
         <li><a href=""><i class="fa fa-times"></i>Delete</a></li>
       </ul>
-      <span class="hover-display">Argam Hakobyan</span>
+      <span class="hover-display">{{ user.user_name + " " + user.user_last_name }}</span>
       </div>
       <div class="profile-status">
           <div class="status-text">

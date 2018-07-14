@@ -1,47 +1,4 @@
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <div class="user-avatar-menu">
-        <div class="user-img">
-            <img src="../assets/imgs/no_avatar.png" alt="no_avatar.png">
-        </div>
-        <a class="user-name" href="">{{ user.user_name + " " + user.user_last_name }}</a>
-        <button type="button" class="exit btn btn-default">Exit</button>
-    </div>
-    <button mat-menu-item>
-      <mat-icon>photo</mat-icon>
-      <span>Albums</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>videocam</mat-icon>
-      <span>Video</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>speaker_notes</mat-icon>
-      <span>Group</span>
-    </button>
-    <button mat-menu-item>
-        <mat-icon>assignment</mat-icon>
-        <span>News</span>
-      </button>
-    <button mat-menu-item>
-      <mat-icon>notes</mat-icon>
-      <span>Notes</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>https</mat-icon>
-      <span>Privacy</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>photo_library</mat-icon>
-      <span>Page Background</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>language</mat-icon>
-      <span>Language</span>
-    </button>
-  </mat-menu>
+<app-home-menu></app-home-menu>
 <div class="container">
   <div class="row">
     <div class="col-md-3">

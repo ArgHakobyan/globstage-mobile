@@ -61,6 +61,8 @@ import { NewsComponent } from './components/news/news.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AgmCoreModule } from '@agm/core';
 import { GroupComponent } from './pages/group/group.component';
+import { HomeMenuComponent } from './components/home-menu/home-menu.component';
+import { ProfileImageComponent } from './components/profile-image/profile-image.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -84,7 +86,9 @@ const appRoutes: Routes = [
     ProfileInfoComponent,
     NewsComponent,
     ContactComponent,
-    GroupComponent
+    GroupComponent,
+    HomeMenuComponent,
+    ProfileImageComponent
   ],
   imports: [
     CommonModule,

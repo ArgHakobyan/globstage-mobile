@@ -7,14 +7,13 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  selected = "option1";
+  selected = 'option1';
 
   constructor(private router: Router) { }
 
   ngOnInit() {
 
   }
-  
   logOut() {
     localStorage.removeItem('auth');
     localStorage.removeItem('globUser');

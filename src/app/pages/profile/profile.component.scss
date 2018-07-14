@@ -6,10 +6,8 @@ ul{
 li{
     list-style: none;
 }
-::ng-deep .mat-menu-panel{
-    background: #161C25;
-}
 .user-avatar-menu{
+    padding-bottom: 20px;
     .user-img{
         width: 110px;
         margin: auto;
@@ -21,12 +19,13 @@ li{
             border: 2px solid #03AAAC;
         }
     }
-    a{
+    .user-name{
         font-size: 20px;
         text-align: center;
         color: #fff;
         transition: 0.3s;
         display: block;
+        padding: 10px 0;
     }
     a:hover{
         text-decoration: none;

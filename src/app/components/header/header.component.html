@@ -1,14 +1,14 @@
 <div class="menu-block row">
     <div class="logo col-md-4">
-      <a href=""><img src="../../../assets/imgs/GlobFull_logo1.png" alt="GlobFull_logo1"></a>
+      <a routerLink="/profile"><img src="../../../assets/imgs/GlobFull_logo1.png" alt="GlobFull_logo1"></a>
     </div>
     <div class="menu col-md-8">
       <ul>
-        <li><button href=""><i class="fa fa-envelope"></i></button></li>
-        <li><button href=""><i class="fa fa-users"></i></button></li>
-        <li><button href=""><i class="fa fa-search"></i></button></li>
-        <li><button href=""><i class="fa fa-cog"></i></button></li>
-        <li><button (click)="logOut()" href=""><i class="fa fa-sign-out"></i></button></li>
+        <li><button><i class="fa fa-envelope"></i></button></li>
+        <li><button><i class="fa fa-users"></i></button></li>
+        <li><button><i class="fa fa-search"></i></button></li>
+        <li><button><i class="fa fa-cog"></i></button></li>
+        <li><button (click)="logOut()"><i class="fa fa-sign-out"></i></button></li>
         <li>
           <mat-form-field>
             <mat-select [(value)]="selected" [ngClass]="selected">

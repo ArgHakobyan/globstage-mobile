@@ -29,4 +29,10 @@ export class ProfileComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('globUser'));
 
 }
+
+logOut() {
+  localStorage.removeItem('auth');
+  localStorage.removeItem('globUser');
+  this.router.navigate(['']);
+}
 }

@@ -25,8 +25,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { NgChatModule } from 'ng-chat';
-
+import { NgChatModule } from './components/ng-chat/ng-chat.module';
+import { GlobeAdapter } from './services/chatAdapter';
 
 
 import {MatInputModule} from '@angular/material/input';
@@ -63,6 +63,7 @@ import { AgmCoreModule } from '@agm/core';
 import { GroupComponent } from './pages/group/group.component';
 import { HomeMenuComponent } from './components/home-menu/home-menu.component';
 import { ProfileImageComponent } from './components/profile-image/profile-image.component';
+import { NewGroupModalComponent } from './components/new-group-modal/new-group-modal.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -88,7 +89,8 @@ const appRoutes: Routes = [
     ContactComponent,
     GroupComponent,
     HomeMenuComponent,
-    ProfileImageComponent
+    ProfileImageComponent,
+    NewGroupModalComponent,
   ],
   imports: [
     CommonModule,
@@ -141,12 +143,14 @@ const appRoutes: Routes = [
     AuthService,
     HttpService,
     UserService,
+    GlobeAdapter
   ],
   bootstrap: [AppComponent],
   entryComponents: [
     NewAlbumModalComponent,
     NewAudioModalComponent,
-    NewVideoModalComponent
+    NewVideoModalComponent,
+    NewGroupModalComponent,
   ]
 })
 export class AppModule { }

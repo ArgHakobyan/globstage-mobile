@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ChatAdapter } from 'ng-chat';
+import { ChatAdapter } from './components/ng-chat';
 import { GlobeAdapter } from './services/chatAdapter';
+import { HttpService } from './services/http.service';
 
 
 
@@ -11,8 +12,12 @@ import { GlobeAdapter } from './services/chatAdapter';
 })
 export class AppComponent {
   title = 'app';
-  userId = 999;
+  userId = JSON.parse(localStorage.getItem('globUser')).id;
+  http: HttpService;
 
+  constructor(private _signalRAdapter: GlobeAdapter) {
 
-  public adapter: ChatAdapter = new GlobeAdapter();
+    }
+
+  public adapter: ChatAdapter = this._signalRAdapter;
 }

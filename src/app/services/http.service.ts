@@ -17,7 +17,7 @@ export class HttpService {
   ) {
   }
 
-  get(url: string, params: any = {}): Observable<HttpResponse<Object>> {
+  get(url: string, params: any = {}): Observable<any> {
     return this.http.get<Object>(
       appConfig.apiUrl + url,
       this.addOptions(this.toHttpParams(params))

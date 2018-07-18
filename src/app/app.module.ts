@@ -27,6 +27,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgChatModule } from './components/ng-chat/ng-chat.module';
 import { GlobeAdapter } from './services/chatAdapter';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 import {MatInputModule} from '@angular/material/input';
@@ -64,11 +66,17 @@ import { GroupComponent } from './pages/group/group.component';
 import { HomeMenuComponent } from './components/home-menu/home-menu.component';
 import { ProfileImageComponent } from './components/profile-image/profile-image.component';
 import { NewGroupModalComponent } from './components/new-group-modal/new-group-modal.component';
+import { NotesComponent } from './pages/notes/notes.component';
+import { NewNotesModalComponent } from './components/new-notes-modal/new-notes-modal.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { UserUploadImageComponent } from './components/user-upload-image/user-upload-image.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
   { path: 'profile',  component: ProfileComponent },
   { path: 'group',  component: GroupComponent },
+  { path: 'notes',  component: NotesComponent },
+  { path: 'settings',  component: SettingsComponent },
  ];
 
 
@@ -91,6 +99,10 @@ const appRoutes: Routes = [
     HomeMenuComponent,
     ProfileImageComponent,
     NewGroupModalComponent,
+    NotesComponent,
+    NewNotesModalComponent,
+    SettingsComponent,
+    UserUploadImageComponent,
   ],
   imports: [
     CommonModule,
@@ -134,6 +146,7 @@ const appRoutes: Routes = [
     MatIconModule,
     MatDatepickerModule,
     NgChatModule,
+    MatCheckboxModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCZ-8jW9x7sh66bIizdlYbWSa5AHZ3Bi2E',
       libraries: ['places']
@@ -151,6 +164,9 @@ const appRoutes: Routes = [
     NewAudioModalComponent,
     NewVideoModalComponent,
     NewGroupModalComponent,
+    NewGroupModalComponent,
+    NewNotesModalComponent,
+    UserUploadImageComponent
   ]
 })
 export class AppModule { }

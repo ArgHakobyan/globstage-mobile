@@ -63,10 +63,10 @@ export class NgChatComponent implements OnInit {
     public title = 'Friends';
 
     @Input()
-    public messagePlaceholder = "Type a message";
+    public messagePlaceholder = 'Type a message';
 
     @Input()
-    public searchPlaceholder = "Search";
+    public searchPlaceholder = 'Search';
 
     @Input()
     public browserNotificationsEnabled = true;

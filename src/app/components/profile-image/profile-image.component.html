@@ -4,15 +4,19 @@
       <img src="../assets/imgs/no_avatar.png" alt="no_avatar.png">
     </div>
     <ul class="animated fadeInUp">
-      <li><a href=""><i class="fa fa-upload"></i>Upload a new photo</a></li>
-      <li><a href=""><i class="fa fa-arrows-v"></i>Change thumbnail</a></li>
-      <li><a href=""><i class="fa fa-times"></i>Delete</a></li>
+      <li (click)="openDialogUpload()"><i class="fa fa-upload"></i>Upload a new photo</li>
+      <li><i class="fa fa-arrows-v"></i>Change thumbnail</li>
+      <li><i class="fa fa-times"></i>Delete</li>
     </ul>
-    <span class="hover-display">Name Lastname</span>
+    <span class="hover-display">{{ user.user_name + " " + user.user_last_name }}</span>
     </div>
     <div class="profile-status">
-      <div class="status-text">
-          Enter the text of your status
-      </div>
+        <div class="status-text">
+            Enter the text of your status
+        </div>
+        <div class="new-status">
+          <textarea class="form-control" placeholder="Enter the text of your status" rows="2"></textarea>
+          <button type="button" class="btn btn-success save">Save</button>
+        </div>
     </div>
 </div>

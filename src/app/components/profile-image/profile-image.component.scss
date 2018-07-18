@@ -22,11 +22,12 @@ li{
           background: rgba(0, 0, 0, 0.71);
           color: #fff;
           display: none;
-          a{
-              color: #fff;
-              text-decoration: none;
+          li{
+              cursor: pointer;
+          }
               i{
                   margin-right: 6px;
+                  color: #fff;
               }
               .fa-arrows-v{
                   margin-right: 10px;
@@ -36,7 +37,6 @@ li{
                   margin-left: 1px;
                   margin-right: 8px;
               }
-          }
           li:hover{
               background: $color-green;
           }

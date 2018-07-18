@@ -8,9 +8,9 @@
         <img src="../assets/imgs/no_avatar.png" alt="no_avatar.png">
       </div>
       <ul class="animated fadeInUp">
-        <li><a href=""><i class="fa fa-upload"></i>Upload a new photo</a></li>
-        <li><a href=""><i class="fa fa-arrows-v"></i>Change thumbnail</a></li>
-        <li><a href=""><i class="fa fa-times"></i>Delete</a></li>
+        <li (click)="openDialogUpload()"><i class="fa fa-upload"></i>Upload a new photo</li>
+        <li><i class="fa fa-arrows-v"></i>Change thumbnail</li>
+        <li><i class="fa fa-times"></i>Delete</li>
       </ul>
       <span class="hover-display">{{ user.user_name + " " + user.user_last_name }}</span>
       </div>
@@ -23,13 +23,13 @@
             <button type="button" class="btn btn-success save">Save</button>
           </div>
       </div>
-      <div class="box-group center">
+      <div routerLink="/group" class="box-group center">
           <div class="img-subscribe"></div>
         Subscribe to you interesting group and read their updates in the newsfeed.
       </div>
-      <div class="box-notes center">
+      <div routerLink="/notes" class="box-notes center">
           <div class="img-notes"></div>
-          With the help of notes, you can share the events of 
+          With the help of notes, you can share the events of
           life with friends, as well as to be aware of whats new with them.
       </div>
       <div class="box-video center">
@@ -74,5 +74,11 @@
       <app-wall></app-wall>
     </div>
     <div class="clearfix"></div>
+    <div class="form-group">
+        <label for="file">Choose File</label>
+        <input type="file"
+               id="file"
+               (change)="handleFileInput($event.target.files)">
+    </div>
   </div>
 </div>

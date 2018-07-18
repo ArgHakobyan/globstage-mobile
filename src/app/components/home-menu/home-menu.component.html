@@ -6,7 +6,7 @@
         <div class="user-img">
             <img src="../assets/imgs/no_avatar.png" alt="no_avatar.png">
         </div>
-        <a class="user-name" routerLink="/profile">Name Lastname</a>
+        <a class="user-name" routerLink="/profile">{{ user.user_name + " " + user.user_last_name }}</a>
         <button (click)="logOut()" type="button" class="exit btn btn-default">Exit</button>
     </div>
     <button mat-menu-item>
@@ -25,7 +25,7 @@
         <mat-icon>assignment</mat-icon>
         <span>News</span>
       </button>
-    <button mat-menu-item>
+    <button routerLink="/notes" mat-menu-item>
       <mat-icon>notes</mat-icon>
       <span>Notes</span>
     </button>

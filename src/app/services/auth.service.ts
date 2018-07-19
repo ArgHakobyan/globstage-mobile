@@ -64,7 +64,6 @@ export class AuthService extends SafeSubscribe {
 
 
   isLogged() {
-
     const auth: any = localStorage.getItem('auth');
     if (auth && JSON.parse(auth).expired > new Date().valueOf() / 1000) {
       return true;

@@ -28,6 +28,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgChatModule } from './components/ng-chat/ng-chat.module';
 import { GlobeAdapter } from './services/chatAdapter';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 
 
@@ -70,6 +72,7 @@ import { NotesComponent } from './pages/notes/notes.component';
 import { NewNotesModalComponent } from './components/new-notes-modal/new-notes-modal.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { UserUploadImageComponent } from './components/user-upload-image/user-upload-image.component';
+import { UploadMediaAttachComponent } from './components/upload-media-attach/upload-media-attach.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -103,6 +106,7 @@ const appRoutes: Routes = [
     NewNotesModalComponent,
     SettingsComponent,
     UserUploadImageComponent,
+    UploadMediaAttachComponent,
   ],
   imports: [
     CommonModule,
@@ -147,6 +151,7 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     NgChatModule,
     MatCheckboxModule,
+    FileUploadModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCZ-8jW9x7sh66bIizdlYbWSa5AHZ3Bi2E',
       libraries: ['places']
@@ -166,7 +171,8 @@ const appRoutes: Routes = [
     NewGroupModalComponent,
     NewGroupModalComponent,
     NewNotesModalComponent,
-    UserUploadImageComponent
+    UserUploadImageComponent,
+    UploadMediaAttachComponent,
   ]
 })
 export class AppModule { }

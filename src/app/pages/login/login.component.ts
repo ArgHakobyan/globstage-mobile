@@ -118,7 +118,7 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         console.log(response, 'response');
         localStorage.setItem('auth', JSON.stringify(response.body.user.auth));
-        this.userService.setUser(response.body.user);
+        this.userService.setUser(response.user);
         this.router.navigate(['/profile']);
       }, error => {
         this.loading = false;

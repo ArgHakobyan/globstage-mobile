@@ -24,11 +24,12 @@ import { PostComponent } from './components/post/post.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
-import { NewsComponent } from './pages/news/news.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
-
+import { NgChatModule } from './components/ng-chat/ng-chat.module';
+import { GlobeAdapter } from './services/chatAdapter';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { FileUploadModule } from 'ng2-file-upload';
+import { PostsService } from './services/posts.service';
 
 
 
@@ -59,11 +60,30 @@ import {
 import { NewAlbumModalComponent } from './components/new-album-modal/new-album-modal.component';
 import { NewAudioModalComponent } from './components/new-audio-modal/new-audio-modal.component';
 import { NewVideoModalComponent } from './components/new-video-modal/new-video-modal.component';
-import { ProfileInformationComponent } from './components/profile-information/profile-information.component';
+import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
+import { NewsComponent } from './components/news/news.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { AgmCoreModule } from '@agm/core';
+import { GroupComponent } from './pages/group/group.component';
+import { HomeMenuComponent } from './components/home-menu/home-menu.component';
+import { ProfileImageComponent } from './components/profile-image/profile-image.component';
+import { NewGroupModalComponent } from './components/new-group-modal/new-group-modal.component';
+import { NotesComponent } from './pages/notes/notes.component';
+import { NewNotesModalComponent } from './components/new-notes-modal/new-notes-modal.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { UserUploadImageComponent } from './components/user-upload-image/user-upload-image.component';
+import { UploadMediaAttachComponent } from './components/upload-media-attach/upload-media-attach.component';
+import { PostBoxComponent } from './components/post-box/post-box.component';
+import { FriendsComponent } from './pages/friends/friends.component';
+import { PrivacyComponent } from './pages/privacy/privacy.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
   { path: 'profile',  component: ProfileComponent },
+  { path: 'group',  component: GroupComponent },
+  { path: 'notes',  component: NotesComponent },
+  { path: 'settings',  component: SettingsComponent },
  ];
 
 
@@ -79,8 +99,22 @@ const appRoutes: Routes = [
     NewAlbumModalComponent,
     NewAudioModalComponent,
     NewVideoModalComponent,
+    ProfileInfoComponent,
     NewsComponent,
-    ProfileInformationComponent
+    ContactComponent,
+    GroupComponent,
+    HomeMenuComponent,
+    ProfileImageComponent,
+    NewGroupModalComponent,
+    NotesComponent,
+    NewNotesModalComponent,
+    SettingsComponent,
+    UserUploadImageComponent,
+    UploadMediaAttachComponent,
+    PostBoxComponent,
+    FriendsComponent,
+    PrivacyComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
@@ -91,7 +125,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes
     ),
-    BrowserModule, 
+    BrowserModule,
     MatSelectModule,
     BrowserAnimationsModule,
     AngularFontAwesomeModule,
@@ -122,19 +156,32 @@ const appRoutes: Routes = [
     MatTooltipModule,
     MatStepperModule,
     MatIconModule,
-    MatFormFieldModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    NgChatModule,
+    MatCheckboxModule,
+    FileUploadModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCZ-8jW9x7sh66bIizdlYbWSa5AHZ3Bi2E',
+      libraries: ['places']
+})
   ],
   providers: [
     AuthService,
     HttpService,
     UserService,
+    GlobeAdapter,
+    PostsService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
     NewAlbumModalComponent,
     NewAudioModalComponent,
-    NewVideoModalComponent
+    NewVideoModalComponent,
+    NewGroupModalComponent,
+    NewGroupModalComponent,
+    NewNotesModalComponent,
+    UserUploadImageComponent,
+    UploadMediaAttachComponent,
   ]
 })
 export class AppModule { }

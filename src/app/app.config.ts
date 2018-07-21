@@ -2,7 +2,11 @@ import { HttpHeaders, HttpParams } from '@angular/common/http';
 
 export const appConfig = {
   apiUrl: 'http://api-globstage.atero.solutions/v1',
+<<<<<<< HEAD
   apiOauth: 'http://api-globstage.atero.solutions/users/token',
+=======
+  apiOauth: 'http://api-globstage.atero.solutions/v1/users/token',
+>>>>>>> box
   serverUrl: 'http://api-globstage.atero.solutions',
 };
 

@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {HttpService} from './http.service';
 
 @Injectable()
 export class UserService {
   user = new BehaviorSubject<any>(null);
 
-  constructor() {
+  constructor(private httpService: HttpService) {
   }
 
   get userAsync() {
@@ -30,4 +31,22 @@ export class UserService {
       localStorage.setItem('globUser', JSON.stringify(this.user.getValue()));
     }
   }
+
+  getUser(id) {
+    return  this.httpService.get(`/users/${id}`);
+  }
+  updateUserInfo(info) {
+    return  this.httpService.put('/users', info);
+  }
+  updateUserContact(contact) {
+    return  this.httpService.put('/users/updatecontact', contact);
+  }
+  updateUserPersonal(personal) {
+    return  this.httpService.put('/users/updatepersonalinfo', personal);
+  }
+  // createUserWall(wall) {
+  //   return  this.httpService.post('/posts', wall);
+  // }
+
+
 }

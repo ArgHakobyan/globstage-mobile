@@ -1,0 +1,103 @@
+<app-home-menu></app-home-menu>
+<div class="container">
+    <div class="row">
+      <div class="col-md-3">
+      <app-profile-image></app-profile-image>
+      </div>
+      <div class="col-md-9">
+        <app-header></app-header>
+        <div class="settings-page">
+          <div class="change-password center">
+              <h4>Change password</h4>
+              <form class="example-form">
+                  <mat-form-field class="example-full-width">
+                    <input type="search" matInput placeholder="Old password" value="">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input type="search" matInput placeholder="New password" value="">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input type="search" matInput placeholder="Confirm Password" value="">
+                  </mat-form-field>
+                  <div class="change-btn">
+                    <button type="submit" class="change btn-success save">Change password</button>
+                  </div>
+              </form>
+          </div>
+          <div class="change-name center">
+              <h4>Change name</h4>
+              <form class="example-form">
+                  <mat-form-field class="example-full-width">
+                    <input type="search" matInput placeholder="Your name" value="">
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input type="search" matInput placeholder="Your lastname" value="">
+                  </mat-form-field>
+                  <div class="change-btn">
+                    <button type="submit" class="change btn-success save">Change name</button>
+                  </div>
+              </form>
+          </div>
+          <div class="page-address center">
+              <h4>Page address</h4>
+              <p>Page number:<span>2</span></p>
+              <form class="example-form">
+                  <mat-form-field class="example-full-width">
+                    <input type="search" matInput placeholder="Webpage" value="">
+                  </mat-form-field>
+                  <div class="change-btn">
+                    <button type="submit" class="change btn-success save">Change the short link</button>
+                  </div>
+              </form>
+           </div>
+           <div class="recalculation center">
+              <h4>Recalculation</h4>
+              <div class="change-btn">
+                 <button type="submit" class="change btn-success save">Calculate the rate of new events</button>
+              </div>
+           </div>
+           <div class="verification center">
+              <h4>Verification</h4>
+                <div class="openDialogDocument">
+                    <mat-form-field class="example-full-width">
+                        <input type="text" matInput placeholder="Skype" value="">
+                      </mat-form-field>
+                      <div class="select-doc">
+                          <p>Confirmation Document #1:</p>
+                          <button class="selectDoc change btn-success save">Select the document</button>
+                      </div>
+                      <div class="upload-img">
+                        <img src="assets/imgs/pasport_scan1.jpg">
+                        <p>Document to choose from: student ID, drivers license.</p>
+                      </div>
+                      <div class="select-doc">
+                        <p>Confirmation Document #2:</p>
+                        <button class="selectDoc change btn-success save">Select the document</button>
+                      </div>
+                      <div class="upload-img">
+                        <img src="assets/imgs/pasport_scan2.jpg">
+                        <p>Scan passport.</p>
+                        <mat-checkbox>I agree to the processing and storage of my personal data</mat-checkbox>
+                      </div>
+                </div>
+              <div class="change-btn">
+                 <button (click)="openVerification()" type="submit" class="change btn-success save">Request for verification</button>
+              </div>
+           </div>
+           <div class="email-addres center">
+              <h4>Your email address</h4>
+              <p>Current address:<span>*******@</span></p>
+              <form class="example-form">
+                  <mat-form-field class="example-full-width">
+                    <input type="search" matInput placeholder="New address" value="">
+                  </mat-form-field>
+                  <div class="change-btn">
+                    <button type="submit" class="change btn-success save">Save address</button>
+                  </div>
+              </form>
+           </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>

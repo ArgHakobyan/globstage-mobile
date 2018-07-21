@@ -1,38 +1,8 @@
 <div class="wall">
   <div class="wall-quantity">
-      Wall
-      <span>8</span>
+    Wall
+    <span>8</span>
   </div>
-   <div class="col-md-12">
-      <div class="row">
-          <div class="col-md-1">
-            <div class="user-avatar">
-            <a href=""><img src="../assets/imgs/no_ava_50.png" alt="no_ava_50"></a>
-            </div>
-          </div>
-            <div class="col-md-11 text-area" [ngClass]="smileClass">
-                <textarea class="wall-text" (focus)="smileFocusFunction()" (focusout)="smileFocusOutFunction()" placeholder="What do you want to say?"></textarea>
-                    <div class="smile-block">
-                        <div class="row">
-                            <div class="smiles col-md-8">
-                                <ul>
-                                    <li><i class="fa fa-smile-o"></i></li>
-                                    <li><i class="fa fa-picture-o"></i></li>
-                                    <li><i class="fa fa-video-camera"></i></li>
-                                    <li><i class="fa fa-music"></i></li>
-                                    <li><i class="fa fa-file-pdf-o"></i></li>
-                                    <li><i class="fa fa-bar-chart"></i></li>
-                                </ul>
-                            </div>
-                            <div class="share-btn col-md-4">
-                                <button type="submit" class="share btn btn-success">Share</button>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-            </div>
-            <div class="clearfix"></div>
-      </div>
-   </div>
-   <app-post></app-post>
+  <app-post-box [type]='post' (postCreated)="updateWall()"></app-post-box>
+  <app-post *ngFor="let post of wallPosts" [post]="post"></app-post>
 </div>

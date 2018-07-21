@@ -19,5 +19,4 @@ export class NewAlbumModalComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  
 }

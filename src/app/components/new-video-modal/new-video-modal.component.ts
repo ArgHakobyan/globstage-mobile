@@ -8,16 +8,19 @@ import { MatDialogRef } from '@angular/material';
   styleUrls: ['./new-video-modal.component.scss']
 })
 export class NewVideoModalComponent implements OnInit {
+  selected3 = 'option1';
 
-  constructor(public dialogRef: MatDialogRef<NewVideoModalComponent>) { }
+  constructor(
+    public dialogRef: MatDialogRef<NewVideoModalComponent>
+  ) {
+
+   }
 
   ngOnInit() {
   }
 
-  selected3 = "option1";
-
   onNoClick(): void {
     this.dialogRef.close();
   }
-  
+
 }

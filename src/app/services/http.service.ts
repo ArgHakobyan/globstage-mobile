@@ -17,8 +17,11 @@ export class HttpService {
   ) {
   }
 
-  get(url: string, params: any = {}): Observable<HttpResponse<Object>> {
-    return this.http.get<Object>(appConfig.apiUrl + url, this.addOptions(this.toHttpParams(params))).catch(error => this.handleError(error));
+  get(url: string, params: any = {}): Observable<any> {
+    return this.http.get<Object>(
+      appConfig.apiUrl + url,
+      this.addOptions(this.toHttpParams(params))
+    ).catch(error => this.handleError(error));
   }
 
   post(url: string, body: any = {}): Observable<HttpResponse<Object>> {
@@ -57,9 +60,9 @@ export class HttpService {
 
     const auth = JSON.parse(localStorage.getItem('auth'));
 
-    if (auth && auth.access_token) {
+    if (auth && auth.token) {
       options['headers'] = new HttpHeaders({
-          'Authorization': `Bearer ${auth.access_token}`
+          'Authorization': `Bearer ${auth.token}`
         });
     }
 

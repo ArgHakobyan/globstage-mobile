@@ -26,10 +26,8 @@ export class AuthService extends SafeSubscribe {
 
   signInUser(email: string, password: string): Observable<any> {
     return this.http.post(this.urlOnlyForOauth, {
-      username: email,
-      password: password,
-      grant_type: 'password',
-      client_id: 'front'
+      user_name: email,
+      user_password: password
     });
   }
 
@@ -63,25 +61,15 @@ export class AuthService extends SafeSubscribe {
     return this.http.post(`${this.urlOnlyForOauth}/revoke`, body);
   }
 
-  getUser(email) {
-    return Observable.create(observer => {
-      this.httpService.get(`/users?filter[0][type]=eq&filter[0][field]=email&filter[0][value]=${email}`)
-        .safeSubscribe(this, (res: any) => {
-          const user = res && res.body && res.body._embedded && res.body._embedded.user && res.body._embedded.user[0];
 
-          if (user) {
-            this.userService.setUser(user);
-
-            observer.next(true);
-            observer.complete();
-          } else {
-            observer.error();
-          }
-        });
-    });
-  }
 
   isLogged() {
-    return localStorage.getItem('auth');
+    const auth: any = localStorage.getItem('auth');
+    if (auth && JSON.parse(auth).expired > new Date().valueOf() / 1000) {
+      return true;
+    }
+    localStorage.removeItem('auth');
+    localStorage.removeItem('globUser');
+    return false;
   }
 }

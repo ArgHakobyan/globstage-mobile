@@ -1,0 +1,16 @@
+<div class="create-form">
+    <p>Create a new notes</p>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input type="text" matInput placeholder="Name" value="">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Text"></textarea>
+      </mat-form-field>
+        <mat-checkbox>Publish on my wall</mat-checkbox>
+      <div class="create-btn">
+        <button type="submit" class="post btn btn-default">Post</button>
+        <button (click) = "onNoClick()" type="button" class="cancel btn btn-default">Cancel</button>
+      </div>
+    </form>
+  </div>

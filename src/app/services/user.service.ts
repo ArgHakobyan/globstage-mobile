@@ -44,6 +44,9 @@ export class UserService {
   updateUserPersonal(personal) {
     return  this.httpService.put('/users/updatepersonalinfo', personal);
   }
+  // createUserWall(wall) {
+  //   return  this.httpService.post('/posts', wall);
+  // }
 
 
 }

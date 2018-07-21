@@ -12,7 +12,7 @@ import { HttpService } from './services/http.service';
 })
 export class AppComponent {
   title = 'app';
-  userId = JSON.parse(localStorage.getItem('globUser')).id;
+  userId = localStorage.getItem('globUser') ? JSON.parse(localStorage.getItem('globUser')).id : null;
   http: HttpService;
 
   constructor(private _signalRAdapter: GlobeAdapter) {

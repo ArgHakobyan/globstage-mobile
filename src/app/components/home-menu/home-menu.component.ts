@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home-menu',
@@ -9,11 +10,16 @@ export class HomeMenuComponent implements OnInit {
 
   public user = {};
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('globUser'));
 
+  }
+  ogOut() {
+    localStorage.removeItem('auth');
+    localStorage.removeItem('globUser');
+    this.router.navigate(['']);
   }
 
 }

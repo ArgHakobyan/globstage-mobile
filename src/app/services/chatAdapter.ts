@@ -32,7 +32,7 @@ export class GlobeAdapter extends ChatAdapter {
 
     sendMessage(message: Message): void {
 
-        this.http.post('/messages', {for_id: message.toId, content: message.content, }).subscribe();
+        this.http.post('/messages', {for_id: message.for_id, content: message.message, }).subscribe();
 
 
     }

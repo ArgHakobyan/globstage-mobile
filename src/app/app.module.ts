@@ -29,7 +29,7 @@ import { NgChatModule } from './components/ng-chat/ng-chat.module';
 import { GlobeAdapter } from './services/chatAdapter';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FileUploadModule } from 'ng2-file-upload';
-
+import { PostsService } from './services/posts.service';
 
 
 
@@ -73,6 +73,7 @@ import { NewNotesModalComponent } from './components/new-notes-modal/new-notes-m
 import { SettingsComponent } from './pages/settings/settings.component';
 import { UserUploadImageComponent } from './components/user-upload-image/user-upload-image.component';
 import { UploadMediaAttachComponent } from './components/upload-media-attach/upload-media-attach.component';
+import { PostBoxComponent } from './components/post-box/post-box.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -107,6 +108,7 @@ const appRoutes: Routes = [
     SettingsComponent,
     UserUploadImageComponent,
     UploadMediaAttachComponent,
+    PostBoxComponent,
   ],
   imports: [
     CommonModule,
@@ -161,7 +163,8 @@ const appRoutes: Routes = [
     AuthService,
     HttpService,
     UserService,
-    GlobeAdapter
+    GlobeAdapter,
+    PostsService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

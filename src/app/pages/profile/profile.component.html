@@ -5,9 +5,8 @@
     <div class="user-avatar">
       <div class="user-img">
       <div class="img">
-        <img src="../assets/imgs/no_avatar.png" alt="no_avatar.png">
-        <!-- <img *ngIf='user.user_photo' src='{{ user.user_photo }}'>
-        <img *ngIf='! user.user_photo'  src='{{"assets/imgs/no_avatar.png"}}'> -->
+        <img *ngIf='user.user_photo' src='{{ user.user_photo }}'>
+        <img *ngIf='! user.user_photo' src="../assets/imgs/no_avatar.png">
       </div>
       <ul class="animated fadeInUp">
         <li (click)="openDialogUpload()"><i class="fa fa-upload"></i>Upload a new photo</li>

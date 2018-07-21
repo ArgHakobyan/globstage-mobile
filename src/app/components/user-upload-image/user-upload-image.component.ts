@@ -3,6 +3,8 @@ import { MatDialogRef } from '@angular/material';
 import { FileUploader } from 'ng2-file-upload';
 // import { appConfig } from '../../app.config';
 import {HttpService} from '../../services/http.service';
+import { HttpHeaders } from '@angular/common/http';
+
 
 
 const URL = 'http://api-globstage.atero.solutions/v1/files';
@@ -38,9 +40,9 @@ export class UserUploadImageComponent implements OnInit {
 
   updateUploadImage() {
     this.httpService.put('/users', {'user_photo': this.uploadedImage}).subscribe(a => {
-      const localUser: any = localStorage.getItem('globUser');
+      const localUser: any = JSON.parse(localStorage.getItem('globUser'));
       localUser.user_photo = this.uploadedImage;
-      localStorage.setItem('globUser', localUser);
+      localStorage.setItem('globUser', JSON.stringify(localUser));
     });
   }
 

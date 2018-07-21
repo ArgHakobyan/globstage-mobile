@@ -58,8 +58,30 @@
            </div>
            <div class="verification center">
               <h4>Verification</h4>
+                <div class="openDialogDocument">
+                    <mat-form-field class="example-full-width">
+                        <input type="text" matInput placeholder="Skype" value="">
+                      </mat-form-field>
+                      <div class="select-doc">
+                          <p>Confirmation Document #1:</p>
+                          <button class="selectDoc change btn-success save">Select the document</button>
+                      </div>
+                      <div class="upload-img">
+                        <img src="assets/imgs/pasport_scan1.jpg">
+                        <p>Document to choose from: student ID, drivers license.</p>
+                      </div>
+                      <div class="select-doc">
+                        <p>Confirmation Document #2:</p>
+                        <button class="selectDoc change btn-success save">Select the document</button>
+                      </div>
+                      <div class="upload-img">
+                        <img src="assets/imgs/pasport_scan2.jpg">
+                        <p>Scan passport.</p>
+                        <mat-checkbox>I agree to the processing and storage of my personal data</mat-checkbox>
+                      </div>
+                </div>
               <div class="change-btn">
-                 <button type="submit" class="change btn-success save">Request for verification</button>
+                 <button (click)="openVerification()" type="submit" class="change btn-success save">Request for verification</button>
               </div>
            </div>
            <div class="email-addres center">

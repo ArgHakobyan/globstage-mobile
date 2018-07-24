@@ -77,6 +77,7 @@ import { PostBoxComponent } from './components/post-box/post-box.component';
 import { FriendsComponent } from './pages/friends/friends.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { SearchComponent } from './pages/search/search.component';
+import { SearchAllComponent } from './components/search-all/search-all.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -84,6 +85,8 @@ const appRoutes: Routes = [
   { path: 'group',  component: GroupComponent },
   { path: 'notes',  component: NotesComponent },
   { path: 'settings',  component: SettingsComponent },
+  { path: 'privacy',  component: PrivacyComponent },
+  { path: 'friends',  component: FriendsComponent },
  ];
 
 
@@ -115,6 +118,7 @@ const appRoutes: Routes = [
     FriendsComponent,
     PrivacyComponent,
     SearchComponent,
+    SearchAllComponent,
   ],
   imports: [
     CommonModule,

@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
+  public viewVerification = false;
+  public closeBtnVerify = true;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  openVerification() {
+    this.viewVerification = true;
+    this.closeBtnVerify = false;
   }
 
 }

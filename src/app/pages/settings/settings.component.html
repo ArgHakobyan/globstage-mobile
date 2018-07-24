@@ -58,6 +58,12 @@
            </div>
            <div class="verification center">
               <h4>Verification</h4>
+              <ng-template [ngIf]= "closeBtnVerify">
+              <div class="change-btn">
+                  <button (click)="openVerification()" type="submit" class="change btn-success save">Request for verification</button>
+               </div>
+               </ng-template>
+               <ng-template [ngIf]= "viewVerification">
                 <div class="openDialogDocument">
                     <mat-form-field class="example-full-width">
                         <input type="text" matInput placeholder="Skype" value="">
@@ -79,10 +85,11 @@
                         <p>Scan passport.</p>
                         <mat-checkbox>I agree to the processing and storage of my personal data</mat-checkbox>
                       </div>
+                      <div class="change-btn">
+                          <button type="submit" class="change btn-success save">Send</button>
+                       </div>
                 </div>
-              <div class="change-btn">
-                 <button (click)="openVerification()" type="submit" class="change btn-success save">Request for verification</button>
-              </div>
+              </ng-template>
            </div>
            <div class="email-addres center">
               <h4>Your email address</h4>

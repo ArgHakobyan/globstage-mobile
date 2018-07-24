@@ -8,13 +8,14 @@ import { MatDialogRef } from '@angular/material';
 })
 export class NewAlbumModalComponent implements OnInit {
 
+  selected1 = 'option1';
+  selected2 = 'option1';
+
   constructor(public dialogRef: MatDialogRef<NewAlbumModalComponent>) { }
 
   ngOnInit() {
   }
 
-  selected1 = "option1";
-  selected2 = "option1";
 
   onNoClick(): void {
     this.dialogRef.close();

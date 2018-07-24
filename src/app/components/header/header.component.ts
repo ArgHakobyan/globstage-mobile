@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
 import { MatDialog } from '@angular/material';
+import { NewAlbumModalComponent } from '../new-album-modal/new-album-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
     });
   }
   logOut() {

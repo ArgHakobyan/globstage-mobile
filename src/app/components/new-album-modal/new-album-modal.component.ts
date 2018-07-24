@@ -11,9 +11,10 @@ export class NewAlbumModalComponent implements OnInit {
   selected1 = 'option1';
   selected2 = 'option1';
 
-  constructor(public dialogRef: MatDialogRef<NewAlbumModalComponent>) { }
+  constructor(public dialogRef: MatDialogRef<NewAlbumModalComponent>) {}
 
-  ngOnInit() {
+  ngOnInit(){
+
   }
 
 

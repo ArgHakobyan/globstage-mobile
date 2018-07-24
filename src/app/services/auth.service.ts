@@ -3,14 +3,13 @@ import { Observable } from 'rxjs/Observable';
 
 import { HttpService } from './http.service';
 
-import { User } from '../models/user.model';
+// import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
-import { SafeSubscribe } from '../helpers/safe-subsripe/safe-subscripe';
 import { UserService } from './user.service';
 import { appConfig } from '../app.config';
 
 @Injectable()
-export class AuthService extends SafeSubscribe {
+export class AuthService{
 
   urlOnlyForOauth = appConfig.apiOauth;
   apiUrl = appConfig.apiUrl;
@@ -21,7 +20,7 @@ export class AuthService extends SafeSubscribe {
     private httpService: HttpService,
     private http: HttpClient,
   ) {
-    super();
+
   }
 
   signInUser(email: string, password: string): Observable<any> {
@@ -61,9 +60,7 @@ export class AuthService extends SafeSubscribe {
     return this.http.post(`${this.urlOnlyForOauth}/revoke`, body);
   }
 
-
-
-  isLogged() {
+  static isLogged() {
     const auth: any = localStorage.getItem('auth');
     if (auth && JSON.parse(auth).expired > new Date().valueOf() / 1000) {
       return true;

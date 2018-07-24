@@ -87,6 +87,7 @@ const appRoutes: Routes = [
   { path: 'settings',  component: SettingsComponent },
   { path: 'privacy',  component: PrivacyComponent },
   { path: 'friends',  component: FriendsComponent },
+  { path: 'search',  component: SearchComponent },
  ];
 
 
@@ -186,6 +187,7 @@ const appRoutes: Routes = [
     NewNotesModalComponent,
     UserUploadImageComponent,
     UploadMediaAttachComponent,
+    SearchAllComponent,
   ]
 })
 export class AppModule { }

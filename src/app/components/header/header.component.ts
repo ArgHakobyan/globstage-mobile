@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { NewAlbumModalComponent } from '../new-album-modal/new-album-modal.component';
+import {SearchAllComponent} from "../search-all/search-all.component";
 
 @Component({
   selector: 'app-header',
@@ -16,16 +16,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
 
   }
-  openDialogAlbum() {
-    const dialogRef = this.dialog.open(NewAlbumModalComponent, {
-      height: 'auto',
-      width: '400px'
+  openDialogSearch() {
+    const dialogRef = this.dialog.open(SearchAllComponent, {
+      width: '450px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
     });
   }
+
   logOut() {
     localStorage.removeItem('auth');
     localStorage.removeItem('globUser');

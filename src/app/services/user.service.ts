@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {HttpService} from './http.service';
-
+import {  filter, take } from 'rxjs/operators';
 @Injectable()
 export class UserService {
   user = new BehaviorSubject<any>(null);
@@ -19,9 +19,9 @@ export class UserService {
   }
 
   get userReady() {
-    return this.user
-      .filter(u => !!u)
-      .take(1);
+    return this.user.pipe(
+      filter(u => !!u),
+      take(1))
   }
 
   setUser(a) {

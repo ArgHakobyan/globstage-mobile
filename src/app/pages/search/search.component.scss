@@ -1,0 +1,15 @@
+@import '../../../variable';
+.clearfix{clear: both;}
+ul{
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+.mat-dialog-container{
+  position: absolute;
+  width: 450px;
+  height: 100px;
+  top: 0;
+  right: 0;
+}

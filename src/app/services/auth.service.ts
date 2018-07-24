@@ -27,7 +27,8 @@ export class AuthService{
     return this.http.post(this.urlOnlyForOauth, {
       user_name: email,
       user_password: password
-    });
+    },
+      {headers:{'Content-Type': 'application/json'}});
   }
 
   recoveryPassword(email: string): Observable<any> {
@@ -60,7 +61,7 @@ export class AuthService{
     return this.http.post(`${this.urlOnlyForOauth}/revoke`, body);
   }
 
-  static isLogged() {
+  isLogged() {
     const auth: any = localStorage.getItem('auth');
     if (auth && JSON.parse(auth).expired > new Date().valueOf() / 1000) {
       return true;

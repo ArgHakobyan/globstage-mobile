@@ -24,19 +24,19 @@ export class HttpService {
     ).catch(error => this.handleError(error));
   }
 
-  post(url: string, body: any = {}): Observable<HttpResponse<Object>> {
-    return this.http.post<Object>(appConfig.apiUrl + url, body, this.addOptions()).catch(error => this.handleError(error));
+  post(url: string, body: any = {}): Observable<HttpResponse<any>> {
+    return this.http.post<any>(appConfig.apiUrl + url, body, this.addOptions()).catch(error => this.handleError(error));
   }
 
-  put(url: string, body: any = {}): Observable<HttpResponse<Object>> {
-    return this.http.put<Object>(appConfig.apiUrl + url, body, this.addOptions()).catch(error => this.handleError(error));
+  put(url: string, body: any = {}): Observable<HttpResponse<any>> {
+    return this.http.put<any>(appConfig.apiUrl + url, body, this.addOptions()).catch(error => this.handleError(error));
   }
-  patch(url: string, body: any = {}): Observable<HttpResponse<Object>> {
-    return this.http.patch<Object>(appConfig.apiUrl + url, body, this.addOptions()).catch(error => this.handleError(error));
+  patch(url: string, body: any = {}): Observable<HttpResponse<any>> {
+    return this.http.patch<any>(appConfig.apiUrl + url, body, this.addOptions()).catch(error => this.handleError(error));
   }
 
-  delete(url: string): Observable<HttpResponse<Object>> {
-    return this.http.delete<Object>(appConfig.apiUrl + url, this.addOptions()).catch(error => this.handleError(error));
+  delete(url: string): Observable<HttpResponse<any>> {
+    return this.http.delete<any>(appConfig.apiUrl + url, this.addOptions()).catch(error => this.handleError(error));
   }
 
   private toHttpParams(params) {

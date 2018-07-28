@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { UserUploadImageComponent } from '../../components/user-upload-image/user-upload-image.component';
-
+import { getFromLocalStorage } from '../../utils/local-storage';
 
 @Component({
   selector: 'app-profile-image',
@@ -17,8 +17,7 @@ export class ProfileImageComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('globUser'));
-
+    this.user = getFromLocalStorage('GLOBE_USER');
   }
 
   openDialogUpload() {

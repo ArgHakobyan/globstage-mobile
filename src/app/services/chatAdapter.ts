@@ -21,7 +21,7 @@ export class GlobeAdapter extends ChatAdapter {
 
     listFriends(): Observable<User[]> {
 
-        return this.http.get('/users/getchatlist');
+        return this.http.get('/chats');
     }
 
     getMessageHistory(user_id: any): Observable<Message[]> {

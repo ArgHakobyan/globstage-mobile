@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ChatAdapter } from './components/ng-chat';
 import { GlobeAdapter } from './services/chatAdapter';
 import { HttpService } from './services/http.service';
-
+import { getFromLocalStorage } from './utils/local-storage';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { HttpService } from './services/http.service';
 })
 export class AppComponent {
   title = 'app';
-  userId = localStorage.getItem('globUser') ? JSON.parse(localStorage.getItem('globUser')).id : null;
+  userId = getFromLocalStorage('GLOBE_USER') ? getFromLocalStorage('GLOBE_USER').id : null;
   http: HttpService;
 
   constructor(private _signalRAdapter: GlobeAdapter) {

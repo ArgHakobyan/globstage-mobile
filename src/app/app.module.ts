@@ -30,7 +30,8 @@ import { GlobeAdapter } from './services/chatAdapter';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FileUploadModule } from 'ng2-file-upload';
 import { PostsService } from './services/posts.service';
-
+import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
+import {HttpInterceptorService} from './services/http-interceptor.service';
 
 
 import {MatInputModule} from '@angular/material/input';
@@ -84,6 +85,7 @@ import { UserProfileInfoComponent } from './components/user-profile-info/user-pr
 import { UserProfileImageComponent } from './components/user-profile-image/user-profile-image.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { CommentsComponent } from './components/post/comments/comments.component';
+import { FriendsService} from './services/friends.service';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -189,7 +191,9 @@ const appRoutes: Routes = [
     HttpService,
     UserService,
     GlobeAdapter,
-    PostsService
+    PostsService,
+    FriendsService,
+    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
   ],
   bootstrap: [AppComponent],
   entryComponents: [

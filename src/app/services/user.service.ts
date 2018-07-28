@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HttpService } from './http.service';
 import {  filter, take } from 'rxjs/operators';
+import {getFromLocalStorage, setToLocalStorage} from '../utils/local-storage';
 
 
 @Injectable()
@@ -13,7 +14,7 @@ export class UserService {
   }
 
   get userAsync() {
-    const a = localStorage.getItem('globUser') ? JSON.parse(localStorage.getItem('globUser')) : this.user.getValue();
+    const a = localStorage.getItem('GLOBE_USER') ? JSON.parse(localStorage.getItem('GLOBE_USER')) : this.user.getValue();
 
     this.setUser(a);
 
@@ -23,14 +24,14 @@ export class UserService {
   get userReady() {
     return this.user.pipe(
       filter(u => !!u),
-      take(1))
+      take(1));
   }
 
   setUser(a) {
     this.user.next(a);
-    localStorage.removeItem('globUser');
+    localStorage.removeItem('GLOBE_USER');
     if (!!JSON.stringify(this.user.getValue())) {
-      localStorage.setItem('globUser', JSON.stringify(this.user.getValue()));
+      localStorage.setItem('GLOBE_USER', JSON.stringify(this.user.getValue()));
     }
   }
 
@@ -46,9 +47,5 @@ export class UserService {
   updateUserPersonal(personal) {
     return  this.httpService.put('/users/updatepersonalinfo', personal);
   }
-  // createUserWall(wall) {
-  //   return  this.httpService.post('/posts', wall);
-  // }
-
 
 }

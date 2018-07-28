@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { appConfig } from '../../app.config';
 
 @Component({
   selector: 'app-user-profile',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
+  public user;
+    constructor(
+        private route: ActivatedRoute,
+        private http: HttpClient
+    ) {
 
-  constructor() { }
+    }
 
   ngOnInit() {
+    this.route.params.subscribe( params => {
+      this.http.get(`${appConfig.apiUrl}/users/${params.id}`).subscribe(user => {
+        console.log(user);
+        this.user = user;
+      });
+    });
   }
 
 }

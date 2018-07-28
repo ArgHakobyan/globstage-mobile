@@ -5,7 +5,7 @@ import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {User} from '../../models/user.model';
 import {UserService} from '../../services/user.service';
-
+import {getFromLocalStorage, setToLocalStorage} from '../../utils/local-storage';
 
 
 @Component({
@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          localStorage.setItem('auth', JSON.stringify(res.auth));
+            setToLocalStorage('GLOBE_AUTH', res.auth);
           this.userService.setUser(res.user);
           this.router.navigate(['/profile']);
         },
@@ -117,7 +117,7 @@ export class LoginComponent implements OnInit {
     this.authService.signUpUser(sendData)
       .subscribe(response => {
         console.log(response, 'response');
-        localStorage.setItem('auth', JSON.stringify(response.body.auth));
+        setToLocalStorage('GLOBE_AUTH', response.body.auth);
         this.userService.setUser(response.body.user);
         this.router.navigate(['/profile']);
       }, error => {

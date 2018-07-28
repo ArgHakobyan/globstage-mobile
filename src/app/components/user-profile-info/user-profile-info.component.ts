@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {log} from 'util';
 
 @Component({
   selector: 'app-user-profile-info',
@@ -8,11 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class UserProfileInfoComponent implements OnInit {
 
   public detailsToggle;
+  @Input() user;
 
+  constructor(
+      private route: ActivatedRoute
+  ) {
 
-  constructor() { }
+  }
 
   ngOnInit() {
+    log(this.user);
   }
 
   show1Toggle() {

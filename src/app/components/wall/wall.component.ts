@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { log } from 'util';
-import {HttpService} from '../../services/http.service';
+import {  HttpService} from '../../services/http.service';
 import { PostsService } from '../../services/posts.service';
+import { getFromLocalStorage } from '../../utils/local-storage';
 
 @Component({
   selector: 'app-wall',
@@ -26,7 +26,7 @@ export class WallComponent implements OnInit {
   }
 
   updateWall() {
-    this.postsService.getWallPosts(JSON.parse(localStorage.getItem('globUser')).id).subscribe(
+    this.postsService.getWallPosts(getFromLocalStorage('GLOBE_USER').id).subscribe(
       posts => {
         this.wallPosts = posts.body;
         console.log(this.wallPosts);

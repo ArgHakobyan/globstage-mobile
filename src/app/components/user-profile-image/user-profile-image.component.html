@@ -1,9 +1,9 @@
-<div class="user-avatar">
+<div class="user-avatar" *ngIf="user">
   <div class="user-img">
     <div class="img">
-      <img src="../assets/imgs/no_avatar.png" alt="no_avatar.png">
+      <img src="{{user.user_photo || '../assets/imgs/no_avatar.png'}} " alt="no_avatar.png">
     </div>
-    <span class="hover-display">User User</span>
+    <span class="hover-display">{{user.user_name + ' ' + user.user_last_name}}</span>
   </div>
   <div class="profile-status">
     <div class="status-text">
@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="user-attr">
-    <button type="button" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>Add to friends</button>
+    <button type="button" class="btn btn-success" (click)="addFriend()"><i class="fa fa-plus" aria-hidden="true" ></i>Add to friends</button>
     <button type="button" class="btn btn-success"><i class="fa fa-envelope" aria-hidden="true"></i>Send Message</button>
     <button type="button" class="btn btn-success"><i class="fa fa-share" aria-hidden="true"></i>Follow</button>
     <button type="button" class="btn btn-success"><i class="fa fa-gift" aria-hidden="true"></i>Send Gift</button>
@@ -36,8 +36,8 @@
               <img class="popup-img" src="../assets/imgs/no_avatar.png" alt="no_avatar.png">
             </div>
             <div class="col-md-7 center-text">
-              <h5>Name Lastname</h5>
-              <h4>Armenia, Spitak</h4>
+              <h5>{{user.user_name + ' ' + user.user_last_name}}</h5>
+              <h4>{{user.user_country}}, {{user.user_city}}</h4>
               <span class="age">25</span>
             </div>
             <div class="clearfix"></div>

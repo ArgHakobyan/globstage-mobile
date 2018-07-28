@@ -1,4 +1,26 @@
-<div class="add-comment" [ngClass]="activeClass">
-  <textarea (focus)="focusFunction()" (focusout)="focusOutFunction()" class="text-comm" placeholder="Add a comment"></textarea>
-  <button (click)="postComment(post.id)" type="submit" class="add-comm btn btn-success">Send</button>
+<div class="col-md-12 author-comment">
+  <div *ngFor="let comment of comments" class="borders">
+    <div class="row">
+      <div class="author-img col-md-1">
+        <a href="">
+          <img src="../assets/imgs/no_ava_50.png" alt="no_ava_50">
+        </a>
+      </div>
+      <div class="col-md-3 author">
+        <a href="">{{post.user.user_name + ' ' + post.user.user_last_name}}</a>
+        <span class="comment-text">New Comment</span>
+      </div>
+      <div class="col-md-4 date">
+        <span class="date-comm">{{comment.comment_created_date}}</span>
+      </div>
+      <div class="col-md-4 delete-comm">
+        <i class="delete fa fa-times" aria-hidden="true"></i>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="add-comment"  [ngClass]="activeClass">
+      <textarea (focus)="focusFunction()" (focusout)="focusOutFunction()" class="text-comm" placeholder="Add a comment"></textarea>
+      <button (click)="postComment()" type="submit" class="add-comm btn btn-success">Send</button>
+    </div>
 </div>

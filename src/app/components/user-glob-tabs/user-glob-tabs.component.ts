@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import { } from 'googlemaps';
+import {Component, OnInit, ViewChild, Input} from '@angular/core';
+import {} from 'googlemaps';
 
 
 @Component({
@@ -11,6 +11,7 @@ export class UserGlobTabsComponent implements OnInit {
 
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
+  @Input() user;
 
   constructor() { }
 

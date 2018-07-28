@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { UserUploadImageComponent } from '../../components/user-upload-image/user-upload-image.component';
 import { MatDialog } from '@angular/material';
 import { UserService } from '../../services/user.service';
-
+import {getFromLocalStorage, removeFromLocalStorage} from '../../utils/local-storage';
 
 
 @Component({
@@ -33,18 +33,16 @@ export class ProfileComponent implements OnInit {
     if (!this.authService.isLogged()) {
       this.router.navigate(['/']);
     }
-    this.user = JSON.parse(localStorage.getItem('globUser'));
+    this.user = getFromLocalStorage('GLOBE_USER');
 
-    this.userService.getUser(JSON.parse(localStorage.getItem('globUser')).id).subscribe((user: any) => {
+    this.userService.getUser(getFromLocalStorage('GLOBE_USER').id).subscribe((user: any) => {
       this.userProfile = user.body;
     });
-  
 
 }
 
 logOut() {
-  localStorage.removeItem('auth');
-  localStorage.removeItem('globUser');
+  removeFromLocalStorage(['GLOBE_AUTH', 'GLOBE_USER']);
   this.router.navigate(['']);
 }
 openDialogUpload() {

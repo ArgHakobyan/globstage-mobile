@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material';
 import { NewAudioModalComponent } from '../new-audio-modal/new-audio-modal.component';
 import { NewVideoModalComponent } from '../new-video-modal/new-video-modal.component';
 import { UploadMediaAttachComponent } from '../../components/upload-media-attach/upload-media-attach.component';
+import { getFromLocalStorage } from '../../utils/local-storage';
 
 @Component({
   selector: 'app-post-box',
@@ -32,7 +33,7 @@ export class PostBoxComponent implements OnInit {
     this.formgroupWall = new FormGroup({
       user_wall: new FormControl()
    });
-   this.userAvatar = JSON.parse(localStorage.getItem('globUser')).user_photo || '../assets/imgs/no_ava_50.png';
+   this.userAvatar = getFromLocalStorage('GLOBE_USER').user_photo || '../assets/imgs/no_ava_50.png';
   }
 
   createPost() {
@@ -40,9 +41,9 @@ export class PostBoxComponent implements OnInit {
       post_type: this.type,
       post_content: this.formgroupWall.get('user_wall').value,
       post_attachments: [],
-      post_wall_id:  JSON.parse(localStorage.getItem('globUser')).id,
-      author_id: JSON.parse(localStorage.getItem('globUser')).id,
-      post_user_id: JSON.parse(localStorage.getItem('globUser')).id
+      post_wall_id:  getFromLocalStorage('GLOBE_USER').id,
+      author_id: getFromLocalStorage('GLOBE_USER').id,
+      post_user_id: getFromLocalStorage('GLOBE_USER').id
     }).subscribe(res => {
       this.smileClass = '';
       this.formgroupWall.get('user_wall').setValue('');

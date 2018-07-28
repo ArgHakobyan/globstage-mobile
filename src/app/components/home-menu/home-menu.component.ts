@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { getFromLocalStorage } from '../../utils/local-storage';
 
 @Component({
   selector: 'app-home-menu',
@@ -13,12 +14,12 @@ export class HomeMenuComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('globUser'));
+    this.user = getFromLocalStorage('GLOBE_USER');
 
   }
   ogOut() {
-    localStorage.removeItem('auth');
-    localStorage.removeItem('globUser');
+    localStorage.removeItem('GLOBE_AUTH');
+    localStorage.removeItem('GLOBE_USER');
     this.router.navigate(['']);
   }
 

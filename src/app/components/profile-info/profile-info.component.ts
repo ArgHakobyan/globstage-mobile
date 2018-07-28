@@ -4,8 +4,7 @@ import { UserService } from '../../services/user.service';
 import { ViewChild, ElementRef, NgZone } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { } from '@types/googlemaps';
-
-
+import { getFromLocalStorage } from '../../utils/local-storage';
 
 @Component({
   selector: 'app-profile-info',
@@ -41,7 +40,7 @@ export class ProfileInfoComponent implements OnInit {
       user_country: new FormControl(),
       user_city: new FormControl(),
     });
-  this.userService.getUser(JSON.parse(localStorage.getItem('globUser')).id).subscribe((user: any) => {
+  this.userService.getUser(getFromLocalStorage('GLOBE_USER').id).subscribe((user: any) => {
     this.user = user.body;
     user = user.body;
     this.information = new FormGroup({
@@ -60,7 +59,7 @@ export class ProfileInfoComponent implements OnInit {
     user_skype: new FormControl(),
     user_website: new FormControl(),
   });
-this.userService.getUser(JSON.parse(localStorage.getItem('globUser')).id).subscribe((user: any) => {
+this.userService.getUser(getFromLocalStorage('GLOBE_USER').id).subscribe((user: any) => {
   this.user = user.body;
   user = user.body;
   this.contact = new FormGroup({
@@ -83,7 +82,7 @@ this.personal = new FormGroup({
   favorite_preachers: new FormControl(),
   about_me: new FormControl(),
 });
-this.userService.getUser(JSON.parse(localStorage.getItem('globUser')).id).subscribe((user: any) => {
+this.userService.getUser(getFromLocalStorage('GLOBE_USER').id).subscribe((user: any) => {
 this.user = user.body;
 user = user.body;
 this.personal = new FormGroup({

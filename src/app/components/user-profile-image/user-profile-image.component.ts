@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
+import { FriendsService } from '../../services/friends.service';
 
 @Component({
   selector: 'app-user-profile-image',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileImageComponent implements OnInit {
 
-  constructor() { }
+  @Input() user;
+  constructor(
+      private friendService: FriendsService
+  ) { }
 
   ngOnInit() {
   }
+
+    addFriend() {
+      this.friendService.addFriend(this.user.id).subscribe();
+    }
 
 }

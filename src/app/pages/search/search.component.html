@@ -6,13 +6,29 @@
     </div>
     <div class="col-md-9">
       <app-header></app-header>
-      <div class="search">
+      <div class="searchAll">
+        <div class="searchUser">
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input type="search" matInput placeholder="Search" value="">
+            </mat-form-field>
+            <button type="submit" class="search btn-success save">Search</button>
+          </form>
+        </div>
         <div class="col-md-12">
           <div class="row">
-            <div class="group col-md-3">
-              <img src="../assets/imgs/no_avatar.png" alt="no_avatar.png">
+            <div class="search-avatar">
+              <div class="search-img">
+                <div class="img">
+                  <img src="../assets/imgs/no_avatar.png" alt="no_avatar.png">
+                </div>
+                <ul class="animated fadeInUp">
+                  <li>Name Lastname</li>
+                  <li>Country,City</li>
+                  <li>26</li>
+                </ul>
+              </div>
             </div>
-            <div class="clearfix"></div>
           </div>
         </div>
       </div>

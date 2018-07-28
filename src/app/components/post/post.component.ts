@@ -6,8 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  public activeClass;
   @Input() post;
+  public activeClass;
   constructor() { }
 
   ngOnInit() {

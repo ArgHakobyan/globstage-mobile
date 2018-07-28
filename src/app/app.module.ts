@@ -78,16 +78,23 @@ import { FriendsComponent } from './pages/friends/friends.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { SearchComponent } from './pages/search/search.component';
 import { SearchAllComponent } from './components/search-all/search-all.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { UserGlobTabsComponent } from './components/user-glob-tabs/user-glob-tabs.component';
+import { UserProfileInfoComponent } from './components/user-profile-info/user-profile-info.component';
+import { UserProfileImageComponent } from './components/user-profile-image/user-profile-image.component';
+import { MessagesComponent } from './pages/messages/messages.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
   { path: 'profile',  component: ProfileComponent },
   { path: 'group',  component: GroupComponent },
   { path: 'notes',  component: NotesComponent },
+  { path: 'messages',  component: MessagesComponent },
   { path: 'settings',  component: SettingsComponent },
   { path: 'privacy',  component: PrivacyComponent },
   { path: 'friends',  component: FriendsComponent },
   { path: 'search',  component: SearchComponent },
+  { path: 'user-profile/:id',  component: UserProfileComponent },
  ];
 
 
@@ -120,6 +127,11 @@ const appRoutes: Routes = [
     PrivacyComponent,
     SearchComponent,
     SearchAllComponent,
+    UserProfileComponent,
+    UserGlobTabsComponent,
+    UserProfileInfoComponent,
+    UserProfileImageComponent,
+    MessagesComponent
   ],
   imports: [
     CommonModule,

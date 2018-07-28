@@ -1,3 +1,19 @@
-<p>
-  search-input
-</p>
+<div class="search-form">
+  <div class="search-user">
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input type="search" matInput placeholder="Search" value="">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(value)]="selected1" [ngClass]="selected1">
+          <mat-option value="option1">By the people</mat-option>
+          <mat-option value="option2">On the videos</mat-option>
+          <mat-option value="option3">On the notes</mat-option>
+          <mat-option value="option4">On the group</mat-option>
+          <mat-option value="option5">On the recordings</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button type="submit" class="search btn-success save">Search</button>
+    </form>
+  </div>
+</div>

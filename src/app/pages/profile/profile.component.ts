@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {GlobTabsComponent} from '../../components/glob-tabs/glob-tabs.component';
+import { GlobTabsComponent } from '../../components/glob-tabs/glob-tabs.component';
 import { WallComponent } from '../../components/wall/wall.component';
-import {AuthService} from '../../services/auth.service';
-import {Router} from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 import { UserUploadImageComponent } from '../../components/user-upload-image/user-upload-image.component';
 import { MatDialog } from '@angular/material';
 
@@ -18,6 +18,8 @@ import { MatDialog } from '@angular/material';
 export class ProfileComponent implements OnInit {
 
   public user = {};
+  public  newStatus:boolean = false;
+  public status:boolean = true;
 
   constructor(
     public authService: AuthService,
@@ -48,4 +50,9 @@ openDialogUpload() {
   dialogRef.afterClosed().subscribe(result => {
   });
 }
+
+  openInputWrite(){
+    this.newStatus = true;
+    this.status = false;
+  }
 }

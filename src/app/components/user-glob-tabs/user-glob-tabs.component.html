@@ -1,0 +1,73 @@
+<div class="map-block">
+  <div class="map-header">
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <i class="fa fa-globe"></i>
+        </ng-template>
+        <div class="map">
+          <div id="map" #gmap></div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <i class="fa fa-home"></i>
+        </ng-template>
+        <app-user-profile-info></app-user-profile-info>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <i class="fa fa-picture-o"></i>
+        </ng-template>
+        <div class="img-album tabs-a">
+          <div class="row">
+            <div class="col-md-2 img-alb">
+              <img src="../../../assets/imgs/Images_no_albums.png" alt="Images_no_albums.png">
+            </div>
+            <div class="col-md-10 upload">
+              <p>The user has no albums</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <i class="fa fa-music"></i>
+        </ng-template>
+        <div class="music-album tabs-a">
+          <div class="row">
+            <div class="col-md-2 music-alb">
+              <img src="../../../assets/imgs/music.png" alt="music.png">
+            </div>
+            <div class="col-md-10 upload">
+              <p>No audio</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <i class="fa fa-film"></i>
+        </ng-template>
+        <div class="video-album tabs-a">
+          <div class="row">
+            <div class="col-md-2 video-alb">
+              <img src="../../../assets/imgs/no_videos.png" alt="no_videos.png">
+            </div>
+            <div class="col-md-10 upload">
+              <p>Not yet uploaded any videos.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <i class="fa fa-newspaper-o"></i>
+        </ng-template>
+        <app-news></app-news>
+      </mat-tab>
+    </mat-tab-group>
+  </div>

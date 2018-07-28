@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import { MatDialog } from '@angular/material';
 import {SearchAllComponent} from "../search-all/search-all.component";
@@ -11,6 +11,9 @@ import {SearchAllComponent} from "../search-all/search-all.component";
 export class HeaderComponent implements OnInit {
   selected = 'option1';
 
+  @Input()
+  public isCollapsed = false;
+
   constructor(private router: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -18,7 +21,7 @@ export class HeaderComponent implements OnInit {
   }
   openDialogSearch() {
     const dialogRef = this.dialog.open(SearchAllComponent, {
-      width: '450px'
+      width: '400px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -30,4 +33,8 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('globUser');
     this.router.navigate(['']);
   }
+  onChatTitleClicked(event: any): void {
+    this.isCollapsed = !this.isCollapsed;
+  }
+
 }

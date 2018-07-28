@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
 
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {HttpService} from './http.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { HttpService } from './http.service';
 import {  filter, take } from 'rxjs/operators';
+
+
 @Injectable()
 export class UserService {
   user = new BehaviorSubject<any>(null);

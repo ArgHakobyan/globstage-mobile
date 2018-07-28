@@ -54,6 +54,7 @@ li{
             color: #ffffff;
             border-bottom-left-radius: 2px;
             border-bottom-right-radius: 2px;
+            text-align: center;
         }
     }
     .user-img:hover{
@@ -85,7 +86,6 @@ li{
             margin-top: 8px;
         }
         .new-status{
-            display: none;
             .form-control{
                 font-size: 14px;
             }
@@ -134,8 +134,8 @@ li{
             width: 38px;
         }
     }
-    .user-friend{
-        .user-quantity{
+    .user-friend, .online-friend{
+        .user-quantity, .user-quantity-online{
             background: rgba(0, 0, 0, 0.3);
             padding: 8px;
             .friends{
@@ -143,6 +143,7 @@ li{
                 p{
                     color: #fff;
                     margin-bottom: 0;
+                    font-size: 13px;
                 }
             }
             .see-all{

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { log } from 'util';
 import {HttpService} from '../../services/http.service';
 import { PostsService } from '../../services/posts.service';
@@ -11,7 +11,7 @@ import { PostsService } from '../../services/posts.service';
 })
 export class WallComponent implements OnInit {
 
-  wallPosts = [];
+  @Input () wallPosts = [];
 
   constructor(
 

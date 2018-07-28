@@ -6,7 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent implements OnInit {
-  @Input() post;
+  @Input() postId;
+  @Input() comments;
   public activeClass;
   constructor() { }
 
@@ -15,12 +16,9 @@ export class CommentsComponent implements OnInit {
   focusFunction() {
     this.activeClass = 'focus';
   }
-  focusOutFunction() {
+
+  postComment(){
     this.activeClass = '';
-  }
-  postComment(id){
-    console.log(id);
-    
   }
 }
 

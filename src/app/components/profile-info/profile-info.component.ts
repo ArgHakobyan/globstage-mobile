@@ -5,8 +5,6 @@ import { ViewChild, ElementRef, NgZone } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { } from '@types/googlemaps';
 
-
-
 @Component({
   selector: 'app-profile-info',
   templateUrl: './profile-info.component.html',

@@ -40,7 +40,9 @@ export class PostBoxComponent implements OnInit {
       post_type: this.type,
       post_content: this.formgroupWall.get('user_wall').value,
       post_attachments: [],
-      post_wall_id: 6 ,
+      post_wall_id:  JSON.parse(localStorage.getItem('globUser')).id,
+      author_id: JSON.parse(localStorage.getItem('globUser')).id,
+      post_user_id: JSON.parse(localStorage.getItem('globUser')).id
     }).subscribe(res => {
       this.smileClass = '';
       this.formgroupWall.get('user_wall').setValue('');

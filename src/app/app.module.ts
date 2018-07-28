@@ -83,6 +83,7 @@ import { UserGlobTabsComponent } from './components/user-glob-tabs/user-glob-tab
 import { UserProfileInfoComponent } from './components/user-profile-info/user-profile-info.component';
 import { UserProfileImageComponent } from './components/user-profile-image/user-profile-image.component';
 import { MessagesComponent } from './pages/messages/messages.component';
+import { CommentsComponent } from './components/post/comments/comments.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -131,7 +132,8 @@ const appRoutes: Routes = [
     UserGlobTabsComponent,
     UserProfileInfoComponent,
     UserProfileImageComponent,
-    MessagesComponent
+    MessagesComponent,
+    CommentsComponent
   ],
   imports: [
     CommonModule,

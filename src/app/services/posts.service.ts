@@ -16,7 +16,7 @@ export class PostsService {
   ) {
   }
   getWallPosts(id) {
-    return this.http.get(`/posts/${id}`);
+    return this.http.get(`/posts/wall/${id}`);
   }
 
   createWallPost(post) {

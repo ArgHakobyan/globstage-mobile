@@ -1,0 +1,4 @@
+<div class="add-comment" [ngClass]="activeClass">
+  <textarea (focus)="focusFunction()" (focusout)="focusOutFunction()" class="text-comm" placeholder="Add a comment"></textarea>
+  <button (click)="postComment(post.id)" type="submit" class="add-comm btn btn-success">Send</button>
+</div>

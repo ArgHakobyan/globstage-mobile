@@ -5,7 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { UserUploadImageComponent } from '../../components/user-upload-image/user-upload-image.component';
 import { MatDialog } from '@angular/material';
-
+import { UserService } from '../../services/user.service';
 
 
 
@@ -20,19 +20,25 @@ export class ProfileComponent implements OnInit {
   public user = {};
   public  newStatus:boolean = false;
   public status:boolean = true;
+  public userProfile: any;
 
   constructor(
     public authService: AuthService,
     public router: Router,
     public dialog: MatDialog,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
     if (!this.authService.isLogged()) {
       this.router.navigate(['/']);
     }
-
     this.user = JSON.parse(localStorage.getItem('globUser'));
+
+    this.userService.getUser(JSON.parse(localStorage.getItem('globUser')).id).subscribe((user: any) => {
+      this.userProfile = user.body;
+    });
+  
 
 }
 

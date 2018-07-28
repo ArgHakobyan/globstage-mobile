@@ -51,8 +51,12 @@ openDialogUpload() {
   });
 }
 
-  openInputWrite(){
+  openInputWrite() {
     this.newStatus = true;
     this.status = false;
   }
+
+    postStatus() {
+
+    }
 }

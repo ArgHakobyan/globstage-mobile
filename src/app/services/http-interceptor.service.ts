@@ -16,18 +16,9 @@ import {clearLocalStorage, getFromLocalStorage} from '../utils/local-storage';
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
 
-    /**
-     * @constructor
-     */
     constructor(private _router: Router) {
     }
 
-    /**
-     * Intercept an outgoing http request and optionally transform it or the response.
-     * @param {HttpRequest<any>} req
-     * @param {HttpHandler} next
-     * @returns {Observable<HttpEvent<any>>}
-     */
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (req.url.indexOf(appConfig.apiUrl) !== -1) {
             return this.handleRequest(req, next);
@@ -35,12 +26,6 @@ export class HttpInterceptorService implements HttpInterceptor {
         return next.handle(req);
     }
 
-    /**
-     * Handle each request for api and set Authorization header if logged in
-     * @param {HttpRequest<any>} req
-     * @param {HttpHandler} next
-     * @returns {Observable<HttpEvent<any>>}
-     */
     private handleRequest(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         const auth = getFromLocalStorage('GLOBE_AUTH');
@@ -64,7 +49,7 @@ export class HttpInterceptorService implements HttpInterceptor {
 
                             if (err.status === 401) {
                                 clearLocalStorage();
-                                this._router.navigateByUrl('login')
+                                this._router.navigateByUrl('')
                                     .catch((e) => console.log(e));
                             }
                         }

@@ -86,6 +86,7 @@ import { UserProfileImageComponent } from './components/user-profile-image/user-
 import { MessagesComponent } from './pages/messages/messages.component';
 import { CommentsComponent } from './components/post/comments/comments.component';
 import { FriendsService} from './services/friends.service';
+import { GroupService} from './services/group.service';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -193,6 +194,7 @@ const appRoutes: Routes = [
     GlobeAdapter,
     PostsService,
     FriendsService,
+    GroupService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
   ],
   bootstrap: [AppComponent],

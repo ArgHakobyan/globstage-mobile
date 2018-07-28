@@ -36,6 +36,7 @@ export class ProfileComponent implements OnInit {
     this.user = getFromLocalStorage('GLOBE_USER');
 
     this.userService.getUser(getFromLocalStorage('GLOBE_USER').id).subscribe((user: any) => {
+      console.log(user);
       this.userProfile = user.body;
     });
 

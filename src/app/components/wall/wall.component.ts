@@ -10,9 +10,8 @@ import { getFromLocalStorage } from '../../utils/local-storage';
 
 })
 export class WallComponent implements OnInit {
-
-  @Input () wallPosts = [];
-
+  wallPosts = [];
+  @Input() wallId;
   constructor(
 
     private http: HttpService,
@@ -26,7 +25,7 @@ export class WallComponent implements OnInit {
   }
 
   updateWall() {
-    this.postsService.getWallPosts(getFromLocalStorage('GLOBE_USER').id).subscribe(
+    this.postsService.getWallPosts(this.wallId).subscribe(
       posts => {
         this.wallPosts = posts.body;
         console.log(this.wallPosts);

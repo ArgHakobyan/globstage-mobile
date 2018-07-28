@@ -22,6 +22,7 @@ export class PostBoxComponent implements OnInit {
   public smileClass = '';
   public userAvatar = '';
   @Input() type;
+  @Input() wallId;
   @Output() postCreated = new EventEmitter<boolean>();
 
   constructor(
@@ -41,7 +42,7 @@ export class PostBoxComponent implements OnInit {
       post_type: this.type,
       post_content: this.formgroupWall.get('user_wall').value,
       post_attachments: [],
-      post_wall_id:  getFromLocalStorage('GLOBE_USER').id,
+      post_wall_id:  this.wallId,
       author_id: getFromLocalStorage('GLOBE_USER').id,
       post_user_id: getFromLocalStorage('GLOBE_USER').id
     }).subscribe(res => {

@@ -3,6 +3,6 @@
     Wall
     <span>8</span>
   </div>
-  <app-post-box [type]='post' (postCreated)="updateWall()"></app-post-box>
+  <app-post-box [type]="'post'" [wallId]="wallId" (postCreated)="updateWall()"></app-post-box>
   <app-post *ngFor="let post of wallPosts" [post]="post"></app-post>
 </div>

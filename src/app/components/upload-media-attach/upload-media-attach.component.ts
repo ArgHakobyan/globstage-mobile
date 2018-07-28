@@ -14,21 +14,31 @@ const URL = 'http://api-globstage.atero.solutions/v1/files';
 })
 export class UploadMediaAttachComponent implements OnInit {
 
-  public uploader: FileUploader = new FileUploader({url: URL});
+  public uploader: FileUploader = new FileUploader({url: URL, disableMultipart: true});
   public hasBaseDropZoneOver = false;
   public hasAnotherDropZoneOver = false;
+  public uploadedImage;
+
+  constructor(
+    private httpService: HttpService,
+    public dialogRef: MatDialogRef<UploadMediaAttachComponent>
+  ) { }
+
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
   }
+
   public fileOverAnother(e: any): void {
     this.hasAnotherDropZoneOver = e;
   }
 
-  constructor(private httpService: HttpService,
-    public dialogRef: MatDialogRef<UploadMediaAttachComponent>) { }
 
 
   ngOnInit() {
+      this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+          console.log(JSON.parse(response));
+          this.uploadedImage =  JSON.parse(response).attachment_src;
+      };
   }
 
 

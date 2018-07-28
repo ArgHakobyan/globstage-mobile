@@ -1,5 +1,6 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { FriendsService } from '../../services/friends.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-user-profile-image',
@@ -10,14 +11,27 @@ export class UserProfileImageComponent implements OnInit {
 
   @Input() user;
   constructor(
-      private friendService: FriendsService
+      private friendService: FriendsService,
+      public snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
   }
 
     addFriend() {
-      this.friendService.addFriend(this.user.id).subscribe();
+      this.friendService.addFriend(this.user.id).subscribe(res => {
+          this.snackBar.open('Added to friends list', 'ok', {
+              duration: 3000,
+              verticalPosition: 'bottom'
+          });
+      },
+          error => {
+              this.snackBar.open('This user has blocked you!', 'ok', {
+                  duration: 3000,
+                  verticalPosition: 'bottom'
+              });
+          });
+
     }
 
 }

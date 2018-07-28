@@ -1,12 +1,12 @@
 <div class="create-form">
   <p>Create a new community</p>
-  <form class="example-form">
+  <div class="example-form">
     <mat-form-field class="example-full-width">
-      <input type="text" matInput placeholder="Name" value="">
+      <input [(ngModel)]="groupName" type="text" matInput placeholder="Name" value="" required>
     </mat-form-field>
-  </form>
+  </div>
   <div class="create-btn">
-    <button type="button" class="done btn btn-default">Create a new community</button>
+    <button mat-button  (click)="createGroup()" type="button" class="done btn btn-default">Create a new community</button>
     <button (click) = "onNoClick()" type="button" class="cancel btn btn-default">Cancel</button>
   </div>
 </div>

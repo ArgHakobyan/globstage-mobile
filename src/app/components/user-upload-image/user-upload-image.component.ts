@@ -3,8 +3,8 @@ import { MatDialogRef } from '@angular/material';
 import { FileUploader } from 'ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
 import { getFromLocalStorage, setToLocalStorage } from '../../utils/local-storage';
-
-const URL = 'http://api-globstage.atero.solutions/v1/files';
+import { appConfig } from '../../app.config';
+const URL = appConfig.apiUrl + '/files';
 
 @Component({
   selector: 'app-user-upload-image',
@@ -15,15 +15,9 @@ export class UserUploadImageComponent implements OnInit {
 
   public infoToggle;
   public uploadedImage;
-  public uploader: FileUploader = new FileUploader({url: URL});
-  public hasBaseDropZoneOver = false;
-  public hasAnotherDropZoneOver = false;
-  public fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
-  }
-  public fileOverAnother(e: any): void {
-    this.hasAnotherDropZoneOver = e;
-  }
+  public uploader: FileUploader = new FileUploader({url: URL, disableMultipart: false});
+    imageChangedEvent: any = '';
+    croppedImage: any = '';
 
   constructor(private httpService: HttpClient,
     public dialogRef: MatDialogRef<UserUploadImageComponent>) { }
@@ -50,4 +44,19 @@ export class UserUploadImageComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+
+
+    fileChangeEvent(event: any): void {
+        this.imageChangedEvent = event;
+    }
+    imageCropped(image: string) {
+        this.croppedImage = image;
+    }
+    imageLoaded() {
+        // show cropper
+    }
+    loadImageFailed() {
+        // show message
+    }
 }

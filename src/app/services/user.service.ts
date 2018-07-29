@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
-
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HttpClient } from '@angular/common/http';
 import {  filter, take } from 'rxjs/operators';
 import {getFromLocalStorage, setToLocalStorage} from '../utils/local-storage';
-
+import { appConfig } from '../app.config';
 
 @Injectable()
 export class UserService {
   user = new BehaviorSubject<any>(null);
+  apiUrl = appConfig.apiUrl;
 
   constructor(private http: HttpClient) {
   }
@@ -36,16 +36,20 @@ export class UserService {
   }
 
   getUser(id) {
-    return  this.http.get(`/users/${id}`);
+    return  this.http.get(`${this.apiUrl}/users/${id}`);
   }
   updateUserInfo(info) {
-    return  this.http.put('/users', info);
+    return  this.http.put(`${this.apiUrl}/users`, info);
   }
   updateUserContact(contact) {
-    return  this.http.put('/users/updatecontact', contact);
+    return  this.http.put(`${this.apiUrl}/users/updatecontact`, contact);
   }
   updateUserPersonal(personal) {
-    return  this.http.put('/users/updatepersonalinfo', personal);
+    return  this.http.put(`${this.apiUrl}/users/updatepersonalinfo`, personal);
   }
+
+    changeAvatar(img) {
+      return this.http.put(`${this.apiUrl}/users`, {'user_photo': img});
+    }
 
 }

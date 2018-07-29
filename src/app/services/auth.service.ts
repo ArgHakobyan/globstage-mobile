@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   signUpUser(user): Observable<any> {
-    return this.http.post('/users', user);
+    return this.http.post(`${this.apiUrl}/users`, user);
   }
 
   addData(url: string, body): Observable<any> {

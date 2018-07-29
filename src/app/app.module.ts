@@ -88,6 +88,8 @@ import { CommentsComponent } from './components/wall/post/comments/comments.comp
 import { FriendsService} from './services/friends.service';
 import { GroupService} from './services/group.service';
 import { FriendsSidebarBlockComponent } from './components/friends-sidebar-block/friends-sidebar-block.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { UserCropImageComponent } from './components/user-crop-image/user-crop-image.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -138,7 +140,8 @@ const appRoutes: Routes = [
     UserProfileImageComponent,
     MessagesComponent,
     CommentsComponent,
-    FriendsSidebarBlockComponent
+    FriendsSidebarBlockComponent,
+    UserCropImageComponent
   ],
   imports: [
     CommonModule,
@@ -184,6 +187,7 @@ const appRoutes: Routes = [
     NgChatModule,
     MatCheckboxModule,
     FileUploadModule,
+    ImageCropperModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCZ-8jW9x7sh66bIizdlYbWSa5AHZ3Bi2E',
       libraries: ['places']
@@ -208,6 +212,7 @@ const appRoutes: Routes = [
     NewGroupModalComponent,
     NewNotesModalComponent,
     UserUploadImageComponent,
+    UserCropImageComponent,
     UploadMediaAttachComponent,
     SearchAllComponent,
   ]

@@ -4,6 +4,7 @@ import { WallComponent } from '../../components/wall/wall.component';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { UserUploadImageComponent } from '../../components/user-upload-image/user-upload-image.component';
+import { UserCropImageComponent } from '../../components/user-crop-image/user-crop-image.component';
 import { MatDialog } from '@angular/material';
 import { UserService } from '../../services/user.service';
 import {getFromLocalStorage, removeFromLocalStorage} from '../../utils/local-storage';
@@ -13,7 +14,7 @@ import {getFromLocalStorage, removeFromLocalStorage} from '../../utils/local-sto
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
-  entryComponents: [GlobTabsComponent, WallComponent, UserUploadImageComponent],
+  entryComponents: [GlobTabsComponent, WallComponent, UserUploadImageComponent, UserCropImageComponent],
 })
 export class ProfileComponent implements OnInit {
 
@@ -36,8 +37,7 @@ export class ProfileComponent implements OnInit {
     this.user = getFromLocalStorage('GLOBE_USER');
 
     this.userService.getUser(getFromLocalStorage('GLOBE_USER').id).subscribe((user: any) => {
-      console.log(user);
-      this.userProfile = user.body;
+      this.userProfile = user;
     });
 
 }
@@ -55,6 +55,16 @@ openDialogUpload() {
   dialogRef.afterClosed().subscribe(result => {
   });
 }
+
+    openDialogCrop() {
+        const dialogRef = this.dialog.open(UserCropImageComponent, {
+            height: 'auto',
+            width: '400px'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+        });
+    }
 
   openInputWrite() {
     this.newStatus = true;

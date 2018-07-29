@@ -4,22 +4,22 @@ img{
   max-width: 100%;
 }
 .my-drop-zone { border: dotted 3px lightgray; }
-    .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
-    .another-file-over-class { border: dotted 3px green; }
+.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+.another-file-over-class { border: dotted 3px green; }
 ::ng-deep .mat-dialog-container{
   position: relative;
 }
-  .progress{
-    margin-bottom: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-  }
-  .progress-bar{
-    background: $color-blue;
-  }
+.progress{
+  margin-bottom: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+.progress-bar{
+  background: $color-blue;
+}
 .user-upload{
   .center-p{
     color: $color-blue;

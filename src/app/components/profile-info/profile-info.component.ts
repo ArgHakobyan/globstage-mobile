@@ -5,6 +5,7 @@ import { ViewChild, ElementRef, NgZone } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { } from '@types/googlemaps';
 import { getFromLocalStorage } from '../../utils/local-storage';
+import {log} from 'util';
 
 @Component({
   selector: 'app-profile-info',
@@ -33,6 +34,7 @@ export class ProfileInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.information = new FormGroup({
       user_gender: new FormControl(),
       user_date_of_birth: new FormControl(),
@@ -40,9 +42,25 @@ export class ProfileInfoComponent implements OnInit {
       user_country: new FormControl(),
       user_city: new FormControl(),
     });
+      this.contact = new FormGroup({
+          user_mobile: new FormControl(),
+          user_twitter: new FormControl(),
+          user_facebook: new FormControl(),
+          user_skype: new FormControl(),
+          user_website: new FormControl(),
+      });
+      this.personal = new FormGroup({
+          activities: new FormControl(),
+          interests: new FormControl(),
+          favorite_books: new FormControl(),
+          favorite_quotes: new FormControl(),
+          favorite_sports: new FormControl(),
+          favorite_munshids: new FormControl(),
+          favorite_preachers: new FormControl(),
+          about_me: new FormControl(),
+      });
   this.userService.getUser(getFromLocalStorage('GLOBE_USER').id).subscribe((user: any) => {
-    this.user = user.body;
-    user = user.body;
+    this.user = user;
     this.information = new FormGroup({
       user_gender: new FormControl(user.user_gender),
       user_date_of_birth: new FormControl(user.user_date_of_birth),
@@ -50,55 +68,24 @@ export class ProfileInfoComponent implements OnInit {
       user_country: new FormControl(user.user_country),
       user_city: new FormControl(user.user_city),
     });
+      this.personal = new FormGroup({
+          activities: new FormControl(user.user_interests.activities),
+          interests: new FormControl(user.user_interests.interests),
+          favorite_books: new FormControl(user.user_interests.favorite_books),
+          favorite_quotes: new FormControl(user.user_interests.favorite_quotes),
+          favorite_sports: new FormControl(user.user_interests.favorite_sports),
+          favorite_munshids: new FormControl(user.user_interests.favorite_munshids),
+          favorite_preachers: new FormControl(user.user_interests.favorite_preachers),
+          about_me: new FormControl(user.user_interests.about_me),
+      });
+      this.contact = new FormGroup({
+          user_mobile: new FormControl(user.user_contact.user_mobile),
+          user_twitter: new FormControl(user.user_contact.user_twitter),
+          user_facebook: new FormControl(user.user_contact.user_facebook),
+          user_skype: new FormControl(user.user_contact.user_skype),
+          user_website: new FormControl(user.user_contact.user_website),
+      });
   });
-
-  this.contact = new FormGroup({
-    user_mobile: new FormControl(),
-    user_twitter: new FormControl(),
-    user_facebook: new FormControl(),
-    user_skype: new FormControl(),
-    user_website: new FormControl(),
-  });
-this.userService.getUser(getFromLocalStorage('GLOBE_USER').id).subscribe((user: any) => {
-  this.user = user.body;
-  user = user.body;
-  this.contact = new FormGroup({
-    user_mobile: new FormControl(user.user_contact.user_mobile),
-    user_twitter: new FormControl(user.user_contact.user_twitter),
-    user_facebook: new FormControl(user.user_contact.user_facebook),
-    user_skype: new FormControl(user.user_contact.user_skype),
-    user_website: new FormControl(user.user_contact.user_website),
-  });
-
-});
-
-this.personal = new FormGroup({
-  activities: new FormControl(),
-  interests: new FormControl(),
-  favorite_books: new FormControl(),
-  favorite_quotes: new FormControl(),
-  favorite_sports: new FormControl(),
-  favorite_munshids: new FormControl(),
-  favorite_preachers: new FormControl(),
-  about_me: new FormControl(),
-});
-this.userService.getUser(getFromLocalStorage('GLOBE_USER').id).subscribe((user: any) => {
-this.user = user.body;
-user = user.body;
-this.personal = new FormGroup({
-  activities: new FormControl(user.user_interests.activities),
-  interests: new FormControl(user.user_interests.interests),
-  favorite_books: new FormControl(user.user_interests.favorite_books),
-  favorite_quotes: new FormControl(user.user_interests.favorite_quotes),
-  favorite_sports: new FormControl(user.user_interests.favorite_sports),
-  favorite_munshids: new FormControl(user.user_interests.favorite_munshids),
-  favorite_preachers: new FormControl(user.user_interests.favorite_preachers),
-  about_me: new FormControl(user.user_interests.about_me),
-});
-console.log(this.user);
-});
-
-
 
 }
 

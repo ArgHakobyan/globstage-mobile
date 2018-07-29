@@ -34,11 +34,12 @@
         <input class="input-text" type="email" formControlName="user_name"><br>
         <span class="input-span">PASSWORD</span>
         <input class="input-text margin" type="password" formControlName="user_password">
-        <p *ngIf="formgroupLog.invalid" class="form-error">* All fields are required.</p>
+        <!--<p *ngIf="formgroupLog.invalid" class="form-error">* All fields are required.</p>-->
+        <p class="text-md-right forgot-text">Forgot your password?</p>
       </div>
-      <input class="check-box" type="checkbox" name="remember">
-      <label class="remember-me" for="remember_me">Remember me</label>
-      <a href="#">Forgot your password?</a>
+      <!--<input class="check-box" type="checkbox" name="remember">-->
+      <!--<label class="remember-me" for="remember_me">Remember me</label>-->
+
       <button type="submit" [disabled]="!formgroupLog.valid" class="login btn btn-success">Login</button>
     </form>
   </div>

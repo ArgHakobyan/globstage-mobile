@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { appConfig } from '../../app.config';
@@ -9,6 +9,7 @@ import { appConfig } from '../../app.config';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
+
   public user;
     constructor(
         private route: ActivatedRoute,

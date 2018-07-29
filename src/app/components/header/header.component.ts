@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import { MatDialog } from '@angular/material';
-import {SearchAllComponent} from "../search-all/search-all.component";
+import { SearchAllComponent } from '../search-all/search-all.component';
 
 @Component({
   selector: 'app-header',
@@ -29,8 +29,8 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    localStorage.removeItem('auth');
-    localStorage.removeItem('globUser');
+    localStorage.removeItem('GLOBE_AUTH');
+    localStorage.removeItem('GLOBE_USER');
     this.router.navigate(['']);
   }
   onChatTitleClicked(event: any): void {

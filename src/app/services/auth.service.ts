@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 import { appConfig } from '../app.config';
-import {getFromLocalStorage, setToLocalStorage} from '../utils/local-storage';
+import {getFromLocalStorage, setToLocalStorage, removeFromLocalStorage} from '../utils/local-storage';
 
 @Injectable()
 export class AuthService {
@@ -60,8 +60,7 @@ export class AuthService {
     if (auth && auth.expired > new Date().valueOf() / 1000) {
       return true;
     }
-    localStorage.removeItem('GLOBE_AUTH');
-    localStorage.removeItem('GLOBE_USER');
+    removeFromLocalStorage(['GLOBE_AUTH', 'GLOBE_USER']);
     return false;
   }
 }

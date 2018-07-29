@@ -209,6 +209,12 @@
         }
         .forms{
             text-align: center;
+          p.forgot-text{
+            font-size: 12px;
+            color: #398439;
+            cursor: pointer;
+            padding-right: 30px;
+          }
         }
     }
         .input-span{
@@ -346,4 +352,5 @@
             border-color: #398439;
         }
     }
+
 }

@@ -7,3 +7,6 @@
 .cdk-overlay-pane{
   margin-bottom: 50px !important;
 }
+input.ng-touched.ng-invalid{
+  border: 1px solid #9D0A0E !important;
+}

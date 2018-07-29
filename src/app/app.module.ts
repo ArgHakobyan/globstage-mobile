@@ -20,7 +20,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { GlobTabsComponent } from './components/glob-tabs/glob-tabs.component';
 import { WallComponent } from './components/wall/wall.component';
-import { PostComponent } from './components/post/post.component';
+import { PostComponent } from './components/wall/post/post.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
@@ -74,7 +74,7 @@ import { NewNotesModalComponent } from './components/new-notes-modal/new-notes-m
 import { SettingsComponent } from './pages/settings/settings.component';
 import { UserUploadImageComponent } from './components/user-upload-image/user-upload-image.component';
 import { UploadMediaAttachComponent } from './components/upload-media-attach/upload-media-attach.component';
-import { PostBoxComponent } from './components/post-box/post-box.component';
+import { PostBoxComponent } from './components/wall/post-box/post-box.component';
 import { FriendsComponent } from './pages/friends/friends.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { SearchComponent } from './pages/search/search.component';
@@ -84,9 +84,10 @@ import { UserGlobTabsComponent } from './components/user-glob-tabs/user-glob-tab
 import { UserProfileInfoComponent } from './components/user-profile-info/user-profile-info.component';
 import { UserProfileImageComponent } from './components/user-profile-image/user-profile-image.component';
 import { MessagesComponent } from './pages/messages/messages.component';
-import { CommentsComponent } from './components/post/comments/comments.component';
+import { CommentsComponent } from './components/wall/post/comments/comments.component';
 import { FriendsService} from './services/friends.service';
 import { GroupService} from './services/group.service';
+import { FriendsSidebarBlockComponent } from './components/friends-sidebar-block/friends-sidebar-block.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -136,7 +137,8 @@ const appRoutes: Routes = [
     UserProfileInfoComponent,
     UserProfileImageComponent,
     MessagesComponent,
-    CommentsComponent
+    CommentsComponent,
+    FriendsSidebarBlockComponent
   ],
   imports: [
     CommonModule,

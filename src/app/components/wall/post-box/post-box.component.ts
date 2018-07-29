@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { PostsService } from '../../services/posts.service';
+import { PostsService } from '../../../services/posts.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { NewAudioModalComponent } from '../new-audio-modal/new-audio-modal.component';
-import { NewVideoModalComponent } from '../new-video-modal/new-video-modal.component';
-import { UploadMediaAttachComponent } from '../../components/upload-media-attach/upload-media-attach.component';
-import { getFromLocalStorage } from '../../utils/local-storage';
+import { NewAudioModalComponent } from '../../new-audio-modal/new-audio-modal.component';
+import { NewVideoModalComponent } from '../../new-video-modal/new-video-modal.component';
+import { UploadMediaAttachComponent } from '../../upload-media-attach/upload-media-attach.component';
+import { getFromLocalStorage } from '../../../utils/local-storage';
 
 @Component({
   selector: 'app-post-box',

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { HttpService } from './http.service';
+import { HttpClient } from '@angular/common/http';
 import {  filter, take } from 'rxjs/operators';
 import {getFromLocalStorage, setToLocalStorage} from '../utils/local-storage';
 
@@ -10,11 +10,11 @@ import {getFromLocalStorage, setToLocalStorage} from '../utils/local-storage';
 export class UserService {
   user = new BehaviorSubject<any>(null);
 
-  constructor(private httpService: HttpService) {
+  constructor(private http: HttpClient) {
   }
 
   get userAsync() {
-    const a = localStorage.getItem('GLOBE_USER') ? JSON.parse(localStorage.getItem('GLOBE_USER')) : this.user.getValue();
+    const a = getFromLocalStorage('GLOBE_USER') ? getFromLocalStorage('GLOBE_USER') : this.user.getValue();
 
     this.setUser(a);
 
@@ -31,21 +31,21 @@ export class UserService {
     this.user.next(a);
     localStorage.removeItem('GLOBE_USER');
     if (!!JSON.stringify(this.user.getValue())) {
-      localStorage.setItem('GLOBE_USER', JSON.stringify(this.user.getValue()));
+        setToLocalStorage('GLOBE_USER', this.user.getValue());
     }
   }
 
   getUser(id) {
-    return  this.httpService.get(`/users/${id}`);
+    return  this.http.get(`/users/${id}`);
   }
   updateUserInfo(info) {
-    return  this.httpService.put('/users', info);
+    return  this.http.put('/users', info);
   }
   updateUserContact(contact) {
-    return  this.httpService.put('/users/updatecontact', contact);
+    return  this.http.put('/users/updatecontact', contact);
   }
   updateUserPersonal(personal) {
-    return  this.httpService.put('/users/updatepersonalinfo', personal);
+    return  this.http.put('/users/updatepersonalinfo', personal);
   }
 
 }

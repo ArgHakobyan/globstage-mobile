@@ -12,6 +12,7 @@ import {MatDialogRef} from '@angular/material';
   templateUrl: './user-crop-image.component.html',
   styleUrls: ['./user-crop-image.component.scss']
 })
+
 export class UserCropImageComponent implements OnInit {
   imageChangedEvent: any = '';
   croppedImage: any = '';
@@ -53,14 +54,6 @@ export class UserCropImageComponent implements OnInit {
     // show message
   }
 
-  // updateUploadImage() {
-  //     this.userService.changeAvatar(this.croppedImage).subscribe(a => {
-  //         const localUser: any = getFromLocalStorage('GLOBE_USER');
-  //         localUser.user_photo = this.croppedImage;
-  //         setToLocalStorage('GLOBE_USER', localUser);
-  //     });
-  // }
-
   updateUploadImage() {
     let formData: FormData = new FormData();
     formData.append('uploadFile', this.croppedImageFile, 'avatar.jpeg');
@@ -68,11 +61,17 @@ export class UserCropImageComponent implements OnInit {
       .map(res => res)
       .catch(error => error)
       .subscribe(
-        data => console.log('success'),
+        data => {
+          console.log('success');
+          const localUser: any = getFromLocalStorage('GLOBE_USER');
+          localUser.user_photo = this.croppedImage;
+          setToLocalStorage('GLOBE_USER', localUser);
+        },
         error => console.log(error)
       );
 
   }
+
   onNoClick(): void {
     this.dialogRef.close();
   }

@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { HttpClient } from '@angular/common/http';
-import {  filter, take } from 'rxjs/operators';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {HttpClient} from '@angular/common/http';
+import {filter, take} from 'rxjs/operators';
 import {getFromLocalStorage, setToLocalStorage} from '../utils/local-storage';
-import { appConfig } from '../app.config';
+import {appConfig} from '../app.config';
 
 @Injectable()
 export class UserService {
@@ -31,25 +31,28 @@ export class UserService {
     this.user.next(a);
     localStorage.removeItem('GLOBE_USER');
     if (!!JSON.stringify(this.user.getValue())) {
-        setToLocalStorage('GLOBE_USER', this.user.getValue());
+      setToLocalStorage('GLOBE_USER', this.user.getValue());
     }
   }
 
   getUser(id) {
-    return  this.http.get(`${this.apiUrl}/users/${id}`);
-  }
-  updateUserInfo(info) {
-    return  this.http.put(`${this.apiUrl}/users`, info);
-  }
-  updateUserContact(contact) {
-    return  this.http.put(`${this.apiUrl}/users/updatecontact`, contact);
-  }
-  updateUserPersonal(personal) {
-    return  this.http.put(`${this.apiUrl}/users/updatepersonalinfo`, personal);
+    return this.http.get(`${this.apiUrl}/users/${id}`);
   }
 
-    changeAvatar(img) {
-      return this.http.put(`${this.apiUrl}/users`, {'user_photo': img});
-    }
+  updateUserInfo(info) {
+    return this.http.put(`${this.apiUrl}/users`, info);
+  }
+
+  updateUserContact(contact) {
+    return this.http.put(`${this.apiUrl}/users/updatecontact`, contact);
+  }
+
+  updateUserPersonal(personal) {
+    return this.http.put(`${this.apiUrl}/users/updatepersonalinfo`, personal);
+  }
+
+  changeAvatar(img) {
+    return this.http.put(`${this.apiUrl}/users`, {'user_photo': img});
+  }
 
 }

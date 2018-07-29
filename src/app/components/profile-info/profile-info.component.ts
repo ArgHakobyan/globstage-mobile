@@ -1,9 +1,9 @@
+/// <reference types="googlemaps" />
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { ViewChild, ElementRef, NgZone } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
-import { } from '@types/googlemaps';
 import { getFromLocalStorage } from '../../utils/local-storage';
 import {log} from 'util';
 
@@ -97,24 +97,25 @@ export class ProfileInfoComponent implements OnInit {
     this.showInfo = false;
     this.editInfo = true;
 
-    // this.mapsAPILoader.load().then(
-    //   () => {
+    this.mapsAPILoader.load().then(
+      () => {
 
-    //    const autocomplete = new google.maps.places.Autocomplete(
-    //     this.countryElement.nativeElement,
-    //      { types: ['(regions)']
-    //     });
+        const autocomplete = new google.maps.places.Autocomplete(
+          this.countryElement.nativeElement,
+          {
+            types: ['(regions)']
+          });
 
-    //     autocomplete.addListener('place_changed', () => {
-    //     this.ngZone.run(() => {
-    //      const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-    //      if (place.geometry === undefined || place.geometry === null ) {
-    //       return;
-    //      }
-    //     });
-    //     });
-    //   }
-    //      );
+        autocomplete.addListener('place_changed', () => {
+          this.ngZone.run(() => {
+            const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+            if (place.geometry === undefined || place.geometry === null) {
+              return;
+            }
+          });
+        });
+      }
+    );
   }
   cancelEditInfo() {
     this.showInfo = true;
@@ -137,17 +138,17 @@ export class ProfileInfoComponent implements OnInit {
 
   saveInfo(information) {
     this.userService.updateUserInfo(information.value).subscribe( data => {
-      console.log(data);
+      log(data);
     });
   }
   saveContact(contact) {
     this.userService.updateUserContact(contact.value).subscribe( data => {
-      console.log(data);
+      log(data);
     });
   }
   savePersonal(personal) {
     this.userService.updateUserPersonal(personal.value).subscribe( data => {
-      console.log(data);
+      log(data);
     });
   }
 

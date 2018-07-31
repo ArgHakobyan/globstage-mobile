@@ -1,42 +1,42 @@
 @import '../../../variable';
 .clearfix{clear: both;}
 ul{
-    padding: 0;
+  padding: 0;
 }
 li{
-    list-style: none;
+  list-style: none;
 }
 ::ng-deep .cdk-overlay-container{
-    left: -20px;
-    top: 45px;
+  left: -20px;
+  top: 45px;
 }
 
-.friends{
+.user-friends{
   background: #fff;
-  margin-top: 5px;
+  margin-top: 20px;
   padding: 20px;
-  .search-friend{
+  .search-user-friend{
     .mat-form-field{
-        width: 90%;
-        ::ng-deep .mat-form-field-label{
-            color: $color-blue;
-        }
+      width: 90%;
+      ::ng-deep .mat-form-field-label{
+        color: $color-blue;
+      }
     }
     .search{
-        padding: 6px 12px;
-        margin-bottom: 4px;
-        background: rgba(10, 134, 136, 0.8);
-        cursor: pointer;
-        font-size: 14px;
-        border-radius: 4px;
-        border: none;
-        transition: 0.3s;
+      padding: 6px 12px;
+      margin-bottom: 4px;
+      background: rgba(10, 134, 136, 0.8);
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 4px;
+      border: none;
+      transition: 0.3s;
     }
     .search:hover{
-        background: rgba(24, 106, 107, 0.8);
-        transition: 0.3s;
+      background: rgba(24, 106, 107, 0.8);
+      transition: 0.3s;
     }
-}
+  }
   .friend{
     margin: 6px 0;
     img{cursor: pointer;}
@@ -69,8 +69,3 @@ li{
 
 }
 
-.friend-requests{
-  background: #fff;
-  margin-top: 20px;
-  padding: 20px;
-}

@@ -90,6 +90,10 @@ import { GroupService} from './services/group.service';
 import { FriendsSidebarBlockComponent } from './components/friends-sidebar-block/friends-sidebar-block.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { UserCropImageComponent } from './components/user-crop-image/user-crop-image.component';
+import { FriendRequestsComponent } from './components/friend-requests/friend-requests.component';
+import { FriendRequestComponent } from './components/friend-requests/friend-request/friend-request.component';
+import { FriendComponent } from './components/friend/friend.component';
+import { UserFriendComponent } from './pages/user-friend/user-friend.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -102,6 +106,7 @@ const appRoutes: Routes = [
   { path: 'friends',  component: FriendsComponent },
   { path: 'search',  component: SearchComponent },
   { path: 'user-profile/:id',  component: UserProfileComponent },
+  { path: 'user-friend/:id',  component: UserFriendComponent },
  ];
 
 
@@ -141,7 +146,11 @@ const appRoutes: Routes = [
     MessagesComponent,
     CommentsComponent,
     FriendsSidebarBlockComponent,
-    UserCropImageComponent
+    UserCropImageComponent,
+    FriendRequestsComponent,
+    FriendRequestComponent,
+    FriendComponent,
+    UserFriendComponent
   ],
   imports: [
     CommonModule,
@@ -214,7 +223,6 @@ const appRoutes: Routes = [
     UserUploadImageComponent,
     UserCropImageComponent,
     UploadMediaAttachComponent,
-    SearchAllComponent,
-  ]
+    SearchAllComponent,]
 })
 export class AppModule { }

@@ -17,8 +17,11 @@ export class CommentsComponent implements OnInit {
     this.activeClass = 'focus';
   }
 
-  postComment(){
+  focusOutFunction(){
     this.activeClass = '';
+  }
+  postComment(){
+
   }
 }
 

@@ -23,7 +23,9 @@ export class FriendsService {
   getFriendRequests(){
     return this.http.get(`${appConfig.apiUrl}/friends?filter[subscription]=0&filter[friend_id]=${getFromLocalStorage('GLOBE_USER').id}`);
   }
-
+  deleteFriend(id){
+    return this.http.delete(`${appConfig.apiUrl}/friends/${id}`);
+  }
   confirmFriend(body){
     return this.http.post(`${appConfig.apiUrl}/friends/confirm`, body);
   }

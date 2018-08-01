@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FriendsService } from '../../../services/friends.service';
-import {getFromLocalStorage, setToLocalStorage} from '../../../utils/local-storage';
+import { getFromLocalStorage } from '../../../utils/local-storage';
 
 
 

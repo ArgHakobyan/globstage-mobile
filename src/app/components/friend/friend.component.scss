@@ -2,6 +2,7 @@
 .clearfix{clear: both;}
 
 .friend{
+  position: relative;
   margin: 6px 0;
   img{cursor: pointer;}
   a{
@@ -15,6 +16,14 @@
       transition: 0.3s;
     }
   }
+  .delete{
+    position: absolute;
+    right: 100px;
+    color: $color-blue;
+    top: -3px;
+    cursor: pointer;
+    display: none;
+  }
   button{
     background: rgba(10, 134, 136, 0.8);
     padding: 6px 12px;
@@ -24,11 +33,16 @@
     border-radius: 4px;
     border: none;
     display: block;
-    width: 50%;
+    width: 60%;
     transition: 0.3s;
   }
   button:hover{
     background: rgba(24, 106, 107, 0.8);
     transition: 0.3s;
+  }
+}
+.friend:hover{
+  .delete{
+    display: block;
   }
 }

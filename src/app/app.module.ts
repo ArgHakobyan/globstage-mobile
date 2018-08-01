@@ -87,6 +87,7 @@ import { MessagesComponent } from './pages/messages/messages.component';
 import { CommentsComponent } from './components/wall/post/comments/comments.component';
 import { FriendsService} from './services/friends.service';
 import { GroupService} from './services/group.service';
+import { CommentService} from './services/comment.service';
 import { FriendsSidebarBlockComponent } from './components/friends-sidebar-block/friends-sidebar-block.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { UserCropImageComponent } from './components/user-crop-image/user-crop-image.component';
@@ -210,6 +211,7 @@ const appRoutes: Routes = [
     PostsService,
     FriendsService,
     GroupService,
+    CommentService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
   ],
   bootstrap: [AppComponent],

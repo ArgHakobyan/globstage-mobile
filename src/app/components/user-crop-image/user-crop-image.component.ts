@@ -18,6 +18,7 @@ export class UserCropImageComponent implements OnInit {
   croppedImage: any = '';
   croppedImageFile: any;
   URL = appConfig.apiUrl + '/files';
+  public profileImage;
   public uploader: FileUploader = new FileUploader({url: this.URL, disableMultipart: false});
 
   constructor(
@@ -28,6 +29,8 @@ export class UserCropImageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.profileImage = getFromLocalStorage('GLOBE_USER').user_photo;
+    console.log(this.profileImage);
   }
 
   fileChangeEvent(event: any): void {

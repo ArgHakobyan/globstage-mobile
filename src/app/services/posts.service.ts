@@ -19,6 +19,15 @@ export class PostsService {
     return this.http.get(`/posts/wall/${id}`);
   }
 
+  getVideosPosts(id) {
+    //return this.http.get(`/posts/wall/${id}`);
+    return this.http.get(`/posts?filter[posttype]=video&filter[post_user_id]=${id}`)
+  }
+
+  getAudiosPosts(id) {
+    return this.http.get(`/posts?filter[posttype]=audio&filter[post_user_id]=${id}`)
+  }
+
   createWallPost(post) {
     return this.http.post('/posts', post);
   }

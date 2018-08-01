@@ -3,8 +3,6 @@ import { ViewChild } from '@angular/core';
 import { } from 'googlemaps';
 import { MatDialog } from '@angular/material';
 import { NewAlbumModalComponent } from '../new-album-modal/new-album-modal.component';
-import { NewAudioModalComponent } from '../new-audio-modal/new-audio-modal.component';
-import { NewVideoModalComponent } from '../new-video-modal/new-video-modal.component';
 import { NewsComponent } from '../news/news.component';
 
 
@@ -14,8 +12,6 @@ import { NewsComponent } from '../news/news.component';
   styleUrls: ['./glob-tabs.component.scss'],
   entryComponents: [
     NewAlbumModalComponent,
-    NewAudioModalComponent,
-    NewVideoModalComponent,
     NewsComponent],
 })
 export class GlobTabsComponent implements OnInit {
@@ -45,24 +41,4 @@ export class GlobTabsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
-  openDialogVideo() {
-    const dialogRef = this.dialog.open(NewVideoModalComponent, {
-      height: 'auto',
-      width: '400px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
-  }
-  openDialogAudio() {
-    const dialogRef = this.dialog.open(NewAudioModalComponent, {
-      height: '350px',
-      width: '400px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
-  }
-
-
 }

@@ -90,6 +90,10 @@ import { GroupService} from './services/group.service';
 import { FriendsSidebarBlockComponent } from './components/friends-sidebar-block/friends-sidebar-block.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { UserCropImageComponent } from './components/user-crop-image/user-crop-image.component';
+import { VideosComponent } from './components/glob-tabs/videos/videos.component';
+import { VideoComponent } from './components/glob-tabs/videos/video/video.component';
+import { AudiosComponent } from './components/glob-tabs/audios/audios.component';
+import { AudioComponent } from './components/glob-tabs/audios/audio/audio.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -141,7 +145,11 @@ const appRoutes: Routes = [
     MessagesComponent,
     CommentsComponent,
     FriendsSidebarBlockComponent,
-    UserCropImageComponent
+    UserCropImageComponent,
+    VideosComponent,
+    VideoComponent,
+    AudiosComponent,
+    AudioComponent
   ],
   imports: [
     CommonModule,

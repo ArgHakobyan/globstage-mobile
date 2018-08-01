@@ -20,17 +20,9 @@ export class UserProfileImageComponent implements OnInit {
 
     addFriend() {
       this.friendService.addFriend(this.user.id).subscribe(res => {
-          this.snackBar.open('Added to friends list', 'ok', {
-              duration: 3000,
-              verticalPosition: 'bottom'
-          });
-      },
-          error => {
-              this.snackBar.open('This user has blocked you!', 'ok', {
-                  duration: 3000,
-                  verticalPosition: 'bottom'
-              });
-          });
+
+      })
+
 
     }
 

@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import { appConfig } from '../app.config';
+import {getFromLocalStorage} from "../utils/local-storage";
 
 @Injectable()
 export class FriendsService {
@@ -16,8 +17,20 @@ export class FriendsService {
   addFriend(id) {
     return this.http.post(`${appConfig.apiUrl}/friends`, {friend_id: id});
   }
-
-  unfollowFriend(post) {
-    return this.http.post('${appConfig}/posts', post);
+  getFriends(){
+    return this.http.get(`${appConfig.apiUrl}/friends/myfriends`);
   }
-}
+  getFriendRequests(){
+    return this.http.get(`${appConfig.apiUrl}/friends?filter[subscription]=0&filter[friend_id]=${getFromLocalStorage('GLOBE_USER').id}`);
+  }
+  deleteFriend(id){
+    return this.http.delete(`${appConfig.apiUrl}/friends/${id}`);
+  }
+  confirmFriend(body){
+    return this.http.post(`${appConfig.apiUrl}/friends/confirm`, body);
+  }
+  unConfirmFriend(body){
+    return this.http.post(`{appConfig.apiUrl}/friends/unconfirm`, body);
+  }
+
+  }

@@ -87,6 +87,7 @@ import { MessagesComponent } from './pages/messages/messages.component';
 import { CommentsComponent } from './components/wall/post/comments/comments.component';
 import { FriendsService} from './services/friends.service';
 import { GroupService} from './services/group.service';
+import { CommentService} from './services/comment.service';
 import { FriendsSidebarBlockComponent } from './components/friends-sidebar-block/friends-sidebar-block.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { UserCropImageComponent } from './components/user-crop-image/user-crop-image.component';
@@ -94,6 +95,10 @@ import { VideosComponent } from './components/glob-tabs/videos/videos.component'
 import { VideoComponent } from './components/glob-tabs/videos/video/video.component';
 import { AudiosComponent } from './components/glob-tabs/audios/audios.component';
 import { AudioComponent } from './components/glob-tabs/audios/audio/audio.component';
+import { FriendRequestsComponent } from './components/friend-requests/friend-requests.component';
+import { FriendRequestComponent } from './components/friend-requests/friend-request/friend-request.component';
+import { FriendComponent } from './components/friend/friend.component';
+import { UserFriendComponent } from './pages/user-friend/user-friend.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -106,6 +111,7 @@ const appRoutes: Routes = [
   { path: 'friends',  component: FriendsComponent },
   { path: 'search',  component: SearchComponent },
   { path: 'user-profile/:id',  component: UserProfileComponent },
+  { path: 'user-friend/:id',  component: UserFriendComponent },
  ];
 
 
@@ -149,7 +155,11 @@ const appRoutes: Routes = [
     VideosComponent,
     VideoComponent,
     AudiosComponent,
-    AudioComponent
+    AudioComponent,
+    FriendRequestsComponent,
+    FriendRequestComponent,
+    FriendComponent,
+    UserFriendComponent
   ],
   imports: [
     CommonModule,
@@ -209,6 +219,7 @@ const appRoutes: Routes = [
     PostsService,
     FriendsService,
     GroupService,
+    CommentService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
   ],
   bootstrap: [AppComponent],
@@ -222,7 +233,6 @@ const appRoutes: Routes = [
     UserUploadImageComponent,
     UserCropImageComponent,
     UploadMediaAttachComponent,
-    SearchAllComponent,
-  ]
+    SearchAllComponent,]
 })
 export class AppModule { }

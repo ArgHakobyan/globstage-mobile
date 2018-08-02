@@ -26,7 +26,7 @@ export class UserUploadImageComponent implements OnInit {
   ngOnInit() {
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       console.log(response);
-      this.uploadedImage =  JSON.parse(response).attachment_src;
+      this.uploadedImage =  JSON.parse(response).path;
   };
   }
 
@@ -34,7 +34,8 @@ export class UserUploadImageComponent implements OnInit {
     this.httpService.put(`${appConfig.apiUrl }/users`, {'user_photo': this.uploadedImage}).subscribe(a => {
       const localUser: any = getFromLocalStorage('GLOBE_USER');
       localUser.user_photo = this.uploadedImage;
-        setToLocalStorage('GLOBE_USER', localUser);
+      setToLocalStorage('GLOBE_USER', localUser);
+      this.dialogRef.close();
     });
   }
 

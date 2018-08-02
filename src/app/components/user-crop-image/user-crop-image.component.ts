@@ -69,6 +69,7 @@ export class UserCropImageComponent implements OnInit {
           const localUser: any = getFromLocalStorage('GLOBE_USER');
           localUser.user_photo = this.croppedImage;
           setToLocalStorage('GLOBE_USER', localUser);
+          this.dialogRef.close();
         },
         error => console.log(error)
       );

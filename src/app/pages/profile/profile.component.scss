@@ -1,78 +1,11 @@
 @import '../../../variable';
 .clearfix{clear: both;}
-ul{
-    padding: 0;
-}
-li{
-    list-style: none;
-}
+
 .user-avatar{
     position: relative;
     top: 30px;
-    .user-img{
-        position: relative;
-        overflow: hidden;
-        ul{
-            position: absolute;
-            list-style: none;
-            bottom: 0;
-            padding: 4px 6px;
-            width: 100%;
-            margin: 0;
-            background: rgba(0, 0, 0, 0.71);
-            color: #fff;
-            display: none;
-            li{
-                cursor: pointer;
-            }
-                i{
-                    margin-right: 6px;
-                    color: #fff;
-                }
-                .fa-arrows-v{
-                    margin-right: 10px;
-                    margin-left: 4px;
-                }
-                .fa-times{
-                    margin-left: 1px;
-                    margin-right: 8px;
-                }
-            li:hover{
-                background: $color-green;
-            }
-        }
-        .hover-display{
-            position: absolute;
-            background: rgba(0, 0, 0, 0.71);
-            display: block;
-            bottom: 0px;
-            width: 100%;
-            padding: 8px 15px;
-            font-size: 28px;
-            font-family: roboto;
-            font-weight: 100;
-            color: #ffffff;
-            border-bottom-left-radius: 2px;
-            border-bottom-right-radius: 2px;
-            text-align: center;
-        }
-    }
-    .user-img:hover{
-        .hover-display{
-            display: none;
-        }
-        .fadeInUp{
-            display: block;
-            animation-duration: 0.8s;
-        }
 
-    }
-    .img{
-        img{
-            width: 100%;
-            border-radius: 3px;
-        }
-    }
+
     .profile-status{
         background: rgba(3, 170, 173, 0.2);
         margin-bottom: 20px;

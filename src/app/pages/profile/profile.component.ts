@@ -18,7 +18,7 @@ import {getFromLocalStorage, removeFromLocalStorage} from '../../utils/local-sto
 })
 export class ProfileComponent implements OnInit {
 
-  public user = {};
+  public user;
   public  newStatus:boolean = false;
   public status:boolean = true;
   public userProfile: any;
@@ -46,25 +46,7 @@ logOut() {
   removeFromLocalStorage(['GLOBE_AUTH', 'GLOBE_USER']);
   this.router.navigate(['']);
 }
-openDialogUpload() {
-  const dialogRef = this.dialog.open(UserUploadImageComponent, {
-    height: 'auto',
-    width: '400px'
-  });
 
-  dialogRef.afterClosed().subscribe(result => {
-  });
-}
-
-    openDialogCrop() {
-        const dialogRef = this.dialog.open(UserCropImageComponent, {
-            height: 'auto',
-            width: '400px'
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-        });
-    }
 
   openInputWrite() {
     this.newStatus = true;

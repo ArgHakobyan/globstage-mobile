@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { UserUploadImageComponent } from '../../components/user-upload-image/user-upload-image.component';
 import { getFromLocalStorage } from '../../utils/local-storage';
+import {UserCropImageComponent} from '../user-crop-image/user-crop-image.component';
 
 @Component({
   selector: 'app-profile-image',
@@ -13,7 +14,7 @@ import { getFromLocalStorage } from '../../utils/local-storage';
 })
 export class ProfileImageComponent implements OnInit {
 
-  public user = {};
+  public user;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -22,7 +23,18 @@ export class ProfileImageComponent implements OnInit {
 
   openDialogUpload() {
     const dialogRef = this.dialog.open(UserUploadImageComponent, {
-      height: 'auto'
+      height: 'auto',
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  openDialogCrop() {
+    const dialogRef = this.dialog.open(UserCropImageComponent, {
+      height: 'auto',
+      width: '400px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

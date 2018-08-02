@@ -21,7 +21,7 @@ export class UserProfileImageComponent implements OnInit {
     addFriend() {
       this.friendService.addFriend(this.user.id).subscribe(res => {
 
-      })
+      });
 
 
     }

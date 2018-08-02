@@ -36,35 +36,13 @@
         <ng-template mat-tab-label>
             <i class="fa fa-music"></i>
           </ng-template>
-        <div class="music-album tabs-a">
-          <div class="row">
-          <div class="col-md-2 music-alb">
-            <img src="../../../assets/imgs/music.png" alt="music.png">
-          </div>
-          <div class="col-md-10 upload">
-            <p>You can download audio</p>
-            <span (click)="openDialogAudio()">Add Audio</span>
-          </div>
-          <div class="clearfix"></div>
-          </div>
-        </div>
+        <app-audios></app-audios>
     </mat-tab>
     <mat-tab>
         <ng-template mat-tab-label>
             <i class="fa fa-film"></i>
           </ng-template>
-        <div class="video-album tabs-a">
-          <div class="row">
-          <div class="col-md-2 video-alb">
-            <img src="../../../assets/imgs/no_videos.png" alt="no_videos.png">
-          </div>
-          <div class="col-md-10 upload">
-            <p>You have no videos.</p>
-            <span (click)="openDialogVideo()">Add a video</span>
-          </div>
-          <div class="clearfix"></div>
-          </div>
-        </div>
+          <app-videos></app-videos>
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>

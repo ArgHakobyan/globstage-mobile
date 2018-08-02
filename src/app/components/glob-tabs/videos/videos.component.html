@@ -1,0 +1,15 @@
+<div class="video-album tabs-a">
+  <div class="row" *ngIf="videos.length">
+    <div class="col-md-2 video-alb">
+      <img src="../../../assets/imgs/no_videos.png" alt="no_videos.png">
+    </div>
+    <div class="col-md-10 upload">
+      <p>You have no videos.</p>
+      <span (click)="openDialogVideo()">Add a video</span>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="row">
+    <app-video *ngFor="let video of videos" [video]="video"></app-video>
+  </div>
+</div>

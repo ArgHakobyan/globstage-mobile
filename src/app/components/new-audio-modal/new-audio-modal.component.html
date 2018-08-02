@@ -2,31 +2,35 @@
     <p class="center-p">Adding a new song</p>
     <mat-tab-group>
       <mat-tab label="The Link">
-          <div class="song-load">
-            <form class="example-form">
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Insert a link to an mp3 file">
-              </mat-form-field>
-            </form>
-            <p>Example:<span>http://music.com/uploads/files/audio/2012/faxo..</span></p>
-          </div>
+        <div class="song-load">
+          <form class="example-form" [formGroup]="audioForm">
+            <mat-form-field class="example-full-width">
+              <input matInput formControlName="audioInsertLink" placeholder="Insert a link to an mp3 file">
+            </mat-form-field>
+          </form>
+          <p>Example:
+            <span>http://music.com/uploads/files/audio/2012/faxo..</span>
+          </p>
+        </div>
       </mat-tab>
       <mat-tab label="From the computer">
-          <div class="from-comp">
-            <span class="limit">Limitations</span>
-            <ul>
-              <li>The audio file can not exceed 10 MB and must be in MP3.</li>
-              <li>The audio file must not violate copyright</li>
-            </ul>
-            <div class="upload-file">
-                <button type="button" class="select-file btn btn-default">Select File</button>
-            </div>
-            <p>You can also add audio from the already downloaded files, using <a href="">Search for audio.</a></p>
+        <div class="from-comp">
+          <span class="limit">Limitations</span>
+          <ul>
+            <li>The audio file can not exceed 10 MB and must be in MP3.</li>
+            <li>The audio file must not violate copyright</li>
+          </ul>
+          <div class="upload-file">
+            <button type="button" class="select-file btn btn-default">Select File</button>
           </div>
-        </mat-tab>
+          <p>You can also add audio from the already downloaded files, using
+            <a href="">Search for audio.</a>
+          </p>
+        </div>
+      </mat-tab>
     </mat-tab-group>
     <div class="create-btn">
-      <button type="button" class="done btn btn-default">Done</button>
-      <button (click) = "onNoClick()" type="button" class="cancel btn btn-default">Cancel</button>
+      <button type="button" class="done btn btn-default" (click)="addAudio()">Done</button>
+      <button (click)="onNoClick()" type="button" class="cancel btn btn-default">Cancel</button>
     </div>
-  </div>
+</div>

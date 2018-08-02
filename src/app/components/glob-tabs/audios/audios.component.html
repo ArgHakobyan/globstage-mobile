@@ -1,0 +1,15 @@
+<div class="music-album tabs-a">
+  <div class="row" *ngIf="audios.length==0">
+  <div class="col-md-2 music-alb">
+    <img src="../../../assets/imgs/music.png" alt="music.png">
+  </div>
+  <div class="col-md-10 upload">
+    <p>You can download audio</p>
+    <span (click)="openDialogAudio()">Add Audio</span>
+  </div>
+  <div class="clearfix"></div>
+  </div>
+  <div class="row">
+    <app-audio *ngFor="let audio of audios" [audio]="audio"></app-audio>
+  </div>
+</div>

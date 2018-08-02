@@ -24,7 +24,7 @@ export class PostBoxComponent implements OnInit {
   @Input() type;
   @Input() wallId;
   @Output() postCreated = new EventEmitter<boolean>();
-
+  attachements = [];
   constructor(
     private postsService: PostsService,
     public dialog: MatDialog,
@@ -41,7 +41,7 @@ export class PostBoxComponent implements OnInit {
     let mn = this.postsService.createWallPost({
       post_type: this.type,
       post_content: this.formgroupWall.get('user_wall').value,
-      post_attachments: [],
+      post_attachments: this.attachements,
       post_wall_id:  this.wallId,
       author_id: getFromLocalStorage('GLOBE_USER').id,
       post_user_id: getFromLocalStorage('GLOBE_USER').id
@@ -58,7 +58,13 @@ export class PostBoxComponent implements OnInit {
       width: '500px',
     });
 
+    dialogRef.componentInstance.onUpload.subscribe((res: any) => {
+      console.log(JSON.parse(res).id);
+      this.attachements.push(JSON.parse(res).id);
+    });
+
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
     });
   }
 

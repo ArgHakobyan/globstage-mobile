@@ -5,14 +5,14 @@
           <img [src]="userAvatar" alt="no_ava_50">
       </div>
       <div class="col-md-3 author">
-        <a href="">{{post.user.user_name + ' ' + post.user.user_last_name}}</a>
-        <span class="comment-text">New Comment</span>
+        <a href="">{{comment.user.user_name + ' ' + comment.user.user_last_name}}</a>
+        <span class="comment-text">{{comment.comment_content}}</span>
       </div>
       <div class="col-md-4 date">
         <span class="date-comm">{{comment.comment_created_date}}</span>
       </div>
       <div class="col-md-4 delete-comm">
-        <i class="delete fa fa-times" aria-hidden="true"></i>
+        <i (click)="deleteComment(comment.id)" class="delete fa fa-times" aria-hidden="true"></i>
       </div>
       <div class="clearfix"></div>
     </div>

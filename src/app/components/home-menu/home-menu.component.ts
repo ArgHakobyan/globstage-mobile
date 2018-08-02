@@ -17,7 +17,7 @@ export class HomeMenuComponent implements OnInit {
     this.user = getFromLocalStorage('GLOBE_USER');
 
   }
-  ogOut() {
+  logOut() {
     localStorage.removeItem('GLOBE_AUTH');
     localStorage.removeItem('GLOBE_USER');
     this.router.navigate(['']);

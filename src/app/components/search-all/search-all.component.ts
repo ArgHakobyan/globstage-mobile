@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {MatDialogRef} from '@angular/material';
+
+
 
 @Component({
   selector: 'app-search-all',
@@ -7,11 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchAllComponent implements OnInit {
 
-  selected1 = 'option1';
-
-  constructor() { }
+  selected1 = 'users';
+  query;
+  type;
+  constructor(private router: Router,public dialogRef: MatDialogRef<SearchAllComponent>) { }
 
   ngOnInit() {
+  }
+
+  searchResult(query, type){
+    this.router.navigate([`search`, { q: query, type: type }]);
+    this.dialogRef.close();
   }
 
 }

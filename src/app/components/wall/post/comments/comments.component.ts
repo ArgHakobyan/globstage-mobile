@@ -39,12 +39,16 @@ export class CommentsComponent implements OnInit {
   postComment() {
     let mn = this.commentService.postComment({
       comment_content: this.formgroupComment.get('user_comment').value,
-      comment_post_id:  this.postId,
+      comment_post_id:  this.post.id,
       comment_for: "post",
     }).subscribe(res => {
       this.smileClass = '';
       this.formgroupComment.get('user_comment').setValue('');
     });
+  }
+  deleteComment(id){
+    this.commentService.deleteComment(id).subscribe(res => {
+    })
   }
 }
 

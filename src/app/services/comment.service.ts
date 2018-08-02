@@ -17,5 +17,8 @@ export class CommentService {
   postComment(comment){
     return this.http.post(`${appConfig.apiUrl}/comments`, comment);
   }
+  deleteComment(id){
+    return this.http.delete(`${appConfig.apiUrl}/comments/${id}`);
+  }
 
 }

@@ -1,7 +1,8 @@
 import { MatDialogRef } from '@angular/material';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import {HttpService} from '../../services/http.service';
+import {getFromLocalStorage} from "../../utils/local-storage";
 
 
 const URL = 'http://api-globstage.atero.solutions/v1/files';
@@ -14,7 +15,17 @@ const URL = 'http://api-globstage.atero.solutions/v1/files';
 })
 export class UploadMediaAttachComponent implements OnInit {
 
-  public uploader: FileUploader = new FileUploader({url: URL, disableMultipart: true});
+  public uploader: FileUploader = new FileUploader({
+    url: URL, disableMultipart: false,
+    headers: [{
+      'name': 'Authorization',
+      'value': `Bearer ${getFromLocalStorage('GLOBE_AUTH').token}`
+    }]});
+
+  @Output() onUpload = new EventEmitter();
+
+
+
   public hasBaseDropZoneOver = false;
   public hasAnotherDropZoneOver = false;
   public uploadedImage;
@@ -36,13 +47,11 @@ export class UploadMediaAttachComponent implements OnInit {
 
   ngOnInit() {
       this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-          console.log(JSON.parse(response));
-          this.uploadedImage =  JSON.parse(response).attachment_src;
+          console.log(response);
+          this.uploadedImage =  response;
+        this.onUpload.emit(response);
       };
   }
-
-
-
 
   onNoClick(): void {
     this.dialogRef.close();

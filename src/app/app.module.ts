@@ -14,7 +14,6 @@ import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -87,7 +86,8 @@ import { MessagesComponent } from './pages/messages/messages.component';
 import { CommentsComponent } from './components/wall/post/comments/comments.component';
 import { FriendsService} from './services/friends.service';
 import { GroupService} from './services/group.service';
-import { CommentService} from './services/comment.service';
+import { CommentService } from './services/comment.service';
+import { SearchService } from './services/search.service';
 import { FriendsSidebarBlockComponent } from './components/friends-sidebar-block/friends-sidebar-block.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { UserCropImageComponent } from './components/user-crop-image/user-crop-image.component';
@@ -220,6 +220,7 @@ const appRoutes: Routes = [
     FriendsService,
     GroupService,
     CommentService,
+    SearchService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
   ],
   bootstrap: [AppComponent],

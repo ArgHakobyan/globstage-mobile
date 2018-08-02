@@ -4,7 +4,7 @@
       <div class="col-md-1">
         <div class="wall-avatar">
           <a href="">
-            <img src="../assets/imgs/no_ava_50.png" alt="no_ava_50">
+            <img  [src]="post.user.user_photo || '../assets/imgs/no_ava_50.png'" alt="no_ava_50">
           </a>
         </div>
       </div>
@@ -22,8 +22,8 @@
       <div class="wall-content col-md-11">
         <div class="wall-atach-photo">
           <h6>{{post.post_content}}</h6>
-          <div *ngFor="let attach of post.files">
-            <img src="../assets/imgs/no_avatar.png" alt="no_avatar">
+          <div class="post_attachs" *ngFor="let attach of post.attactments">
+            <img class="post_attach" [src]="attach.path" alt="">
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
         </i>
       </div>
       <div class="clearfix"></div>
-      <app-comments class="col-md-12" [comments]="post.comments" [postId]="post.id"></app-comments>
+      <app-comments class="col-md-12" [comments]="post.comments" [post]="post"></app-comments>
       <div class="clearfix"></div>
     </div>
   </div>

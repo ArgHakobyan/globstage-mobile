@@ -12,6 +12,7 @@ import { getFromLocalStorage } from '../../utils/local-storage';
 export class WallComponent implements OnInit {
   wallPosts = [];
   @Input() wallId;
+  @Input() groupId;
   constructor(
 
     private http: HttpService,
@@ -25,11 +26,21 @@ export class WallComponent implements OnInit {
   }
 
   updateWall() {
-    this.postsService.getWallPosts(this.wallId).subscribe(
-      posts => {
-        this.wallPosts = posts.body;
-        console.log(this.wallPosts);
-      }
-    );
+    if (this.wallId) {
+      this.postsService.getWallPosts(this.wallId).subscribe(
+        posts => {
+          this.wallPosts = posts.body;
+          console.log(this.wallPosts);
+        }
+      );
+    }
+    if (this.groupId) {
+      this.postsService.getGroupPosts(this.groupId).subscribe(
+        posts => {
+          this.wallPosts = posts.body;
+          console.log(this.wallPosts);
+        }
+      );
+    }
   }
 }

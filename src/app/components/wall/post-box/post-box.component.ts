@@ -23,8 +23,10 @@ export class PostBoxComponent implements OnInit {
   public userAvatar = '';
   @Input() type;
   @Input() wallId;
+  @Input() groupId;
   @Output() postCreated = new EventEmitter<boolean>();
   attachements = [];
+  attached = [];
   constructor(
     private postsService: PostsService,
     public dialog: MatDialog,
@@ -38,18 +40,38 @@ export class PostBoxComponent implements OnInit {
   }
 
   createPost() {
-    let mn = this.postsService.createWallPost({
-      post_type: this.type,
-      post_content: this.formgroupWall.get('user_wall').value,
-      post_attachments: this.attachements,
-      post_wall_id:  this.wallId,
-      author_id: getFromLocalStorage('GLOBE_USER').id,
-      post_user_id: getFromLocalStorage('GLOBE_USER').id
-    }).subscribe(res => {
-      this.smileClass = '';
-      this.formgroupWall.get('user_wall').setValue('');
-      this.postCreated.emit();
-    });
+    if (this.wallId) {
+      let mn = this.postsService.createWallPost({
+        post_type: this.type,
+        post_content: this.formgroupWall.get('user_wall').value,
+        post_attachments: this.attachements,
+        post_wall_id: this.wallId,
+        author_id: getFromLocalStorage('GLOBE_USER').id,
+        post_user_id: getFromLocalStorage('GLOBE_USER').id
+      }).subscribe(res => {
+        this.smileClass = '';
+        this.formgroupWall.get('user_wall').setValue('');
+        this.postCreated.emit();
+        this.attached = [];
+        this.attachements = [];
+      });
+    }
+    if (this.groupId) {
+      let mn = this.postsService.createWallPost({
+        post_type: this.type,
+        post_content: this.formgroupWall.get('user_wall').value,
+        post_attachments: this.attachements,
+        post_group_id: this.groupId,
+        author_id: getFromLocalStorage('GLOBE_USER').id,
+        post_user_id: getFromLocalStorage('GLOBE_USER').id
+      }).subscribe(res => {
+        this.smileClass = '';
+        this.formgroupWall.get('user_wall').setValue('');
+        this.postCreated.emit();
+        this.attached = [];
+        this.attachements = [];
+      });
+    }
   }
 
   openDialogAttach() {
@@ -61,6 +83,7 @@ export class PostBoxComponent implements OnInit {
     dialogRef.componentInstance.onUpload.subscribe((res: any) => {
       console.log(JSON.parse(res).id);
       this.attachements.push(JSON.parse(res).id);
+      this.attached.push(JSON.parse(res).path);
     });
 
     dialogRef.afterClosed().subscribe(result => {

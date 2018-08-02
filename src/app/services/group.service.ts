@@ -17,4 +17,16 @@ export class GroupService {
   createGroup(group) {
     return this.http.post(`${appConfig.apiUrl}/groups`, group);
   }
+
+  getGroups() {
+    return this.http.get(`${appConfig.apiUrl}/groups`);
+  }
+
+  getGroup(id) {
+    return this.http.get(`${appConfig.apiUrl}/groups/${id}`);
+  }
+
+  subscribeToGroup(id) {
+    return this.http.get(`${appConfig.apiUrl}/groups/${id}`);
+  }
 }

@@ -64,7 +64,7 @@ import { ProfileInfoComponent } from './components/profile-info/profile-info.com
 import { NewsComponent } from './components/news/news.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AgmCoreModule } from '@agm/core';
-import { GroupComponent } from './pages/group/group.component';
+import { GroupsComponent } from './pages/groups/groups.component';
 import { HomeMenuComponent } from './components/home-menu/home-menu.component';
 import { ProfileImageComponent } from './components/profile-image/profile-image.component';
 import { NewGroupModalComponent } from './components/new-group-modal/new-group-modal.component';
@@ -99,11 +99,13 @@ import { FriendRequestsComponent } from './components/friend-requests/friend-req
 import { FriendRequestComponent } from './components/friend-requests/friend-request/friend-request.component';
 import { FriendComponent } from './components/friend/friend.component';
 import { UserFriendComponent } from './pages/user-friend/user-friend.component';
+import { GroupPageComponent } from './pages/group/group-page.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
   { path: 'profile',  component: ProfileComponent },
-  { path: 'group',  component: GroupComponent },
+  { path: 'group/:id',  component: GroupPageComponent },
+  { path: 'groups',  component: GroupsComponent },
   { path: 'notes',  component: NotesComponent },
   { path: 'messages',  component: MessagesComponent },
   { path: 'settings',  component: SettingsComponent },
@@ -130,7 +132,7 @@ const appRoutes: Routes = [
     ProfileInfoComponent,
     NewsComponent,
     ContactComponent,
-    GroupComponent,
+    GroupsComponent,
     HomeMenuComponent,
     ProfileImageComponent,
     NewGroupModalComponent,
@@ -160,6 +162,7 @@ const appRoutes: Routes = [
     FriendRequestComponent,
     FriendComponent,
     UserFriendComponent,
+    GroupPageComponent,
   ],
   imports: [
     CommonModule,

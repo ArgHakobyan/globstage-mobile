@@ -26,6 +26,8 @@
                               <button (click)="createPost()" type="submit" class="share btn btn-success">Share</button>
                           </div>
                           <div class="clearfix"></div>
+                        <img class="attaches" *ngFor="let img of attached" [src]="img" alt="">
+                        <div class="clearfix"></div>
                       </div>
                   </div>
           </form>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { GroupService} from '../../services/group.service';
 import {subscribeToArray} from 'rxjs/internal-compatibility';
-
+import {getFromLocalStorage} from '../../utils/local-storage';
 @Component({
   selector: 'app-new-group-modal',
   templateUrl: './new-group-modal.component.html',
@@ -13,7 +13,7 @@ export class NewGroupModalComponent implements OnInit {
   public groupName;
   constructor(
       public dialogRef: MatDialogRef<NewGroupModalComponent>,
-      public groupServise: GroupService
+      public groupService: GroupService
   ) { }
 
   ngOnInit() {
@@ -25,7 +25,7 @@ export class NewGroupModalComponent implements OnInit {
 
   createGroup() {
     console.log(this.groupName);
-    this.groupServise.createGroup({group_name: this.groupName}).subscribe(res => {
+    this.groupService.createGroup({group_name: this.groupName, group_author: getFromLocalStorage('GLOBE_USER').id}).subscribe(res => {
 
     });
   }

@@ -2,7 +2,7 @@ import { MatDialogRef } from '@angular/material';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import {HttpService} from '../../services/http.service';
-import {getFromLocalStorage} from "../../utils/local-storage";
+import {getFromLocalStorage} from '../../utils/local-storage';
 
 
 const URL = 'http://api-globstage.atero.solutions/v1/files';

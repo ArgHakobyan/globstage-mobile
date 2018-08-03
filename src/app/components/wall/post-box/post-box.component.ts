@@ -74,6 +74,8 @@ export class PostBoxComponent implements OnInit {
     }
   }
 
+
+
   openDialogAttach() {
     const dialogRef = this.dialog.open(UploadMediaAttachComponent, {
       height: 'auto',

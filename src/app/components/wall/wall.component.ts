@@ -43,4 +43,8 @@ export class WallComponent implements OnInit {
       );
     }
   }
+
+  messageDeleted(e) {
+    this.wallPosts = this.wallPosts.filter(p => p.id !== e.id);
+  }
 }

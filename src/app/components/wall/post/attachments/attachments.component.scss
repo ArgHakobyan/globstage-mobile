@@ -1,0 +1,10 @@
+@import '../../../../../variable';
+.clearfix{
+  clear: both;
+}
+.post_attachs{
+  .post_attach{
+    width: 400px;
+    max-width: 100%;
+  }
+}

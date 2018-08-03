@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from '../../../../services/comment.service';
 import {FormControl, FormGroup} from "@angular/forms";
 import {getFromLocalStorage} from "../../../../utils/local-storage";
-
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -12,14 +12,16 @@ export class CommentsComponent implements OnInit {
 
   formgroupComment: FormGroup;
   @Input() postId;
-  @Input() comments;
   @Input() post;
   // public  comments;
   // public post;
   public activeClass;
   public userAvatar = '';
   public smileClass = '';
-  constructor(private commentService: CommentService,) { }
+  constructor(
+    private commentService: CommentService,
+    public snackBar: MatSnackBar,
+    ) { }
 
   ngOnInit() {
     this.formgroupComment = new FormGroup({
@@ -44,10 +46,18 @@ export class CommentsComponent implements OnInit {
     }).subscribe(res => {
       this.smileClass = '';
       this.formgroupComment.get('user_comment').setValue('');
+      res.user = getFromLocalStorage('GLOBE_USER');
+      this.post.comments.push(res);
+      this.snackBar.open('Comment added.', 'ok', {duration: 3000});
     });
   }
+
   deleteComment(id){
     this.commentService.deleteComment(id).subscribe(res => {
+      this.post.comments = this.post.comments.filter(c => c.id !== id);
+      this.snackBar.open('Comment is successfully deleted.', 'ok', {duration: 3000});
+    }, err => {
+      this.snackBar.open('Comment can not be deleted.', 'ok', {duration: 3000});
     })
   }
 }

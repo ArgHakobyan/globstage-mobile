@@ -100,6 +100,7 @@ import { FriendRequestComponent } from './components/friend-requests/friend-requ
 import { FriendComponent } from './components/friend/friend.component';
 import { UserFriendComponent } from './pages/user-friend/user-friend.component';
 import { GroupPageComponent } from './pages/group/group-page.component';
+import { AttachmentsComponent } from './components/wall/post/attachments/attachments.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -163,6 +164,7 @@ const appRoutes: Routes = [
     FriendComponent,
     UserFriendComponent,
     GroupPageComponent,
+    AttachmentsComponent,
   ],
   imports: [
     CommonModule,
@@ -236,6 +238,9 @@ const appRoutes: Routes = [
     UserUploadImageComponent,
     UserCropImageComponent,
     UploadMediaAttachComponent,
-    SearchAllComponent]
+    SearchAllComponent,
+    AttachmentsComponent,
+
+  ]
 })
 export class AppModule { }

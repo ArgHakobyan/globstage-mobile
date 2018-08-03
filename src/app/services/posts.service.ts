@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
-
 import { appConfig } from '../app.config';
 
 @Injectable()
@@ -20,12 +19,15 @@ export class PostsService {
     return this.http.get(`/posts/wall/${id}`);
   }
 
+  deleteWallPost(id) {
+    return this.http.delete(`/posts/${id}`);
+  }
+
   getGroupPosts(id) {
     return this.http.get(`/posts?filter[post_group_id]=${id}`);
   }
 
   getVideosPosts(id) {
-    //  return this.http.get(`/posts/wall/${id}`);
     return this.http.get(`/posts?filter[posttype]=video&filter[post_user_id]=${id}`);
   }
 
@@ -36,4 +38,13 @@ export class PostsService {
   createWallPost(post) {
     return this.http.post('/posts', post);
   }
+
+  addLike(like){
+    return this.http.post(`/likes`, like);
+  }
+
+  disLike(dislike){
+    return this.http.post(`/likes`, dislike);
+  }
+
 }

@@ -1,5 +1,6 @@
 <article class="post-article">
   <div class="col-md-12 wall-user">
+    <i (click)="deleteWallPost(post.id)" *ngIf="post.post_user_id == user.id || post.post_wall_id == user.id" class="delete-post fa fa-times" aria-hidden="true"></i>
     <div class="row">
       <div class="col-md-1">
         <div class="wall-avatar">
@@ -22,22 +23,20 @@
       <div class="wall-content col-md-11">
         <div class="wall-atach-photo">
           <h6>{{post.post_content}}</h6>
-          <div class="post_attachs" *ngFor="let attach of post.attactments">
-            <img class="post_attach" [src]="attach.path" alt="">
-          </div>
+          <app-attachments [post]="post"></app-attachments>
         </div>
       </div>
       <div class="clearfix"></div>
       <div class="like-dislike col-md-12">
-        <i class="like fa fa-thumbs-up" aria-hidden="true">
-          <span>1</span>
+        <i (click)="addLike()" class="like fa fa-thumbs-up" aria-hidden="true">
+          <span>{{ post.post_like_count }}</span>
         </i>
-        <i class="dislike fa fa-thumbs-down" aria-hidden="true">
-          <span>1</span>
+        <i (click)="disLike()" class="dislike fa fa-thumbs-down" aria-hidden="true">
+          <span>{{post.post_dislike_count || 0}}</span>
         </i>
       </div>
       <div class="clearfix"></div>
-      <app-comments class="col-md-12" [comments]="post.comments" [post]="post"></app-comments>
+      <app-comments class="col-md-12" [post]="post"></app-comments>
       <div class="clearfix"></div>
     </div>
   </div>

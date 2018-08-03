@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { PostsService } from '../../../services/posts.service';
+import {getFromLocalStorage} from "../../../utils/local-storage";
+
 
 @Component({
   selector: 'app-post',
@@ -7,10 +10,38 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PostComponent implements OnInit {
   @Input() post;
-  constructor() { }
+  @Output() onDelete = new EventEmitter<any>();
+  user;
+  constructor(private postService: PostsService) { }
 
   ngOnInit() {
+    this.user = getFromLocalStorage('GLOBE_USER');
   }
 
+  addLike() {
+    let mn = this.postService.addLike({
+      action:  "like",
+      post_id: this.post.id
+    }).subscribe(res => {
+      this.post.post_like_count++;
+    });
+  }
+
+  disLike(){
+    let mn = this.postService.disLike({
+      action:  "dislike",
+      post_id: this.post.id
+    }).subscribe(res => {
+      this.post.post_dislike_count++;
+    });
+  }
+
+  deleteWallPost(id){
+    this.postService.deleteWallPost(id).subscribe(res => {
+      this.onDelete.emit({message: 'postDeleted', id: id});
+    }, err =>{
+      this.onDelete.emit({message: 'postDeleted', id: id});
+    })
+  }
 
 }

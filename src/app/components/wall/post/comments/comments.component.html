@@ -1,11 +1,11 @@
 <div class="col-md-12 author-comment">
-  <div *ngFor="let comment of comments" class="borders">
+  <div *ngFor="let comment of post.comments" class="borders">
     <div class="row">
       <div class="author-img col-md-1">
           <img [src]="userAvatar" alt="no_ava_50">
       </div>
       <div class="col-md-3 author">
-        <a href="">{{comment.user.user_name + ' ' + comment.user.user_last_name}}</a>
+        <a href="">{{comment.user?.user_name + ' ' + comment.user?.user_last_name}}</a>
         <span class="comment-text">{{comment.comment_content}}</span>
       </div>
       <div class="col-md-4 date">

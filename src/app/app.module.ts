@@ -101,6 +101,7 @@ import { FriendComponent } from './components/friend/friend.component';
 import { UserFriendComponent } from './pages/user-friend/user-friend.component';
 import { GroupPageComponent } from './pages/group/group-page.component';
 import { AttachmentsComponent } from './components/wall/post/attachments/attachments.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -111,6 +112,7 @@ const appRoutes: Routes = [
   { path: 'messages',  component: MessagesComponent },
   { path: 'settings',  component: SettingsComponent },
   { path: 'privacy',  component: PrivacyComponent },
+  { path: 'privacy-policy',  component: PrivacyPolicyComponent },
   { path: 'friends',  component: FriendsComponent },
   { path: 'search',  component: SearchComponent },
   { path: 'user-profile/:id',  component: UserProfileComponent },
@@ -165,6 +167,7 @@ const appRoutes: Routes = [
     UserFriendComponent,
     GroupPageComponent,
     AttachmentsComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     CommonModule,

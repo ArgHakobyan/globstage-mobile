@@ -42,8 +42,8 @@ export class CommentsComponent implements OnInit {
     let mn = this.commentService.postComment({
       comment_content: this.formgroupComment.get('user_comment').value,
       comment_post_id:  this.post.id,
-      comment_for: "post",
-    }).subscribe(res => {
+      comment_for: 'post',
+    }).subscribe((res: any) => {
       this.smileClass = '';
       this.formgroupComment.get('user_comment').setValue('');
       res.user = getFromLocalStorage('GLOBE_USER');
@@ -58,7 +58,7 @@ export class CommentsComponent implements OnInit {
       this.snackBar.open('Comment is successfully deleted.', 'ok', {duration: 3000});
     }, err => {
       this.snackBar.open('Comment can not be deleted.', 'ok', {duration: 3000});
-    })
+    });
   }
 }
 

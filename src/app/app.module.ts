@@ -89,7 +89,7 @@ import { GroupService} from './services/group.service';
 import { CommentService } from './services/comment.service';
 import { SearchService } from './services/search.service';
 import { FriendsSidebarBlockComponent } from './components/friends-sidebar-block/friends-sidebar-block.component';
-import { ImageCropperModule } from './components/ngx-image-cropper';
+import { ImageCropperModule } from 'ngx-image-cropper';
 import { UserCropImageComponent } from './components/user-crop-image/user-crop-image.component';
 import { VideosComponent } from './components/glob-tabs/videos/videos.component';
 import { VideoComponent } from './components/glob-tabs/videos/video/video.component';

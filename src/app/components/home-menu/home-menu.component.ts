@@ -9,7 +9,7 @@ import { getFromLocalStorage } from '../../utils/local-storage';
 })
 export class HomeMenuComponent implements OnInit {
 
-  public user = {};
+  public user;
 
   constructor(private router: Router) { }
 

@@ -3,7 +3,7 @@ import {ViewChild} from '@angular/core';
 import {} from 'googlemaps';
 import {MatDialog} from '@angular/material';
 import {NewAlbumModalComponent} from '../new-album-modal/new-album-modal.component';
-import {NewsComponent} from '../news/news.component';
+
 
 
 @Component({
@@ -11,8 +11,8 @@ import {NewsComponent} from '../news/news.component';
   templateUrl: './glob-tabs.component.html',
   styleUrls: ['./glob-tabs.component.scss'],
   entryComponents: [
-    NewAlbumModalComponent,
-    NewsComponent],
+    NewAlbumModalComponent
+  ],
 })
 export class GlobTabsComponent implements OnInit {
 

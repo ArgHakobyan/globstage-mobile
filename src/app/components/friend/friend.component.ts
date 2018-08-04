@@ -12,7 +12,9 @@ export class FriendComponent implements OnInit {
 
   @Input() friend;
   friendRequests: any[];
-  constructor(private friendService: FriendsService,) { }
+  constructor(
+    private friendService: FriendsService
+  ) { }
 
   ngOnInit() {
   }
@@ -20,7 +22,7 @@ export class FriendComponent implements OnInit {
   deleteFriend() {
     this.friendService.deleteFriend(this.friend.id).subscribe((res: any[]) => {
       this.friendRequests = res;
-    })
+    });
 
   }
 

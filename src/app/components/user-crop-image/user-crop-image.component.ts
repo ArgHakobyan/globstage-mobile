@@ -3,7 +3,7 @@ import {FileUploader} from 'ng2-file-upload';
 import {appConfig} from '../../app.config';
 import {getFromLocalStorage, setToLocalStorage} from '../../utils/local-storage';
 import {UserService} from '../../services/user.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {MatDialogRef} from '@angular/material';
 
 

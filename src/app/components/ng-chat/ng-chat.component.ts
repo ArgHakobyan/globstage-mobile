@@ -32,9 +32,9 @@ import 'rxjs/add/operator/map';
   selector: 'app-ng-chat',
   templateUrl: 'ng-chat.component.html',
   styleUrls: [
-    '/assets/icons.css',
-    '/assets/ng-chat.component.default.css',
-    '/assets/loading-spinner.css'
+    './assets/icons.css',
+    './assets/ng-chat.component.default.css',
+    './assets/loading-spinner.css'
   ]
 })
 

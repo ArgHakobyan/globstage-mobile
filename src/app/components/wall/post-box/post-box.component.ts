@@ -36,7 +36,7 @@ export class PostBoxComponent implements OnInit {
     this.formgroupWall = new FormGroup({
       user_wall: new FormControl()
    });
-   this.userAvatar = getFromLocalStorage('GLOBE_USER').user_photo || '../assets/imgs/no_ava_50.png';
+   this.userAvatar = getFromLocalStorage('GLOBE_USER').user_photo || '/assets/imgs/no_ava_50.png';
   }
 
   createPost() {

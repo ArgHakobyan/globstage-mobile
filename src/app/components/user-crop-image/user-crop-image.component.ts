@@ -59,7 +59,7 @@ export class UserCropImageComponent implements OnInit {
 
   updateUploadImage() {
     let formData: FormData = new FormData();
-    formData.append('uploadFile', this.croppedImageFile, 'avatar.jpeg');
+    formData.append('file', this.croppedImageFile, 'avatar.jpeg');
     this.http.post(this.URL, formData)
       .map(res => res)
       .catch(error => error)

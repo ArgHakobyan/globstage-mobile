@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
-import { SearchService } from '../../services/search.service'
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { SearchService } from '../../services/search.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -10,7 +9,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
 
-
+  type;
+  searchResults = [];
   constructor(
     private route: ActivatedRoute,
     private searchService: SearchService
@@ -20,11 +20,11 @@ export class SearchComponent implements OnInit {
       this.route.paramMap.subscribe( params => {
 
         const q = params.get('q');
-        const type = params.get('type');
-        return this.searchService.getSearchResults(q, type).subscribe(res => {
-
+        this.type = params.get('type');
+        return this.searchService.getSearchResults(q, this.type).subscribe((res: any[]) => {
+          this.searchResults = res;
           }
-        )
+        );
       });
   }
 

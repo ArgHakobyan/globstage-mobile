@@ -17,15 +17,15 @@
         </div>
         <div class="col-md-12">
           <div class="row">
-            <div class="search-avatar">
-              <div class="search-img">
-                <div class="img">
-                  <img src="../assets/imgs/no_avatar.png" alt="no_avatar.png">
+            <div class="search-avatar" *ngFor="let result of searchResults">
+              <div class="search-img" *ngIf="type=='users'" [routerLink]="'/user-profile/'+result.id">
+                <div class="img" >
+                  <img [src]="result.user_photo || '/assets/imgs/no_avatar.png'" alt="no_avatar.png">
                 </div>
                 <ul class="animated fadeInUp">
-                  <li>Name Lastname</li>
-                  <li>Country,City</li>
-                  <li>26</li>
+                  <li>{{result.user_name}} {{result.user_last_name}}</li>
+                  <li *ngIf="result.user_country">{{result.user_country}} {{result.user_city}}</li>
+                  <li *ngIf="result.user_age">{{result.user_age}}</li>
                 </ul>
               </div>
             </div>

@@ -27,7 +27,7 @@ export class CommentsComponent implements OnInit {
     this.formgroupComment = new FormGroup({
       user_comment: new FormControl()
     });
-    this.userAvatar = getFromLocalStorage('GLOBE_USER').user_photo || '../assets/imgs/no_ava_50.png';
+    this.userAvatar = getFromLocalStorage('GLOBE_USER').user_photo || '/assets/imgs/no_ava_50.png';
   }
 
   focusFunction() {

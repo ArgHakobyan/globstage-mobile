@@ -15,6 +15,7 @@ li{
   background: #fff;
   margin-top: 5px;
   padding: 20px;
+  padding-top: 6px;
   .search-friend{
     .mat-form-field{
         width: 90%;
@@ -37,7 +38,12 @@ li{
         transition: 0.3s;
     }
 }
-
+  .friend-title{
+    color: $color-blue;
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 22px;
+  }
 
 }
 

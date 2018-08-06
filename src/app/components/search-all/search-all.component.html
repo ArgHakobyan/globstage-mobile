@@ -5,7 +5,7 @@
         <input name="query" [(ngModel)]="query" type="search" matInput placeholder="Search" value="">
       </mat-form-field>
       <mat-form-field>
-        <mat-select name="type" [(ngModel)]="type" >
+        <mat-select name="type" [(value)]="selected1" [ngClass]="selected1" [(ngModel)]="type" >
           <mat-option value="users">By the people</mat-option>
           <mat-option value="videos">On the videos</mat-option>
           <mat-option value="audios">On the audios</mat-option>

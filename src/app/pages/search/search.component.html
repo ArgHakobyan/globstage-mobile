@@ -24,8 +24,48 @@
                 </div>
                 <ul class="animated fadeInUp">
                   <li>{{result.user_name}} {{result.user_last_name}}</li>
-                  <li *ngIf="result.user_country">{{result.user_country}} {{result.user_city}}</li>
+                  <li *ngIf="result.user_country">{{result.user_country + ", " +result.user_city}}</li>
                   <li *ngIf="result.user_age">{{result.user_age}}</li>
+                </ul>
+              </div>
+              <div class="search-video" *ngIf="type=='videos'">
+                <div class="img" >
+                  <img [src]="result.video_image || '/assets/imgs/no_avatar.png'" alt="no_avatar.png">
+                </div>
+                <ul class="video-info">
+                  <li>{{result.video_name}}</li>
+                </ul>
+              </div>
+              <div class="search-audio" *ngIf="type=='audios'">
+                <div class="img" >
+                  <img [src]="result.audio_image || '/assets/imgs/no_avatar.png'" alt="no_avatar.png">
+                </div>
+                <ul class="audio-info">
+                  <li>{{result.audio_name}}</li>
+                </ul>
+              </div>
+              <div class="search-note" *ngIf="type=='notes'">
+                <div class="img" >
+                  <img [src]="result.note_image || '/assets/imgs/no_avatar.png'" alt="no_avatar.png">
+                </div>
+                <ul class="notes-info">
+                  <li>{{result.note_name}}</li>
+                </ul>
+              </div>
+              <div class="search-group" *ngIf="type=='group'">
+                <div class="img" >
+                  <img [src]="result.group_image || '/assets/imgs/no_avatar.png'" alt="no_avatar.png">
+                </div>
+                <ul class="notes-info">
+                  <li>{{result.post_content}}</li>
+                </ul>
+              </div>
+              <div class="search-post" *ngIf="type=='posts'">
+                <div class="img" >
+                  <img [src]="result.group_name || '/assets/imgs/no_avatar.png'" alt="no_avatar.png">
+                </div>
+                <ul class="notes-info">
+                  <li>{{result.post_name}}</li>
                 </ul>
               </div>
             </div>

@@ -4,7 +4,11 @@
 .friend{
   position: relative;
   margin: 6px 0;
-  img{cursor: pointer;}
+  img{
+    cursor: pointer;
+    width: 110px;
+    height: auto;
+  }
   a{
     text-decoration: none;
     h4{

@@ -59,6 +59,14 @@ li{
         animation-duration: 0.4s;
       }
     }
+    .video-info{
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 10px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+    }
   }
 
 }

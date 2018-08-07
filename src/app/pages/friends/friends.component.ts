@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FriendsService } from "../../services/friends.service";
+import {getFromLocalStorage} from "../../utils/local-storage";
 
 
 @Component({
@@ -15,7 +16,7 @@ export class FriendsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.friendService.getFriends().subscribe((res: any[]) => {
+    this.friendService.getFriends(getFromLocalStorage('GLOBE_USER').id).subscribe((res: any[]) => {
       this.friendRequests = res;
       console.log(res);
     })

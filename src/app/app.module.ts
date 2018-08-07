@@ -243,6 +243,7 @@ const appRoutes: Routes = [
     UploadMediaAttachComponent,
     SearchAllComponent,
     AttachmentsComponent,
+    FriendsSidebarBlockComponent,
 
   ]
 })

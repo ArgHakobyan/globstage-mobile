@@ -25,7 +25,6 @@
     padding: 8px;
     position: relative;
     .friend-ava{
-      border-radius: 4px;
       margin: 4px 3px;
       cursor: pointer;
     }
@@ -41,7 +40,7 @@
       position: absolute;
       background: #fff;
       padding: 4px;
-      bottom: 80px;
+      bottom: 84px;
       left: 0;
       display: none;
       .popup-img{
@@ -66,13 +65,22 @@
       }
     }
     .to-bottom{
-      background: url(/assets/imgs/bottoms.png) no-repeat;
+      background: url(../../../assets/imgs/bottoms.png) no-repeat;
       position: absolute;
       top: -6px;
       left: 10px;
       width: 24px;
       height: 10px;
       display: none;
+    }
+    .img-width{
+      width: 55px;
+      height: 55px;
+      overflow: hidden;
+      .friend-ava{
+        width: auto;
+        height: 100%;
+      }
     }
   }
 }

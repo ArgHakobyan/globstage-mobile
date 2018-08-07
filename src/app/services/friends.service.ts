@@ -17,8 +17,8 @@ export class FriendsService {
   addFriend(id) {
     return this.http.post(`${appConfig.apiUrl}/friends`, {friend_id: id});
   }
-  getFriends(){
-    return this.http.get(`${appConfig.apiUrl}/friends/myfriends`);
+  getFriends(id){
+    return this.http.get(`${appConfig.apiUrl}/friends/${id}`);
   }
   getFriendRequests(){
     return this.http.get(`${appConfig.apiUrl}/friends?filter[subscription]=0&filter[friend_id]=${getFromLocalStorage('GLOBE_USER').id}`);

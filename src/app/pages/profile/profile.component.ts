@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { GlobTabsComponent } from '../../components/glob-tabs/glob-tabs.component';
 import { WallComponent } from '../../components/wall/wall.component';
 import { AuthService } from '../../services/auth.service';
@@ -18,6 +18,7 @@ import {getFromLocalStorage, removeFromLocalStorage} from '../../utils/local-sto
 })
 export class ProfileComponent implements OnInit {
 
+  @Input() userId;
   public user;
   public  newStatus:boolean = false;
   public status:boolean = true;

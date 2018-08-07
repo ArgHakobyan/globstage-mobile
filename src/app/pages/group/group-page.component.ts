@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {NewGroupModalComponent} from '../../components/new-group-modal/new-group-modal.component';
 import {GroupService} from '../../services/group.service';
@@ -12,6 +12,7 @@ import { ActivatedRoute} from '@angular/router';
 export class GroupPageComponent implements OnInit {
   group;
   group_id;
+
   constructor(
     public groupService: GroupService,
     private route: ActivatedRoute,

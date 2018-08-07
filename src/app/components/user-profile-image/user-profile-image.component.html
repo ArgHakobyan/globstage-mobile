@@ -18,6 +18,5 @@
     <button type="button" class="btn btn-success"><i class="fa fa-star-o" aria-hidden="true"></i>Add to Favorites</button>
     <button type="button" class="btn btn-success"><i class="fa fa-lock" aria-hidden="true"></i>Block</button>
   </div>
-
-  <app-friends-sidebar-block *ngIf="user.friends.length" [friends]="user.friends"></app-friends-sidebar-block>
+  <app-friends-sidebar-block *ngIf="user.friends.length" [userId]="user.id"></app-friends-sidebar-block>
 </div>

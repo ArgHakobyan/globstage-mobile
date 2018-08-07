@@ -86,7 +86,7 @@ img{max-width: 100%;}
 }
 .create-group{
   background: $color-blue;
-  margin-top: 20px;
+  margin-top: 30px;
   span{
     color: #fff;
     cursor: pointer;
@@ -101,12 +101,17 @@ img{max-width: 100%;}
     transition: 0.3s;
   }
 }
+.subscribe{
+  margin-top: 15px;
+}
 .groups{
   padding: 20px;
   background: #fff;
   margin: 20px 0;
   h2 {
     color: $color-blue;
+    font-size: 26px;
+    text-align: center;
   }
 
 }

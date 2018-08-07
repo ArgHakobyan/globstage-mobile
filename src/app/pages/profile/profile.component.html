@@ -30,7 +30,7 @@
           <div class="img-video"></div>
           Can store an unlimited number of video files.<br>To add your first video, click here.
         </div>
-        <app-friends-sidebar-block *ngIf="user.friends" [friends]="user.friends"></app-friends-sidebar-block>
+        <app-friends-sidebar-block [userId]="user.id"></app-friends-sidebar-block>
       </div>
     </div>
     <div class="col-md-9">

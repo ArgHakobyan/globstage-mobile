@@ -11,12 +11,13 @@
     </div>
   </div>
   <div class="user-attr">
-    <button type="button" class="btn btn-success" (click)="addFriend()"><i class="fa fa-plus" aria-hidden="true" ></i>Add to friends</button>
-    <button type="button" class="btn btn-success" (click)="removeFriend()"><i class="fa fa-plus" aria-hidden="true" ></i>Add to friends</button>
+    <button type="button" class="btn btn-success" *ngIf="!isFriend" (click)="addFriend()"><i class="fa fa-plus" aria-hidden="true" ></i>Add to friends</button>
+    <button type="button" class="btn btn-success" *ngIf="isFriend" (click)="removeFriend()"><i class="fa fa-plus" aria-hidden="true" ></i>Delete friends</button>
     <button type="button" class="btn btn-success"><i class="fa fa-envelope" aria-hidden="true"></i>Send Message</button>
-    <button type="button" class="btn btn-success"><i class="fa fa-share" aria-hidden="true"></i>Follow</button>
+    <button type="button" class="btn btn-success" *ngIf="!following" (click)="addFollow()"><i class="fa fa-share" aria-hidden="true"></i>Follow</button>
+    <button type="button" class="btn btn-success" *ngIf="following" (click)="deleteFollow()"><i class="fa fa-share" aria-hidden="true"></i>Unfollow</button>
     <button type="button" class="btn btn-success"><i class="fa fa-star-o" aria-hidden="true"></i>Add to Favorites</button>
-    <button type="button" class="btn btn-success"><i class="fa fa-lock" aria-hidden="true"></i>Block</button>
+    <button type="button" class="btn btn-success" (click)="blockUser()"><i class="fa fa-lock" aria-hidden="true"></i>Block</button>
   </div>
   <app-friends-sidebar-block *ngIf="user.friends.length" [userId]="user.id"></app-friends-sidebar-block>
 </div>

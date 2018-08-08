@@ -23,8 +23,15 @@ export class GlobeAdapter extends ChatAdapter {
 
   sendMessage(message: Message): void {
 
-    this.http.post('/messages', {for_id: message.for_id, content: message.message,}).subscribe();
-
+    this.http.post('/messages', {for_id: message.for_id, content: message.content,}).subscribe();
 
   }
+
+  // private bindSignalREvents(): void
+  // {
+  //   this.proxy.on("notifyOfMessage", (user: User, message: Message) => {
+  //     this.onMessageReceived(user, message);
+  //   });
+  // }
+
 }

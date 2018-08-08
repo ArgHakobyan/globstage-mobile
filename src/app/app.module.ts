@@ -31,6 +31,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { PostsService } from './services/posts.service';
 import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {HttpInterceptorService} from './services/http-interceptor.service';
+import {ChatService} from "./services/chat.service";
 
 
 import {MatInputModule} from '@angular/material/input';
@@ -229,6 +230,7 @@ const appRoutes: Routes = [
     CommentService,
     SearchService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
+    ChatService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

@@ -1,7 +1,8 @@
-import { Component, Input, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import { FriendsService } from '../../services/friends.service';
 import { MatSnackBar } from '@angular/material';
-import {getFromLocalStorage} from "../../utils/local-storage";
+import { getFromLocalStorage } from "../../utils/local-storage";
+import { ChatService } from '../../services/chat.service';
 
 @Component({
   selector: 'app-user-profile-image',
@@ -17,6 +18,7 @@ export class UserProfileImageComponent implements OnInit {
   constructor(
     private friendService: FriendsService,
     public snackBar: MatSnackBar,
+    private chatService: ChatService
   ) {
   }
 
@@ -34,7 +36,10 @@ export class UserProfileImageComponent implements OnInit {
     console.log(this.isFriend, this.following);
   }
 
-
+  @HostListener('sendMessage')
+  sendMessage() {
+    this.chatService.toggle(this.user);
+  }
 
   addFriend() {
     this.friendService.addFriend(this.user.id).subscribe(res => {
@@ -68,6 +73,12 @@ export class UserProfileImageComponent implements OnInit {
   blockUser(){
     this.friendService.blockUser(this.user.id).subscribe(res => {
       this.snackBar.open(`You have blocked ${this.user.user_name}.`, 'ok', {duration: 3000});
+    })
+  }
+
+  unblockUser(){
+    this.friendService.unblockUser(this.user.id).subscribe(res => {
+      this.snackBar.open(`You have unlocked ${this.user.user_name}.`, 'ok', {duration: 3000});
     })
   }
 }

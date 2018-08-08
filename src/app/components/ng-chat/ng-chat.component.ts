@@ -1,32 +1,12 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  ViewChildren,
-  HostListener,
-  Output,
-  EventEmitter
-} from '@angular/core';
-import {
-  ChatAdapter
-} from './core/chat-adapter';
-import {
-  User
-} from './core/user';
-import {
-  Message
-} from './core/message';
-import {
-  Window
-} from './core/window';
-import {
-  UserStatus
-} from './core/user-status.enum';
-import {
-  Localization,
-  StatusDescription
-} from './core/localization';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output, ViewChildren} from '@angular/core';
+import {ChatAdapter} from './core/chat-adapter';
+import {User} from './core/user';
+import {Message} from './core/message';
+import {Window} from './core/window';
+import {UserStatus} from './core/user-status.enum';
+import {Localization, StatusDescription} from './core/localization';
 import 'rxjs/add/operator/map';
+import {ChatService} from "../../services/chat.service";
 
 @Component({
   selector: 'app-ng-chat',
@@ -39,121 +19,95 @@ import 'rxjs/add/operator/map';
 })
 
 export class NgChatComponent implements OnInit {
-  constructor() {}
-
   // Exposes the enum for the template
   UserStatus = UserStatus;
-
   @Input()
   public adapter: ChatAdapter;
-
   @Input()
   public userId: any;
-
   @Input()
   public isCollapsed = false;
-
   @Input()
   public maximizeWindowOnNewMessage = true;
-
   @Input()
   public pollFriendsList = false;
-
   @Input()
   public pollingInterval = 5000;
-
   @Input()
   public historyEnabled = true;
-
   @Input()
   public emojisEnabled = true;
-
   @Input()
   public linkfyEnabled = true;
-
   @Input()
   public audioEnabled = true;
-
   @Input() // TODO: This might need a better content strategy
   public audioSource = 'https://raw.githubusercontent.com/rpaschoal/ng-chat/master/src/ng-chat/assets/notification.wav';
-
   @Input()
   public persistWindowsState = true;
-
   @Input()
-  public title = 'Friends';
-
+  public title = 'Chat history';
   @Input()
   public messagePlaceholder = 'Type a message';
-
   @Input()
   public searchPlaceholder = 'Search';
-
   @Input()
   public browserNotificationsEnabled = true;
-
   @Input() // TODO: This might need a better content strategy
   public browserNotificationIconSource = 'https://raw.githubusercontent.com/rpaschoal/ng-chat/master/src/ng-chat/assets/notification.png';
-
   @Input()
   public localization: Localization;
-
   @Output()
-  public onUserClicked: EventEmitter < User > = new EventEmitter < User > ();
-
+  public onUserClicked: EventEmitter<User> = new EventEmitter<User>();
   @Output()
-  public onUserChatOpened: EventEmitter < User > = new EventEmitter < User > ();
-
+  public onUserChatOpened: EventEmitter<User> = new EventEmitter<User>();
   @Output()
-  public onUserChatClosed: EventEmitter < User > = new EventEmitter < User > ();
-
+  public onUserChatClosed: EventEmitter<User> = new EventEmitter<User>();
+  public searchInput = '';
+  windows: Window[] = [];
+  isBootstrapped = false;
+  @ViewChildren('chatMessages') chatMessageClusters: any;
+  @ViewChildren('chatWindowInput') chatWindowInputs: any;
   private browserNotificationsBootstrapped = false;
-
-
   private statusDescription: StatusDescription = {
     online: 'Online',
     busy: 'Busy',
     away: 'Away',
     offline: 'Offline'
   };
-
   private audioFile: HTMLAudioElement;
-
-  public searchInput = '';
-
   private users: any;
+  // Defines the size of each opened window to calculate how many windows can be opened on the viewport at the same time.
+  private windowSizeFactor = 320;
+  // Total width size of the friends list section
+  private friendsListWidth = 262;
+  // Available area to render the plugin
+  private viewPortTotalArea;
 
-  private get localStorageKey(): string {
-    return `ng-chat-users-${this.userId}`;
+  constructor(
+    private chatService: ChatService
+  ) {
   }
 
   get filteredUsers(): User[] {
     if (this.searchInput.length > 0) {
       // Searches in the friend list by the inputted search string
-      return this.users.body.filter(x => x.displayName.toUpperCase().includes(this.searchInput.toUpperCase()));
+      return this.users.body.filter(x => {return x.user_name.toUpperCase().includes(this.searchInput.toUpperCase()) || x.user_last_name.toUpperCase().includes(this.searchInput.toUpperCase())});
     }
     return this.users.body;
   }
 
-  // Defines the size of each opened window to calculate how many windows can be opened on the viewport at the same time.
-  private windowSizeFactor = 320;
-
-  // Total width size of the friends list section
-  private friendsListWidth = 262;
-
-  // Available area to render the plugin
-  private viewPortTotalArea;
-
-  windows: Window[] = [];
-
-  isBootstrapped = false;
-
-  @ViewChildren('chatMessages') chatMessageClusters: any;
-
-  @ViewChildren('chatWindowInput') chatWindowInputs: any;
+  private get localStorageKey(): string {
+    return `ng-chat-users-${this.userId}`;
+  }
 
   ngOnInit() {
     this.bootstrapChat();
+    this.chatService.change.subscribe(res =>{
+      res.status = 'online';
+      this.openChatWindow(res, false,  false);
+      console.log(res);
+    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -161,6 +115,145 @@ export class NgChatComponent implements OnInit {
     this.viewPortTotalArea = event.target.innerWidth;
 
     this.NormalizeWindows();
+  }
+
+  // Returns the total unread messages from a chat window. TODO: Could use some Angular pipes in the future
+  unreadMessagesTotal(window: Window): string {
+    if (window) {
+      if (window.hasFocus) {
+        this.markMessagesAsRead(window.messages);
+      } else {
+        let totalUnreadMessages = window.messages.filter(x => x.from_id !== this.userId && !x.seenOn).length;
+
+        if (totalUnreadMessages > 0) {
+
+          if (totalUnreadMessages > 99) {
+            return '99+';
+          } else {
+            return String(totalUnreadMessages);
+          }
+
+        }
+      }
+    }
+
+    // Empty fallback.
+    return '';
+  }
+
+  unreadMessagesTotalByUser(user: User): string {
+    let openedWindow = this.windows.find(x => x.chattingTo.id === user.id);
+
+    if (openedWindow) {
+      return this.unreadMessagesTotal(openedWindow);
+    }
+
+    // Empty fallback.
+    return '';
+  }
+
+  /*  Monitors pressed keys on a chat window
+      - Dispatches a message when the ENTER key is pressed
+      - Tabs between windows on TAB or SHIFT + TAB
+      - Closes the current focused window on ESC
+  */
+  onChatInputTyped(event: any, window: Window): void {
+    switch (event.keyCode) {
+      case 13:
+        if (window.newMessage && window.newMessage.trim() !== '') {
+          let message = new Message();
+
+          message.from_id = this.userId;
+          message.for_id = window.chattingTo.id;
+          message.content = window.newMessage;
+
+          window.messages.push(message);
+
+          this.adapter.sendMessage(message);
+
+          window.newMessage = ''; // Resets the new message input
+
+          this.scrollChatWindowToBottom(window);
+        }
+        break;
+      case 9:
+        event.preventDefault();
+
+        let currentWindowIndex = this.windows.indexOf(window);
+        let messageInputToFocus = this.chatWindowInputs.toArray()[currentWindowIndex + (event.shiftKey ? 1 : -1)]; // Goes back on shift + tab
+
+        if (!messageInputToFocus) {
+          // Edge windows, go to start or end
+          messageInputToFocus = this.chatWindowInputs.toArray()[currentWindowIndex > 0 ? 0 : this.chatWindowInputs.length - 1];
+        }
+
+        messageInputToFocus.nativeElement.focus();
+
+        break;
+      case 27:
+        let closestWindow = this.getClosestWindow(window);
+
+        if (closestWindow) {
+          this.focusOnWindow(closestWindow, () => {
+            this.onCloseChatWindow(window);
+          });
+        } else {
+          this.onCloseChatWindow(window);
+        }
+    }
+  }
+
+  // Closes a chat window via the close 'X' button
+  onCloseChatWindow(window: Window): void {
+    let index = this.windows.indexOf(window);
+
+    this.windows.splice(index, 1);
+
+    this.updateWindowsState(this.windows);
+
+    this.onUserChatClosed.emit(window.chattingTo);
+  }
+
+  // Toggle friends list visibility
+  onChatTitleClicked(event: any): void {
+    this.isCollapsed = !this.isCollapsed;
+  }
+
+  // Toggles a chat window visibility between maximized/minimized
+  onChatWindowClicked(window: Window): void {
+    window.isCollapsed = !window.isCollapsed;
+    this.scrollChatWindowToBottom(window);
+  }
+
+  // Asserts if a user avatar is visible in a chat cluster
+  isAvatarVisible(window: Window, message: Message, index: number): boolean {
+    if (message.from_id !== this.userId) {
+      if (index === 0) {
+        return true; // First message, good to show the thumbnail
+      } else {
+        // Check if the previous message belongs to the same user, if it belongs there is no need to show the avatar again to form the message cluster
+        if (window.messages[index - 1].from_id !== message.from_id) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  // Opens a new chat whindow. Takes care of available viewport
+
+  // Toggles a window focus on the focus/blur of a 'newMessage' input
+  toggleWindowFocus(window: Window): void {
+    window.hasFocus = !window.hasFocus;
+  }
+
+  // [Localized] Returns the status descriptive title
+  getStatusTitle(status: UserStatus): any {
+    let status1 = status || 'Offline';
+    let currentStatus = status1.toString().toLowerCase();
+
+    return this.localization.statusDescription[currentStatus];
   }
 
   // Checks if there are more opened windows than the view port can display
@@ -239,10 +332,10 @@ export class NgChatComponent implements OnInit {
       .map((users: User[]) => {
         this.users = users;
       }).subscribe(() => {
-        if (isBootstrapping) {
-          this.restoreWindowsState();
-        }
-      });
+      if (isBootstrapping) {
+        this.restoreWindowsState();
+      }
+    });
   }
 
   // Updates the friends list via the event handler
@@ -272,7 +365,6 @@ export class NgChatComponent implements OnInit {
     }
   }
 
-  // Opens a new chat whindow. Takes care of available viewport
   // Returns => [Window: Window object reference, boolean: Indicates if this window is a new chat window]
   private openChatWindow(user: User, focusOnNewWindow: boolean = false, invokedByUserClick: boolean = false): [Window, boolean] {
     // Is this window opened?
@@ -331,7 +423,8 @@ export class NgChatComponent implements OnInit {
   }
 
   // Focus on the input element of the supplied window
-  private focusOnWindow(window: Window, callback: Function = () => {}): void {
+  private focusOnWindow(window: Window, callback: Function = () => {
+  }): void {
     let windowIndex = this.windows.indexOf(window);
 
     if (windowIndex >= 0) {
@@ -386,8 +479,8 @@ export class NgChatComponent implements OnInit {
   // Emits a browser notification
   private emitBrowserNotification(window: Window, message: any): void {
     if (this.browserNotificationsBootstrapped && !window.hasFocus && message) {
-      let notification = new Notification(`New message from ${window.chattingTo.displayName}`, {
-        'body': window.messages[window.messages.length - 1].message,
+      let notification = new Notification(`New message from ${window.chattingTo.user_name}`, {
+        'body': window.messages[window.messages.length - 1].content,
         'icon': this.browserNotificationIconSource
       });
 
@@ -437,141 +530,5 @@ export class NgChatComponent implements OnInit {
     } else if (index === 0 && this.windows.length > 1) {
       return this.windows[index + 1];
     }
-  }
-
-  // Returns the total unread messages from a chat window. TODO: Could use some Angular pipes in the future
-  unreadMessagesTotal(window: Window): string {
-    if (window) {
-      if (window.hasFocus) {
-        this.markMessagesAsRead(window.messages);
-      } else {
-        let totalUnreadMessages = window.messages.filter(x => x.from_id !== this.userId && !x.seenOn).length;
-
-        if (totalUnreadMessages > 0) {
-
-          if (totalUnreadMessages > 99) {
-            return '99+';
-          } else {
-            return String(totalUnreadMessages);
-          }
-
-        }
-      }
-    }
-
-    // Empty fallback.
-    return '';
-  }
-
-  unreadMessagesTotalByUser(user: User): string {
-    let openedWindow = this.windows.find(x => x.chattingTo.id === user.id);
-
-    if (openedWindow) {
-      return this.unreadMessagesTotal(openedWindow);
-    }
-
-    // Empty fallback.
-    return '';
-  }
-
-  /*  Monitors pressed keys on a chat window
-      - Dispatches a message when the ENTER key is pressed
-      - Tabs between windows on TAB or SHIFT + TAB
-      - Closes the current focused window on ESC
-  */
-  onChatInputTyped(event: any, window: Window): void {
-    switch (event.keyCode) {
-      case 13:
-        if (window.newMessage && window.newMessage.trim() !== '') {
-          let message = new Message();
-
-          message.from_id = this.userId;
-          message.for_id = window.chattingTo.id;
-          message.message = window.newMessage;
-
-          window.messages.push(message);
-
-          this.adapter.sendMessage(message);
-
-          window.newMessage = ''; // Resets the new message input
-
-          this.scrollChatWindowToBottom(window);
-        }
-        break;
-      case 9:
-        event.preventDefault();
-
-        let currentWindowIndex = this.windows.indexOf(window);
-        let messageInputToFocus = this.chatWindowInputs.toArray()[currentWindowIndex + (event.shiftKey ? 1 : -1)]; // Goes back on shift + tab
-
-        if (!messageInputToFocus) {
-          // Edge windows, go to start or end
-          messageInputToFocus = this.chatWindowInputs.toArray()[currentWindowIndex > 0 ? 0 : this.chatWindowInputs.length - 1];
-        }
-
-        messageInputToFocus.nativeElement.focus();
-
-        break;
-      case 27:
-        let closestWindow = this.getClosestWindow(window);
-
-        if (closestWindow) {
-          this.focusOnWindow(closestWindow, () => {
-            this.onCloseChatWindow(window);
-          });
-        } else {
-          this.onCloseChatWindow(window);
-        }
-    }
-  }
-
-  // Closes a chat window via the close 'X' button
-  onCloseChatWindow(window: Window): void {
-    let index = this.windows.indexOf(window);
-
-    this.windows.splice(index, 1);
-
-    this.updateWindowsState(this.windows);
-
-    this.onUserChatClosed.emit(window.chattingTo);
-  }
-
-  // Toggle friends list visibility
-  onChatTitleClicked(event: any): void {
-    this.isCollapsed = !this.isCollapsed;
-  }
-
-  // Toggles a chat window visibility between maximized/minimized
-  onChatWindowClicked(window: Window): void {
-    window.isCollapsed = !window.isCollapsed;
-    this.scrollChatWindowToBottom(window);
-  }
-
-  // Asserts if a user avatar is visible in a chat cluster
-  isAvatarVisible(window: Window, message: Message, index: number): boolean {
-    if (message.from_id !== this.userId) {
-      if (index === 0) {
-        return true; // First message, good to show the thumbnail
-      } else {
-        // Check if the previous message belongs to the same user, if it belongs there is no need to show the avatar again to form the message cluster
-        if (window.messages[index - 1].from_id !== message.from_id) {
-          return true;
-        }
-      }
-    }
-
-    return false;
-  }
-
-  // Toggles a window focus on the focus/blur of a 'newMessage' input
-  toggleWindowFocus(window: Window): void {
-    window.hasFocus = !window.hasFocus;
-  }
-
-  // [Localized] Returns the status descriptive title
-  getStatusTitle(status: UserStatus): any {
-    let currentStatus = status.toString().toLowerCase();
-
-    return this.localization.statusDescription[currentStatus];
   }
 }

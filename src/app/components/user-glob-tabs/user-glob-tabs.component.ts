@@ -16,12 +16,17 @@ export class UserGlobTabsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    const mapProp = {
+    this.map = new google.maps.Map(this.gmapElement.nativeElement, {
       center: new google.maps.LatLng(40.089099, 44.538189),
       zoom: 10,
+      gestureHandling: 'cooperative',
+      styles: [{
+        'featureType': 'all',
+        'elementType': 'all',
+        'stylers': [{'invert_lightness': true}, {'saturation': 10}, {'lightness': 30}, {'gamma': 0.5}, {'hue': '#435158'}]
+      }],
       mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+    });
   }
 
 }

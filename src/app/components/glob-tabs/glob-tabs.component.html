@@ -1,54 +1,43 @@
 <div class="map-block">
-    <div class="map-header">
-   <mat-tab-group>
-    <mat-tab>
-        <ng-template mat-tab-label>
-          <i class="fa fa-globe"></i>
-        </ng-template>
-        <div class="map">
-            <div id="map" #gmap></div>
-        </div>
-    </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
-          <i class="fa fa-home"></i>
-        </ng-template>
-          <app-profile-info></app-profile-info>
-    </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <i class="fa fa-picture-o"></i>
-          </ng-template>
-        <div class="img-album tabs-a">
-          <div class="row">
-          <div class="col-md-2 img-alb">
-            <img src="/assets/imgs/Images_no_albums.png" alt="Images_no_albums.png">
-          </div>
-          <div class="col-md-10 upload">
-            <p>You can upload photos to albums</p>
-            <span (click)="openDialogAlbum()">Create an album</span>
-          </div>
-          <div class="clearfix"></div>
-          </div>
-        </div>
-    </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <i class="fa fa-music"></i>
-          </ng-template>
-        <app-audios></app-audios>
-    </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <i class="fa fa-film"></i>
-          </ng-template>
-          <app-videos></app-videos>
-    </mat-tab>
-    <mat-tab>
-      <ng-template mat-tab-label>
+  <div class="map-header row">
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link
+         routerLink="map"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive">
+        <i class="fa fa-globe"></i>
+      </a>
+      <a mat-tab-link
+         routerLink="info"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive">
+        <i class="fa fa-home"></i>
+      </a>
+      <a mat-tab-link
+         routerLink="albums"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive">
+        <i class="fa fa-picture-o"></i>
+      </a>
+      <a mat-tab-link
+         routerLink="audios"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive">
+        <i class="fa fa-music"></i>
+      </a>
+      <a mat-tab-link
+         routerLink="videos"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive">
+        <i class="fa fa-film"></i>
+      </a>
+      <a mat-tab-link
+         routerLink="news"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive">
         <i class="fa fa-newspaper-o"></i>
-      </ng-template>
-        <app-news></app-news>
-    </mat-tab>
-    </mat-tab-group>
+      </a>
+    </nav>
   </div>
+  <router-outlet></router-outlet>
+</div>

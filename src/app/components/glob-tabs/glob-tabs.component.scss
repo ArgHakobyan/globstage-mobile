@@ -6,25 +6,21 @@
 .padding{
     padding: 0;
 }
-#map{
-    width: 100%;
-    height: 300px;
+.mat-tab-link{
+  width: 120px;
 }
-.map-block{
-    margin-top: 34px;
-    border-bottom: 2px solid rgb(149, 200, 0);
-    .map-header{
-        background: $color-blue;
-        ::ng-deep .mat-tab-label-content{
-            i{
-                font-size: 26px;
-                color: #fff;
-            }
-        }
-        ::ng-deep .mat-tab-label{
-            opacity: 1;
-        }
+
+.map-header{
+  .mat-tab-nav-bar{
+    a{
+      text-decoration: none;
+      i{
+        color: #fff;
+        font-size: 20px;
+        opacity: 1;
+      }
     }
+  }
 }
 .tabs-a{
     background: $color-white;

@@ -28,6 +28,8 @@ export class ProfileImageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.user.user_photo = result.user_photo;
+      console.log(result);
     });
   }
 
@@ -38,6 +40,7 @@ export class ProfileImageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.user.user_photo = result.user_photo;
     });
   }
 

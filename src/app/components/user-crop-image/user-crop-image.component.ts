@@ -64,12 +64,12 @@ export class UserCropImageComponent implements OnInit {
       .map(res => res)
       .catch(error => error)
       .subscribe(
-        data => {
+        (data: any) => {
           console.log('success');
           const localUser: any = getFromLocalStorage('GLOBE_USER');
-          localUser.user_photo = this.croppedImage;
+          localUser.user_photo = data.path;
           setToLocalStorage('GLOBE_USER', localUser);
-          this.dialogRef.close();
+          this.dialogRef.close({'user_photo': data.path});
         },
         error => console.log(error)
       );

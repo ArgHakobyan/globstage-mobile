@@ -6,7 +6,18 @@
   <p class="center-p">Loading top photo</p>
   <div class="row">
     <div class="uploaded-img col-md-6">
-      <img src="{{uploadedImage || '/assets/imgs/no_avatar.png'}}" alt="no_avatar.png">
+      <!--<img src="{{uploadedImage || '/assets/imgs/no_avatar.png'}}" alt="no_avatar.png">-->
+      <image-cropper crossorigin
+                     [imageBase64]="selectedImage || '/assets/imgs/no_avatar.png'"
+                     [imageChangedEvent]="imageChangedEvent"
+                     [maintainAspectRatio]="true"
+                     [resizeToWidth]="256"
+                     format="jpeg"
+                     (imageCroppedBase64)="imageCropped($event)"
+                     (imageCroppedFile)="imageCroppedFile($event)"
+                     (imageLoaded)="imageLoaded()"
+                     (loadImageFailed)="loadImageFailed()"
+      ></image-cropper>
     </div>
     <div class="why-photo col-md-6">
       <h4>Why photography?</h4>
@@ -15,12 +26,12 @@
         - No photos you will not be able to find and see other people.</p>
     </div>
     <div class="col-md-12">
-      <input class="chooser" type="file" ng2FileSelect [uploader]="uploader"/>
+      <input class="chooser" type="file" (change)="fileChangeEvent($event)" ng2FileSelect [uploader]="uploader"/>
       <div class="uploads">
         <div>
         </div>
         <button type="button" class="upload btn btn-success btn-s"
-                (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                (click)="uploadThumb()" [disabled]="!uploader.getNotUploadedItems().length">
           <span class="glyphicon glyphicon-upload"></span> Upload
         </button>
         <button type="button" class="remove btn btn-danger btn-s"

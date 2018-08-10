@@ -15,9 +15,9 @@ export class AppComponent {
   userId = getFromLocalStorage('GLOBE_USER') ? getFromLocalStorage('GLOBE_USER').id : null;
   http: HttpService;
 
-  constructor(private _signalRAdapter: GlobeAdapter) {
+  constructor(private chatAdapter: GlobeAdapter) {
 
     }
 
-  public adapter: ChatAdapter = this._signalRAdapter;
+  public adapter: ChatAdapter = this.chatAdapter;
 }

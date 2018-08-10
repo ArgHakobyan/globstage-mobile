@@ -7,6 +7,10 @@ import {UserStatus} from './core/user-status.enum';
 import {Localization, StatusDescription} from './core/localization';
 import 'rxjs/add/operator/map';
 import {ChatService} from "../../services/chat.service";
+import {UploadMediaAttachComponent} from "../upload-media-attach/upload-media-attach.component";
+import {MatDialog} from "@angular/material";
+import {NewVideoModalComponent} from "../new-video-modal/new-video-modal.component";
+import {NewAudioModalComponent} from "../new-audio-modal/new-audio-modal.component";
 
 @Component({
   selector: 'app-ng-chat',
@@ -20,6 +24,9 @@ import {ChatService} from "../../services/chat.service";
 
 export class NgChatComponent implements OnInit {
   // Exposes the enum for the template
+  attachements = [];
+  attached = [];
+
   UserStatus = UserStatus;
   @Input()
   public adapter: ChatAdapter;
@@ -85,7 +92,8 @@ export class NgChatComponent implements OnInit {
   private viewPortTotalArea;
 
   constructor(
-    private chatService: ChatService
+    private chatService: ChatService,
+    public dialog: MatDialog,
   ) {
   }
 
@@ -531,4 +539,56 @@ export class NgChatComponent implements OnInit {
       return this.windows[index + 1];
     }
   }
+
+  openDialogAttach() {
+    const dialogRef = this.dialog.open(UploadMediaAttachComponent, {
+      height: 'auto',
+      width: '500px',
+    });
+
+    dialogRef.componentInstance.onUpload.subscribe((res: any) => {
+      console.log(JSON.parse(res).id);
+      this.attachements.push(JSON.parse(res).id);
+      this.attached.push(JSON.parse(res));
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+  openDialogVideo() {
+    const dialogRef = this.dialog.open(NewVideoModalComponent, {
+      height: 'auto'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  openDialogAudio() {
+    const dialogRef = this.dialog.open(NewAudioModalComponent, {
+      height: '350px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  sendMessage($event, window){
+    if (window.newMessage && window.newMessage.trim() !== '') {
+      let message = new Message();
+
+      message.from_id = this.userId;
+      message.for_id = window.chattingTo.id;
+      message.content = window.newMessage;
+
+      window.messages.push(message);
+
+      this.adapter.sendMessage(message);
+
+      window.newMessage = ''; // Resets the new message input
+
+      this.scrollChatWindowToBottom(window);
+    }
+  }
+
 }

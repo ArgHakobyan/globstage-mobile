@@ -57,13 +57,13 @@
                     <div class="smiles col-md-8">
                         <ul>
                             <li><i class="fa fa-smile-o"></i></li>
-                            <li><i class="fa fa-picture-o"></i></li>
-                            <li><i class="fa fa-video-camera"></i></li>
-                            <li><i class="fa fa-music"></i></li>
+                            <li (click)="openDialogAttach()"><i class="fa fa-picture-o"></i></li>
+                            <li (click)="openDialogVideo()"><i class="fa fa-video-camera"></i></li>
+                            <li (click)="openDialogAudio()"><i class="fa fa-music"></i></li>
                         </ul>
                     </div>
                     <div class="send-btn col-md-4">
-                        <button type="button" class="send btn btn-success">Send</button>
+                        <button (click)="sendMessage($event, window)" type="button" class="send btn btn-success">Send</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>

@@ -3,6 +3,10 @@
   width: 100%;
   height: 300px;
 }
+.map{
+  background: url("../../../assets/imgs/Globstagemap.png") center right no-repeat;
+  cursor: pointer;
+}
 .map-block{
   margin-top: 34px;
   border-bottom: 2px solid rgb(149, 200, 0);

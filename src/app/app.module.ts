@@ -32,7 +32,8 @@ import { PostsService } from './services/posts.service';
 import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {HttpInterceptorService} from './services/http-interceptor.service';
 import {ChatService} from './services/chat.service';
-
+import 'hammerjs';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 import {MatInputModule} from '@angular/material/input';
 import {
@@ -103,10 +104,20 @@ import { UserFriendComponent } from './pages/user-friend/user-friend.component';
 import { GroupPageComponent } from './pages/group/group-page.component';
 import { AttachmentsComponent } from './components/wall/post/attachments/attachments.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { AlbumsComponent } from './components/albums/albums.component';
+import { ProfileMapComponent } from './components/profile-map/profile-map.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
-  { path: 'profile',  component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, children: [
+      { path: 'map', component: ProfileMapComponent},
+      { path: 'info', component: ProfileInfoComponent},
+      { path: 'albums', component: AlbumsComponent},
+      { path: 'audios', component: AudiosComponent},
+      { path: 'videos', component: VideosComponent},
+      { path: 'news', component: NewsComponent},
+    ]},
+
   { path: 'group/:id',  component: GroupPageComponent },
   { path: 'groups',  component: GroupsComponent },
   { path: 'notes',  component: NotesComponent },
@@ -169,6 +180,8 @@ const appRoutes: Routes = [
     GroupPageComponent,
     AttachmentsComponent,
     PrivacyPolicyComponent,
+    AlbumsComponent,
+    ProfileMapComponent,
   ],
   imports: [
     CommonModule,
@@ -217,7 +230,8 @@ const appRoutes: Routes = [
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCZ-8jW9x7sh66bIizdlYbWSa5AHZ3Bi2E',
       libraries: ['places']
-})
+}),
+    NgxGalleryModule
   ],
   providers: [
     AuthService,

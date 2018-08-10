@@ -19,40 +19,11 @@ export class GlobTabsComponent implements OnInit {
 
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
-
   constructor(public dialog: MatDialog) {
   }
 
   ngOnInit() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.map = new google.maps.Map(this.gmapElement.nativeElement, {
-          center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-          zoom: 14,
-          gestureHandling: 'cooperative',
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          styles: [{
-            'featureType': 'all',
-            'elementType': 'all',
-            'stylers': [{'invert_lightness': true}, {'saturation': 10}, {'lightness': 30}, {'gamma': 0.5}, {'hue': '#435158'}]
-          }]
-        });
-      });
-    } else {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.map = new google.maps.Map(this.gmapElement.nativeElement, {
-          center: new google.maps.LatLng(40.089099, 44.538189),
-          zoom: 10,
-          gestureHandling: 'cooperative',
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          styles: [{
-            'featureType': 'all',
-            'elementType': 'all',
-            'stylers': [{'invert_lightness': true}, {'saturation': 10}, {'lightness': 30}, {'gamma': 0.5}, {'hue': '#435158'}]
-          }]
-        });
-      });
-    }
+
 
 
   }

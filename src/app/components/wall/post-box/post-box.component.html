@@ -1,4 +1,3 @@
-
 <div class="col-md-12">
   <div class="row">
       <div class="col-md-1">
@@ -8,31 +7,36 @@
       </div>
       <div class="col-md-11 text-area" [ngClass]="smileClass">
         <form [formGroup]="formgroupWall" action="" method="post">
-              <textarea class="wall-text" formControlName="user_wall" (focus)="smileFocusFunction()"
-              (focusout)="smileFocusOutFunction()"
-              placeholder="What do you want to say?"></textarea>
-                  <div class="smile-block">
-                      <div class="row">
-                          <div class="smiles col-md-8">
-                              <ul>
-                                  <li><i class="fa fa-smile-o"></i></li>
-                                  <li (click)="openDialogAttach()"><i class="fa fa-picture-o"></i></li>
-                                  <li (click)="openDialogVideo()"><i class="fa fa-video-camera"></i></li>
-                                  <li (click)="openDialogAudio()"><i class="fa fa-music"></i></li>
-                                  <li (click)="openDialogAttach()"><i class="fa fa-file-pdf-o"></i></li>
-                              </ul>
-                          </div>
-                          <div class="share-btn col-md-4">
-                              <button (click)="createPost()" type="submit" class="share btn btn-success">Share</button>
-                          </div>
-                          <div class="clearfix"></div>
-                        <img class="attaches" *ngFor="let img of attached" [src]="img" alt="">
-                        <div class="clearfix"></div>
-                      </div>
-                  </div>
-          </form>
-      </div>
-
+        <textarea class="wall-text" formControlName="user_wall" (focus)="smileFocusFunction()"
+        (focusout)="smileFocusOutFunction()"
+        placeholder="What do you want to say?"></textarea>
+    <div class="smile-block">
+        <div class="row">
+            <div class="smiles col-md-8">
+                <ul>
+                    <li><i class="fa fa-smile-o"></i></li>
+                    <li (click)="openDialogAttach()"><i class="fa fa-picture-o"></i></li>
+                    <li (click)="openDialogVideo()"><i class="fa fa-video-camera"></i></li>
+                    <li (click)="openDialogAudio()"><i class="fa fa-music"></i></li>
+                    <li (click)="openDialogAttach()"><i class="fa fa-file-pdf-o"></i></li>
+                </ul>
+            </div>
+            <div class="share-btn col-md-4">
+                <button (click)="createPost()" type="submit" class="share btn btn-success">Share</button>
+            </div>
         <div class="clearfix"></div>
+          <div class="attaches" *ngFor="let img of attached">
+              <img class="attaches post_attach" *ngIf="img.type=='image'" [src]="img.path" alt="">
+              <a target="_blank" [href]="img.path"><img class="attaches post_attach doc-hover" *ngIf="img.type=='pdf'"
+              src="/assets/imgs/pdf_icon_svg_by_qubodup-d9n1mhy.png" alt=""></a>
+              <a target="_blank" [href]="img.path"><img class="attaches post_attach doc-hover" *ngIf="img.type=='doc'"
+              src="/assets/imgs/2000px-MS_word_DOC_icon.svg.png" alt=""></a>
+          </div>
+        <div class="clearfix"></div>
+        </div>
+        </div>
+        </form>
+      </div>
+      <div class="clearfix"></div>
   </div>
 </div>

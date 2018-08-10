@@ -7,28 +7,27 @@
         <div class="profile-status">
           <ng-template [ngIf]="status">
             <div (click)="openInputWrite()" class="status-text">
-              Enter the text of your status
+              {{'profile.statusPlaceholder' | translate}}
             </div>
           </ng-template>
           <ng-template [ngIf]="newStatus">
             <div class="new-status">
               <textarea class="form-control" placeholder="Enter the text of your status" rows="2"></textarea>
-              <button type="button" class="btn btn-success save" (click)="postStatus()">Save</button>
+              <button type="button" class="btn btn-success save" (click)="postStatus()">{{'save' | translate}}</button>
             </div>
           </ng-template>
         </div>
         <div routerLink="/groups" class="box-group center">
           <div class="img-subscribe"></div>
-          Subscribe to you interesting group and read their updates in the newsfeed.
+          {{'profile.groupText' | translate}}
         </div>
         <div routerLink="/notes" class="box-notes center">
           <div class="img-notes"></div>
-          With the help of notes, you can share the events of
-          life with friends, as well as to be aware of whats new with them.
+          {{'profile.notesText' | translate}}
         </div>
         <div class="box-video center">
           <div class="img-video"></div>
-          Can store an unlimited number of video files.<br>To add your first video, click here.
+          {{'profile.videosText' | translate}}
         </div>
         <app-friends-sidebar-block [userId]="user.id"></app-friends-sidebar-block>
       </div>

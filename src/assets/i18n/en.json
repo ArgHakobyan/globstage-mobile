@@ -1,0 +1,30 @@
+{
+  "userProfile": {
+    "addFriend": "Add to friends",
+    "sendMessage": "Send Message",
+    "statusPlaceholder": "User has not written a status yet.",
+    "follow": "Follow",
+    "unfollow": "Unfollow",
+    "block": "Block",
+    "unlock": "Unlock"
+  },
+  "profile": {
+    "statusPlaceholder": "Enter the text of your status.",
+    "groupText": "Subscribe to you interesting group and read their updates in the newsfeed.",
+    "notesText": "With the help of notes, you can share the events of life with friends, as well as to be aware of whats new with them.",
+    "videosText": "Can store an unlimited number of video files. To add your first video, click here."
+  },
+  "save": "Save",
+  "news": "News",
+  "friends": "Friends",
+  "albums": "Albums",
+  "audio": "Audio",
+  
+  "information": {
+    "country": "Country",
+    "city": "City",
+    "dob": "Date of birth",
+    "rating": "Rating"
+  }
+
+}

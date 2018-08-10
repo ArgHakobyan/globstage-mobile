@@ -106,6 +106,10 @@ import { AttachmentsComponent } from './components/wall/post/attachments/attachm
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { AlbumsComponent } from './components/albums/albums.component';
 import { ProfileMapComponent } from './components/profile-map/profile-map.component';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {Observable} from 'rxjs';
+import {fromPromise} from 'rxjs/internal/observable/fromPromise';
+import {ConfigService} from './services/config.service';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -131,6 +135,12 @@ const appRoutes: Routes = [
   { path: 'user-friend/:id',  component: UserFriendComponent },
  ];
 
+
+export class CustomTranslateLoader implements TranslateLoader {
+  getTranslation(lang: string): Observable<any> {
+    return fromPromise(System.import(`../assets/i18n/${lang.toLowerCase()}.json`));
+  }
+}
 
 @NgModule({
   declarations: [
@@ -231,7 +241,14 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyCZ-8jW9x7sh66bIizdlYbWSa5AHZ3Bi2E',
       libraries: ['places']
 }),
-    NgxGalleryModule
+    NgxGalleryModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useClass: CustomTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [
     AuthService,
@@ -244,7 +261,8 @@ const appRoutes: Routes = [
     CommentService,
     SearchService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
-    ChatService
+    ChatService,
+    ConfigService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

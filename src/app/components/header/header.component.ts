@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { SearchAllComponent } from '../search-all/search-all.component';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +10,19 @@ import { SearchAllComponent } from '../search-all/search-all.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  selected = 'option1';
+
 
   @Input()
   public isCollapsed = false;
+  public selectedOption = 'En';
 
-  constructor(private router: Router, public dialog: MatDialog) { }
+  constructor(
+    private router: Router,
+    public dialog: MatDialog,
+    public translate: TranslateService,
+  ) {
+
+  }
 
   ngOnInit() {
 
@@ -35,6 +43,11 @@ export class HeaderComponent implements OnInit {
   }
   onChatTitleClicked(event: any): void {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  changeLang(e) {
+    this.selectedOption = e.value;
+    this.translate.use(e.value);
   }
 
 }

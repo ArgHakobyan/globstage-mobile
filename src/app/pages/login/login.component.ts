@@ -117,7 +117,7 @@ export class LoginComponent implements OnInit {
     this.authService.signUpUser(sendData)
       .subscribe(response => {
         console.log(response, 'response');
-        setToLocalStorage('GLOBE_AUTH', response.body.auth);
+        setToLocalStorage('GLOBE_AUTH', response.auth);
         this.userService.setUser(response.body.user);
         this.router.navigate(['/profile']);
       }, error => {

@@ -1,8 +1,9 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
 import { FriendsService } from '../../services/friends.service';
 import { MatSnackBar } from '@angular/material';
-import { getFromLocalStorage } from "../../utils/local-storage";
+import { getFromLocalStorage } from '../../utils/local-storage';
 import { ChatService } from '../../services/chat.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-profile-image',
@@ -18,7 +19,8 @@ export class UserProfileImageComponent implements OnInit {
   constructor(
     private friendService: FriendsService,
     public snackBar: MatSnackBar,
-    private chatService: ChatService
+    private chatService: ChatService,
+    public translate: TranslateService,
   ) {
   }
 
@@ -58,7 +60,7 @@ export class UserProfileImageComponent implements OnInit {
   addFollow() {
     this.friendService.addFollow({
       author_id: getFromLocalStorage('GLOBE_USER').id, user_id: getFromLocalStorage('GLOBE_USER').id,
-      follow_to: this.user.id, to: "user"
+      follow_to: this.user.id, to: 'user'
     }).subscribe(res => {
       this.snackBar.open(`You are following ${this.user.user_name}  now.`, 'ok', {duration: 3000});
     });
@@ -70,16 +72,16 @@ export class UserProfileImageComponent implements OnInit {
     });
   }
 
-  blockUser(){
+  blockUser() {
     this.friendService.blockUser(this.user.id).subscribe(res => {
       this.snackBar.open(`You have blocked ${this.user.user_name}.`, 'ok', {duration: 3000});
-    })
+    });
   }
 
-  unblockUser(){
+  unblockUser() {
     this.friendService.unblockUser(this.user.id).subscribe(res => {
       this.snackBar.open(`You have unlocked ${this.user.user_name}.`, 'ok', {duration: 3000});
-    })
+    });
   }
 }
 

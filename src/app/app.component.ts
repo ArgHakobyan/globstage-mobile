@@ -1,23 +1,32 @@
-import { Component } from '@angular/core';
-import { ChatAdapter } from './components/ng-chat';
-import { GlobeAdapter } from './services/chatAdapter';
-import { HttpService } from './services/http.service';
-import { getFromLocalStorage } from './utils/local-storage';
-
+import {Component, OnInit} from '@angular/core';
+import {ChatAdapter} from './components/ng-chat';
+import {GlobeAdapter} from './services/chatAdapter';
+import {HttpService} from './services/http.service';
+import {getFromLocalStorage} from './utils/local-storage';
+import {TranslateService} from '@ngx-translate/core';
+import {ConfigService} from './services/config.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   userId = getFromLocalStorage('GLOBE_USER') ? getFromLocalStorage('GLOBE_USER').id : null;
   http: HttpService;
-
-  constructor(private chatAdapter: GlobeAdapter) {
-
-    }
-
   public adapter: ChatAdapter = this.chatAdapter;
+
+  constructor(
+    private chatAdapter: GlobeAdapter,
+    public _translate: TranslateService,
+    private _config: ConfigService,
+  ) {
+  }
+
+  ngOnInit(): void {
+    this._translate.setDefaultLang('En');
+    this._translate.use('En');
+    this._config.locale = this._translate.getDefaultLang();
+  }
 }

@@ -11,12 +11,12 @@
         <li><button (click)="logOut()"><i class="fa fa-sign-out"></i></button></li>
         <li>
           <mat-form-field>
-            <mat-select [(value)]="selected" [ngClass]="selected">
-              <mat-option value="option1">
+            <mat-select [(value)]="selectedOption" [ngClass]="selectedOption" (selectionChange)="changeLang($event)">
+              <mat-option value="En">
                 <img width="40" class="lang-gb" src="/assets/imgs/gb.svg" alt="GlobFull_logo1">
                 English
               </mat-option>
-              <mat-option value="option2">
+              <mat-option value="Ru">
                 <img width="40" class="lang-gb" src="/assets/imgs/ru.svg" alt="GlobFull_logo1">
                 Russian
               </mat-option>

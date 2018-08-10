@@ -3,13 +3,13 @@
       <ng-template [ngIf]= "showInfo">
       <div class="col-md-8 t-info">
         <div class="information col-md-12">
-          <p (click)="editUserInfo()" class="title">Information</p>
+          <p (click)="editUserInfo()" class="title">{{'information.info' | translate}}</p>
           <div class="row">
               <div class="col-md-6">
-                  <p>Country:</p>
-                  <p>City:</p>
-                  <p>Date of birth:</p>
-                  <p>Rating:</p>
+                  <p>{{'information.country' | translate}}:</p>
+                  <p>{{'information.city' | translate}}:</p>
+                  <p>{{'information.dob' | translate}}:</p>
+                  <p>{{'information.rating' | translate}}:</p>
               </div>
               <div class="col-md-6 user-info">
                   <div class="user-country">
@@ -34,25 +34,24 @@
             <div class="row">
               <ng-template [ngIf]= "editInfo">
               <div class="edit-info col-md-8">
-                <h5>Information</h5>
+                <h5>{{'information.info' | translate}}</h5>
                 <form [formGroup]="information" (ngSubmit)="saveInfo(information)" class="form-info">
                   <mat-form-field class="example-full-width">
                     <mat-select formControlName="user_gender" placeholder="Gender">
-                      <mat-option value="">No selected</mat-option>
-                      <mat-option  value="male">Male</mat-option>
-                      <mat-option  value="female">Female</mat-option>
+                      <mat-option value="">{{'information.no-select' | translate}}</mat-option>
+                      <mat-option  value="male">{{'information.male' | translate}}</mat-option>
+                      <mat-option  value="female">{{'information.female' | translate}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field class="example-full-width">
                     <mat-select formControlName="user_marital_status" placeholder="Marital Status">
-                      <mat-option value="">No selected</mat-option>
-                      <mat-option  value="single">Single</mat-option>
-                      <mat-option  value="engaged">Engaged</mat-option>
-                      <mat-option  value="pomovlen">Pomovlen</mat-option>
-                      <mat-option  value="married">Married</mat-option>
-                      <mat-option  value="inLove">In Love</mat-option>
-                      <mat-option  value="complicated">Its complicated</mat-option>
-                      <mat-option  value="activeSearch">In active search</mat-option>
+                      <mat-option value="">{{'information.no-select' | translate}}</mat-option>
+                      <mat-option  value="single">{{'information.single' | translate}}</mat-option>
+                      <mat-option  value="engaged">{{'information.engaged' | translate}}</mat-option>
+                      <mat-option  value="married">{{'information.married' | translate}}</mat-option>
+                      <mat-option  value="inLove">{{'information.in-love' | translate}}</mat-option>
+                      <mat-option  value="complicated">{{'information.complicated' | translate}}</mat-option>
+                      <mat-option  value="activeSearch">{{'information.active-search' | translate}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field>
@@ -67,41 +66,34 @@
                     <input formControlName="user_city" matInput placeholder="City">
                   </mat-form-field>
                   <div class="save-info">
-                    <button type="submit" class="save btn btn-default">Save</button>
-                    <button (click)="cancelEditInfo()" type="button" class="cancel btn btn-default">Cancel</button>
+                    <button type="submit" class="save btn btn-default">{{'information.save' | translate}}</button>
+                    <button (click)="cancelEditInfo()" type="button" class="cancel btn btn-default">{{'information.cancel' | translate}}</button>
                 </div>
                 </form>
               </div>
             </ng-template>
             </div>
           </div>
-      <!-- <div class="col-md-6 gift">
-        <p class="*ngIf-info">Gifts</p>
-        <div class="gift-info">
-          <p class="user-*ngIf">Argam There are no gifts You can be the first to give a gift</p>
-        </div>
-      </div> -->
-      <!-- <div class="clearfix"></div> -->
       <div class="col-md-12">
         <div class="row">
             <div (click)="show1Toggle()" class="show-details col-md-12">
-              <span *ngIf= "!detailsToggle">Show Details</span>
-              <span *ngIf= "detailsToggle">Close Details</span>
+              <span *ngIf= "!detailsToggle">{{'information.show-details' | translate}}</span>
+              <span *ngIf= "detailsToggle">{{'information.close-details' | translate}}</span>
             </div>
             <ng-template [ngIf]= "detailsToggle">
               <div class="hidden-block col-md-8">
                   <div class="content-details borders">
-                      <p (click)="editUserContact()" class="contact edits">Contact</p>
+                      <p (click)="editUserContact()" class="contact edits">{{'information.contact' | translate}}</p>
                     <ul class="contact-info"  *ngIf="showContact">
-                      <li>Mobile:<span>{{ user?.user_contact.user_mobile }}</span></li>
-                      <li>Twitter:<span>{{ user?.user_contact.user_twitter}}</span></li>
-                      <li>Facebook:<span>{{ user?.user_contact.user_facebook}}</span></li>
-                      <li>Skype:<span>{{ user?.user_contact.user_skype}}</span></li>
-                      <li>Website:<span>{{ user?.user_contact.user_website}}</span></li>
+                      <li>{{'information.mobile' | translate}}:<span>{{ user?.user_contact.user_mobile }}</span></li>
+                      <li>{{'information.twitter' | translate}}:<span>{{ user?.user_contact.user_twitter}}</span></li>
+                      <li>{{'information.facebook' | translate}}:<span>{{ user?.user_contact.user_facebook}}</span></li>
+                      <li>{{'information.skype' | translate}}:<span>{{ user?.user_contact.user_skype}}</span></li>
+                      <li>{{'information.website' | translate}}:<span>{{ user?.user_contact.user_website}}</span></li>
                     </ul>
                     <ng-template [ngIf]="editContact">
                       <div class="edit-contact">
-                        <h5>Contact</h5>
+                        <h5>{{'information.contact' | translate}}</h5>
                         <form [formGroup]="contact" (ngSubmit)="saveContact(contact)" class="form-contact">
                         <mat-form-field class="example-full-width">
                             <input formControlName="user_mobile" matInput placeholder="Mobile">
@@ -119,27 +111,27 @@
                             <input formControlName="user_website" matInput placeholder="Website">
                           </mat-form-field>
                           <div class="save-contact">
-                            <button type="submit" class="save btn btn-default">Save</button>
-                            <button (click)="cancelEditContact()" type="button" class="cancel btn btn-default">Cancel</button>
+                            <button type="submit" class="save btn btn-default">{{'information.save' | translate}}</button>
+                            <button (click)="cancelEditContact()" type="button" class="cancel btn btn-default">{{'information.cancel' | translate}}</button>
                           </div>
                         </form>
                       </div>
                       </ng-template>
                   </div>
                   <div *ngIf="!personalEditing" class="personal borders">
-                      <p (click)="editUserPersonal()" class="personal-info edits">Personal Info</p>
-                      <p class="pers-inf">Activities:<span>{{ user?.user_interests.activities }}</span></p>
-                      <p class="pers-inf">Interests:<span>{{ user?.user_interests.interests }}</span></p>
-                      <p class="pers-inf">Favorite Munshids:<span>{{ user?.user_interests.favorite_munshids }}</span></p>
-                      <p class="pers-inf">Favorite Preachers:<span>{{ user?.user_interests.favorite_preachers }}</span></p>
-                      <p class="pers-inf">Favorite Books:<span>{{ user?.user_interests.favorite_books }}</span></p>
-                      <p class="pers-inf">Favorite Sports:<span>{{ user?.user_interests.favorite_sports }}</span></p>
-                      <p class="pers-inf">Favorite Quotes:<span>{{ user?.user_interests.favorite_books }}</span></p>
-                      <p class="pers-inf">About Me:<span>{{ user?.user_interests.about_me }}</span></p>
+                      <p (click)="editUserPersonal()" class="personal-info edits">{{'information.personal-info' | translate}}</p>
+                      <p class="pers-inf">{{'information.activities' | translate}}:<span>{{ user?.user_interests.activities }}</span></p>
+                      <p class="pers-inf">{{'information.interests' | translate}}:<span>{{ user?.user_interests.interests }}</span></p>
+                      <p class="pers-inf">{{'information.fav-munshids' | translate}}:<span>{{ user?.user_interests.favorite_munshids }}</span></p>
+                      <p class="pers-inf">{{'information.fav-preachers' | translate}}:<span>{{ user?.user_interests.favorite_preachers }}</span></p>
+                      <p class="pers-inf">{{'information.books' | translate}} :<span>{{ user?.user_interests.favorite_books }}</span></p>
+                      <p class="pers-inf">{{'information.sports' | translate}}:<span>{{ user?.user_interests.favorite_sports }}</span></p>
+                      <p class="pers-inf">{{'information.quotes' | translate}}:<span>{{ user?.user_interests.favorite_books }}</span></p>
+                      <p class="pers-inf">{{'information.about-me' | translate}}:<span>{{ user?.user_interests.about_me }}</span></p>
                   </div>
                   <ng-template [ngIf]= "showPersonal">
                     <div class="edit-personal">
-                      <h5>Personal</h5>
+                      <h5>{{'information.personal-info' | translate}}</h5>
                       <form [formGroup]="personal" (ngSubmit)="savePersonal(personal)" class="form-contact">
                         <mat-form-field class="example-full-width">
                             <textarea formControlName="activities" matInput placeholder="Activities"></textarea>
@@ -166,8 +158,8 @@
                                 <textarea formControlName="about_me" matInput placeholder="About Me"></textarea>
                               </mat-form-field>
                               <div class="save-personal">
-                                <button type="submit" class="save btn btn-default">Save</button>
-                                <button (click)="cancelEditPersonal()" type="button" class="cancel btn btn-default">Cancel</button>
+                                <button type="submit" class="save btn btn-default">{{'information.save' | translate}}</button>
+                                <button (click)="cancelEditPersonal()" type="button" class="cancel btn btn-default">{{'information.cancel' | translate}}</button>
                               </div>
                             </form>
                     </div>

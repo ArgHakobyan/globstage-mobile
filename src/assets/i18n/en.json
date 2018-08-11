@@ -53,6 +53,64 @@
     "sports": "Sports",
     "quotes": "Quotes",
     "about-me": "About Me"
+  },
+  "friend": {
+    "friends": "Friends",
+    "search": "Search"
+  },
+  "groups": {
+    "createGroup": "Create Group",
+    "subToGroup": "Subscribe to Group",
+    "search": "Search"
+  },
+  "login": {
+    "welcomeTo": "WELCOME TO",
+    "globStage": "GLOBSTAGE",
+    "login": "Login",
+    "register": "Register",
+    "welcome": "Welcome",
+    "eMail": "E-MAIL",
+    "password": "PASSWORD",
+    "forgotYourPass": "Forgot your password",
+    "allRequired": "All fields are required."
+  },
+  "notes": {
+    "note": "Create Notes"
+  },
+  "privacy": {
+    "privateMess": "Who can write me private messages",
+    "otherPeoples": "Who sees other people's records on my wall",
+    "postMyWall": "Who can post on my wall",
+    "commentEntries": "Who can comment on my entries",
+    "basicInfoPage": "Who sees my basic information page",
+    "listMyQuotes": "Who can view a list of my guests",
+    "justFriends": "Just Friends",
+    "no": "No",
+    "onlyVerified": "Only verified",
+    "onlyI": "Only I"
+  },
+  "settings":{
+    "changePass": "Change password",
+    "changeName": "Change name",
+    "pageAdd": "Page address",
+    "pageNumb": "Page number",
+    "changeSort": "Change the short link",
+    "calc": "Recalculation",
+    "calcEvents": "Calculate the rate of new events",
+    "veryFic": "Verification",
+    "reqVerify": "Request for verification",
+    "confirmDoc": "Confirmation Document",
+    "selectDoc": "Select the document",
+    "docFromId": "Document to choose from: student ID, drivers license.",
+    "scanPas": "Scan passport.",
+    "iAgree": "I agree to the processing and storage of my personal data",
+    "send": "Send",
+    "emailAdd": "Your email address",
+    "currentAdd": "Current address",
+    "saveAdd": "Save address"
+  },
+  "userFriend":{
+    "search": "Search"
   }
 
 }

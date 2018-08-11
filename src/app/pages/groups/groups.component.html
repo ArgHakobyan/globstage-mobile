@@ -4,7 +4,7 @@
       <div class="col-md-3">
       <app-profile-image></app-profile-image>
       <div class="create-group">
-        <span (click)="openDialogGroup()" class="create">Create Group</span>
+        <span (click)="openDialogGroup()" class="create">{{'groups.createGroup' | translate}}</span>
       </div>
       </div>
       <div class="col-md-9">
@@ -15,7 +15,7 @@
                 <mat-form-field class="example-full-width">
                   <input type="search" matInput placeholder="Search" value="">
                 </mat-form-field>
-                <button type="submit" class="search btn-success save">Search</button>
+                <button type="submit" class="search btn-success save">{{'groups.search' | translate}}</button>
             </form>
           </div>
           <div class="col-md-12">

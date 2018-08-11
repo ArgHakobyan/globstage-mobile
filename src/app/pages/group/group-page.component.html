@@ -4,10 +4,10 @@
     <div class="col-md-3">
       <app-profile-image></app-profile-image>
       <div class="create-group">
-        <span (click)="openDialogGroup()" class="create">Create Group</span>
+        <span (click)="openDialogGroup()" class="create">{{'groups.createGroup' | translate}}</span>
       </div>
       <div class="create-group subscribe">
-        <span (click)="subscribeToGroup()" class="create">Subscribe to Group</span>
+        <span (click)="subscribeToGroup()" class="create">{{'groups.subToGroup' | translate}}</span>
       </div>
       <!--<app-friends-sidebar-block *ngIf="user.friends" [friends]="user.friends"></app-friends-sidebar-block>-->
     </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-12">
           <div class="row">
-            <app-wall *ngIf="group"  [groupId]="group?.id"></app-wall>
+            <app-wall class="col-md-12" *ngIf="group"  [groupId]="group?.id"></app-wall>
             <div class="clearfix"></div>
           </div>
         </div>

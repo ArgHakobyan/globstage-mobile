@@ -8,47 +8,47 @@
         <app-header></app-header>
         <div class="privacy">
           <form class="example-form">
-          <p>Who can write me private messages :<mat-form-field>
+          <p>{{'privacy.privateMess' | translate}}:<mat-form-field>
             <mat-select [(value)]="selected1" [ngClass]="selected1">
-              <mat-option value="option1">All Members</mat-option>
-              <mat-option value="option2">Just Friends</mat-option>
-              <mat-option value="option3">No</mat-option>
-              <mat-option value="option4">Only verified</mat-option>
+              <mat-option value="option1">All Member</mat-option>
+              <mat-option value="option2">{{'privacy.justFriends' | translate}}</mat-option>
+              <mat-option value="option3">{{'privacy.no' | translate}}</mat-option>
+              <mat-option value="option4">{{'privacy.onlyVerified' | translate}}</mat-option>
             </mat-select>
           </mat-form-field></p>
-        <p>Who sees other people's records on my wall :<mat-form-field>
+        <p>{{'privacy.otherPeoples' | translate}} :<mat-form-field>
             <mat-select [(value)]="selected2" [ngClass]="selected2">
-              <mat-option value="option1">All Members</mat-option>
-              <mat-option value="option2">Just Friends</mat-option>
-              <mat-option value="option4">Only I</mat-option>
+              <mat-option value="option1">All Member</mat-option>
+              <mat-option value="option2">{{'privacy.justFriends' | translate}}</mat-option>
+              <mat-option value="option3">{{'privacy.onlyI' | translate}}</mat-option>
             </mat-select>
           </mat-form-field></p>
-          <p>Who can post on my wall :<mat-form-field>
+          <p>{{'privacy.postMyWall' | translate}} :<mat-form-field>
             <mat-select [(value)]="selected3" [ngClass]="selected3">
               <mat-option value="option1">All Members</mat-option>
-              <mat-option value="option2">Just Friends</mat-option>
-              <mat-option value="option4">Only I</mat-option>
+              <mat-option value="option2">{{'privacy.justFriends' | translate}}</mat-option>
+              <mat-option value="option3">{{'privacy.onlyI' | translate}}</mat-option>
             </mat-select>
           </mat-form-field></p>
-        <p>Who can comment on my entries :<mat-form-field>
+        <p>{{'privacy.commentEntries' | translate}} :<mat-form-field>
             <mat-select [(value)]="selected4" [ngClass]="selected4">
               <mat-option value="option1">All Members</mat-option>
-              <mat-option value="option2">Just Friends</mat-option>
-              <mat-option value="option4">Only I</mat-option>
+              <mat-option value="option2">{{'privacy.justFriends' | translate}}</mat-option>
+              <mat-option value="option3">{{'privacy.onlyI' | translate}}</mat-option>
             </mat-select>
           </mat-form-field></p>
-          <p>Who sees my basic information page :<mat-form-field>
+          <p>{{'privacy.basicInfoPage' | translate}} :<mat-form-field>
             <mat-select [(value)]="selected5" [ngClass]="selected5">
               <mat-option value="option1">All Members</mat-option>
-              <mat-option value="option2">Just Friends</mat-option>
-              <mat-option value="option4">Only I</mat-option>
+              <mat-option value="option2">{{'privacy.justFriends' | translate}}</mat-option>
+              <mat-option value="option3">{{'privacy.onlyI' | translate}}</mat-option>
             </mat-select>
           </mat-form-field></p>
-        <p>Who can view a list of my guests:<mat-form-field>
+        <p>{{'privacy.listMyQuotes' | translate}} :<mat-form-field>
             <mat-select [(value)]="selected6" [ngClass]="selected6">
               <mat-option value="option1">All Members</mat-option>
-              <mat-option value="option2">Just Friends</mat-option>
-              <mat-option value="option4">Only I</mat-option>
+              <mat-option value="option2">{{'privacy.justFriends' | translate}}</mat-option>
+              <mat-option value="option3">{{'privacy.onlyI' | translate}}</mat-option>
             </mat-select>
           </mat-form-field></p>
         </form>

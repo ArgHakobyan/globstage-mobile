@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FriendsService } from "../../services/friends.service";
+import { FriendsService } from '../../services/friends.service';
 
 
 @Component({
@@ -13,12 +13,12 @@ export class FriendsSidebarBlockComponent implements OnInit {
   @Input() userId;
   friendsOnline: any[];
 
-  constructor(private friendService: FriendsService,) { }
+  constructor(private friendService: FriendsService) { }
 
   ngOnInit() {
-    this.friendService.getFriends(this.userId).subscribe(res =>{
+    this.friendService.getFriends(this.userId).subscribe(res => {
       this.friends = res;
-    })
+    });
   }
 
 }

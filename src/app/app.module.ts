@@ -278,7 +278,7 @@ export class CustomTranslateLoader implements TranslateLoader {
     SearchAllComponent,
     AttachmentsComponent,
     FriendsSidebarBlockComponent,
-
+    AttachmentsComponent
   ]
 })
 export class AppModule { }

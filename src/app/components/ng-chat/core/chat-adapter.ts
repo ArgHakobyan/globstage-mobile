@@ -9,7 +9,7 @@ export abstract class ChatAdapter {
 
     public abstract getMessageHistory(userId: any): Observable<Message[]>;
 
-    public abstract sendMessage(message: Message): void;
+    public abstract sendMessage(message: Message): Observable<any>;
 
     // ### Adapter/Chat income/ingress events ###
 

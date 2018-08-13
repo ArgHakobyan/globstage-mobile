@@ -6,11 +6,12 @@ import {Window} from './core/window';
 import {UserStatus} from './core/user-status.enum';
 import {Localization, StatusDescription} from './core/localization';
 import 'rxjs/add/operator/map';
-import {ChatService} from "../../services/chat.service";
-import {UploadMediaAttachComponent} from "../upload-media-attach/upload-media-attach.component";
-import {MatDialog} from "@angular/material";
-import {NewVideoModalComponent} from "../new-video-modal/new-video-modal.component";
-import {NewAudioModalComponent} from "../new-audio-modal/new-audio-modal.component";
+import {ChatService} from '../../services/chat.service';
+import {UploadMediaAttachComponent} from '../upload-media-attach/upload-media-attach.component';
+import {MatDialog} from '@angular/material';
+import {NewVideoModalComponent} from '../new-video-modal/new-video-modal.component';
+import {NewAudioModalComponent} from '../new-audio-modal/new-audio-modal.component';
+
 
 @Component({
   selector: 'app-ng-chat',
@@ -24,9 +25,9 @@ import {NewAudioModalComponent} from "../new-audio-modal/new-audio-modal.compone
 
 export class NgChatComponent implements OnInit {
   // Exposes the enum for the template
-  attachements = [];
+  attachments = [];
   attached = [];
-
+  dialogRef;
   UserStatus = UserStatus;
   @Input()
   public adapter: ChatAdapter;
@@ -100,7 +101,9 @@ export class NgChatComponent implements OnInit {
   get filteredUsers(): User[] {
     if (this.searchInput.length > 0) {
       // Searches in the friend list by the inputted search string
-      return this.users.body.filter(x => {return x.user_name.toUpperCase().includes(this.searchInput.toUpperCase()) || x.user_last_name.toUpperCase().includes(this.searchInput.toUpperCase())});
+      return this.users.body.filter(x => {
+        return x.user_name.toUpperCase().includes(this.searchInput.toUpperCase()) || x.user_last_name.toUpperCase().includes(this.searchInput.toUpperCase());
+      });
     }
     return this.users.body;
   }
@@ -111,9 +114,9 @@ export class NgChatComponent implements OnInit {
 
   ngOnInit() {
     this.bootstrapChat();
-    this.chatService.change.subscribe(res =>{
+    this.chatService.change.subscribe(res => {
       res.status = 'online';
-      this.openChatWindow(res, false,  false);
+      this.openChatWindow(res, false, false);
       console.log(res);
     });
   }
@@ -540,21 +543,37 @@ export class NgChatComponent implements OnInit {
     }
   }
 
-  openDialogAttach() {
-    const dialogRef = this.dialog.open(UploadMediaAttachComponent, {
+  openDialogAttach($event, window) {
+    this.dialogRef = this.dialog.open(UploadMediaAttachComponent, {
       height: 'auto',
       width: '500px',
     });
 
-    dialogRef.componentInstance.onUpload.subscribe((res: any) => {
+    this.dialogRef.componentInstance.onUpload.subscribe((res: any) => {
       console.log(JSON.parse(res).id);
-      this.attachements.push(JSON.parse(res).id);
+
+      this.attachments.push(JSON.parse(res).id);
       this.attached.push(JSON.parse(res));
+      let message = new Message();
+
+      message.from_id = this.userId;
+      message.for_id = window.chattingTo.id;
+      message.content = ''; // window.newMessage;
+      message.attachments = this.attachments;
+
+      if (message.attachments && message.attachments.length > 0) {
+        window.messages.push(message);
+        console.log(message);
+        this.adapter.sendMessage(message);
+        window.newMessage = ''; // Resets the new message input
+        this.scrollChatWindowToBottom(window);
+      }
+      this.dialogRef.close();
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-    });
+
   }
+
   openDialogVideo() {
     const dialogRef = this.dialog.open(NewVideoModalComponent, {
       height: 'auto'
@@ -573,7 +592,7 @@ export class NgChatComponent implements OnInit {
     });
   }
 
-  sendMessage($event, window){
+  sendMessage($event, window) {
     if (window.newMessage && window.newMessage.trim() !== '') {
       let message = new Message();
 
@@ -583,7 +602,9 @@ export class NgChatComponent implements OnInit {
 
       window.messages.push(message);
 
-      this.adapter.sendMessage(message);
+      this.adapter.sendMessage(message).subscribe(res => {
+        window.messages.push(res);
+      });
 
       window.newMessage = ''; // Resets the new message input
 

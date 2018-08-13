@@ -21,9 +21,13 @@ export class GlobeAdapter extends ChatAdapter {
     return this.http.get(`/messages/getmessagebyuserid/${user_id}`);
   }
 
-  sendMessage(message: Message): void {
+  sendMessage(message: Message): Observable<any> {
 
-    this.http.post('/messages', {for_id: message.for_id, content: message.content,}).subscribe();
+    return this.http.post('/messages', {
+      for_id: message.for_id,
+      content: message.content,
+      attachments: message.attachments
+    });
 
   }
 

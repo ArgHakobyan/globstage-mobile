@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PostsService} from '../../../services/posts.service';
-import {getFromLocalStorage} from "../../../utils/local-storage";
+import {getFromLocalStorage} from '../../../utils/local-storage';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation, NgxGalleryLayout } from 'ngx-gallery';
 
 
@@ -23,7 +23,7 @@ export class PostComponent implements OnInit {
 
   addLike() {
     let mn = this.postService.addLike({
-      action: "like",
+      action: 'like',
       post_id: this.post.id
     }).subscribe(res => {
       this.post.post_like_count++;
@@ -32,7 +32,7 @@ export class PostComponent implements OnInit {
 
   disLike() {
     let mn = this.postService.disLike({
-      action: "dislike",
+      action: 'dislike',
       post_id: this.post.id
     }).subscribe(res => {
       this.post.post_dislike_count++;
@@ -44,7 +44,7 @@ export class PostComponent implements OnInit {
       this.onDelete.emit({message: 'postDeleted', id: id});
     }, err => {
       this.onDelete.emit({message: 'postDeleted', id: id});
-    })
+    });
   }
 
 }

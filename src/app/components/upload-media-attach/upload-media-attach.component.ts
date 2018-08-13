@@ -52,7 +52,7 @@ export class UploadMediaAttachComponent implements OnInit {
         this.onUpload.emit(response);
       };
   }
-  postOkClick(){
+  postOkClick() {
     this.dialogRef.close();
   }
   onNoClick(): void {

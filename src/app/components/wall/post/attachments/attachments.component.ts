@@ -41,11 +41,11 @@ export class AttachmentsComponent implements OnInit {
       }
     ];
     console.log(this.post);
-    if(this.post.attactments && this.post.attactments.length > 0) {
+    if (this.post.attactments && this.post.attactments.length > 0) {
       this.imageAttaches  = this.post.attactments.filter(a => a.type === 'image');
-      if(this.imageAttaches && this.imageAttaches.length > 1) {
+      if (this.imageAttaches && this.imageAttaches.length > 1) {
         this.imageAttaches.forEach(a => {
-          this.galleryImages.push({big: a.path, small: a.path, medium: a.path,});
+          this.galleryImages.push({big: a.path, small: a.path, medium: a.path });
         });
       }
 

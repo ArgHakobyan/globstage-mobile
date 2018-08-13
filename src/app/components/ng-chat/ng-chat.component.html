@@ -48,7 +48,9 @@
                         <i class="user-icon"></i>
                     </div>
                     <img *ngIf="window.chattingTo.user_photo && isAvatarVisible(window, message, i)" alt="" class="avatar" height="30" width="30" [src]="window.chattingTo.user_photo" />
-                    <span [innerHtml]="message.content | emojify:emojisEnabled | linkfy:linkfyEnabled"></span>
+                    <span [innerHtml]="message.content | emojify:emojisEnabled | linkfy:linkfyEnabled">
+                      <div *ngIf="message.attachements"></div>
+                    </span>
                 </div>
             </div>
             <input #chatWindowInput [ngModel]="window.newMessage | emojify:emojisEnabled" (ngModelChange)="window.newMessage=$event" type="text" (keydown)="onChatInputTyped($event, window)" [placeholder]="localization.messagePlaceholder" (blur)="toggleWindowFocus(window)" (focus)="toggleWindowFocus(window)"/>

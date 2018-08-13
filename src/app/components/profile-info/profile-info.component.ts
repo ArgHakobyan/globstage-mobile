@@ -23,7 +23,7 @@ export class ProfileInfoComponent implements OnInit {
   public information: FormGroup = new FormGroup({});
   public contact: FormGroup = new FormGroup({});
   public personal: FormGroup = new FormGroup({});
-  public user = {};
+  public user: any = {};
 
   @ViewChild('country') public countryElement: ElementRef;
 
@@ -61,6 +61,8 @@ export class ProfileInfoComponent implements OnInit {
       });
   this.userService.getUser(getFromLocalStorage('GLOBE_USER').id).subscribe((user: any) => {
     this.user = user;
+    this.user.user_contact = JSON.parse(this.user.user_contact);
+    this.user.user_interests = JSON.parse(this.user.user_interests);
     this.information = new FormGroup({
       user_gender: new FormControl(user.user_gender),
       user_date_of_birth: new FormControl(user.user_date_of_birth),
@@ -139,16 +141,21 @@ export class ProfileInfoComponent implements OnInit {
   saveInfo(information) {
     this.userService.updateUserInfo(information.value).subscribe( data => {
       log(data);
+      this.showInfo = true;
+      this.editInfo = false;
     });
   }
   saveContact(contact) {
     this.userService.updateUserContact(contact.value).subscribe( data => {
       log(data);
+      this.editContact = false;
+      this.showContact = true;
     });
   }
   savePersonal(personal) {
     this.userService.updateUserPersonal(personal.value).subscribe( data => {
       log(data);
+      this.showPersonal = false;
     });
   }
 

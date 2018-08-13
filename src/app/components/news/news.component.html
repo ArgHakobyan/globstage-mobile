@@ -19,7 +19,7 @@
     <div class="row">
       <div class="news-content col-md-11">
           <div class="news-atach-photo">
-                <h6>My Firts Post on my news</h6>
+                <h6>{{'newModal.firstPost' | translate}}</h6>
               <img src="/assets/imgs/no_avatar.png" alt="no_avatar">
           </div>
       </div>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-md-3 author">
                     <a href="">Argam Hakobyan</a>
-                    <span class="comment-text">New Comment</span>
+                    <span class="comment-text">{{'newModal.newComment' | translate}}</span>
                 </div>
                 <div class="col-md-4 date">
                     <span class="date-comm">30 June 2018 21:57</span>
@@ -50,7 +50,7 @@
         </div>
       <div class="add-comment" [ngClass]="activeClass">
         <textarea (focus)="focusFunction()" (focusout)="focusOutFunction()" class="text-comm" placeholder="Add a comment"></textarea>
-        <button type="submit" class="add-comm btn btn-success">Send</button>
+        <button type="submit" class="add-comm btn btn-success">{{'newModal.send' | translate}}</button>
       </div>
     </div>
     </div>

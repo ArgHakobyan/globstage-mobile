@@ -1,12 +1,12 @@
 <div class="create-form">
-  <p>Create a new community</p>
+  <p>{{'newModal.createCommunity' | translate}}</p>
   <div class="example-form">
     <mat-form-field class="example-full-width">
       <input [(ngModel)]="groupName" type="text" matInput placeholder="Name" value="" required>
     </mat-form-field>
   </div>
   <div class="create-btn">
-    <button mat-button  (click)="createGroup()" type="button" class="done btn btn-default">Create a new community</button>
-    <button (click) = "onNoClick()" type="button" class="cancel btn btn-default">Cancel</button>
+    <button mat-button  (click)="createGroup()" type="button" class="done btn btn-default">{{'newModal.createCommunity' | translate}}</button>
+    <button (click) = "onNoClick()" type="button" class="cancel btn btn-default">{{'newModal.cancel' | translate}}</button>
   </div>
 </div>

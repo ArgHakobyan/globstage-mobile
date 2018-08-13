@@ -43,6 +43,7 @@
   "friends": "Friends",
   "albums": "Albums",
   "audio": "Audio",
+  "search": "Search",
   
   "information": {
     "country": "Country",
@@ -75,6 +76,7 @@
     "fav-munshids": "Favorite Munshids",
     "fav-preachers": "Favorite Preachers",
     "books": "Books",
+    "search": "Search",
     "sports": "Sports",
     "quotes": "Quotes",
     "about-me": "About Me"

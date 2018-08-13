@@ -2,13 +2,13 @@
   <div class="row" *ngIf="user">
       <div class="col-md-8 t-info">
         <div class="information col-md-12">
-          <p class="title">Information</p>
+          <p class="title">{{'information.info' | translate}}</p>
           <div class="row">
             <div class="col-md-6">
-              <p>Country:</p>
-              <p>City:</p>
-              <p>Date of birth:</p>
-              <p>Rating:</p>
+              <p>{{'information.country' | translate}}:</p>
+              <p>{{'information.city' | translate}}:</p>
+              <p>{{'information.dob' | translate}}:</p>
+              <p>{{'information.rating' | translate}}:</p>
             </div>
             <div class="col-md-6 user-info">
               <div class="user-country">
@@ -31,31 +31,31 @@
     <div class="col-md-12">
       <div class="row">
         <div (click)="show1Toggle()" class="show-details col-md-12">
-          <span *ngIf= "!detailsToggle">Show Details</span>
-          <span *ngIf= "detailsToggle">Close Details</span>
+          <span *ngIf= "!detailsToggle">{{'information.show-details' | translate}}</span>
+          <span *ngIf= "detailsToggle">{{'information.close-details' | translate}}</span>
         </div>
         <ng-template [ngIf]= "detailsToggle">
           <div class="hidden-block col-md-8">
             <div class="content-details borders">
-              <p class="contact edits">Contact</p>
+              <p class="contact edits">{{'information.contact' | translate}}</p>
               <ul class="contact-info">
-                <li>Mobile:<span>{{ user.user_contact.user_mobile }}</span></li>
-                <li>Twitter:<span>{{ user.user_contact.user_twitter}}</span></li>
-                <li>Facebook:<span>{{ user.user_contact.user_facebook}}</span></li>
-                <li>Skype:<span>{{ user.user_contact.user_skype}}</span></li>
-                <li>Website:<span>{{ user.user_csave_personalontact.user_website}}</span></li>
+                <li>{{'information.mobile' | translate}}:<span>{{ user.user_contact.user_mobile }}</span></li>
+                <li>{{'information.twitter' | translate}}:<span>{{ user.user_contact.user_twitter}}</span></li>
+                <li>{{'information.facebook' | translate}}:<span>{{ user.user_contact.user_facebook}}</span></li>
+                <li>{{'information.skype' | translate}}:<span>{{ user.user_contact.user_skype}}</span></li>
+                <li>{{'information.website' | translate}}:<span>{{ user.user_csave_personalontact.user_website}}</span></li>
               </ul>
             </div>
             <div *ngIf="!personalEditing" class="personal borders">
-              <p class="personal-info edits">Personal Info</p>
-              <p class="pers-inf">Activities:<span>{{ user.user_interests.activities }}</span></p>
-              <p class="pers-inf">Interests:<span>{{ user.user_interests.interests }}</span></p>
-              <p class="pers-inf">Favorite Munshids:<span>{{ user.user_interests.favorite_munshids }}</span></p>
-              <p class="pers-inf">Favorite Preachers:<span>{{ user.user_interests.favorite_preachers }}</span></p>
-              <p class="pers-inf">Favorite Books:<span>{{ user.user_interests.favorite_books }}</span></p>
-              <p class="pers-inf">Favorite Sports:<span>{{ user.user_interests.favorite_sports }}</span></p>
-              <p class="pers-inf">Favorite Quotes:<span>{{ user.user_interests.favorite_books }}</span></p>
-              <p class="pers-inf">About Me:<span>{{ user.user_interests.about_me }}</span></p>
+              <p class="personal-info edits">{{'information.personal-info' | translate}}</p>
+              <p class="pers-inf">{{'information.activities' | translate}}:<span>{{ user.user_interests.activities }}</span></p>
+              <p class="pers-inf">{{'information.interests' | translate}}:<span>{{ user.user_interests.interests }}</span></p>
+              <p class="pers-inf">{{'information.fav-munshids' | translate}}:<span>{{ user.user_interests.favorite_munshids }}</span></p>
+              <p class="pers-inf">{{'information.fav-preachers' | translate}}:<span>{{ user.user_interests.favorite_preachers }}</span></p>
+              <p class="pers-inf">{{'information.books' | translate}}:<span>{{ user.user_interests.favorite_books }}</span></p>
+              <p class="pers-inf">{{'information.sports' | translate}}:<span>{{ user.user_interests.favorite_sports }}</span></p>
+              <p class="pers-inf">{{'information.quotes' | translate}}:<span>{{ user.user_interests.favorite_books }}</span></p>
+              <p class="pers-inf">{{'information.about-me' | translate}}:<span>{{ user.user_interests.about_me }}</span></p>
             </div>
           </div>
         </ng-template>

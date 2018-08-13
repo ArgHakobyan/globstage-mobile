@@ -38,14 +38,14 @@
                 <form [formGroup]="information" (ngSubmit)="saveInfo(information)" class="form-info">
                   <mat-form-field class="example-full-width">
                     <mat-select formControlName="user_gender" placeholder="Gender">
-                      <mat-option value="{{'information.no-select' | translate}}"></mat-option>
+                      <mat-option value="no-select">{{'information.no-select' | translate}}</mat-option>
                       <mat-option  value="male">{{'information.male' | translate}}</mat-option>
                       <mat-option  value="female">{{'information.female' | translate}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field class="example-full-width">
                     <mat-select formControlName="user_marital_status" placeholder="Marital Status">
-                      <mat-option value="{{'information.no-select' | translate}}"></mat-option>
+                      <mat-option value="no-select">{{'information.no-select' | translate}}</mat-option>
                       <mat-option  value="single">{{'information.single' | translate}}</mat-option>
                       <mat-option  value="engaged">{{'information.engaged' | translate}}</mat-option>
                       <mat-option  value="married">{{'information.married' | translate}}</mat-option>
@@ -170,6 +170,4 @@
       </div>
       <div class="clearfix"></div>
 </div>
-
-
 </div>

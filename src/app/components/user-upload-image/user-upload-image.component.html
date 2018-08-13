@@ -3,7 +3,7 @@
   <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
 </div>
 <div class="user-upload">
-  <p class="center-p">Loading top photo</p>
+  <p class="center-p">{{'user.topPhoto' | translate}}</p>
   <div class="row">
     <div class="uploaded-img col-md-6">
       <!--<img src="{{uploadedImage || '/assets/imgs/no_avatar.png'}}" alt="no_avatar.png">-->
@@ -20,7 +20,7 @@
       ></image-cropper>
     </div>
     <div class="why-photo col-md-6">
-      <h4>Why photography?</h4>
+      <h4>{{'user.whyPhoto' | translate}}?</h4>
       <p>- People with a real photo write more often;<br>
         - Your friends can easily find you;<br>
         - No photos you will not be able to find and see other people.</p>
@@ -32,18 +32,18 @@
         </div>
         <button type="button" class="upload btn btn-success btn-s"
                 (click)="uploadThumb()" [disabled]="!uploader.getNotUploadedItems().length">
-          <span class="glyphicon glyphicon-upload"></span> Upload
+          <span class="glyphicon glyphicon-upload"></span> {{'user.upload' | translate}}
         </button>
         <button type="button" class="remove btn btn-danger btn-s"
                 (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-          <span class="glyphicon glyphicon-trash"></span> Remove
+          <span class="glyphicon glyphicon-trash"></span> {{'user.remove' | translate}}
         </button>
       </div>
     </div>
     <div class="clearfix"></div>
     <div (click)="showInfoToggle()" class="show-info">
-      <span *ngIf="!infoToggle">Read the rules</span>
-      <span *ngIf="infoToggle">Read the rules</span>
+      <span *ngIf="!infoToggle">{{'user.readRules' | translate}}</span>
+      <span *ngIf="infoToggle">{{'user.closeRules' | translate}}</span>
     </div>
     <ng-template [ngIf]="infoToggle">
       <div class="hidden-info">
@@ -62,8 +62,8 @@
       </div>
     </ng-template>
     <div class="upload-btn">
-      <button (click)="updateUploadImage()" type="button" class="ok btn btn-default">Ok</button>
-      <button (click)="onNoClick()" type="button" class="cancel btn btn-default">Cancel</button>
+      <button (click)="updateUploadImage()" type="button" class="ok btn btn-default">{{'user.ok' | translate}}</button>
+      <button (click)="onNoClick()" type="button" class="cancel btn btn-default">{{'user.cancel' | translate}}</button>
     </div>
   </div>
 </div>

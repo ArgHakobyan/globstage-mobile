@@ -1,19 +1,43 @@
 {
   "userProfile": {
     "addFriend": "Add to friends",
+    "deleteFriend": "Delete friends",
     "sendMessage": "Send Message",
     "statusPlaceholder": "User has not written a status yet.",
     "follow": "Follow",
     "unfollow": "Unfollow",
-    "block": "Block",
-    "unlock": "Unlock"
+    "block": "Block"
   },
   "profile": {
     "statusPlaceholder": "Enter the text of your status.",
     "groupText": "Subscribe to you interesting group and read their updates in the newsfeed.",
     "notesText": "With the help of notes, you can share the events of life with friends, as well as to be aware of whats new with them.",
-    "videosText": "Can store an unlimited number of video files. To add your first video, click here."
+    "videosText": "Can store an unlimited number of video files. To add your first video, click here.",
+    "uplNewPhoto": "Upload a new photo",
+    "changeThumb": "Change thumbnail",
+    "delete": "Delete"
+
   },
+  "user": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "noAlbums": "The user has no albums",
+    "noAudio": "No audio",
+    "notYetUploaded": "Not yet uploaded any videos.",
+    "topPhoto": "Loading top photo",
+    "whyPhoto": "Why photography?",
+    "upload": "Upload",
+    "remove": "Remove",
+    "readRules": "Read the rules",
+    "closeRules": "Close the rules"
+  },
+
+  "wall":{
+    "wall": "Wall",
+    "send": "Send",
+    "share": "Share"
+  },
+
   "save": "Save",
   "news": "News",
   "friends": "Friends",
@@ -28,6 +52,7 @@
     "info": "Information",
     "no-select": "No Select",
     "male": "Male",
+    "female": "Female",
     "single": "Single",
     "engaged": "Engaged",
     "married": "Married",
@@ -111,6 +136,69 @@
   },
   "userFriend":{
     "search": "Search"
-  }
+  },
+    "uplPhotos": "You can upload photos to albums",
+    "createAlb": "Create an album",
+    "postWall": "Post to wall",
+    "viewFriends": "View friends",
+    "addFriend": "Add friend",
+    "ignore": "Ignore",
+    "downAudio": "You can download audio",
+    "addAudio": "Add Audio",
+    "noDownAudio": "You have no videos.",
+    "addVideo": "Add a video",
+
+  "homeMenu": {
+    "albums": "Albums",
+    "video": "Video",
+    "group": "Group",
+    "news": "News",
+    "notes": "Notes",
+    "privacy": "Privacy",
+    "pageBackground": "Page Background",
+    "language": "Language"
+  },
+  "newModal": {
+    "createAlbum": "Create a new album",
+    "seeAlbum": "Who can see this album?",
+    "commentPhoto": "Who can comment on the photos?",
+    "done": "Done",
+    "cancel": "Cancel",
+    "allMember": "All Members",
+    "justFriend": "Just Friends",
+    "butI": "But I",
+    "onlyI": "Only I",
+    "addSong": "Adding a new song",
+    "example": "Example",
+    "fileLink": "http://music.com/uploads/files/audio/2012/faxo..",
+    "limit": "Limitations",
+    "fileSize": "The audio file can not exceed 10 MB and must be in MP3.",
+    "copyright": "The audio file must not violate copyright",
+    "selectFile": "Select File",
+    "downFiles": "You can also add audio from the already downloaded files, using",
+    "searchAudio": "Search for audio.",
+    "createCommunity": "Create a new community",
+    "newNotes": "Create a new notes",
+    "publishWall": "Publish on my wall",
+    "addVideo": "Adding a new video",
+    "videoServices": "Supported video services",
+    "sites": "YouTube, RuTube.Ru, Vimeo.Com, Smotri.Com",
+    "image": "Image",
+    "firstPost": "My Firts Post on my news",
+    "newComment": "New Comment",
+    "send": "Send"
+  },
+  "byPeople": "By the people",
+  "onVideos": "On the videos",
+  "onAudios": "On the audios",
+  "onNotes": "On the notes",
+  "onGroup": "On the group",
+  "onRecordings": "On the recordings",
+  "upload": "Upload",
+  "remove": "Remove",
+  "uploadAll": "Upload All",
+  "removeAll": "Remove All",
+  "ok": "Ok",
+  "cancel": "Cancel"
 
 }

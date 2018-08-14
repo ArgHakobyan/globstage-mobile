@@ -59,22 +59,22 @@
           </div>
           <img *ngIf="window.chattingTo.user_photo && isAvatarVisible(window, message, i)" alt="" class="avatar"
                height="30" width="30" [src]="window.chattingTo.user_photo"/>
-          <span [innerHtml]="message.content | emojify:emojisEnabled | linkfy:linkfyEnabled"></span>
+          <span *ngIf="message.content" [innerHtml]="message.content | emojify:emojisEnabled | linkfy:linkfyEnabled"></span>
           <div *ngIf="message.attachments?.length > 0">
             <div class="attach-styling col-md-12">
               <div class="row">
-                <div class="post_attachs col-md-6" *ngFor="let attach of message.attachments">
+                <div class="post_attachs col-md-12" *ngFor="let attach of message.attachments">
                   <img class="post_attach " [src]="attach.path" alt="">
-                  <!--<a target="_blank" [href]="attach.path"><img *ngIf="attach.type=='pdf'"-->
-                  <!--class="post_attach doc-hover"-->
-                  <!--src="/assets/imgs/pdf_icon_svg_by_qubodup-d9n1mhy.png"-->
-                  <!--alt="">-->
-                  <!--</a>-->
-                  <!--<a target="_blank" [href]="attach.path"><img *ngIf="attach.type=='doc'"-->
-                  <!--class="post_attach doc-hover"-->
-                  <!--src="/assets/imgs/2000px-MS_word_DOC_icon.svg.png"-->
-                  <!--alt="">-->
-                  <!--</a>-->
+                  <a target="_blank" [href]="attach.path"><img *ngIf="attach.type=='pdf'"
+                  class="post_attach doc-hover"
+                  src="/assets/imgs/pdf_icon_svg_by_qubodup-d9n1mhy.png"
+                  alt="">
+                  </a>
+                  <a target="_blank" [href]="attach.path"><img *ngIf="attach.type=='doc'"
+                  class="post_attach doc-hover"
+                  src="/assets/imgs/2000px-MS_word_DOC_icon.svg.png"
+                  alt="">
+                  </a>
                   </div>
                 <div class="clearfix"></div>
               </div>
@@ -94,6 +94,7 @@
               <li (click)="openDialogAttach($event, window)"><i class="fa fa-picture-o"></i></li>
               <li (click)="openDialogVideo()"><i class="fa fa-video-camera"></i></li>
               <li (click)="openDialogAudio()"><i class="fa fa-music"></i></li>
+              <li (click)="openDialogAttach($event, window)"><i class="fa fa-file-pdf-o"></i></li>
             </ul>
           </div>
           <div class="send-btn col-md-4">

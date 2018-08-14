@@ -258,12 +258,12 @@
             background: rgba(5, 119, 121, 0.8);
         }
         .attach-files ul{
-            padding: 10px;
-        }
+            padding: 10px 0;
+            padding-left: 8px;}
         .attach-files ul li{
             list-style: none;
             display: inline-block;
-            padding-right: 18px;
+            padding-right: 15px;
         }
         .attach-files ul li i{
             font-size: 18px;
@@ -278,4 +278,13 @@
             box-shadow: none;
             border: none;
             margin-top: 4px;
+        }
+        .post_attachs .post_attach{
+          width: auto;
+          height: 70px;
+          margin: 10px 0;
+          cursor: pointer;
+        }
+        .post_attachs{
+          text-align: right;
         }

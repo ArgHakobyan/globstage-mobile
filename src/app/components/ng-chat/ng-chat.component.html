@@ -26,7 +26,7 @@
        [ngStyle]="{'right': friendsListWidth + 20 + windowSizeFactor * i + 'px'}">
     <ng-container *ngIf="window.isCollapsed">
       <div class="ng-chat-title" (click)="onChatWindowClicked(window)">
-        <strong title="{{window.chattingTo.user_name}}">
+        <strong title="{{window.chattingTo.userng-star-inserted_name}}">
           {{window.chattingTo.user_name}} {{window.chattingTo.user_last_name}}
         </strong>
         <span
@@ -63,7 +63,8 @@
           <div *ngIf="message.attachments?.length > 0">
             <div class="attach-styling col-md-12">
               <div class="row">
-                <div class="post_attachs col-md-12" *ngFor="let attach of message.attachments">
+                <div class="post_attachs col-md-12" *ngFor="let attach of message.attachments"
+                  [ngClass]="{'ng-chat-message-received': message.from_id != userId}">
                   <img class="post_attach " [src]="attach.path" alt="">
                   <a target="_blank" [href]="attach.path"><img *ngIf="attach.type=='pdf'"
                   class="post_attach doc-hover"

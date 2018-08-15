@@ -114,12 +114,12 @@ import {ConfigService} from './services/config.service';
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
   { path: 'profile', component: ProfileComponent, children: [
-  { path: '', component: ProfileMapComponent},
-  { path: 'info', component: ProfileInfoComponent},
-  { path: 'albums', component: AlbumsComponent},
-  { path: 'audios', component: AudiosComponent},
-  { path: 'videos', component: VideosComponent},
-  { path: 'news', component: NewsComponent},
+    { path: '', component: ProfileMapComponent},
+    { path: 'info', component: ProfileInfoComponent},
+    { path: 'albums', component: AlbumsComponent},
+    { path: 'audios', component: AudiosComponent},
+    { path: 'videos', component: VideosComponent},
+    { path: 'news', component: NewsComponent},
 ]},
 
   { path: 'group/:id',  component: GroupPageComponent },

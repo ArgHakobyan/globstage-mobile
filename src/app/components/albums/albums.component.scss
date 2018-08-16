@@ -136,5 +136,24 @@
       transition: 0.3s;
     }
   }
+  .albums{
+    margin: 6px 0;
+    position: relative;
+    cursor: pointer;
+    img{
+      max-width: 100%;
+    }
+    h3{
+      font-size: 18px;
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      width: calc(100% - 30px);
+      display: block;
+      margin: 0;
+      color: #fff;
+      text-align: center;
+    }
+  }
 
 }

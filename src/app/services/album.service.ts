@@ -17,4 +17,10 @@ export class AlbumService {
   createAlbum(album) {
     return this.http.post(`${appConfig.apiUrl}/albums`, album);
   }
+  getAlbums() {
+    return this.http.get(`${appConfig.apiUrl}/albums`);
+  }
+  getAlbumsImages(id){
+    return this.http.get(`${appConfig.apiUrl}/albums/${id}`);
+  }
 }

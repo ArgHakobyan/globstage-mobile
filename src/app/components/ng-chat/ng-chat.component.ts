@@ -615,4 +615,6 @@ export class NgChatComponent implements OnInit {
     }
   }
 
+
+
 }

@@ -63,7 +63,7 @@
           <div *ngIf="message.attachments?.length > 0">
             <div class="attach-styling col-md-12">
               <div class="row">
-                <div class="post_attachs col-md-12" *ngFor="let attach of message.attachments"
+                <div id="myImg" class="post_attachs col-md-12" *ngFor="let attach of message.attachments"
                   [ngClass]="{'ng-chat-message-received': message.from_id != userId}">
                   <img class="post_attach " [src]="attach.path" alt="">
                   <a target="_blank" [href]="attach.path"><img *ngIf="attach.type=='pdf'"

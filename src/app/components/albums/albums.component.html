@@ -9,4 +9,14 @@
     </div>
     <div class="clearfix"></div>
   </div>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="albums col-md-3" *ngFor="let album of albums" [routerLink]="'/album/'+album.id">
+        <img _ngcontent-c26="" src="/assets/imgs/no_ava_groups.png" alt="Group1">
+        <h3 class="album-title">Name</h3>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
 </div>
+

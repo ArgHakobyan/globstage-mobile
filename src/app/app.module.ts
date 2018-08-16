@@ -110,16 +110,17 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {Observable} from 'rxjs';
 import {fromPromise} from 'rxjs/internal/observable/fromPromise';
 import {ConfigService} from './services/config.service';
+import { AlbumPageComponent } from './pages/album-page/album-page.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
   { path: 'profile', component: ProfileComponent, children: [
-    { path: '', component: ProfileMapComponent},
-    { path: 'info', component: ProfileInfoComponent},
-    { path: 'albums', component: AlbumsComponent},
-    { path: 'audios', component: AudiosComponent},
-    { path: 'videos', component: VideosComponent},
-    { path: 'news', component: NewsComponent},
+  { path: '', component: ProfileMapComponent},
+  { path: 'info', component: ProfileInfoComponent},
+  { path: 'albums', component: AlbumsComponent},
+  { path: 'audios', component: AudiosComponent},
+  { path: 'videos', component: VideosComponent},
+  { path: 'news', component: NewsComponent},
 ]},
 
   { path: 'group/:id',  component: GroupPageComponent },
@@ -133,6 +134,7 @@ const appRoutes: Routes = [
   { path: 'search',  component: SearchComponent },
   { path: 'user-profile/:id',  component: UserProfileComponent },
   { path: 'user-friend/:id',  component: UserFriendComponent },
+  { path: 'album/:id',  component: AlbumPageComponent },
  ];
 
 
@@ -192,6 +194,7 @@ export class CustomTranslateLoader implements TranslateLoader {
     PrivacyPolicyComponent,
     AlbumsComponent,
     ProfileMapComponent,
+    AlbumPageComponent,
   ],
   imports: [
     CommonModule,

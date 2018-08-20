@@ -1,16 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {NewGroupModalComponent} from "../../components/new-group-modal/new-group-modal.component";
 import {AlbumService} from '../../services/album.service';
 import { ActivatedRoute} from '@angular/router';
+import {UploadMediaAttachComponent} from "../../components/upload-media-attach/upload-media-attach.component";
+
 
 @Component({
   selector: 'app-album-page',
   templateUrl: './album-page.component.html',
-  styleUrls: ['./album-page.component.scss']
+  styleUrls: ['./album-page.component.scss'],
+  entryComponents: [
+    UploadMediaAttachComponent],
 })
 export class AlbumPageComponent implements OnInit {
 
+  @Input() albumId;
   album;
   album_id;
 
@@ -31,6 +36,16 @@ export class AlbumPageComponent implements OnInit {
   openDialogGroup() {
     const dialogRef = this.dialog.open(NewGroupModalComponent, {
       width: '500px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  openDialogAttach() {
+    const dialogRef = this.dialog.open(UploadMediaAttachComponent, {
+      height: 'auto',
+      width: '500px',
     });
 
     dialogRef.afterClosed().subscribe(result => {

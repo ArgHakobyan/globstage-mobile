@@ -11,7 +11,10 @@
       <app-header></app-header>
       <div class="groups">
         <div class="search-group">
-          <h2 class="group-title">Album name</h2>
+          <h2 class="group-title">{{album?.name}}</h2>
+          <div class="upload-btn">
+            <button (click)="openDialogAttach()">Upload Album Image <i class="fa fa-upload"></i></button>
+          </div>
         </div>
         <div class="col-md-12" *ngIf="album">
           <div class="row">

@@ -43,16 +43,18 @@ export class NewVideoModalComponent implements OnInit {
     if (this.newpostvideo.valid) {
       this.postServices.createWallPost(
         {
-          "posttype":"video",
-          "post_attachments":this.newpostvideo.value.linkvideo,
-          "post_content":this.newpostvideo.value.namevideo,
+          "video_name":this.newpostvideo.value.namevideo,
+          "link_to_videos":this.newpostvideo.value.linkvideo,
+          "video_description":this.newpostvideo.value.descvideo,
           "post_wall_id":JSON.parse(localStorage.getItem('GLOBE_USER')).id,
+          "privacy":this.newpostvideo.value.selectmembers,
+          "video_image": this.newpostvideo.value.linkvideo.split('v=')[1],
 
         }).subscribe()
       this.getNotification;
       // this.newpostvideo.value
     }
-    this.videoName = this.newpostvideo.value.linkvideo.split('v=')[1];    
+    this.videoName = this.newpostvideo.value.linkvideo.split('v=')[1];
     this.postServices.getVideosPosts(JSON.parse(localStorage.getItem('GLOBE_USER')).id).subscribe(
       posts => {
         this.videosPosts = posts.body;

@@ -113,6 +113,26 @@ img{max-width: 100%;}
     font-size: 26px;
     text-align: center;
   }
-
+}
+.upload-btn{
+  text-align: right;
+  button{
+    font-size: 14px;
+    background: #95c800;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    height: 28px;
+    transition: 0.3s;
+    i{
+      color: #fff;
+      padding-left: 4px;
+    }
+  }
+  button:hover{
+    opacity: 0.8;
+    transition: 0.3s;
+  }
 }
 

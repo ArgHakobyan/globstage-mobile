@@ -3,9 +3,11 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import {HttpService} from '../../services/http.service';
 import {getFromLocalStorage} from '../../utils/local-storage';
+import {appConfig} from '../../app.config';
 
 
-const URL = 'http://api-globstage.atero.solutions/v1/files';
+
+const URL = `${appConfig.apiUrl}/files`;
 
 
 @Component({

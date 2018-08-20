@@ -35,6 +35,8 @@ import {ChatService} from './services/chat.service';
 import 'hammerjs';
 import { NgxGalleryModule } from 'ngx-gallery';
 
+
+
 import {MatInputModule} from '@angular/material/input';
 import {
   MatAutocompleteModule,
@@ -90,6 +92,7 @@ import { FriendsService} from './services/friends.service';
 import { GroupService} from './services/group.service';
 import { CommentService } from './services/comment.service';
 import { SearchService } from './services/search.service';
+import { VideoService } from './services/video.service';
 import { FriendsSidebarBlockComponent } from './components/friends-sidebar-block/friends-sidebar-block.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { UserCropImageComponent } from './components/user-crop-image/user-crop-image.component';
@@ -260,6 +263,7 @@ export class CustomTranslateLoader implements TranslateLoader {
     GlobeAdapter,
     PostsService,
     FriendsService,
+    VideoService,
     GroupService,
     CommentService,
     SearchService,

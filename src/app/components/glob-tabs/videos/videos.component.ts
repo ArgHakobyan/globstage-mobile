@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {NewVideoModalComponent} from '../../new-video-modal/new-video-modal.component';
-import {PostsService} from '../../../services/posts.service';
+import {VideoService} from '../../../services/video.service';
 
 @Component({
   selector: 'app-videos',
@@ -17,16 +17,16 @@ export class VideosComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public postServices: PostsService,
+    public videoServices: VideoService,
   ) {
   }
 
   ngOnInit() {
     // this.postServices.getVideosPosts('').subscribe()
-    this.postServices.getVideosPosts(JSON.parse(localStorage.getItem('GLOBE_USER')).id).subscribe(
-      videos => {
-        this.videos = videos.body;
-        console.log(this.videos);
+    this.videoServices.getVideos().subscribe(
+      (videos: any[]) => {
+        this.videos = videos;
+        console.log(videos);
       });
   }
 

@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { formGroupNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 import { HttpService } from '../../services/http.service';
 import { PostsService } from '../../services/posts.service';
+import { VideoService } from '../../services/video.service';
 
 @Component({
   selector: 'app-new-video-modal',
@@ -17,11 +18,11 @@ export class NewVideoModalComponent implements OnInit {
   public newpostvideo: FormGroup;
   videoName;
   public selectmembers = {};
+  thumbUrl;
 
   constructor(
     public dialogRef: MatDialogRef<NewVideoModalComponent>,
-    public http: HttpService,
-    public postServices: PostsService,
+    public videoServices: VideoService,
   ) {}
 
   ngOnInit() {
@@ -30,9 +31,11 @@ export class NewVideoModalComponent implements OnInit {
       namevideo: new FormControl('', Validators.required),
       descvideo: new FormControl(),
       selectmembers: new FormControl(),
-    })
+    });
 
-    this.done();
+    this.newpostvideo.valueChanges.subscribe(val => {
+      this.getThumbnail(val);
+    })
   }
 
   getNotification(name) {
@@ -41,29 +44,35 @@ export class NewVideoModalComponent implements OnInit {
 
   done() {
     if (this.newpostvideo.valid) {
-      this.postServices.createWallPost(
+      this.videoServices.addVideo(
         {
           "video_name":this.newpostvideo.value.namevideo,
           "link_to_videos":this.newpostvideo.value.linkvideo,
           "video_description":this.newpostvideo.value.descvideo,
           "post_wall_id":JSON.parse(localStorage.getItem('GLOBE_USER')).id,
           "privacy":this.newpostvideo.value.selectmembers,
-          "video_image": this.newpostvideo.value.linkvideo.split('v=')[1],
+          "video_image": this.thumbUrl || '',
 
-        }).subscribe()
-      this.getNotification;
-      // this.newpostvideo.value
+        }).subscribe();
+
+
+      
     }
     this.videoName = this.newpostvideo.value.linkvideo.split('v=')[1];
-    this.postServices.getVideosPosts(JSON.parse(localStorage.getItem('GLOBE_USER')).id).subscribe(
+    this.videoServices.getVideos().subscribe(
       posts => {
-        this.videosPosts = posts.body;
-        console.log( this.videosPosts);
+        console.log( posts);
       });
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  getThumbnail(url){
+    console.log(url);
+    let videoName = url.split('v=')[1];
+    this.thumbUrl = `https://img.youtube.com/vi/${videoName}}/0.jpg`;
   }
 
 }

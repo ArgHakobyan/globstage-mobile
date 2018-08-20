@@ -26,11 +26,7 @@ export class PostsService {
   getGroupPosts(id) {
     return this.http.get(`/posts?filter[post_group_id]=${id}`);
   }
-
-  getVideosPosts(id) {
-    return this.http.get(`/posts?filter[posttype]=video&filter[post_user_id]=${id}`);
-  }
-
+  
   getAudiosPosts(id) {
     return this.http.get(`/posts?filter[posttype]=audio&filter[post_user_id]=${id}`);
   }

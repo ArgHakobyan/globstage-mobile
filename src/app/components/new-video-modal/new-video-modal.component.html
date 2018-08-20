@@ -9,9 +9,9 @@
     </p>
     <div class="result-load">
       <span class="img">{{'newModal.image' | translate}}</span>
-      <img src="https://img.youtube.com/vi/{{videoName}}/0.jpg" alt="">
+      <img [src]="thumbUrl" alt="">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Name" formControlName="namevideo" required>
+        <input matInput placeholder="Name" formControlName="namevideo" required (input)="getThumbnail($event.target.value)">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <textarea matInput placeholder="Description" formControlName="descvideo"></textarea>

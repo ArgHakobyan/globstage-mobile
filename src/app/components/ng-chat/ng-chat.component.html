@@ -91,8 +91,8 @@
         <div class="row">
           <div class="smiles col-md-8">
             <ul>
-              <li><i class="fa fa-smile-o" (click)="openSmiles();"></i>
-                <app-smiles [opened]="smileOpen" (smile)="addSmile($event, window)"></app-smiles>
+              <li><i class="fa fa-smile-o" (click)="openSmiles(window);"></i>
+                <app-smiles [opened]="window.smileOpen" (smile)="addSmile($event, window)"></app-smiles>
               </li>
               <li (click)="openDialogAttach($event, window)"><i class="fa fa-picture-o"></i></li>
               <li (click)="openDialogVideo()"><i class="fa fa-video-camera"></i></li>

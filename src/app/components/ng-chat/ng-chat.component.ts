@@ -605,13 +605,13 @@ export class NgChatComponent implements OnInit {
     }
   }
 
-  openSmiles() {
-    this.smileOpen = true;
+  openSmiles(window) {
+    window.smileOpen = !window.smileOpen;
   }
 
   addSmile(e, window) {
     window.newMessage = window.newMessage ? window.newMessage + ` *${e}* ` : ` *${e}* `;
-    this.smileOpen = false;
+    window.smileOpen = false;
     console.log(e);
   }
 

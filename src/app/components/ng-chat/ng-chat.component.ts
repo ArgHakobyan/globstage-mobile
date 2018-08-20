@@ -92,6 +92,8 @@ export class NgChatComponent implements OnInit {
   // Available area to render the plugin
   private viewPortTotalArea;
 
+  smileOpen = false;
+
   constructor(
     private chatService: ChatService,
     public dialog: MatDialog,
@@ -113,6 +115,7 @@ export class NgChatComponent implements OnInit {
   }
 
   ngOnInit() {
+    // window.newMessage = '';
     this.bootstrapChat();
     this.chatService.change.subscribe(res => {
       res.status = 'online';
@@ -171,21 +174,7 @@ export class NgChatComponent implements OnInit {
   onChatInputTyped(event: any, window: Window): void {
     switch (event.keyCode) {
       case 13:
-        if (window.newMessage && window.newMessage.trim() !== '') {
-          let message = new Message();
-
-          message.from_id = this.userId;
-          message.for_id = window.chattingTo.id;
-          message.content = window.newMessage;
-
-          window.messages.push(message);
-
-          this.adapter.sendMessage(message);
-
-          window.newMessage = ''; // Resets the new message input
-
-          this.scrollChatWindowToBottom(window);
-        }
+        this.sendMessage(event, window);
         break;
       case 9:
         event.preventDefault();
@@ -238,7 +227,7 @@ export class NgChatComponent implements OnInit {
 
   // Asserts if a user avatar is visible in a chat cluster
   isAvatarVisible(window: Window, message: Message, index: number): boolean {
-    if (message.from_id !== this.userId) {
+    if (message.from_id && message.from_id !== this.userId) {
       if (index === 0) {
         return true; // First message, good to show the thumbnail
       } else {
@@ -564,9 +553,9 @@ export class NgChatComponent implements OnInit {
       if (message.attachments && message.attachments.length > 0) {
 
         console.log(message);
-        this.adapter.sendMessage(message).subscribe( res => {
-          window.messages.push(res);
-          this.attachments= [];
+        this.adapter.sendMessage(message).subscribe(res1 => {
+          window.messages.push(res1);
+          this.attachments = [];
         });
         window.newMessage = ''; // Resets the new message input
         this.scrollChatWindowToBottom(window);
@@ -596,6 +585,7 @@ export class NgChatComponent implements OnInit {
   }
 
   sendMessage($event, window) {
+    console.log(window.newMessage);
     if (window.newMessage && window.newMessage.trim() !== '') {
       let message = new Message();
 
@@ -615,6 +605,14 @@ export class NgChatComponent implements OnInit {
     }
   }
 
+  openSmiles() {
+    this.smileOpen = true;
+  }
 
+  addSmile(e, window) {
+    window.newMessage = window.newMessage ? window.newMessage + ` *${e}* ` : ` *${e}* `;
+    this.smileOpen = false;
+    console.log(e);
+  }
 
 }

@@ -83,7 +83,7 @@
           </div>
         </div>
       </div>
-      <input #chatWindowInput [ngModel]="window.newMessage | emojify:emojisEnabled"
+      <input #chatWindowInput [ngModel]="window.newMessage"
              (ngModelChange)="window.newMessage=$event" type="text" (keydown)="onChatInputTyped($event, window)"
              [placeholder]="localization.messagePlaceholder" (blur)="toggleWindowFocus(window)"
              (focus)="toggleWindowFocus(window)"/>
@@ -91,12 +91,15 @@
         <div class="row">
           <div class="smiles col-md-8">
             <ul>
-              <li><i class="fa fa-smile-o"></i></li>
+              <li><i class="fa fa-smile-o" (click)="openSmiles();"></i>
+                <app-smiles [opened]="smileOpen" (smile)="addSmile($event, window)"></app-smiles>
+              </li>
               <li (click)="openDialogAttach($event, window)"><i class="fa fa-picture-o"></i></li>
               <li (click)="openDialogVideo()"><i class="fa fa-video-camera"></i></li>
               <li (click)="openDialogAudio()"><i class="fa fa-music"></i></li>
               <li (click)="openDialogAttach($event, window)"><i class="fa fa-file-pdf-o"></i></li>
             </ul>
+
           </div>
           <div class="send-btn col-md-4">
             <button (click)="sendMessage($event, window)" type="button" class="send btn btn-success">Send</button>

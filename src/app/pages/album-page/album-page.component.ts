@@ -19,7 +19,11 @@ export class AlbumPageComponent implements OnInit {
   album;
   album_id;
 
-  constructor(public dialog: MatDialog,public albumService: AlbumService, private route: ActivatedRoute) { }
+  constructor( 
+    public dialog: MatDialog,
+    public albumService: AlbumService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
       this.route.params.subscribe( params => {

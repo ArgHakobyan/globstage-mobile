@@ -5,6 +5,9 @@
         <div class="song-load">
           <form class="example-form" [formGroup]="audioForm">
             <mat-form-field class="example-full-width">
+              <input matInput formControlName="audioInsertName" placeholder="Audio name">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
               <input matInput formControlName="audioInsertLink" placeholder="Insert a link to an mp3 file">
             </mat-form-field>
           </form>
@@ -21,7 +24,7 @@
             <li>{{'newModal.copyright' | translate}}</li>
           </ul>
           <div class="upload-file">
-            <button type="button" class="select-file btn btn-default">{{'newModal.selectFile' | translate}}</button>
+            <button (click)="openDialogAttach()" type="button" class="select-file btn btn-default">{{'newModal.selectFile' | translate}}</button>
           </div>
           <p>{{'newModal.downFiles' | translate}}
             <a href="">{{'newModal.searchAudio' | translate}}</a>
@@ -30,7 +33,7 @@
       </mat-tab>
     </mat-tab-group>
     <div class="create-btn">
-      <button (click)="addAudio()" type="button" class="done btn btn-default">{{'newModal.done' | translate}}</button>
+      <button (click)="addAudio(audioForm)" type="button" class="done btn btn-default">{{'newModal.done' | translate}}</button>
       <button (click)="onNoClick()" type="button" class="cancel btn btn-default">{{'newModal.cancel' | translate}}</button>
     </div>
 </div>

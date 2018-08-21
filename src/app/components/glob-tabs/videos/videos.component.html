@@ -8,8 +8,9 @@
       <span (click)="openDialogVideo()">{{'addVideo' | translate}}</span>
     </div>
     <div class="clearfix"></div>
-  </div>
-  <div class="row">
+    </div>
+    <div class="row">
     <app-video *ngFor="let video of videos" [video]="video"></app-video>
   </div>
 </div>
+<!-- *ngIf="audios.length==0" -->

@@ -93,6 +93,7 @@ import { GroupService} from './services/group.service';
 import { CommentService } from './services/comment.service';
 import { SearchService } from './services/search.service';
 import { VideoService } from './services/video.service';
+import { AudioService } from './services/audio.service';
 import { FriendsSidebarBlockComponent } from './components/friends-sidebar-block/friends-sidebar-block.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { UserCropImageComponent } from './components/user-crop-image/user-crop-image.component';
@@ -264,6 +265,7 @@ export class CustomTranslateLoader implements TranslateLoader {
     PostsService,
     FriendsService,
     VideoService,
+    AudioService,
     GroupService,
     CommentService,
     SearchService,

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NewAudioModalComponent } from '../../new-audio-modal/new-audio-modal.component';
 import { MatDialog } from '@angular/material';
-import { PostsService } from '../../../services/posts.service';
+import { AudioService } from '../../../services/audio.service';
+
 
 @Component({
   selector: 'app-audios',
@@ -14,14 +15,14 @@ export class AudiosComponent implements OnInit {
   audios = [];
   constructor(
     public dialog: MatDialog,
-    public postServices: PostsService,
+    public audioServices: AudioService,
   ) { }
 
   ngOnInit() {
-    this.postServices.getVideosPosts(JSON.parse(localStorage.getItem('GLOBE_USER')).id).subscribe(
-      audios =>{
-        this.audios = audios.body;
-        console.log(this.audios);        
+    this.audioServices.getAudios().subscribe(
+      (audios: any[]) => {
+        this.audios = audios;
+        console.log(audios);
       });
   }
   

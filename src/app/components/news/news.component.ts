@@ -13,10 +13,10 @@ export class NewsComponent implements OnInit {
   ngOnInit() {
   }
 
-  focusFunction(){
+  focusFunction() {
     this.activeClass = 'focus';
   }
-  focusOutFunction(){
+  focusOutFunction() {
     this.activeClass = '';
   }
 

@@ -2,13 +2,16 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {NewVideoModalComponent} from '../../new-video-modal/new-video-modal.component';
 import {VideoService} from '../../../services/video.service';
+import {VideoPlayerComponent} from '../../video-player/video-player.component';
 
 @Component({
   selector: 'app-videos',
   templateUrl: './videos.component.html',
   styleUrls: ['./videos.component.scss'],
   entryComponents: [
-    NewVideoModalComponent],
+    NewVideoModalComponent,
+    VideoPlayerComponent
+  ],
 })
 
 
@@ -22,7 +25,6 @@ export class VideosComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.postServices.getVideosPosts('').subscribe()
     this.videoServices.getVideos().subscribe(
       (videos: any[]) => {
         this.videos = videos;
@@ -37,6 +39,22 @@ export class VideosComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.videos.push(result);
+      }
+    });
+  }
+
+  delete(id) {
+    this.videoServices.deleteVideo(id).subscribe( res => {
+      this.videos = this.videos.filter(v => v.id !== id);
+    });
+  }
+
+  playVideo() {
+    const dialogRef = this.dialog.open(VideoPlayerComponent, {
+      height: 'auto',
+      width: '600px'
     });
   }
 

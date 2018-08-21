@@ -34,7 +34,7 @@ import {HttpInterceptorService} from './services/http-interceptor.service';
 import {ChatService} from './services/chat.service';
 import 'hammerjs';
 import { NgxGalleryModule } from 'ngx-gallery';
-
+import { EmbedVideo } from 'ngx-embed-video';
 
 
 import {MatInputModule} from '@angular/material/input';
@@ -114,6 +114,7 @@ import {Observable} from 'rxjs';
 import {fromPromise} from 'rxjs/internal/observable/fromPromise';
 import {ConfigService} from './services/config.service';
 import { AlbumPageComponent } from './pages/album-page/album-page.component';
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
 
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
@@ -198,6 +199,7 @@ export class CustomTranslateLoader implements TranslateLoader {
     AlbumsComponent,
     ProfileMapComponent,
     AlbumPageComponent,
+    VideoPlayerComponent,
   ],
   imports: [
     CommonModule,
@@ -255,6 +257,8 @@ export class CustomTranslateLoader implements TranslateLoader {
         deps: [HttpClient]
       }
     }),
+    EmbedVideo.forRoot(),
+    HttpModule
   ],
   providers: [
     AuthService,
@@ -285,7 +289,8 @@ export class CustomTranslateLoader implements TranslateLoader {
     SearchAllComponent,
     AttachmentsComponent,
     FriendsSidebarBlockComponent,
-    AttachmentsComponent
+    AttachmentsComponent,
+    VideoPlayerComponent
   ]
 })
 export class AppModule { }

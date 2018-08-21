@@ -18,13 +18,13 @@ export class AudiosComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.postServices.getVideosPosts(JSON.parse(localStorage.getItem('GLOBE_USER')).id).subscribe(
-      audios =>{
-        this.audios = audios.body;
-        console.log(this.audios);        
-      });
+    // this.postServices.getVideosPosts(JSON.parse(localStorage.getItem('GLOBE_USER')).id).subscribe(
+    //   audios => {
+    //     this.audios = audios.body;
+    //     console.log(this.audios);
+    //   });
   }
-  
+
   openDialogAudio() {
     const dialogRef = this.dialog.open(NewAudioModalComponent, {
       height: '350px',

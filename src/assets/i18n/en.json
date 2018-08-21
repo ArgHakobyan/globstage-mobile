@@ -44,7 +44,7 @@
   "albums": "Albums",
   "audio": "Audio",
   "search": "Search",
-  
+
   "information": {
     "country": "Country",
     "city": "City",
@@ -184,8 +184,9 @@
     "publishWall": "Publish on my wall",
     "addVideo": "Adding a new video",
     "videoServices": "Supported video services",
-    "sites": "YouTube, RuTube.Ru, Vimeo.Com, Smotri.Com",
+    "sites": "YouTube and Vimeo",
     "image": "Image",
+    "preview": "Preview",
     "firstPost": "My Firts Post on my news",
     "newComment": "New Comment",
     "send": "Send"

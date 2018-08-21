@@ -1,6 +1,7 @@
 <div class="audio">
-    <i class="music fa fa-music" aria-hidden="true"></i>
-    <i class="play fa fa-play" aria-hidden="true"></i>
-    <span>{{audio.audio_name}}</span>
-    <i class="delete fa fa-trash" aria-hidden="true"></i>
+  <span>{{audio.audio_name}}</span>
+  <audio  controls="controls">
+    <source [src]="audio.audio_link_url" />
+  </audio>
+  <div class="clearfix"></div>
 </div>

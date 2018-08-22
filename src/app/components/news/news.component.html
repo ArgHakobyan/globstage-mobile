@@ -1,5 +1,5 @@
 <article class="post-article">
-  <div class="col-md-12 news-user">
+  <!-- <div class="col-md-12 news-user">
       <div class="row">
           <div class="col-md-1">
               <div class="news-avatar">
@@ -54,5 +54,6 @@
       </div>
     </div>
     </div>
-  </div>
+  </div> -->
+  <app-post (onDelete)="messageDeleted($event)"  *ngFor="let post of news" [post]="post"></app-post>
 </article>

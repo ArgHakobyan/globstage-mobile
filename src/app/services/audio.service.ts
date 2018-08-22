@@ -15,7 +15,7 @@ export class AudioService {
   ) { }
 
   getAudios() {
-    return this.http.get(`${appConfig.apiUrl}/audios`);
+    return this.http.get(`${appConfig.apiUrl}/audios/${JSON.parse(localStorage.getItem('GLOBE_USER')).id}`);
   }
 
   addAudio(audio){

@@ -60,10 +60,10 @@ export class ProfileInfoComponent implements OnInit {
           about_me: new FormControl(),
       });
   this.userService.getUser(getFromLocalStorage('GLOBE_USER').id).subscribe((user: any) => {
-    this.user = user;
-    this.user.user_contact = JSON.parse(this.user.user_contact);
-    this.user.user_interests = JSON.parse(this.user.user_interests);
-    this.information = new FormGroup({
+      this.user = user;
+      this.user.user_contact = JSON.parse(this.user.user_contact);
+      this.user.user_interests = JSON.parse(this.user.user_interests);
+      this.information = new FormGroup({
       user_gender: new FormControl(user.user_gender),
       user_date_of_birth: new FormControl(user.user_date_of_birth),
       user_marital_status: new FormControl(user.user_marital_status),

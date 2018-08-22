@@ -55,4 +55,12 @@ export class UserService {
     return this.http.put(`${this.apiUrl}/users`, {'user_photo': img});
   }
 
+  savePrivacy(privacy){
+    return this.http.put(`${this.apiUrl}/privacys/${JSON.parse(localStorage.getItem('GLOBE_USER')).id}`, privacy);
+  }
+
+  getPrivacy(){
+    return this.http.get(`${this.apiUrl}/privacys`);
+  }
+
 }

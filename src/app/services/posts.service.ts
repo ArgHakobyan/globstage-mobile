@@ -43,4 +43,8 @@ export class PostsService {
     return this.http.post(`/likes`, dislike);
   }
 
+  getNews() {
+    return this.http.get(`/followers/news`);
+  }
+
 }

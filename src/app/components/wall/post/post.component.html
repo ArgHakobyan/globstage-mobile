@@ -5,7 +5,8 @@
       <div class="col-md-1">
         <div class="wall-avatar">
           <a [routerLink]="'/user-profile/'+post.user.id">
-            <img  [src]="post.user.user_photo || '/assets/imgs/no_ava_50.png'" alt="no_ava_50">
+            <img *ngIf="post.posttype !== 'googlenews'" [src]="post.user.user_photo || '/assets/imgs/no_ava_50.png'" alt="no_ava_50">
+            <img *ngIf="post.posttype == 'googlenews'" [src]="post.user.user_photo || '/assets/imgs/googlenews.png'" alt="googlenews">
           </a>
         </div>
       </div>

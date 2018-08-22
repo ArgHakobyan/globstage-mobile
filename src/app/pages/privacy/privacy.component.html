@@ -7,48 +7,48 @@
       <div class="col-md-9">
         <app-header></app-header>
         <div class="privacy">
-          <form class="example-form">
+          <form [formGroup]="infoPrivacy" class="example-form">
           <p>{{'privacy.privateMess' | translate}}:<mat-form-field>
-            <mat-select [(value)]="selected1" [ngClass]="selected1">
-              <mat-option value="option1">All Member</mat-option>
-              <mat-option value="option2">{{'privacy.justFriends' | translate}}</mat-option>
-              <mat-option value="option3">{{'privacy.no' | translate}}</mat-option>
-              <mat-option value="option4">{{'privacy.onlyVerified' | translate}}</mat-option>
+            <mat-select formControlName="write_messages" (selectionChange)="onChange()">
+              <mat-option value="1">{{'privacy.allMember' | translate}}</mat-option>
+              <mat-option value="2">{{'privacy.justFriends' | translate}}</mat-option>
+              <mat-option value="3">{{'privacy.no' | translate}}</mat-option>
+              <mat-option value="4">{{'privacy.onlyVerified' | translate}}</mat-option>
             </mat-select>
           </mat-form-field></p>
         <p>{{'privacy.otherPeoples' | translate}} :<mat-form-field>
-            <mat-select [(value)]="selected2" [ngClass]="selected2">
-              <mat-option value="option1">All Member</mat-option>
-              <mat-option value="option2">{{'privacy.justFriends' | translate}}</mat-option>
-              <mat-option value="option3">{{'privacy.onlyI' | translate}}</mat-option>
+            <mat-select formControlName="sees_other_records" (selectionChange)="onChange()">
+              <mat-option value="1">{{'privacy.allMember' | translate}}</mat-option>
+              <mat-option value="2">{{'privacy.justFriends' | translate}}</mat-option>
+              <mat-option value="3">{{'privacy.onlyI' | translate}}</mat-option>
             </mat-select>
           </mat-form-field></p>
           <p>{{'privacy.postMyWall' | translate}} :<mat-form-field>
-            <mat-select [(value)]="selected3" [ngClass]="selected3">
-              <mat-option value="option1">All Members</mat-option>
-              <mat-option value="option2">{{'privacy.justFriends' | translate}}</mat-option>
-              <mat-option value="option3">{{'privacy.onlyI' | translate}}</mat-option>
+            <mat-select formControlName="can_post" (selectionChange)="onChange()">
+              <mat-option value="1">{{'privacy.allMember' | translate}}</mat-option>
+              <mat-option value="2">{{'privacy.justFriends' | translate}}</mat-option>
+              <mat-option value="3">{{'privacy.onlyI' | translate}}</mat-option>
             </mat-select>
           </mat-form-field></p>
         <p>{{'privacy.commentEntries' | translate}} :<mat-form-field>
-            <mat-select [(value)]="selected4" [ngClass]="selected4">
-              <mat-option value="option1">All Members</mat-option>
-              <mat-option value="option2">{{'privacy.justFriends' | translate}}</mat-option>
-              <mat-option value="option3">{{'privacy.onlyI' | translate}}</mat-option>
+            <mat-select formControlName="can_comment" (selectionChange)="onChange()">
+              <mat-option value="1">{{'privacy.allMember' | translate}}</mat-option>
+              <mat-option value="2">{{'privacy.justFriends' | translate}}</mat-option>
+              <mat-option value="3">{{'privacy.onlyI' | translate}}</mat-option>
             </mat-select>
           </mat-form-field></p>
           <p>{{'privacy.basicInfoPage' | translate}} :<mat-form-field>
-            <mat-select [(value)]="selected5" [ngClass]="selected5">
-              <mat-option value="option1">All Members</mat-option>
-              <mat-option value="option2">{{'privacy.justFriends' | translate}}</mat-option>
-              <mat-option value="option3">{{'privacy.onlyI' | translate}}</mat-option>
+            <mat-select formControlName="basic_info" (selectionChange)="onChange()">
+              <mat-option value="1">{{'privacy.allMember' | translate}}</mat-option>
+              <mat-option value="2">{{'privacy.justFriends' | translate}}</mat-option>
+              <mat-option value="3">{{'privacy.onlyI' | translate}}</mat-option>
             </mat-select>
           </mat-form-field></p>
         <p>{{'privacy.listMyQuotes' | translate}} :<mat-form-field>
-            <mat-select [(value)]="selected6" [ngClass]="selected6">
-              <mat-option value="option1">All Members</mat-option>
-              <mat-option value="option2">{{'privacy.justFriends' | translate}}</mat-option>
-              <mat-option value="option3">{{'privacy.onlyI' | translate}}</mat-option>
+            <mat-select formControlName="see_guests" (selectionChange)="onChange()">
+              <mat-option value="1">{{'privacy.allMember' | translate}}</mat-option>
+              <mat-option value="2">{{'privacy.justFriends' | translate}}</mat-option>
+              <mat-option value="3">{{'privacy.onlyI' | translate}}</mat-option>
             </mat-select>
           </mat-form-field></p>
         </form>

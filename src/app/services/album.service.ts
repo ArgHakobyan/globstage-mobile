@@ -18,7 +18,7 @@ export class AlbumService {
     return this.http.post(`${appConfig.apiUrl}/albums`, album);
   }
   getAlbums() {
-    return this.http.get(`${appConfig.apiUrl}/albums`);
+    return this.http.get(`${appConfig.apiUrl}/albums/${JSON.parse(localStorage.getItem('GLOBE_USER')).id}`);
   }
   getAlbumsImages(id){
     return this.http.get(`${appConfig.apiUrl}/albums/${id}`);

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {EmbedVideoService} from 'ngx-embed-video';
+import {EmbedVideoService} from '../../services/embed-video.service';
 
 @Component({
   selector: 'app-video-player',

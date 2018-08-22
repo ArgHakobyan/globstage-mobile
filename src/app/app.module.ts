@@ -34,7 +34,7 @@ import {HttpInterceptorService} from './services/http-interceptor.service';
 import {ChatService} from './services/chat.service';
 import 'hammerjs';
 import { NgxGalleryModule } from 'ngx-gallery';
-import { EmbedVideo } from 'ngx-embed-video';
+import { EmbedVideoService } from './services/embed-video.service';
 
 
 import {MatInputModule} from '@angular/material/input';
@@ -258,7 +258,7 @@ export class CustomTranslateLoader implements TranslateLoader {
         deps: [HttpClient]
       }
     }),
-    EmbedVideo.forRoot(),
+    // EmbedVideo.forRoot(),
     HttpModule
   ],
   providers: [
@@ -275,7 +275,8 @@ export class CustomTranslateLoader implements TranslateLoader {
     SearchService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
     ChatService,
-    ConfigService
+    ConfigService,
+    EmbedVideoService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

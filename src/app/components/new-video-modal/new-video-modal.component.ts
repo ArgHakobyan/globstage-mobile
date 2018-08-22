@@ -2,7 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {VideoService} from '../../services/video.service';
-import {EmbedVideoService} from 'ngx-embed-video';
+import {EmbedVideoService} from '../../services/embed-video.service';
 
 @Component({
   selector: 'app-new-video-modal',

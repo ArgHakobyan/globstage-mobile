@@ -26,12 +26,12 @@ export class UserProfileImageComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.user);
-    if (this.user.friends && this.user.friends.filter(u => u.friend_id === getFromLocalStorage('GLOBE_USER').id).length > 0) {
+    if (this.user.friends && this.user.friends.filter(u => u.id === getFromLocalStorage('GLOBE_USER').id).length > 0) {
       this.isFriend = true;
     }
 
 
-    if (this.user.friends.filter(u => u.friend_id === getFromLocalStorage('GLOBE_USER').id)[0] && this.user.friends.filter(u => u.friend_id === getFromLocalStorage('GLOBE_USER').id)[0].subscription === 1) {
+    if (this.user.friends && this.user.friends.filter(u => u.id === getFromLocalStorage('GLOBE_USER').id)[0] && this.user.friends.filter(u => u.id === getFromLocalStorage('GLOBE_USER').id)[0].subscription === 1) {
       this.following = true;
     }
 
@@ -45,15 +45,19 @@ export class UserProfileImageComponent implements OnInit {
 
   addFriend() {
     this.friendService.addFriend(this.user.id).subscribe(res => {
+        this.snackBar.open(`Friend request sent to ${this.user.user_name}.`, 'ok', {duration: 3000});
     },
       error => {
         this.snackBar.open(`You already sent a friend request to ${this.user.user_name}.`, 'ok', {duration: 3000});
       });
   }
 
+
+
   removeFriend() {
     this.friendService.deleteFriend(this.user.id).subscribe(res => {
-      console.log(res);
+      this.snackBar.open(`You deleted ${this.user.user_name} from your friends list.`, 'ok', {duration: 3000});
+      this.isFriend = false;
     });
   }
 
@@ -69,6 +73,7 @@ export class UserProfileImageComponent implements OnInit {
   deleteFollow() {
     this.friendService.deleteFollow(this.user.id, 'user').subscribe(res => {
       this.snackBar.open(`You are not following ${this.user.user_name} now.`, 'ok', {duration: 3000});
+      this.following = false;
     });
   }
 

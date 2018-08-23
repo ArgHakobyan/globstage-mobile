@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NewAlbumModalComponent} from "../new-album-modal/new-album-modal.component";
+import {NewAlbumModalComponent} from '../new-album-modal/new-album-modal.component';
 import {MatDialog} from '@angular/material';
 import {AlbumService} from '../../services/album.service';
 

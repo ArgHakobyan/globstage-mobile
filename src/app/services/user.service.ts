@@ -40,7 +40,7 @@ export class UserService {
   }
 
   updateUserInfo(info) {
-    return this.http.put(`${this.apiUrl}/users`, info);
+    return this.http.put(`${this.apiUrl}/users/${JSON.parse(localStorage.getItem('GLOBE_USER')).id}`, info);
   }
 
   updateUserContact(contact) {

@@ -1,12 +1,13 @@
 {
   "userProfile": {
     "addFriend": "Add to friends",
-    "deleteFriend": "Delete friends",
+    "deleteFriend": "Delete from friends",
     "sendMessage": "Send Message",
     "statusPlaceholder": "User has not written a status yet.",
     "follow": "Follow",
     "unfollow": "Unfollow",
-    "block": "Block"
+    "block": "Block",
+    "unlock": "Unlock"
   },
   "profile": {
     "statusPlaceholder": "Enter the text of your status.",

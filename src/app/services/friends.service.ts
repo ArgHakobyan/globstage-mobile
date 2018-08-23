@@ -49,10 +49,11 @@ export class FriendsService {
   }
 
   blockUser(id){
-    return this.http.post(`${appConfig.apiUrl}/block-users`, {block_user: id});
+    return this.http.post(`${appConfig.apiUrl}/block-users`, {'block_user': id,
+      'blocked_by':'user' });
   }
 
-  unblockUser(id){
+  unblockUser(id) {
     return this.http.delete(`${appConfig.apiUrl}/block-users/${id}`);
   }
 }

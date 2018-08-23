@@ -7,12 +7,12 @@
         <div class="profile-status">
           <ng-template [ngIf]="status">
             <div (click)="openInputWrite()" class="status-text">
-              {{'profile.statusPlaceholder' | translate}}
+              {{user.user_status || 'profile.statusPlaceholder' | translate}}
             </div>
           </ng-template>
           <ng-template [ngIf]="newStatus">
             <div class="new-status">
-              <textarea class="form-control" placeholder="Enter the text of your status" rows="2"></textarea>
+              <textarea class="form-control" [(ngModel)]="user.user_status" placeholder="Enter the text of your status" rows="2"></textarea>
               <button type="button" class="btn btn-success save" (click)="postStatus()">{{'save' | translate}}</button>
             </div>
           </ng-template>

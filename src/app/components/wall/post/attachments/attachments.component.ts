@@ -40,7 +40,7 @@ export class AttachmentsComponent implements OnInit {
         preview: false
       }
     ];
-    console.log(this.post);
+
     if (this.post.attactments && this.post.attactments.length > 0) {
       this.imageAttaches  = this.post.attactments.filter(a => a.type === 'image');
       if (this.imageAttaches && this.imageAttaches.length > 1) {

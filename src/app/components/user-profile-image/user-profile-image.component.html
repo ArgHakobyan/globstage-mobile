@@ -20,5 +20,5 @@
     <button type="button" class="btn btn-success" (click)="blockUser()"><i class="fa fa-lock" aria-hidden="true"></i>{{'userProfile.block' | translate}}</button>
     <button type="button" class="btn btn-success" (click)="unblockUser()"><i class="fa fa-unlock" aria-hidden="true"></i>{{'userProfile.unlock' | translate}}</button>
   </div>
-  <app-friends-sidebar-block *ngIf="user.friends.length" [userId]="user.id"></app-friends-sidebar-block>
+  <app-friends-sidebar-block *ngIf="user.friends?.length" [userId]="user.id"></app-friends-sidebar-block>
 </div>

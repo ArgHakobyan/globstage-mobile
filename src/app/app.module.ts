@@ -111,6 +111,7 @@ import { GroupPageComponent } from './pages/group/group-page.component';
 import { AttachmentsComponent } from './components/wall/post/attachments/attachments.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { AlbumsComponent } from './components/albums/albums.component';
+import { UserAlbumsComponent } from './components/user-albums/user-albums.component';
 import { ProfileMapComponent } from './components/profile-map/profile-map.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {Observable} from 'rxjs';
@@ -142,7 +143,7 @@ const appRoutes: Routes = [
   { path: 'user-profile/:id',  component: UserProfileComponent, children: [
     { path: '', component: ProfileMapComponent},
     { path: 'info', component: ProfileInfoComponent},
-    { path: 'albums', component: AlbumsComponent},
+    { path: 'albums', component: UserAlbumsComponent},
     { path: 'audios', component: UserAudiosComponent},
     { path: 'videos', component: UserVideosComponent},
 ]},
@@ -207,6 +208,7 @@ export class CustomTranslateLoader implements TranslateLoader {
     GroupPageComponent,
     AttachmentsComponent,
     PrivacyPolicyComponent,
+    UserAlbumsComponent,
     AlbumsComponent,
     ProfileMapComponent,
     AlbumPageComponent,

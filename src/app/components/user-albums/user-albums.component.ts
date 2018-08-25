@@ -8,10 +8,10 @@ import { Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-albums',
-  templateUrl: './albums.component.html',
-  styleUrls: ['./albums.component.scss']
+  templateUrl: './user-albums.component.html',
+  styleUrls: ['./user-albums.component.scss']
 })
-export class AlbumsComponent implements OnInit {
+export class UserAlbumsComponent implements OnInit {
 
   albums;
 

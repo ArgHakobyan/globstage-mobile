@@ -4,6 +4,7 @@ import {NewAlbumModalComponent} from "../../components/new-album-modal/new-album
 import {AlbumService} from '../../services/album.service';
 import { ActivatedRoute} from '@angular/router';
 import {UploadMediaAttachComponent} from "../../components/upload-media-attach/upload-media-attach.component";
+import { getFromLocalStorage } from '../../utils/local-storage';
 
 
 @Component({
@@ -18,8 +19,7 @@ export class AlbumPageComponent implements OnInit {
 
   album: any = {};
   album_id;
-
-  videos = [];
+  isMyAlbum = false;
 
   constructor( 
     public dialog: MatDialog,
@@ -32,6 +32,9 @@ export class AlbumPageComponent implements OnInit {
         this.album_id = params.id;
         this.albumService.getAlbumsImages(this.album_id).subscribe(res => {
             this.album = res;
+            if (this.album.author_id === getFromLocalStorage('GLOBE_USER').id){
+              this.isMyAlbum = true;
+            }
             console.log(res);
           });
     });

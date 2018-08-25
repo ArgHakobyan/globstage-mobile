@@ -1,4 +1,4 @@
-<div class="map-block">
+<!-- <div class="map-block">
   <div class="map-header">
     <mat-tab-group>
       <mat-tab>
@@ -63,11 +63,43 @@
           </div>
         </div>
       </mat-tab>
-      <mat-tab>
-        <ng-template mat-tab-label>
-          <i class="fa fa-newspaper-o"></i>
-        </ng-template>
-        <app-news></app-news>
-      </mat-tab>
     </mat-tab-group>
+  </div> -->
+  <div class="map-block">
+    <div class="map-header">
+      <nav mat-tab-nav-bar>
+        <a  mat-tab-link
+           routerLink=""
+           routerLinkActive #rla="routerLinkActive"
+           [active]="rla.isActive">
+          <i class="fa fa-globe"></i>
+        </a>
+        <a mat-tab-link
+           routerLink="info"
+           routerLinkActive #rla="routerLinkActive"
+           [active]="rla.isActive">
+          <i class="fa fa-home"></i>
+        </a>
+        <a mat-tab-link
+           routerLink="albums"
+           routerLinkActive #rla="routerLinkActive"
+           [active]="rla.isActive">
+          <i class="fa fa-picture-o"></i>
+        </a>
+        <a mat-tab-link
+           routerLink="audios"
+           routerLinkActive #rla="routerLinkActive"
+           [active]="rla.isActive">
+          <i class="fa fa-music"></i>
+        </a>
+        <a mat-tab-link
+           routerLink="videos"
+           routerLinkActive #rla="routerLinkActive"
+           [active]="rla.isActive">
+          <i class="fa fa-film"></i>
+        </a>
+      </nav>
   </div>
+  <router-outlet></router-outlet>
+</div>
+

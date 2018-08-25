@@ -25,4 +25,8 @@ export class VideoService {
     return this.http.delete(`${appConfig.apiUrl}/videos/${id}`);
   }
 
+  getUserVideos(id) {
+    return this.http.get(`${appConfig.apiUrl}/videos/${id}`);
+  }
+
 }

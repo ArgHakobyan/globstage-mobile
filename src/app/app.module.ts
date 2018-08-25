@@ -101,6 +101,8 @@ import { VideosComponent } from './components/glob-tabs/videos/videos.component'
 import { VideoComponent } from './components/glob-tabs/videos/video/video.component';
 import { AudiosComponent } from './components/glob-tabs/audios/audios.component';
 import { AudioComponent } from './components/glob-tabs/audios/audio/audio.component';
+import { UserVideosComponent } from './components/user-glob-tabs/user-videos/user-videos.component';
+import { UserAudiosComponent } from './components/user-glob-tabs/user-audios/user-audios.component';
 import { FriendRequestsComponent } from './components/friend-requests/friend-requests.component';
 import { FriendRequestComponent } from './components/friend-requests/friend-request/friend-request.component';
 import { FriendComponent } from './components/friend/friend.component';
@@ -120,12 +122,12 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
 const appRoutes: Routes = [
   { path: '',  component: LoginComponent },
   { path: 'profile', component: ProfileComponent, children: [
-  { path: '', component: ProfileMapComponent},
-  { path: 'info', component: ProfileInfoComponent},
-  { path: 'albums', component: AlbumsComponent},
-  { path: 'audios', component: AudiosComponent},
-  { path: 'videos', component: VideosComponent},
-  { path: 'news', component: NewsComponent},
+      { path: '', component: ProfileMapComponent},
+      { path: 'info', component: ProfileInfoComponent},
+      { path: 'albums', component: AlbumsComponent},
+      { path: 'audios', component: AudiosComponent},
+      { path: 'videos', component: VideosComponent},
+      { path: 'news', component: NewsComponent},
 ]},
 
   { path: 'group/:id',  component: GroupPageComponent },
@@ -137,7 +139,13 @@ const appRoutes: Routes = [
   { path: 'privacy-policy',  component: PrivacyPolicyComponent },
   { path: 'friends',  component: FriendsComponent },
   { path: 'search',  component: SearchComponent },
-  { path: 'user-profile/:id',  component: UserProfileComponent },
+  { path: 'user-profile/:id',  component: UserProfileComponent, children: [
+    { path: '', component: ProfileMapComponent},
+    { path: 'info', component: ProfileInfoComponent},
+    { path: 'albums', component: AlbumsComponent},
+    { path: 'audios', component: UserAudiosComponent},
+    { path: 'videos', component: UserVideosComponent},
+]},
   { path: 'user-friend/:id',  component: UserFriendComponent },
   { path: 'album/:id',  component: AlbumPageComponent },
  ];
@@ -190,6 +198,8 @@ export class CustomTranslateLoader implements TranslateLoader {
     VideoComponent,
     AudiosComponent,
     AudioComponent,
+    UserVideosComponent,
+    UserAudiosComponent,
     FriendRequestsComponent,
     FriendRequestComponent,
     FriendComponent,

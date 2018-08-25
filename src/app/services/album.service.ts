@@ -30,4 +30,9 @@ export class AlbumService {
   deleteImage(id) {
     return this.http.delete(`${appConfig.apiUrl}/files/${id}`);
   }
+
+  getUserAlbums(id) {
+    return this.http.get(`${appConfig.apiUrl}/albums/user-albums/${id}`);
+  }
+
 }

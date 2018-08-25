@@ -1,28 +1,4 @@
-@import '../../../variable';
-
-.clearfix{
-    clear: both;
-}
-.padding{
-    padding: 0;
-}
-.map-block{
-  padding-top: 20px;
-  border-bottom: 2px solid rgb(149, 200, 0);
-  }
-.map-header{
-  background: $color-blue;
-  .mat-tab-nav-bar{
-    a{
-      text-decoration: none;
-      opacity: 1;
-      i{
-        color: #fff;
-        font-size: 26px;
-      }
-    }
-  }
-}
+@import '../../../../variable';
 .tabs-a{
     background: $color-white;
     padding: 15px;

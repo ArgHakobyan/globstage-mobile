@@ -20,6 +20,8 @@ export class UserProfileInfoComponent implements OnInit {
 
   ngOnInit() {
     log(this.user);
+    this.user.user_contact = JSON.parse(this.user.user_contact);
+    this.user.user_interests = JSON.parse(this.user.user_interests);
   }
 
   show1Toggle() {

@@ -56,13 +56,13 @@ export class LoginComponent implements OnInit {
       user_password: ['', Validators.required],
     });
 
-    this.name = this.formgroupReg.controls['name'];
-    this.lastname = this.formgroupReg.controls['lastname'];
-    this.email = this.formgroupReg.controls['email'];
-    this.password_first = this.formgroupReg.controls['password_first'];
-    this.password_second = this.formgroupReg.controls['password_second'];
-    this.email = this.formgroupLog.controls['email'];
-    this.password = this.formgroupLog.controls['password'];
+    // this.name = this.formgroupReg.controls['name'];
+    // this.lastname = this.formgroupReg.controls['lastname'];
+    // this.email = this.formgroupReg.controls['email'];
+    // this.password_first = this.formgroupReg.controls['password_first'];
+    // this.password_second = this.formgroupReg.controls['password_second'];
+    // this.email = this.formgroupLog.controls['email'];
+    // this.password = this.formgroupLog.controls['password'];
 
   }
   openLogin() {

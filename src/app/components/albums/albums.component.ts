@@ -29,10 +29,10 @@ export class AlbumsComponent implements OnInit {
     this.route.parent.params.subscribe( params => {
       console.log(params);
       
-      this.albumService.getUserAlbums(params.id).subscribe((albums: any[]) => {
-        this.albums = albums;
-        console.log(albums);
-      });
+      // this.albumService.getUserAlbums(params.id).subscribe((albums: any[]) => {
+      //   this.albums = albums;
+      //   console.log(albums);
+      // });
       
     });
   }

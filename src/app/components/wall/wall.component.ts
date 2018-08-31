@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {  HttpService} from '../../services/http.service';
 import { PostsService } from '../../services/posts.service';
 import { getFromLocalStorage } from '../../utils/local-storage';
@@ -9,12 +9,11 @@ import { getFromLocalStorage } from '../../utils/local-storage';
   styleUrls: ['./wall.component.scss'],
 
 })
-export class WallComponent implements OnInit {
+export class WallComponent implements OnInit, OnChanges {
   wallPosts = [];
   @Input() wallId;
   @Input() groupId;
   constructor(
-
     private http: HttpService,
     private postsService: PostsService
   ) {
@@ -22,6 +21,10 @@ export class WallComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.updateWall();
+  }
+
+  ngOnChanges() {
     this.updateWall();
   }
 

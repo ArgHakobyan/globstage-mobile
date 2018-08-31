@@ -142,7 +142,7 @@ const appRoutes: Routes = [
   { path: 'search',  component: SearchComponent },
   { path: 'user-profile/:id',  component: UserProfileComponent, children: [
     { path: '', component: ProfileMapComponent},
-    { path: 'info', component: ProfileInfoComponent},
+    { path: 'info', component: UserProfileInfoComponent},
     { path: 'albums', component: UserAlbumsComponent},
     { path: 'audios', component: UserAudiosComponent},
     { path: 'videos', component: UserVideosComponent},

@@ -44,7 +44,7 @@ export class UserUploadImageComponent implements OnInit {
   }
 
   updateUploadImage() {
-    this.httpService.put(`${appConfig.apiUrl }/users`, {'user_photo': this.uploadedImage}).subscribe(a => {
+    this.httpService.put(`${appConfig.apiUrl }/users/${JSON.parse(localStorage.getItem('GLOBE_USER')).id}`, {'user_photo': this.uploadedImage}).subscribe(a => {
       const localUser: any = getFromLocalStorage('GLOBE_USER');
       localUser.user_photo = this.uploadedImage;
       setToLocalStorage('GLOBE_USER', localUser);
@@ -92,7 +92,7 @@ export class UserUploadImageComponent implements OnInit {
       .subscribe(
         (data: any) => {
           console.log('success');
-          this.http.put(`${appConfig.apiUrl }/users`, {'user_photo': data.path}).subscribe(a => {
+          this.http.put(`${appConfig.apiUrl }/users/${JSON.parse(localStorage.getItem('GLOBE_USER')).id}`, {'user_photo': data.path}).subscribe(a => {
             const localUser: any = getFromLocalStorage('GLOBE_USER');
             localUser.user_photo = data.path;
             setToLocalStorage('GLOBE_USER', localUser);

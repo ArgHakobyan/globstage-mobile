@@ -22,7 +22,6 @@ export class GlobeAdapter extends ChatAdapter {
   }
 
   sendMessage(message: Message): Observable<any> {
-
     return this.http.post('/messages', {
       for_id: message.for_id,
       content: message.content,

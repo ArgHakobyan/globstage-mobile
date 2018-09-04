@@ -11,7 +11,8 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./user-profile-image.component.scss']
 })
 export class UserProfileImageComponent implements OnInit {
-
+  
+  @Input() userId;
   @Input() user;
   isFriend = false;
   following = false;
@@ -21,7 +22,7 @@ export class UserProfileImageComponent implements OnInit {
     public snackBar: MatSnackBar,
     private chatService: ChatService,
     public translate: TranslateService,
-  ) {
+  ) { 
   }
 
   ngOnInit() {

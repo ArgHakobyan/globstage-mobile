@@ -55,19 +55,19 @@ export class UserService {
     return this.http.put(`${this.apiUrl}/users`, {'user_photo': img});
   }
 
-  savePrivacy(privacy){
+  savePrivacy(privacy) {
     return this.http.put(`${this.apiUrl}/privacys/${JSON.parse(localStorage.getItem('GLOBE_USER')).id}`, privacy);
   }
 
-  getPrivacy(){
+  getPrivacy() {
     return this.http.get(`${this.apiUrl}/privacys`);
   }
 
-  newPassword(newPass){
+  newPassword(newPass) {
     return this.http.put(`${this.apiUrl}/users/updateuser`, newPass);
   }
 
-  newName(nameLastname){
+  newName(nameLastname) {
     return this.http.put(`${this.apiUrl}/users/updateuser`, nameLastname);
   }
 }

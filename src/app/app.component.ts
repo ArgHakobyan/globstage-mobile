@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {ChatAdapter} from './components/ng-chat';
 import {GlobeAdapter} from './services/chatAdapter';
 import {HttpService} from './services/http.service';
@@ -11,7 +11,7 @@ import {ConfigService} from './services/config.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
   title = 'app';
   userId = getFromLocalStorage('GLOBE_USER') ? getFromLocalStorage('GLOBE_USER').id : null;
   http: HttpService;
@@ -28,5 +28,9 @@ export class AppComponent implements OnInit {
     this._translate.setDefaultLang('En');
     this._translate.use('En');
     this._config.locale = this._translate.getDefaultLang();
+  }
+
+  ngOnChanges() {
+    this.userId = getFromLocalStorage('GLOBE_USER') ? getFromLocalStorage('GLOBE_USER').id : null;
   }
 }

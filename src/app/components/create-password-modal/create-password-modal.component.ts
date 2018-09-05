@@ -23,7 +23,7 @@ export class CreatePasswordModalComponent implements OnInit {
     public formbuilder: FormBuilder,
     public dialogRef: MatDialogRef<CreatePasswordModalComponent>,
     private authService: AuthService,
-    private activatedRoute: ActivatedRoute;
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit() {

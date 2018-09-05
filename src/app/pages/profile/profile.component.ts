@@ -20,8 +20,8 @@ export class ProfileComponent implements OnInit {
 
   @Input() userId;
   public user;
-  public newStatus: boolean = false;
-  public status: boolean = true;
+  public newStatus = false;
+  public status = true;
   public userProfile: any;
 
   constructor(
@@ -33,11 +33,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.authService.isLogged()) {
-      this.router.navigate(['/']);
-    }
     this.user = getFromLocalStorage('GLOBE_USER');
-
     this.userService.getUser(getFromLocalStorage('GLOBE_USER').id).subscribe((user: any) => {
       this.userProfile = user;
       setToLocalStorage('GLOBE_USER', user);

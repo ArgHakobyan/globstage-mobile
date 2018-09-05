@@ -593,7 +593,7 @@ export class NgChatComponent implements OnInit {
       message.for_id = window.chattingTo.id;
       message.content = window.newMessage;
 
-      window.messages.push(message);
+      // window.messages.push(message);
 
       this.adapter.sendMessage(message).subscribe(res => {
         window.messages.push(res);

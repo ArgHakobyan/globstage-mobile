@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 import { appConfig } from '../app.config';
 import {getFromLocalStorage, setToLocalStorage, removeFromLocalStorage} from '../utils/local-storage';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
 export class AuthService {
@@ -55,9 +56,10 @@ export class AuthService {
     return this.http.post(`${this.urlOnlyForOauth}/revoke`, body);
   }
 
-  isLogged() {
+  get isLogged() {
+    const helper = new JwtHelperService();
     const auth: any = getFromLocalStorage('GLOBE_AUTH');
-    if (auth && auth.expired > new Date().valueOf() / 1000) {
+    if (auth && !helper.isTokenExpired(auth.token)) {
       return true;
     }
     removeFromLocalStorage(['GLOBE_AUTH', 'GLOBE_USER']);

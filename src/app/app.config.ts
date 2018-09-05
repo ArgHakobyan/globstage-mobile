@@ -1,9 +1,13 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 
 export const appConfig = {
-  apiUrl: 'http://globstage.atero.solutions/api/v1',
-  apiOauth: 'http://globstage.atero.solutions/api/v1/users/token',
-  serverUrl: 'http://globstage.atero.solutions/api',
+  // apiUrl: 'http://globstage.atero.solutions/api/v1',
+  // apiOauth: 'http://globstage.atero.solutions/api/v1/users/token',
+  // serverUrl: 'http://globstage.atero.solutions/api',
+
+  apiUrl: 'http://globstage.com/api/v1',
+  apiOauth: 'http://globstage.com/api/v1/users/token',
+  serverUrl: 'http://globstage.com/api',
 };
 
 export const allowedImageType = [

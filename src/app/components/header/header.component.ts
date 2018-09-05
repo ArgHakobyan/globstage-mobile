@@ -40,6 +40,9 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('GLOBE_AUTH');
     localStorage.removeItem('GLOBE_USER');
     this.router.navigate(['']);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1);
   }
   onChatTitleClicked(event: any): void {
     this.isCollapsed = !this.isCollapsed;

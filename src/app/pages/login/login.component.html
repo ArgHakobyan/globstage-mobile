@@ -19,11 +19,12 @@
       <button (click)="openLogin()" type="button" class="btn">{{'login.login' | translate}}</button>
       <button (click)="openRegister()" type="button" class="btn-default">{{'login.register' | translate}}</button>
   </div>
+  <h4 (click)="openCreatePassword()">aaaaaa</h4>
 </div>
 <ng-template [ngIf]= "loginPanel">
 <div class="login-panel">
   <div class="login-form animated fadeInDownBig">
-      <span (click)="closeLogin()" class="icon-close">x</span>
+      <span (click)="closeLogin()" class="icon-close"><i class="fa fa-times" aria-hidden="true"></i></span>
     <h3>{{'login.welcome' | translate}}
       <span class="solid"></span>
     </h3>
@@ -35,11 +36,11 @@
         <span class="input-span">{{'login.password' | translate}}</span>
         <input class="input-text margin" type="password" formControlName="user_password">
         <!--<p *ngIf="formgroupLog.invalid" class="form-error">* All fields are required.</p>-->
-        <p class="text-md-right forgot-text">{{'login.forgotYourPass' | translate}}?</p>
+        <p (click)="openDialogForgot()" class="text-md-right forgot-text">{{'login.forgotYourPass' | translate}}?</p>
       </div>
       <!--<input class="check-box" type="checkbox" name="remember">-->
       <!--<label class="remember-me" for="remember_me">Remember me</label>-->
-
+      <span class="error" *ngIf="errorLogin">Invalid email or password *</span>
       <button type="submit" [disabled]="!formgroupLog.valid" class="login btn btn-success">{{'login.login' | translate}}</button>
     </form>
   </div>
@@ -48,7 +49,7 @@
 <ng-template [ngIf]= "registerPanel">
 <div class="register-panel">
   <div class="register-form animated fadeInDownBig">
-      <span (click)="closeRegister()" class="icon-close">x</span>
+      <span (click)="closeRegister()" class="icon-close"><i class="fa fa-times" aria-hidden="true"></i></span>
       <h3>{{'login.register' | translate}}
         <span class="solid"></span>
       </h3>
@@ -59,6 +60,7 @@
         <input type="password" formControlName="user_password" placeholder="Password*"><br>
         <input class="margin" type="password" formControlName="password_second" placeholder="Password again*"><br>
         <p *ngIf="formgroupReg.invalid" class="form-error">* {{'login.allRequired' | translate}}</p>
+        <span class="error-reg" *ngIf="errorReg">Pasdwords does not match*</span>
         <button type="submit" [disabled]="!formgroupReg.valid" class="register btn btn-success">{{'login.register' | translate}}</button>
       </form>
   </div>

@@ -275,6 +275,12 @@
             background-color: #449d44;
             border-color: #398439;
         }
+        .error{
+            color: #e81000;
+            display: block;
+            text-align: center;
+            padding-bottom: 6px;
+        }
 }
 .register-panel{
     height: 100vh;
@@ -345,11 +351,18 @@
             border-color: #4cae4c;
             font-size: 14px;
             padding: 10px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
         .register:hover{
             background-color: #449d44;
             border-color: #398439;
+        }
+        .error-reg{
+            color: #e81000;
+            display: block;
+            text-align: center;
+            padding-bottom: 6px;
+            padding-top: 10px;
         }
     }
 

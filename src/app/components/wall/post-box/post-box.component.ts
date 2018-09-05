@@ -7,6 +7,9 @@ import { NewAudioModalComponent } from '../../new-audio-modal/new-audio-modal.co
 import { NewVideoModalComponent } from '../../new-video-modal/new-video-modal.component';
 import { UploadMediaAttachComponent } from '../../upload-media-attach/upload-media-attach.component';
 import { getFromLocalStorage } from '../../../utils/local-storage';
+import {ChatService} from '../../../services/chat.service';
+import { WallSmilesComponent } from '../../../components/wall/wall-smiles/wall-smiles.component';
+
 
 @Component({
   selector: 'app-post-box',
@@ -15,7 +18,8 @@ import { getFromLocalStorage } from '../../../utils/local-storage';
    entryComponents: [
     NewAudioModalComponent,
     UploadMediaAttachComponent,
-    NewVideoModalComponent],
+    NewVideoModalComponent,
+    WallSmilesComponent],
 })
 export class PostBoxComponent implements OnInit {
   formgroupWall: FormGroup;
@@ -27,9 +31,12 @@ export class PostBoxComponent implements OnInit {
   @Output() postCreated = new EventEmitter<boolean>();
   attachements = [];
   attached = [];
+  smileOpen = false;
+
   constructor(
     private postsService: PostsService,
     public dialog: MatDialog,
+    private chatService: ChatService,
   ) { }
 
   ngOnInit() {
@@ -116,6 +123,16 @@ export class PostBoxComponent implements OnInit {
 
   smileFocusOutFunction() {
     // this.smileClass = '';
+  }
+
+  openSmiles(window) {
+    window.smileOpen = !window.smileOpen;
+  }
+
+  addSmile(e, window) {
+    window.newMessage = window.newMessage ? window.newMessage + ` *${e}* ` : ` *${e}* `;
+    window.smileOpen = false;
+    console.log(e);
   }
 
 }

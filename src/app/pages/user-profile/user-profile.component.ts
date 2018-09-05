@@ -10,6 +10,7 @@ import {appConfig} from '../../app.config';
 })
 export class UserProfileComponent implements OnInit {
 
+  @Input() userId;
   public user;
   public userBlocked;
 

@@ -13,7 +13,7 @@ import { Router, ActivatedRoute} from '@angular/router';
 })
 export class UserAlbumsComponent implements OnInit {
 
-  albums;
+  albums = [];
 
   constructor(
     public dialog: MatDialog,
@@ -22,9 +22,9 @@ export class UserAlbumsComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.albumService.getAlbums().subscribe(res => {
-      this.albums = res;
-    });
+    // this.albumService.getAlbums().subscribe(res => {
+    //   this.albums = res;
+    // });
 
     this.route.parent.params.subscribe( params => {
       console.log(params);

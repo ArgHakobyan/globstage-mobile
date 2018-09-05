@@ -33,11 +33,11 @@ import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {HttpInterceptorService} from './services/http-interceptor.service';
 import {ChatService} from './services/chat.service';
 import 'hammerjs';
-import {NgxGalleryModule} from 'ngx-gallery';
-import {EmbedVideoService} from './services/embed-video.service';
-
-
+import { NgxGalleryModule } from 'ngx-gallery';
+import { EmbedVideoService } from './services/embed-video.service';
+import { WallSmilesComponent } from './components/wall/wall-smiles/wall-smiles.component';
 import {MatInputModule} from '@angular/material/input';
+
 import {
   MatAutocompleteModule,
   MatButtonToggleModule,
@@ -117,9 +117,11 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {Observable} from 'rxjs';
 import {fromPromise} from 'rxjs/internal/observable/fromPromise';
 import {ConfigService} from './services/config.service';
-import {AlbumPageComponent} from './pages/album-page/album-page.component';
-import {VideoPlayerComponent} from './components/video-player/video-player.component';
 import {AuthGuard} from './auth.guard';
+import { AlbumPageComponent } from './pages/album-page/album-page.component';
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
+import { NewPasswordModalComponent } from './components/new-password-modal/new-password-modal.component';
+import { CreatePasswordModalComponent } from './components/create-password-modal/create-password-modal.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -220,6 +222,9 @@ export class CustomTranslateLoader implements TranslateLoader {
     ProfileMapComponent,
     AlbumPageComponent,
     VideoPlayerComponent,
+    WallSmilesComponent,
+    NewPasswordModalComponent,
+    CreatePasswordModalComponent,
   ],
   imports: [
     CommonModule,
@@ -306,6 +311,8 @@ export class CustomTranslateLoader implements TranslateLoader {
     NewGroupModalComponent,
     NewGroupModalComponent,
     NewNotesModalComponent,
+    NewPasswordModalComponent,
+    CreatePasswordModalComponent,
     UserUploadImageComponent,
     UserCropImageComponent,
     UploadMediaAttachComponent,

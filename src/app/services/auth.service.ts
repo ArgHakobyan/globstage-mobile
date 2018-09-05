@@ -3,15 +3,17 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 import { appConfig } from '../app.config';
-import {getFromLocalStorage, setToLocalStorage, removeFromLocalStorage} from '../utils/local-storage';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { getFromLocalStorage, setToLocalStorage, removeFromLocalStorage } from '../utils/local-storage';
 
 @Injectable()
 export class AuthService {
 
+
   urlOnlyForOauth = appConfig.apiOauth;
   apiUrl = appConfig.apiUrl;
-
+  isLoggedIN = new BehaviorSubject(false);
   constructor(
     private userService: UserService,
     private http: HttpClient,
@@ -65,4 +67,20 @@ export class AuthService {
     removeFromLocalStorage(['GLOBE_AUTH', 'GLOBE_USER']);
     return false;
   }
+
+  forgotPassword(email: string): Observable<any> {
+    console.log(email);
+    return this.http.post(`${this.apiUrl}/users/forgotpassword`, {
+      email: email,
+    });
+  }
+
+  createNewPassword(password: string, email: any, token: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/`, {
+      email: email,
+      token: token,
+      password: password
+    });
+  }
 }
+

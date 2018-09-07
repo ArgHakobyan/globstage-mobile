@@ -121,10 +121,12 @@ import {AuthGuard} from './auth.guard';
 import { AlbumPageComponent } from './pages/album-page/album-page.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { NewPasswordModalComponent } from './components/new-password-modal/new-password-modal.component';
-import { CreatePasswordModalComponent } from './components/create-password-modal/create-password-modal.component';
+// import { CreatePasswordModalComponent } from './components/create-password-modal/create-password-modal.component';
+import { ForgotComponent } from './pages/forgot/forgot.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
+  {path: 'forgot', component: ForgotComponent},
   {
     path: 'profile', component: ProfileComponent, children: [
       {path: '', component: ProfileMapComponent},
@@ -224,7 +226,7 @@ export class CustomTranslateLoader implements TranslateLoader {
     VideoPlayerComponent,
     WallSmilesComponent,
     NewPasswordModalComponent,
-    CreatePasswordModalComponent,
+    ForgotComponent,
   ],
   imports: [
     CommonModule,
@@ -312,7 +314,6 @@ export class CustomTranslateLoader implements TranslateLoader {
     NewGroupModalComponent,
     NewNotesModalComponent,
     NewPasswordModalComponent,
-    CreatePasswordModalComponent,
     UserUploadImageComponent,
     UserCropImageComponent,
     UploadMediaAttachComponent,

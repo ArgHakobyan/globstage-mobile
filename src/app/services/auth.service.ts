@@ -75,11 +75,11 @@ export class AuthService {
     });
   }
 
-  createNewPassword(password: string, email: any, token: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/`, {
-      email: email,
-      token: token,
-      password: password
+  createNewPassword(password: string,confpassword: string, hash: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/users/changepassword`, {
+      new_password: password,
+      confirm_password: confpassword,
+      hash: hash,
     });
   }
 }

@@ -55,8 +55,47 @@
     .like{
         color: #95c800;
         padding-right: 4px;
+        position: relative;
+        .like-count{
+            width: 140px;
+            position: absolute;
+            bottom: 40px;
+            background: #000;
+            display: none;
+            padding: 4px;
+            h5{
+                margin: 0;
+                font-size: 14px;
+                color: #fff;
+                padding: 0 6px;
+            }
+        }
+    }
+    .like:hover{
+        .like-count{
+            display: block;
+        }
     }
     .dislike{
         color: $color-red;
+        .dislike-count{
+            width: 140px;
+            position: absolute;
+            bottom: 65px;
+            background: #000;
+            display: none;
+            padding: 4px;
+            h5{
+                margin: 0;
+                font-size: 14px;
+                color: #fff;
+                padding: 0 6px;
+            }
+        }
+    }
+    .dislike:hover{
+        .dislike-count{
+            display: block;
+        }
     }
 }

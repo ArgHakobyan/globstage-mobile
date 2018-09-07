@@ -8,7 +8,6 @@ import {UserService} from '../../services/user.service';
 import {getFromLocalStorage, setToLocalStorage} from '../../utils/local-storage';
 import {MatDialog} from '@angular/material';
 import { NewPasswordModalComponent } from '../../components/new-password-modal/new-password-modal.component';
-import { CreatePasswordModalComponent } from '../../components/create-password-modal/create-password-modal.component';
 
 
 @Component({
@@ -155,14 +154,5 @@ export class LoginComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
-
-  openCreatePassword() {
-    const dialogRef = this.dialog.open(CreatePasswordModalComponent, {
-      width: '400px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
-  }
-
+  
 }

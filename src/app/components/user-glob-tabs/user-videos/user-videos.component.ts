@@ -33,7 +33,6 @@ export class UserVideosComponent implements OnInit {
   ngOnInit() {
     this.route.parent.params.subscribe( params => {
       console.log(params);
-      
       this.videoServices.getUserVideos(params.id).subscribe((videos: any[]) => {
         this.videos = videos;
         console.log(videos);

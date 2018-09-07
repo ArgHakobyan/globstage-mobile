@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material';
 import {NewVideoModalComponent} from '../../new-video-modal/new-video-modal.component';
 import {VideoService} from '../../../services/video.service';
 import {VideoPlayerComponent} from '../../video-player/video-player.component';
+import {getFromLocalStorage} from '../../../utils/local-storage';
 
 @Component({
   selector: 'app-videos',
@@ -25,11 +26,10 @@ export class VideosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.videoServices.getVideos().subscribe(
-      (videos: any[]) => {
-        this.videos = videos;
-        console.log(videos);
-      });
+    this.videoServices.getUserVideos(getFromLocalStorage('GLOBE_USER').id).subscribe((videos: any[]) => {
+      this.videos = videos;
+      console.log(videos);
+    });
   }
 
   openDialogVideo() {

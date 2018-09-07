@@ -13,7 +13,7 @@ export class SearchAllComponent implements OnInit {
 
   selected1 = 'users';
   query;
-  type;
+  type = 'users';
   constructor(private router: Router,public dialogRef: MatDialogRef<SearchAllComponent>) { }
 
   ngOnInit() {

@@ -551,9 +551,9 @@ export class NgChatComponent implements OnInit {
       message.attachments = this.attachments;
 
       if (message.attachments && message.attachments.length > 0) {
-
-        console.log(message);
         this.adapter.sendMessage(message).subscribe(res1 => {
+          console.log(message);
+          console.log(res);
           window.messages.push(res1);
           this.attachments = [];
         });
@@ -596,8 +596,14 @@ export class NgChatComponent implements OnInit {
       // window.messages.push(message);
 
       this.adapter.sendMessage(message).subscribe(res => {
-        window.messages.push(res);
-      });
+        console.log(message);
+        console.log(res);
+          res.body ? window.messages.push(res.body) : window.messages.push(res);
+        this.scrollChatWindowToBottom(window);
+      },
+        error => {
+        console.log(error);
+        });
 
       window.newMessage = ''; // Resets the new message input
 

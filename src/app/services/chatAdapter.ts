@@ -27,7 +27,6 @@ export class GlobeAdapter extends ChatAdapter {
       content: message.content,
       attachments: message.attachments
     });
-
   }
 
   // private bindSignalREvents(): void

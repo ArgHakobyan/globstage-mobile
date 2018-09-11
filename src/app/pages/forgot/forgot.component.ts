@@ -46,8 +46,6 @@ export class ForgotComponent implements OnInit {
     if (password && password === confpassword) {
 
         this.activatedRoute.queryParams.subscribe((params: Params) => {
-          let email = params['email'];
-          let token = params['token'];
           this.authService.createNewPassword(password, confpassword, params.hash).subscribe(
             res => {
               this.router.navigate(['/']);

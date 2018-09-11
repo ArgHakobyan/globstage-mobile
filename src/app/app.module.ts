@@ -123,6 +123,7 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
 import { NewPasswordModalComponent } from './components/new-password-modal/new-password-modal.component';
 // import { CreatePasswordModalComponent } from './components/create-password-modal/create-password-modal.component';
 import { ForgotComponent } from './pages/forgot/forgot.component';
+import { PostEmojifyPipe } from './pipes/post-emojify.pipe';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -227,6 +228,7 @@ export class CustomTranslateLoader implements TranslateLoader {
     WallSmilesComponent,
     NewPasswordModalComponent,
     ForgotComponent,
+    PostEmojifyPipe
   ],
   imports: [
     CommonModule,

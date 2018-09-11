@@ -7,7 +7,7 @@ import { NewAudioModalComponent } from '../../new-audio-modal/new-audio-modal.co
 import { NewVideoModalComponent } from '../../new-video-modal/new-video-modal.component';
 import { UploadMediaAttachComponent } from '../../upload-media-attach/upload-media-attach.component';
 import { getFromLocalStorage } from '../../../utils/local-storage';
-import {ChatService} from '../../../services/chat.service';
+import { ChatService } from '../../../services/chat.service';
 import { WallSmilesComponent } from '../../../components/wall/wall-smiles/wall-smiles.component';
 
 
@@ -15,7 +15,7 @@ import { WallSmilesComponent } from '../../../components/wall/wall-smiles/wall-s
   selector: 'app-post-box',
   templateUrl: './post-box.component.html',
   styleUrls: ['./post-box.component.scss'],
-   entryComponents: [
+  entryComponents: [
     NewAudioModalComponent,
     UploadMediaAttachComponent,
     NewVideoModalComponent,
@@ -30,8 +30,10 @@ export class PostBoxComponent implements OnInit {
   @Input() groupId;
   @Output() postCreated = new EventEmitter<boolean>();
   attachements = [];
+  videos = [];
   attached = [];
   smileOpen = false;
+  user_wall;
 
   constructor(
     private postsService: PostsService,
@@ -42,8 +44,8 @@ export class PostBoxComponent implements OnInit {
   ngOnInit() {
     this.formgroupWall = new FormGroup({
       user_wall: new FormControl()
-   });
-   this.userAvatar = getFromLocalStorage('GLOBE_USER').user_photo || '/assets/imgs/no_ava_50.png';
+    });
+    this.userAvatar = getFromLocalStorage('GLOBE_USER').user_photo || '/assets/imgs/no_ava_50.png';
   }
 
   createPost() {
@@ -54,13 +56,15 @@ export class PostBoxComponent implements OnInit {
         post_attachments: this.attachements,
         post_wall_id: this.wallId,
         author_id: getFromLocalStorage('GLOBE_USER').id,
-        post_user_id: getFromLocalStorage('GLOBE_USER').id
+        post_user_id: getFromLocalStorage('GLOBE_USER').id,
+        post_videos: this.videos,
       }).subscribe(res => {
         this.smileClass = '';
         this.formgroupWall.get('user_wall').setValue('');
         this.postCreated.emit();
         this.attached = [];
         this.attachements = [];
+        this.videos = [];
       });
     }
     if (this.groupId) {
@@ -70,13 +74,15 @@ export class PostBoxComponent implements OnInit {
         post_attachments: this.attachements,
         post_group_id: this.groupId,
         author_id: getFromLocalStorage('GLOBE_USER').id,
-        post_user_id: getFromLocalStorage('GLOBE_USER').id
+        post_user_id: getFromLocalStorage('GLOBE_USER').id,
+        post_videos: this.videos,
       }).subscribe(res => {
         this.smileClass = '';
         this.formgroupWall.get('user_wall').setValue('');
         this.postCreated.emit();
         this.attached = [];
         this.attachements = [];
+        this.videos = [];
       });
     }
   }
@@ -105,6 +111,9 @@ export class PostBoxComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.videos.push(result);
+      }
     });
   }
 
@@ -125,14 +134,14 @@ export class PostBoxComponent implements OnInit {
     // this.smileClass = '';
   }
 
-  openSmiles(window) {
-    window.smileOpen = !window.smileOpen;
+  openSmiles() {
+    this.smileOpen = !this.smileOpen;
   }
 
-  addSmile(e, window) {
-    window.newMessage = window.newMessage ? window.newMessage + ` *${e}* ` : ` *${e}* `;
-    window.smileOpen = false;
-    console.log(e);
+  addSmile(e) {
+    this.user_wall = this.formgroupWall.get('user_wall').value ? this.formgroupWall.get('user_wall').value + ` *${e}* ` : ` *${e}* `;
+    this.smileOpen = false;
+    console.log(e, this.formgroupWall.get('user_wall').value);
   }
 
 }

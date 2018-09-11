@@ -4,8 +4,9 @@
 }
 .post_attachs{
   .post_attach{
-    width: 600px;
+    max-width: 600px;
     margin-top: 10px;
+    height: auto;
   }
   .doc-hover{
     width: 100px;

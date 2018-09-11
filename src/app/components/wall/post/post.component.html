@@ -24,7 +24,7 @@
     <div class="row">
       <div class="wall-content col-md-11">
         <div class="wall-atach-photo">
-          <h6>{{post.post_content}}</h6>
+          <h6 [innerHTML]=" post.post_content || '' | postemojify:true "></h6>
           <app-attachments [post]="post"></app-attachments>
         </div>
       </div>
@@ -32,7 +32,7 @@
       <div class="like-dislike col-md-12">
         <i (click)="addLike()" class="like fa fa-thumbs-up" aria-hidden="true">
           <span>{{ post.post_like_count }}</span>
-          <div class="like-count">
+          <div *ngIf="post.post_like_count != 0" class="like-count">
             <div class="like-abs" *ngFor="let like of post.likes_dislikes">
               <h5 *ngIf="like.status === 'like'">{{ like.user.user_name + " " + like.user.user_last_name }}</h5>
             </div>
@@ -40,7 +40,7 @@
         </i>
         <i (click)="disLike()" class="dislike fa fa-thumbs-down" aria-hidden="true">
           <span>{{post.post_dislike_count || 0}}</span>
-          <div class="dislike-count">
+          <div *ngIf="post.post_dislike_count != 0" class="dislike-count">
             <div *ngFor="let dislike of post.likes_dislikes" class="dislike-abs">
               <h5 *ngIf="dislike.status === 'dislike'">{{ dislike.user.user_name + " " + dislike.user.user_last_name }}</h5>
             </div>

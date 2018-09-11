@@ -36,7 +36,7 @@ export class NewAlbumModalComponent implements OnInit {
   createAlbum($event) {
     if (this.newAlbum.valid) {
       this.albumService.createAlbum(this.newAlbum.value).subscribe(res => {
-        log(res);
+        console.log(res);
       });
     }
   }

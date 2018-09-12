@@ -1,8 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { SearchAllComponent } from '../search-all/search-all.component';
-import {TranslateService} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
+import { FriendsService } from "../../services/friends.service";
+
 
 @Component({
   selector: 'app-header',
@@ -10,6 +12,8 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  friendRequests: any[];
 
 
   @Input()
@@ -20,11 +24,21 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     public translate: TranslateService,
+    private friendService: FriendsService,
   ) {
 
   }
 
   ngOnInit() {
+    this.getFriendRequests();
+
+  }
+
+  getFriendRequests() {
+    this.friendService.getFriendRequests().subscribe((res: any[]) => {
+      this.friendRequests = res;
+      console.log(res);
+    })
 
   }
   openDialogSearch() {

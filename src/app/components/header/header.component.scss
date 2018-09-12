@@ -8,6 +8,7 @@
         padding-top: 4px;
         ul{
             padding: 0;
+            position: relative;
             li{
                 display: inline-block;
                 padding-right: 4px;
@@ -36,6 +37,25 @@
                 }
 
             }
+            .notification{
+                position: absolute;
+                top: 6px;
+                .notify{
+                    color: #d40a0a;
+                    font-size: 20px;
+                }
+            }
+            .relative-length{
+                position: relative;
+            }
+            .notify-length{
+                color: #fff;
+                position: absolute;
+                bottom: 14px;
+                left: 10px;
+                z-index: 9999;
+                font-size: 12px;
+            }
         }
         .En{
             background: url("/assets/imgs/gb.svg") no-repeat;
@@ -57,3 +77,18 @@
         }
      }
  }
+
+ @media only screen and (max-width: 767px) {
+    .menu-block{
+        .logo{
+            width: 30%;
+        } 
+        .menu{
+            width: 70%;
+        }
+    }
+    
+    
+  
+}
+

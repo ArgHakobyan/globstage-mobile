@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FriendsService } from "../../services/friends.service";
 import { MatSnackBar } from "@angular/material";
 
@@ -10,21 +10,12 @@ import { MatSnackBar } from "@angular/material";
 })
 export class FriendRequestsComponent implements OnInit {
 
-  friendRequests: any[];
+  @Input() friendRequests: any[];
 
   constructor(private friendService: FriendsService, public snackBar: MatSnackBar,) { }
 
   ngOnInit() {
-    this.getFriendRequests();
-
-  }
-
-  getFriendRequests() {
-    this.friendService.getFriendRequests().subscribe((res: any[]) => {
-      this.friendRequests = res;
-      console.log(res);
-    })
-
+   
   }
 
 }

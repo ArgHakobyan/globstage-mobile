@@ -11,6 +11,10 @@ ul {
 li {
   list-style: none;
 }
+img{
+  max-width: 100%;
+  vertical-align: middle;
+}
 
 .user-avatar {
   position: relative;
@@ -116,4 +120,26 @@ li {
     color: #fff;
     padding: 5px;
   }
+}
+
+@media only screen and (max-width: 767px) {
+  .user-img{
+    .img {
+      img {
+        border-radius: 3px;
+        width: initial;
+      }
+    }
+  }
+  .user-avatar .user-img{
+    .hover-display {
+      width: 50%;
+    }
+    ul{
+      width: 50%;
+    }
+  } 
+  
+  
+
 }

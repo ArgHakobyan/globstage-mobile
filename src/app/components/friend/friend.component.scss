@@ -50,3 +50,35 @@
     display: block;
   }
 }
+
+@media only screen and (max-width: 1199px) {
+  .friend{
+    max-width: 100%;
+    padding: 0;
+    img{
+      cursor: pointer;
+      height: auto;
+      width: 90px;
+    }
+    .padd{
+      padding: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .friend{
+    img{
+      width: 70px;
+    }
+    .padd{
+      padding: 0;
+      button{
+        font-size: 12px;
+      }
+      .delete{
+        right: 45px;
+      }
+    }
+  }
+}

@@ -13,6 +13,7 @@ export class PostComponent implements OnInit {
   @Input() post: any;
   @Output() onDelete = new EventEmitter<any>();
   user;
+  videos = [];
 
   constructor(private postService: PostsService) {
   }

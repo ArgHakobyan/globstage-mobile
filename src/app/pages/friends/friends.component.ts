@@ -40,4 +40,15 @@ export class FriendsComponent implements OnInit {
     });    
   }
 
+  // friendDelete(id){
+  //   this.friends.push(this.friendRequests.filter(a => {
+  //     return  a.id === id;
+  //   })[0]);
+
+  //   this.friendRequests = this.friendRequests.filter(a => {
+  //     return  a.id !== id;
+  //   });    
+  // }
+
+
 }

@@ -34,6 +34,7 @@ export class PostBoxComponent implements OnInit {
   attached = [];
   smileOpen = false;
   user_wall;
+  videosid = [];
 
   constructor(
     private postsService: PostsService,
@@ -57,7 +58,7 @@ export class PostBoxComponent implements OnInit {
         post_wall_id: this.wallId,
         author_id: getFromLocalStorage('GLOBE_USER').id,
         post_user_id: getFromLocalStorage('GLOBE_USER').id,
-        post_videos: this.videos,
+        post_videos: this.videosid,
       }).subscribe(res => {
         this.smileClass = '';
         this.formgroupWall.get('user_wall').setValue('');
@@ -75,7 +76,7 @@ export class PostBoxComponent implements OnInit {
         post_group_id: this.groupId,
         author_id: getFromLocalStorage('GLOBE_USER').id,
         post_user_id: getFromLocalStorage('GLOBE_USER').id,
-        post_videos: this.videos,
+        post_videos: this.videosid,
       }).subscribe(res => {
         this.smileClass = '';
         this.formgroupWall.get('user_wall').setValue('');
@@ -113,6 +114,7 @@ export class PostBoxComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.videos.push(result);
+        this.videosid.push(result.id)
       }
     });
   }

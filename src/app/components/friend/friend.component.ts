@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { FriendsService } from "../../services/friends.service";
+import { MatSnackBar } from '@angular/material';
 
 
 
@@ -11,9 +12,11 @@ import { FriendsService } from "../../services/friends.service";
 export class FriendComponent implements OnInit {
 
   @Input() friend;
+  @Output() delFriend = new EventEmitter();
   friendRequests: any[];
   constructor(
-    private friendService: FriendsService
+    private friendService: FriendsService,
+    public snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -22,8 +25,9 @@ export class FriendComponent implements OnInit {
   deleteFriend() {
     this.friendService.deleteFriend(this.friend.id).subscribe((res: any[]) => {
       this.friendRequests = res;
+      // this.delFriend.emit(res);
     });
-
+    this.snackBar.open('Friend deleted', 'ok', { duration: 3000 });
   }
 
 }

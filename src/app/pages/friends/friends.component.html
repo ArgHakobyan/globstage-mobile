@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-12 padd">
           <div class="row">
-            <app-friend class="col-md-6 friend-block" [friend]="friend" *ngFor="let friend of friends"></app-friend>
+            <app-friend (delFriend)="friendDelete($event)" class="col-md-6 friend-block" [friend]="friend" *ngFor="let friend of friends"></app-friend>
             <div class="clearfix"></div>
           </div>
         </div>

@@ -1,15 +1,25 @@
 @import '../../../variable';
 .menu-block{
-    padding-top: 44px;
+    position: relative;
+    padding-top: 10px;
     padding-left: 30px;
     padding-right: 30px;
     .menu{
-        text-align: right;
+        text-align: left;
         padding-top: 4px;
+        position: fixed;
+        bottom: 0;
+        background: #95c800;
+        width: 100%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 99999;
         ul{
             padding: 0;
             position: relative;
             margin: 0;
+            width: calc(100vw - 50px);
             li{
                 display: inline-block;
                 padding: 0 12px;
@@ -17,7 +27,6 @@
                  background: none;
                  padding: 2px 0;
                  border-radius: 4px;
-                 border: none;
                  font-size: 14px;
                  width: 40px;
                  color: #fff;
@@ -42,6 +51,9 @@
                 }
                 
 
+            }
+            .language{
+                float: right;
             }
             .notification{
                 position: absolute;
@@ -90,25 +102,6 @@
  @media only screen and (max-width: 700px) {
     .menu-block{
         padding-top: 0;
-        position: relative;
-        .menu{
-            position: fixed;
-            bottom: 0;
-            background: $color-green;
-            width: 100%;
-            left: 0;
-            right: 0;
-            margin: auto;
-            z-index: 99999;
-            ul{
-                li{
-                    padding: 0 25px;
-                }
-            }
-            .mat-form-field{
-                left: 150px;
-            }
-        }
     }
     
     

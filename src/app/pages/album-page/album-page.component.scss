@@ -195,6 +195,18 @@ li{
 }
 }
 
+@media only screen and (max-width: 1200px) {
+
+  .upload-btn{
+    padding-left: 0;
+      img{
+        width: 50px;
+      }
+  }
+  
+
+}
+
 @media only screen and (max-width: 700px) {
 
   .upload-btn{

@@ -119,21 +119,28 @@
 }
 
 @media only screen and (max-width: 767px){
-  .friend-img {
-    .hover-popup{
-      .popup-img{
-        width: 50px !important;
-      }
-      .popup-img{
-        width: 50px;
-      }
-      .center-text{
-        h5{
-          margin-top: 6px;
+
+  .user-friend{
+    width: 256px;
+    margin: auto;
+    .friend-img {
+      .hover-popup{
+        .popup-img{
+          width: 50px !important;
+        }
+        .popup-img{
+          width: 50px;
+        }
+        .center-text{
+          h5{
+            margin-top: 6px;
+          }
         }
       }
     }
+
   }
+  
 
 
 }

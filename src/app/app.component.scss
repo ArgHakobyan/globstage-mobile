@@ -18,7 +18,9 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow-y: scroll;
+    overflow-x: hidden;
     padding-bottom: 100px;
+    width: 100vw;
 }
 .element1{
     position: absolute;

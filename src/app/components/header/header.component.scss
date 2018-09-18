@@ -114,9 +114,21 @@
             }
         }
         }
+    } 
+@media only screen and (max-width: 443px) {
+    .menu-block{
+        .menu{
+            ul{
+                width: calc(100vw - 42px);
+                li{
+                    padding: 0 8px;
+                }
+            }
+        }
     }
-
- @media only screen and (max-width: 375px) {
+     
+}
+@media only screen and (max-width: 387px) {
     .menu-block{
         .menu{
             position: fixed;
@@ -127,10 +139,32 @@
             right: 0;
             margin: auto;
             z-index: 99999;
+            ul{
+                li{
+                    padding: 0 6px;
+                }
+            }
         }
     }
-    
-    
-  
+     
+}
+@media only screen and (max-width: 347px) {
+    .menu-block{
+        .menu{
+            ul{
+                width: calc(100vw - 35px);
+                li{
+                    padding: 0 2px;
+                }
+                .language{
+                    float: none;
+                    .mat-form-field{
+                        left: 30px;
+                    }
+                }
+            }
+        }
+    }
+     
 }
 

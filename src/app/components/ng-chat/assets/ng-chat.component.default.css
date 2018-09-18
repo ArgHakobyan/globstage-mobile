@@ -306,13 +306,21 @@
           
         }
 
-        /* @media only screen and (max-width: 582px) {
+        @media only screen and (max-width: 582px) {
             
             .ng-chat-window{
-                bottom: 0;
-                width: 100%;
-                height: 100%;
+                right: 0;
             }
             
           
-        } */
+        }
+
+        @media only screen and (max-width: 347px) {
+            
+            #ng-chat-people{
+                width: 220px;
+                bottom: 0;
+            }
+            
+          
+        }

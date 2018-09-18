@@ -86,9 +86,9 @@ export class NgChatComponent implements OnInit {
   private audioFile: HTMLAudioElement;
   private users: any;
   // Defines the size of each opened window to calculate how many windows can be opened on the viewport at the same time.
-  private windowSizeFactor = 320;
+  private windowSizeFactor = 0;
   // Total width size of the friends list section
-  private friendsListWidth = 262;
+  private friendsListWidth = 0;
   // Available area to render the plugin
   private viewPortTotalArea;
 

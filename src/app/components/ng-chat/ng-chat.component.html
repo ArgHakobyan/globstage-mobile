@@ -23,7 +23,7 @@
   </div>
   <div *ngFor="let window of windows; let i = index"
        [ngClass]="{'ng-chat-window': true, 'ng-chat-window-collapsed': window.isCollapsed}"
-       [ngStyle]="{'right': friendsListWidth + 20 + windowSizeFactor * i + 'px'}">
+       [ngStyle]="{'right': friendsListWidth + 0 + windowSizeFactor * i + 'px'}">
     <ng-container *ngIf="window.isCollapsed">
       <div class="ng-chat-title" (click)="onChatWindowClicked(window)">
         <strong title="{{window.chattingTo.userng-star-inserted_name}}">
@@ -68,12 +68,12 @@
                   <img class="post_attach " [src]="attach.path" alt="">
                   <a target="_blank" [href]="attach.path"><img *ngIf="attach.type=='pdf'"
                   class="post_attach doc-hover"
-                  src="/assets/imgs/pdf_icon_svg_by_qubodup-d9n1mhy.png"
+                  src="./assets/imgs/pdf_icon_svg_by_qubodup-d9n1mhy.png"
                   alt="">
                   </a>
                   <a target="_blank" [href]="attach.path"><img *ngIf="attach.type=='doc'"
                   class="post_attach doc-hover"
-                  src="/assets/imgs/2000px-MS_word_DOC_icon.svg.png"
+                  src="./assets/imgs/2000px-MS_word_DOC_icon.svg.png"
                   alt="">
                   </a>
                   </div>

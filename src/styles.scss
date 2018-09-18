@@ -4,6 +4,11 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
+body{
+  width: 100vw;
+  overflow: hidden;
+}
+
 .cdk-overlay-pane{
   margin-bottom: 50px !important;
 }

@@ -175,7 +175,7 @@
     right:260px;
     height:360px;
     z-index:999;
-    bottom:0;
+    bottom:064px;
     position: fixed;
     width:300px;
     border:1px solid #fff;
@@ -293,10 +293,24 @@
           float: left;
           margin-left: 30px;
         }
-
+        
+        @media only screen and (max-width: 767px){
+            .attach-files .smiles{
+                width: 70%;
+            }
+            .attach-files .send-btn{
+                width: 30%;
+            }
+            #ng-chat{
+                bottom: 50px;
+            }
+            .ng-chat-window{
+                bottom: 59px;
+            }
+        }
         @media only screen and (max-width: 700px) {
             #ng-chat{
-                bottom: 59px;
+                bottom: 50px;
             }
             .ng-chat-window{
                 bottom: 59px;

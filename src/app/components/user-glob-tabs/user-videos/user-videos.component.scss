@@ -164,3 +164,11 @@
       width: 50%;
     }
 }
+
+@media only screen and (max-width: 480px) {
+  .video-wrap{
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+  }
+}

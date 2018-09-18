@@ -116,6 +116,13 @@
         }
         .author{
             width: 40%;
+            .comment-text{
+                display: block;
+                font-size: 12px;
+                height: 40px;
+                width: 125px;
+                overflow: hidden;
+            }
         }
         .date{
             width: 30%;

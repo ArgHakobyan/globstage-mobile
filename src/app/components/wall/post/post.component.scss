@@ -108,7 +108,16 @@
     }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 991px){
+    .user-images{
+        max-width: 20%;
+    }
+    .wall-name{
+        max-width: 80%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
   
     .user-images{
         width: 20%;
@@ -134,8 +143,9 @@
 @media only screen and (max-width: 375px) {
     
     .wall-content{
-        padding-left: 15px;
+        padding-left: 5px;
         padding-top: 0;
+        padding-right: 5px;
     }
     .like-dislike{
         padding-bottom: 0;

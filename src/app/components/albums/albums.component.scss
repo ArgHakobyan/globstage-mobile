@@ -188,6 +188,26 @@ img{
       }
     }
   }
-
-
+}
+@media only screen and (max-width: 414px){
+  .tabs-a{
+    .upload{
+      padding-top: 14px;
+      p{
+        font-size: 12px;
+      }
+    }
+    .albums{
+      width: 100%;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+  }  
+}
+@media only screen and (max-width: 320px){
+  .tabs-a{
+    .upload{
+      padding-top: 0;
+    }
+  }
 }

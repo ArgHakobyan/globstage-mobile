@@ -367,3 +367,65 @@
     }
 
 }
+@media only screen and (max-width: 767px) {
+    .animation {
+        margin-left: -700px;
+    }
+    .animate-login {
+        h1{
+            font-size: 36px;
+        }
+    }
+  }
+  @media only screen and (max-width: 480px) {
+    .animation {
+        margin-left: -930px;
+    }
+    .login-panel{
+        .login-form{
+            width: 270px;
+            height: 366px;
+        }
+    }
+    .register-panel{
+        .register-form{
+            width: 270px;
+            height: 475px;
+        }
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    .animation {
+        margin-left: -150px;
+    }
+    .register-panel{
+        .register-form{
+            width: 250px;
+            height: 465px;
+        }
+        .register{
+            margin: auto;
+            margin-top: 8px;
+
+        }
+    }
+    .animate-login {
+        h1{
+            font-size: 36px;
+        }
+        span{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .buttons{
+            .btn{
+                padding: 6px 22px;
+                font-size: 15px;
+            }
+            .btn-default{
+                padding: 5px 22px;
+            }
+        }
+    }
+  }

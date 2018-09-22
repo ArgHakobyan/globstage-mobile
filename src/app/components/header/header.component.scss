@@ -9,7 +9,7 @@
         padding-top: 4px;
         position: fixed;
         bottom: 0;
-        background: #95c800;
+        background: #023031;
         width: 100%;
         left: 0;
         right: 0;
@@ -26,9 +26,9 @@
                 padding: 0 12px;
                 button{
                  background: none;
-                 padding: 2px 0;
+                 padding: 0;
                  border-radius: 4px;
-                 font-size: 14px;
+                 font-size: 16px;
                  width: 40px;
                  color: #fff;
                  transition: 0.4s;
@@ -36,8 +36,11 @@
                  border: 2px solid #fff;
                 }
                 button:hover{
-                    background: #353535;
+                    background: #fff;
                     transition: 0.4s;
+                    i{
+                        color: #000;
+                    }
                 }
                 mat-form-field{
                     ::ng-deep .mat-select-value{
@@ -106,6 +109,9 @@
     .menu-block{
         padding-top: 0;
     }
+    ::ng-deep .cdk-overlay-container{
+        z-index: 99999;
+    }
 }
     @media only screen and (max-width: 414px) {
         .menu-block{
@@ -136,7 +142,6 @@
         .menu{
             position: fixed;
             bottom: 0;
-            background: $color-green;
             width: 100%;
             left: 0;
             right: 0;

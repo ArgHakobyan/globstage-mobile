@@ -6,6 +6,9 @@ ul{
 li{
   list-style: none;
 }
+.container{
+  padding: 0;
+}
 img{max-width: 100%;}
 ::ng-deep .cdk-overlay-container{
   left: -20px;
@@ -108,7 +111,7 @@ img{max-width: 100%;}
   margin-top: 8px;
 }
 .groups{
-  padding: 20px;
+  padding: 0;
   background: #fff;
   margin: 20px 0;
   h2 {
